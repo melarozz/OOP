@@ -3,7 +3,13 @@ import java.util.Scanner;
 
 
 public class Sample {
+    /**
+     *
+     * @param arr
+     * @return
+     */
     public static int[] sort(int[] arr) {
+
         int n = arr.length;
 
         for (int i=n/2-1; i>=0; i--){
@@ -23,6 +29,7 @@ public class Sample {
     }
 
     public static void sift(int[] arr, int n, int i){
+
         int max = i;
         int left = 2*i+1;
         int right = 2*i+2;
