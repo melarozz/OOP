@@ -8,8 +8,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed9ac0da-3c43-43e9-b725-f778353626df" name="Changes" comment="Added JavaDoc">
-      <change afterPath="$PROJECT_DIR$/src/Run.sh" afterDir="false" />
+    <list default="true" id="ed9ac0da-3c43-43e9-b725-f778353626df" name="Changes" comment="Added shell script but without javadoc generating">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/yakovleva/Sample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/yakovleva/Sample.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +86,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693923168858</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added shell script but without javadoc generating">
+      <option name="closed" value="true" />
+      <created>1693927171839</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1693927171839</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,6 +123,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="HeapSort" />
     <MESSAGE value="Added JavaDoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added JavaDoc" />
+    <MESSAGE value="Added shell script but without javadoc generating" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added shell script but without javadoc generating" />
   </component>
 </project>

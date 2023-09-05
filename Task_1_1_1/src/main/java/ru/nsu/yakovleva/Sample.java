@@ -58,10 +58,9 @@ public class Sample {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input: ");
-        String input = scanner.nextLine();
-
+        String in = scanner.nextLine();
         Pattern pattern = Pattern.compile("\\{(.+?)\\}");
-        Matcher matcher = pattern.matcher(input);
+        Matcher matcher = pattern.matcher(in);
 
         if (matcher.find()) {
             String[] elements = matcher.group(1).split(",");
@@ -70,12 +69,12 @@ public class Sample {
             for (int i = 0; i < elements.length; i++) {
                 arr[i] = Integer.parseInt(elements[i].trim());
             }
-            int[] sortedArr = Sample.heapsort(arr);
+            int[] result = Sample.heapsort(arr);
 
-            System.out.println("Output: " + Arrays.toString(sortedArr));
+            System.out.println("Output: " + Arrays.toString(result));
         }
         else {
-            System.out.println("Invalid input format.");
+            System.out.println("Invalid in format.");
         }
 
         scanner.close();
