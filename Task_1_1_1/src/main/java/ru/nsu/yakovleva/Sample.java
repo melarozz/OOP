@@ -1,6 +1,8 @@
 package ru.nsu.yakovleva;
 import java.util.Scanner;
-
+import java.util.Arrays;
+import java.util.regex.*;
+import java.util.Scanner;
 
 public class Sample {
     /**
@@ -53,6 +55,30 @@ public class Sample {
 
     }
 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input: ");
+        String input = scanner.nextLine();
 
+        Pattern pattern = Pattern.compile("\\{(.+?)\\}");
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.find()) {
+            String[] elements = matcher.group(1).split(",");
+            int[] arr = new int[elements.length];
+
+            for (int i = 0; i < elements.length; i++) {
+                arr[i] = Integer.parseInt(elements[i].trim());
+            }
+            int[] sortedArr = Sample.heapsort(arr);
+
+            System.out.println("Output: " + Arrays.toString(sortedArr));
+        }
+        else {
+            System.out.println("Invalid input format.");
+        }
+
+        scanner.close();
+    }
 
 }
