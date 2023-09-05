@@ -8,7 +8,7 @@ public class Sample {
      * @param arr
      * @return
      */
-    public static int[] sort(int[] arr) {
+    public static int[] heapsort(int[] arr) {
 
         int n = arr.length;
 
