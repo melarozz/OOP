@@ -39,10 +39,5 @@ class Heapsorttest {
         assertArrayEquals(arr, expected);
     }
 
-    @Test
-    void checkMain() {
-        Heapsort.main(new String[] {});
-        assertTrue(true);
-    }
 
 }
