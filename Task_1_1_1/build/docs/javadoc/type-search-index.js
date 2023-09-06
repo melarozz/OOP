@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"yakovleva","l":"Heapsort"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"yakovleva","l":"Heapsort"},{"p":"yakovleva","l":"Main"}];updateSearchResults();

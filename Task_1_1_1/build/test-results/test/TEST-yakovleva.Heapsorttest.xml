@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="yakovleva.Heapsorttest" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-09-06T15:01:16" hostname="macs-MacBook-Pro-2.local" time="0.042">
+<testsuite name="yakovleva.Heapsorttest" tests="5" skipped="0" failures="1" errors="0" timestamp="2023-09-06T15:08:22" hostname="macs-MacBook-Pro-2.local" time="0.066">
   <properties/>
-  <testcase name="checkMain()" classname="yakovleva.Heapsorttest" time="0.042">
+  <testcase name="check_same()" classname="yakovleva.Heapsorttest" time="0.037"/>
+  <testcase name="check_sift()" classname="yakovleva.Heapsorttest" time="0.001"/>
+  <testcase name="checkMain()" classname="yakovleva.Heapsorttest" time="0.019">
     <failure message="java.util.NoSuchElementException: No line found" type="java.util.NoSuchElementException">java.util.NoSuchElementException: No line found
 	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
-	at yakovleva.Heapsort.main(Heapsort.java:81)
-	at yakovleva.Heapsorttest.checkMain(Heapsorttest.java:44)
+	at yakovleva.Main.main(Main.java:22)
+	at yakovleva.Heapsorttest.checkMain(Heapsorttest.java:11)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -92,6 +94,8 @@
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 </failure>
   </testcase>
+  <testcase name="check_empty()" classname="yakovleva.Heapsorttest" time="0.001"/>
+  <testcase name="check_usual()" classname="yakovleva.Heapsorttest" time="0.001"/>
   <system-out><![CDATA[Input: ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
