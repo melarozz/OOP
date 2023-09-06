@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="yakovleva.Heapsorttest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-09-06T14:34:13" hostname="macs-MacBook-Pro-2.local" time="0.035">
+  <properties/>
+  <testcase name="check_same()" classname="yakovleva.Heapsorttest" time="0.029"/>
+  <testcase name="check_empty()" classname="yakovleva.Heapsorttest" time="0.002"/>
+  <testcase name="check_usual()" classname="yakovleva.Heapsorttest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
