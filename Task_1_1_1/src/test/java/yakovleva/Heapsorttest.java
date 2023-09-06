@@ -1,10 +1,37 @@
 package yakovleva;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Heapsorttest {
+
+    private final ByteArrayOutputStream output = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private InputStream originalIn;
+
+    @BeforeEach
+    void setUp() {
+        System.setOut(new PrintStream(output));
+        originalIn = System.in;
+    }
+
+    @Test
+    void testMainWithValidInput() {
+
+        String input = "heapsort(new int[] {12, 11, 13, 5, 6, 7});\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        Main.main(null);
+
+        String expectedOutput = "Input: Output: [5, 6, 7, 11, 12, 13]\n";
+        assertEquals(expectedOutput, output.toString());
+    }
 
     @Test
     void check_usual() {
@@ -12,6 +39,17 @@ class Heapsorttest {
         int[] expected = { 5, 6, 7, 11, 12, 13};
         int[] result = Heapsort.heapsort(arr);
         assertArrayEquals(result, expected);
+    }
+
+    @Test
+    void testMainWithInvalidInput() {
+        String input = "InvalidInput\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        Main.main(null);
+
+        String expectedOutput = "Input: Invalid in format.\n";
+        assertEquals(expectedOutput, output.toString());
     }
 
     @Test
@@ -38,6 +76,5 @@ class Heapsorttest {
         Heapsort.sift(arr, arr.length, 0);
         assertArrayEquals(arr, expected);
     }
-
 
 }
