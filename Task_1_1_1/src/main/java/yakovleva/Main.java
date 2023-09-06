@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
  * @version 1.0
  */
 public class Main {
+
     /**
      * Функция для запуска.
      *

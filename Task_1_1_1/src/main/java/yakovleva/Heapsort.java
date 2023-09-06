@@ -1,4 +1,5 @@
 package yakovleva;
+
 /**
  * Класс пирамидальной сортировки с функциями heapsort  и sift.
  *
@@ -6,6 +7,7 @@ package yakovleva;
  * @version 1.0
  */
 public class Heapsort {
+
     /**
      * Функция для получения отсортированного по неубыванию массива.
      *
