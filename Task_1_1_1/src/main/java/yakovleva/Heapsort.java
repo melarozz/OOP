@@ -18,11 +18,11 @@ public class Heapsort {
 
         int n = arr.length;
 
-        for (int i = n / 2 - 1; i >= 0; i--){
+        for (int i = n / 2 - 1; i >= 0; i--) {
             sift(arr,n,i);
         }
 
-        for (int i = n - 1; i > 0; i--){
+        for (int i = n - 1; i > 0; i--) {
             int tmp = arr[0];
             arr[0] = arr[i];
             arr[i] = tmp;
@@ -41,7 +41,7 @@ public class Heapsort {
      * @param n - размер кучи
      * @param i - наибольшая вершина
      */
-    public static void sift(int[] arr, int n, int i){
+    public static void sift(int[] arr, int n, int i) {
 
         int max = i;
         int left = 2 * i + 1;
@@ -52,7 +52,7 @@ public class Heapsort {
             max = right;
         }
 
-        if (left<n && arr[left] > arr[max]){
+        if (left < n && arr[left] > arr[max]) {
             max = left;
         }
 
@@ -64,9 +64,5 @@ public class Heapsort {
             sift(arr, n, max);
         }
 
-
     }
-
-
-
 }
