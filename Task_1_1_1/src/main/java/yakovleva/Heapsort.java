@@ -16,16 +16,16 @@ public class Heapsort {
 
         int n = arr.length;
 
-        for (int i=n/2-1; i>=0; i--){
+        for (int i = n / 2 - 1; i >= 0; i--){
             sift(arr,n,i);
         }
 
-        for (int i = n-1; i>0; i--){
+        for (int i = n - 1; i > 0; i--){
             int tmp = arr[0];
-            arr[0]=arr[i];
-            arr[i]=tmp;
+            arr[0] = arr[i];
+            arr[i] = tmp;
 
-            sift(arr,i,0);
+            sift(arr, i, 0);
         }
 
         return arr;
@@ -42,8 +42,8 @@ public class Heapsort {
     public static void sift(int[] arr, int n, int i){
 
         int max = i;
-        int left = 2*i+1;
-        int right = 2*i+2;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
 
 
         if (right < n && arr[right] > arr[max]) {
