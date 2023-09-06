@@ -1,14 +1,21 @@
 package yakovleva;
-import java.util.Scanner;
-import java.util.Arrays;
-import java.util.regex.*;
-import java.util.Scanner;
 
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.regex.*;
+
+/**
+ * Класс пирамидальной сортировки с функциями heapsort  и sift.
+ *
+ * @author Яковлева Валерия
+ * @version 1.0
+ */
 public class Heapsort {
     /**
+     * Функция для получения отсортированного по неубыванию массива.
      *
-     * @param arr
-     * @return
+     * @param arr - входной массив
+     * @return возвращает отсортированный массив
      */
     public static int[] heapsort(int[] arr) {
 
@@ -30,6 +37,13 @@ public class Heapsort {
 
     }
 
+    /**
+     * Функция для просеивания более тяжелых элементов в корни поддеревьев.
+     *
+     * @param arr - входной массив
+     * @param n - размер кучи
+     * @param i - наибольшая вершина
+     */
     public static void sift(int[] arr, int n, int i){
 
         int max = i;
@@ -53,8 +67,14 @@ public class Heapsort {
             sift(arr, n, max);
         }
 
+
     }
 
+    /**
+     * Функция для запуска.
+     *
+     * @param args - стандартный входной параметр
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input: ");

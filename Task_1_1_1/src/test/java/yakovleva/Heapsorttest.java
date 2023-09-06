@@ -30,4 +30,19 @@ class Heapsorttest {
         assertArrayEquals(result, expected);
     }
 
+    @Test
+    void check_sift() {
+        int[] arr = {3, 1, 2};
+        int[] expected = {3, 1, 2};
+
+        Heapsort.sift(arr, arr.length, 0);
+        assertArrayEquals(arr, expected);
+    }
+
+    @Test
+    void checkMain() {
+        Heapsort.main(new String[] {});
+        assertTrue(true);
+    }
+
 }
