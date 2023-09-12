@@ -1,6 +1,6 @@
-cd /Users/mac/IdeaProjects/OOP/Task_1_1_1/src/main/java/yakovleva
-javac Main.java
-cd /Users/mac/IdeaProjects/OOP/Task_1_1_1
+cd ./src/main/java/yakovleva
+javac Heapsort.java
+cd .. && cd .. && cd .. && cd ..
 gradle javadoc
-cd /Users/mac/IdeaProjects/OOP/Task_1_1_1/src/main/java
-java yakovleva.Main
+cd ./src/main/java
+java yakovleva.Heapsort
