@@ -1,7 +1,7 @@
 package ru.nsu.yakovleva;
 
  /**
- * Класс пирамидальной сортировки с функциями heapsort  и sift.
+ * Класс пирамидальной сортировки с функциями heapsort и sift.
  *
  * @author Яковлева Валерия
  * @version 1.0
@@ -69,7 +69,7 @@ public class Heapsort {
      /**
      * Main function.
      *
-     * @param args - default param
+     * @param args - стандартный параметр
      */
     public static void main(String[] args) {}
 }
