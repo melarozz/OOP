@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 class HeapSortTest {
     @Test
     void checkUsual() {
-        int[] arr = { 12, 11, 13, 5, 6, 7 };
-        int[] expected = { 5, 6, 7, 11, 12, 13};
+        int[] arr = { 12, 11, 13, 4, 6, 7 };
+        int[] expected = { 4, 6, 7, 11, 12, 13};
         int[] actual = Heapsort.heapsort(arr);
         assertArrayEquals(actual, expected);
     }
