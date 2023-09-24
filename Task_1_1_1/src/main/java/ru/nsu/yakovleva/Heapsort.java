@@ -67,8 +67,9 @@ public class Heapsort {
     }
 
     /**
-     * Main function
-     * @param args - arguments
+     * Main function.
+     *
+     * @param args - default param
      */
     public static void main(String[] args) {}
 }
