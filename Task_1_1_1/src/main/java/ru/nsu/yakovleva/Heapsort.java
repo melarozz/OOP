@@ -1,6 +1,6 @@
 package ru.nsu.yakovleva;
 
-/**
+ /**
  * Класс пирамидальной сортировки с функциями heapsort  и sift.
  *
  * @author Яковлева Валерия
@@ -8,7 +8,7 @@ package ru.nsu.yakovleva;
  */
 public class Heapsort {
 
-    /**
+     /**
      * Функция для получения отсортированного по неубыванию массива.
      *
      * @param arr - входной массив
@@ -34,7 +34,7 @@ public class Heapsort {
 
     }
 
-    /**
+     /**
      * Функция для просеивания более тяжелых элементов в корни поддеревьев.
      *
      * @param arr - входной массив
@@ -66,7 +66,7 @@ public class Heapsort {
 
     }
 
-    /**
+     /**
      * Main function.
      *
      * @param args - default param
