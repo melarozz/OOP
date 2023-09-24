@@ -1,4 +1,4 @@
-package yakovleva;
+package ru.nsu.yakovleva;
 
 /**
  * Класс пирамидальной сортировки с функциями heapsort  и sift.
@@ -14,7 +14,7 @@ public class Heapsort {
      * @param arr - входной массив
      * @return возвращает отсортированный массив
      */
-    public static int[] heapsort(int[] arr) {
+     public static int[] heapsort(int[] arr) {
 
         int n = arr.length;
 
@@ -41,7 +41,7 @@ public class Heapsort {
      * @param n - размер кучи
      * @param i - наибольшая вершина
      */
-    public static void sift(int[] arr, int n, int i) {
+     private static void sift(int[] arr, int n, int i) {
 
         int max = i;
         int left = 2 * i + 1;
@@ -65,4 +65,10 @@ public class Heapsort {
         }
 
     }
+
+    /**
+     * Main function
+     * @param args - arguments
+     */
+    public static void main(String[] args) {}
 }
