@@ -1,4 +1,4 @@
-package ru.nsu.yakovleva;
+package ru.nsu.yakovleva.heapsort;
 
 /**
  * Класс пирамидальной сортировки с функциями heapsort и sift.

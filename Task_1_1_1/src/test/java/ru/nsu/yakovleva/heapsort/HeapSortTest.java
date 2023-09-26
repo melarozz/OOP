@@ -1,8 +1,10 @@
-package ru.nsu.yakovleva;
+package ru.nsu.yakovleva.heapsort;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import java.util.Arrays;
+import java.util.Random;
+
 import org.junit.jupiter.api.Test;
 
 class HeapSortTest {
@@ -33,13 +35,15 @@ class HeapSortTest {
 
     @Test
     void checkLargeInput() {
+        Random random = new Random();
         int[] arr = new int[10000000];
-        int[] expected = new int[10000000];
-        Arrays.fill(arr, 0);
-        Arrays.fill(expected, 0);
+        int[] expected = arr;
+        Arrays.fill(arr, random.nextInt());
+        Arrays.sort(expected);
         int[] actual = Heapsort.heapsort(arr);
-        assertArrayEquals(expected, actual);
+        assertArrayEquals(actual, expected);
     }
+
 
     @Test
     void checkSingleElement() {
