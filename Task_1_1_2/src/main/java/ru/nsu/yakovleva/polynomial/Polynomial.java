@@ -75,7 +75,7 @@ public class Polynomial {
 
     /**
      * Вычисление значения в точке.
-     * @param x - точка
+     * @param x - точка для вычислений
      * @return - возвращает значение
      */
     public int evaluate(int x) {
