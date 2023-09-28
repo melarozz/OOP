@@ -1,121 +1,197 @@
 package ru.nsu.yakovleva.polynomial;
 
-import java.util.Arrays;
-
 /**
- * Класс полиномов.
+ * Класс полинома с различными математическими функциями.
+ *
+ * @author Yakovleva-Valeria
+ *
+ * @version 2.0
  */
 public class Polynomial {
-
     /**
      * Коэффициенты полинома.
      */
-    private int[] coef;
-
-    /**
-     * Инициализация полинома.
-     * @param coef - коэффициенты полинома.
-     */
-    public Polynomial(int[] coef) {
-        if (coef.length == 0 || coef[0] == 0) {
-            throw new IllegalArgumentException("a n != 0");
-        }
-        this.coef = coef;
-    }
-
-    /**
-     * Сумма двух полиномов.
-     * @param other - второй полином
-     * @return - возвращает итоговый полином
-     */
-    public Polynomial plus(Polynomial other) {
-        int maxDegree = Math.max(this.degree(), other.degree());
-        int[] resultcoef = new int[maxDegree + 1];
-
-        for (int i = 0; i <= maxDegree; i++) {
-            resultcoef[i] = this.getCoefficient(i) + other.getCoefficient(i);
-        }
-
-        return new Polynomial(resultcoef);
-    }
-
-    /**
-     * Разность двух полиномов.
-     * @param other - вычитаемое
-     * @return - возвращает итоговый полином
-     */
-    public Polynomial minus(Polynomial other) {
-        int maxDegree = Math.max(this.degree(), other.degree());
-        int[] resultcoef = new int[maxDegree + 1];
-
-        for (int i = 0; i <= maxDegree; i++) {
-            resultcoef[i] = this.getCoefficient(i) - other.getCoefficient(i);
-        }
-
-        return new Polynomial(resultcoef);
-    }
-
-    /**
-     * Умножение двух полиномов.
-     * @param other - второе умножаемое
-     * @return - возвращает итоговый полином
-     */
-    public Polynomial times(Polynomial other) {
-        int resultDegree = this.degree() + other.degree();
-        int[] resultcoef = new int[resultDegree + 1];
-
-        for (int i = 0; i <= this.degree(); i++) {
-            for (int j = 0; j <= other.degree(); j++) {
-                resultcoef[i + j] += this.getCoefficient(i) * other.getCoefficient(j);
-            }
-        }
-
-        return new Polynomial(resultcoef);
-    }
-
-    /**
-     * Вычисление значения в точке.
-     * @param x - точка для вычислений
-     * @return - возвращает значение
-     */
-    public int evaluate(int x) {
-        int result = 0;
-        for (int i = 0; i <= degree(); i++) {
-            result += coef[i] * Math.pow(x, i);
-        }
-        return result;
-    }
-
-    /**
-     * Cравнение на равенство с другим многочленом.
-     * @param other - другой полином
-     * @return - возвращает правду или ложь
-     */
-    public boolean equals(Polynomial other) {
-        return Arrays.equals(this.coef, other.coef);
-    }
+    public int[] coefs;
 
     /**
      * Степень полинома.
-     * @return
      */
-    public int degree() {
-        return coef.length - 1;
+    public int degree;
+
+    /**
+     * Конструктор для инициализации полинома с указанными коэффициентами.
+     *
+     * @param parameters - заданные коэффициенты полинома.
+     */
+    public Polynomial(int[] parameters) {
+        if (parameters.length == 0 ||  parameters[0] == 0) {
+            throw new IllegalArgumentException("The leading coefficient 'an' must be non-zero.");
+        }
+        this.coefs = reverseArray(parameters);
+        this.degree = parameters.length;
+    }
+
+
+    /**
+     * Метод вычисления значения полинома в указанной точке x.
+     *
+     * @param x - значение x.
+     * @return - int.
+     */
+    public int evaluate(int x) {
+        int res = 0;
+
+        for (int i = 0; i < this.degree; i++) {
+            res += (int) (this.coefs[this.degree - i - 1] * Math.pow(x, this.degree-i-1));
+
+        }
+
+        return res;
+    }
+
+
+
+
+    /**
+     * Строковое представление полинома.
+     *
+     * @return - String.
+     */
+    @Override
+    public String toString() {
+        String res = "";
+
+        int deg = this.degree;
+
+        for (int i = this.degree - 1; i >= 0; i--) {
+            if (this.coefs[i] != 0) {
+                if (deg != this.degree) {
+                    if (this.coefs[i] > 0) {
+                        res += " + ";
+                    }
+                    else {
+                        res += " - ";
+                    }
+                }
+
+                res += (Integer.toString(Math.abs(this.coefs[i])));
+                deg--;
+                if (deg > 1) {
+                    res += "x^";
+                    res += (Integer.toString(deg));
+                }
+                else if (deg == 1) {
+                    res += "x";
+                }
+            }
+            else {
+                deg--;
+            }
+        }
+
+        return res;
     }
 
     /**
-     * Получает коэффициенты.
-     * @param degree - степень полинома
-     * @return
+     * Метод для сложения двух полиномов.
+     *
+     * @param other - полином, второе слагаемое.
+     * @return - объект Polynomial, первое слагаемое.
      */
+    public Polynomial plus(Polynomial other) {
+        int[] resultCoefs;
 
-    public int getCoefficient(int degree) {
-        if (degree < 0 || degree >= coef.length) {
-            return 0;
+        if (this.degree < other.degree) {
+            resultCoefs = other.coefs;
+            for (int i = 0; i < this.degree; i++) {
+                resultCoefs[i] += this.coefs[i];
+            }
+            this.degree = other.degree;
+        } else {
+            resultCoefs = this.coefs;
+            for (int i = 0; i < other.degree; i++) {
+                resultCoefs[i] += other.coefs[i];
+            }
         }
-        return coef[(coef.length - 1) - degree];
+
+        this.coefs = resultCoefs;
+
+        return this;
     }
 
+    /**
+     * Метод для вычитания полиномов.
+     *
+     * @param other - полином, вычитаемое.
+     * @return - объект Polynomial, уменьшаемое.
+     */
+    public Polynomial minus(Polynomial other) {
+        int[] resultCoefs;
+
+        if (this.degree < other.degree) {
+            resultCoefs = other.coefs;
+            for (int i = 0; i < this.degree; i++) {
+                resultCoefs[i] -= this.coefs[i];
+            }
+            this.degree = other.degree;
+        }
+        else {
+            resultCoefs = this.coefs;
+            for (int i = 0; i < other.degree; i++) {
+                resultCoefs[i] -= other.coefs[i];
+            }
+        }
+
+        this.coefs = resultCoefs;
+
+        return this;
+    }
+
+    /**
+     * Метод для умножения полиномов.
+     *
+     * @param other - полином, второе умножаемое.
+     * @return - объект Polynomial, первое умножаемое.
+     */
+    public Polynomial times(Polynomial other) {
+        int[] resultCoefs = new int[this.degree + other.degree - 1];
+
+        for (int i = 0; i < this.degree; i++) {
+            for (int j = 0; j < other.degree; j++) {
+                resultCoefs[i + j] += this.coefs[i] * other.coefs[j];
+            }
+        }
+
+        this.coefs = resultCoefs;
+        this.degree = this.degree * other.degree;
+        return this;
+    }
+
+    /**
+     * Метод для разворачивания массива.
+     * @param arr - массив, который нужно перевернуть.
+     * @return - перевернутый массив.
+     */
+    private static int[] reverseArray(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+
+            start++;
+            end--;
+        }
+        return arr;
+    }
+
+    /**
+     * Стандартная функция.
+     *
+     * @param args - стандартные параметры.
+     */
     public static void main(String[] args) {
     }
 }
