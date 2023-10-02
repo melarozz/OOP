@@ -8,7 +8,7 @@ import java.util.Objects;
  *
  * @author Yakovleva-Valeria
  *
- * @version 2.0
+ * @version 3.0
  */
 public class Polynomial {
     /**
