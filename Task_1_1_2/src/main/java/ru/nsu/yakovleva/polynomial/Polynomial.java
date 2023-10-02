@@ -1,5 +1,8 @@
 package ru.nsu.yakovleva.polynomial;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Класс полинома с различными математическими функциями.
  *
@@ -48,8 +51,6 @@ public class Polynomial {
 
         return res;
     }
-
-
 
 
     /**
@@ -165,6 +166,66 @@ public class Polynomial {
         this.coefs = resultCoefs;
         this.degree = this.degree * other.degree;
         return this;
+    }
+    //doesn't work
+
+    /**
+     *
+     * @param diff
+     * @return
+     */
+    public Polynomial differentiate(int diff) {
+        if (diff <= 0) {
+            throw new IllegalArgumentException("Bad argument");
+        }
+
+        int[] resultCoefs = new int[this.degree];
+
+        for (int d = 0; d < diff; d++) {
+            for (int i = 0; i < this.degree; i++) {
+                resultCoefs[i] = this.coefs[i] * (this.degree - i - 1);
+            }
+
+            resultCoefs[this.degree - 1] = 0;
+            this.degree--;
+
+            this.coefs = resultCoefs.clone();
+        }
+
+        int[] reversedCoefs = new int[this.degree];
+        for (int i = 0; i < this.degree; i++) {
+            reversedCoefs[i] = this.coefs[this.degree - 1 - i];
+        }
+
+        return new Polynomial(reversedCoefs);
+    }
+
+
+    /**
+     *  Метод для сравнения двух полиномов.
+     *
+     * @param obj - второй полином.
+     * @return - true или false.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Polynomial other = (Polynomial) obj;
+        return (degree == other.degree) && (Arrays.equals(coefs, other.coefs));
+    }
+
+    /**
+     * Перезапись хэшкода объектов для сравнения объектов полиномов.
+     *
+     * @return - хэшкод.
+     */
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(degree);
+        result = 31 * result + Arrays.hashCode(coefs);
+        return result;
     }
 
     /**
