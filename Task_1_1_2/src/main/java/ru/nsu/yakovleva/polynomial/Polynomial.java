@@ -166,7 +166,7 @@ public class Polynomial {
 
     /**
      * Метод для взятия iтой производной.
-     * @param diff
+     * @param diff - i
      * @return - объект Polynomial
      */
     public Polynomial differentiate(int diff) {
