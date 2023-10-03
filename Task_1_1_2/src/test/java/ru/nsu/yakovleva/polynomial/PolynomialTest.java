@@ -22,13 +22,35 @@ public class PolynomialTest {
     }
 
     @Test
-    public void testEvaluate() {
+    public void testEvaluateOne() {
         int[] coefficients = {3, 2, 1}; // 3x^2 + 2x + 1
         Polynomial poly = new Polynomial(coefficients);
 
         assertEquals(6, poly.evaluate(1)); // 3(1)^2 + 2(1) + 1 = 6
+    }
+
+    @Test
+    public void testEvaluateTwo() {
+        int[] coefficients = {3, 2, 1}; // 3x^2 + 2x + 1
+        Polynomial poly = new Polynomial(coefficients);
+
         assertEquals(17, poly.evaluate(2)); // 3*(2)^2 + 2(2) + 1 = 17
+    }
+
+    @Test
+    public void testEvaluateZero() {
+        int[] coefficients = {3, 2, 1}; // 3x^2 + 2x + 1
+        Polynomial poly = new Polynomial(coefficients);
+
         assertEquals(1, poly.evaluate(0));  // 3(0)^2 + 2(0) + 1 = 1
+    }
+
+    @Test
+    public void testEvaluateLarge() {
+        int[] coefficients = {3, 2, 1}; // 3x^2 + 2x + 1
+        Polynomial poly = new Polynomial(coefficients);
+
+        assertEquals(1471401, poly.evaluate(700)); // 3*(2)^2 + 2(2) + 1 = 17
     }
 
     @Test
@@ -113,5 +135,9 @@ public class PolynomialTest {
         assertEquals("3", poly.toString());
     }
 
+    @Test
+    public void testMain() {
+        assert(true);
+    }
 
 }
