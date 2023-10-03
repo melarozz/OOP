@@ -57,31 +57,5 @@ public class PolynomialTest {
     }
 
 
-    @Test
-    void checkEquality() {
-        Polynomial p1 = new Polynomial(new int[] {1, 2, 3, 7});
-        Polynomial p2 = new Polynomial(new int[] {1, 2, 3, 7});
-
-        if (p1.equals(p2)) {
-            assertTrue(true);
-        }
-        else {
-            assertFalse(false);
-        }
-    }
-
-    @Test
-    void checkEqualityNot() {
-        Polynomial p1 = new Polynomial(new int[] {1, 2, 3, 7});
-        Polynomial p2 = new Polynomial(new int[] {1, 3});
-
-        if (!p1.equals(p2)) {
-            assertTrue(true);
-        }
-        else {
-            assertFalse(false);
-        }
-    }
-
 
 }
