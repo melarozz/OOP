@@ -46,7 +46,6 @@ public class Polynomial {
 
         for (int i = 0; i < this.degree; i++) {
             res += (int) (this.coefs[this.degree - i - 1] * Math.pow(x, this.degree-i-1));
-
         }
 
         return res;
@@ -69,8 +68,7 @@ public class Polynomial {
                 if (deg != this.degree) {
                     if (this.coefs[i] > 0) {
                         res += " + ";
-                    }
-                    else {
+                    } else {
                         res += " - ";
                     }
                 }
@@ -80,12 +78,10 @@ public class Polynomial {
                 if (deg > 1) {
                     res += "x^";
                     res += (Integer.toString(deg));
-                }
-                else if (deg == 1) {
+                } else if (deg == 1) {
                     res += "x";
                 }
-            }
-            else {
+            } else {
                 deg--;
             }
         }
@@ -135,8 +131,7 @@ public class Polynomial {
                 resultCoefs[i] -= this.coefs[i];
             }
             this.degree = other.degree;
-        }
-        else {
+        } else {
             resultCoefs = this.coefs;
             for (int i = 0; i < other.degree; i++) {
                 resultCoefs[i] -= other.coefs[i];
