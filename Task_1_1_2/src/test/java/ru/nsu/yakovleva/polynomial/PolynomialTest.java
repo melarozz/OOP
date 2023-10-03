@@ -11,7 +11,7 @@ public class PolynomialTest {
 
     @Test
     public void testPlus() {
-        int[] coefficients1 = {1,2}; // x+2
+        int[] coefficients1 = {1, 2}; // x+2
         int[] coefficients2 = {3}; // 3
         polynomial1 = new Polynomial(coefficients1);
         polynomial2 = new Polynomial(coefficients2);
@@ -23,7 +23,7 @@ public class PolynomialTest {
 
     @Test
     public void testMinus() {
-        int[] coefficients1 = {1,2}; // x+2
+        int[] coefficients1 = {1, 2}; // x+2
         int[] coefficients2 = {3}; // 3
         polynomial1 = new Polynomial(coefficients1);
         polynomial2 = new Polynomial(coefficients2);
@@ -36,12 +36,12 @@ public class PolynomialTest {
 
     @Test
     public void testTimes() {
-        int[] coefficients1 = {1,2,3}; // x^2+2x+3
+        int[] coefficients1 = {1, 2, 3}; // x^2+2x+3
         int[] coefficients2 = {3}; // 3
         polynomial1 = new Polynomial(coefficients1);
         polynomial2 = new Polynomial(coefficients2);
         Polynomial result = polynomial1.times(polynomial2);
-        int[] expectedCoefficients = {3,6,9};
+        int[] expectedCoefficients = {3, 6, 9};
         Polynomial expectedPolynomial = new Polynomial(expectedCoefficients);
         assertEquals(expectedPolynomial.degree, result.degree);
         assertArrayEquals(expectedPolynomial.coefs, result.coefs);
