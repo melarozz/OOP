@@ -1,176 +1,166 @@
 package ru.nsu.yakovleva.polynomial;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 /**
- * Класс полинома с различными математическими функциями.
- *
- * @author Yakovleva-Valeria
- *
- * @version 2.0
+ * Класс полиномов и методов для них.
  */
 public class Polynomial {
-    /**
-     * Коэффициенты полинома.
-     */
-    public int[] coefs;
+    private int[] coefficients;
 
     /**
-     * Степень полинома.
-     */
-    public int degree;
-
-    /**
-     * Конструктор для инициализации полинома с указанными коэффициентами.
+     * Метод для создания полинома.
      *
-     * @param parameters - заданные коэффициенты полинома.
+     * @param coefficients - коэффициенты полинома
      */
-    public Polynomial(int[] parameters) {
-        if (parameters.length == 0 ||  parameters[0] == 0) {
-            throw new IllegalArgumentException("The leading coefficient 'an' must be non-zero.");
-        }
-        this.coefs = reverseArray(parameters);
-        this.degree = parameters.length;
+    public Polynomial(int[] coefficients) {
+        this.coefficients = coefficients;
     }
 
     /**
-     * Строковое представление полинома.
+     * Метод для вычисления полинома в заданной точке x.
      *
-     * @return - String.
+     * @param x - число для вычисления.
+     * @return result - результат вычислений.
+     */
+    public int evaluate(int x) {
+        int result = 0;
+        int power = coefficients.length - 1;
+
+        for (int coefficient : coefficients) {
+            result += coefficient * (int) Math.pow(x,power);
+            power--;
+        }
+
+        return result;
+    }
+
+    /**
+     * Метод для получения коэффиентов полинома.
+     *
+     * @return coefficients - коэффициенты.
+     */
+    public int[] getCoefficients() {
+        return coefficients;
+    }
+
+    /**
+     * Метод для сравнения двух полиномов.
+     *
+     * @param obj - полином.
+     * @return true/false.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Polynomial other = (Polynomial) obj;
+        return Arrays.equals(this.coefficients, other.coefficients);
+    }
+
+    /**
+     * Метод для обращения полинома в читаемую строку.
+     *
+     * @return - строка.
      */
     @Override
     public String toString() {
-        String res = "";
+        StringBuilder sb = new StringBuilder();
+        int degree = coefficients.length - 1;
 
-        int deg = this.degree;
-
-        for (int i = this.degree - 1; i >= 0; i--) {
-            if (this.coefs[i] != 0) {
-                if (deg != this.degree) {
-                    if (this.coefs[i] > 0) {
-                        res += " + ";
+        for (int i = 0; i <= degree; i++) {
+            int coefficient = coefficients[i];
+            if (coefficient != 0) {
+                if (!sb.isEmpty()) {
+                    if (coefficient > 0) {
+                        sb.append(" + ");
                     } else {
-                        res += " - ";
+                        sb.append(" - ");
                     }
                 }
 
-                res += (Integer.toString(Math.abs(this.coefs[i])));
-                deg--;
-                if (deg > 1) {
-                    res += "x^";
-                    res += (Integer.toString(deg));
-                } else if (deg == 1) {
-                    res += "x";
+                int absCoefficient = Math.abs(coefficient);
+                sb.append(absCoefficient);
+
+
+                if (i < degree) {
+                    sb.append("x");
+                    if (i < degree-1) {
+                        sb.append("^").append(degree-i);
+                    }
                 }
-            } else {
-                deg--;
             }
         }
 
-        return res;
+        return sb.toString();
     }
 
     /**
      * Метод для сложения двух полиномов.
      *
-     * @param other - полином, второе слагаемое.
-     * @return - объект Polynomial, первое слагаемое.
+     * @param other - второе слагаемое.
+     * @return - результат сложения.
      */
-    public Polynomial plus(Polynomial other) {
-        int[] resultCoefs;
+    public Polynomial add(Polynomial other) {
+        int maxLength = Math.max(coefficients.length, other.coefficients.length);
+        int[] newCoefficients = new int[maxLength];
 
-        if (this.degree < other.degree) {
-            resultCoefs = other.coefs;
-            for (int i = 0; i < this.degree; i++) {
-                resultCoefs[i] += this.coefs[i];
-            }
-            this.degree = other.degree;
-        } else {
-            resultCoefs = this.coefs;
-            for (int i = 0; i < other.degree; i++) {
-                resultCoefs[i] += other.coefs[i];
-            }
+        for (int i = 0; i < maxLength; i++) {
+            int coef1 = (i < coefficients.length) ? coefficients[i] : 0;
+            int coef2 = (i < other.coefficients.length) ? other.coefficients[i] : 0;
+            newCoefficients[i] = coef1 + coef2;
         }
 
-        this.coefs = resultCoefs;
-
-        return this;
+        return new Polynomial(newCoefficients);
     }
 
     /**
-     * Метод для вычитания полиномов.
+     * Метод для вычитания двух полиномов.
      *
-     * @param other - полином, вычитаемое.
-     * @return - объект Polynomial, уменьшаемое.
+     * @param other - вычитаемое.
+     * @return - результат вычитания.
      */
     public Polynomial minus(Polynomial other) {
-        int[] resultCoefs;
+        int maxLength = Math.max(coefficients.length, other.coefficients.length);
+        int[] newCoefficients = new int[maxLength];
 
-        if (this.degree < other.degree) {
-            resultCoefs = other.coefs;
-            for (int i = 0; i < this.degree; i++) {
-                resultCoefs[i] -= this.coefs[i];
-            }
-            this.degree = other.degree;
-        } else {
-            resultCoefs = this.coefs;
-            for (int i = 0; i < other.degree; i++) {
-                resultCoefs[i] -= other.coefs[i];
-            }
+        for (int i = 0; i < maxLength; i++) {
+            int coef1 = (i < coefficients.length) ? coefficients[i] : 0;
+            int coef2 = (i < other.coefficients.length) ? other.coefficients[i] : 0;
+            newCoefficients[i] = coef1 - coef2;
         }
 
-        this.coefs = resultCoefs;
-
-        return this;
+        return new Polynomial(newCoefficients);
     }
 
     /**
-     * Метод для умножения полиномов.
+     * Метод для умножения двух полиномов.
      *
-     * @param other - полином, второе умножаемое.
-     * @return - объект Polynomial, первое умножаемое.
+     * @param other - второе умножаемое.
+     * @return - результат умножения.
      */
-    public Polynomial times(Polynomial other) {
-        int[] resultCoefs = new int[this.degree + other.degree - 1];
+    public Polynomial multiply(Polynomial other) {
+        int[] newCoefficients = new int[coefficients.length + other.coefficients.length - 1];
 
-        for (int i = 0; i < this.degree; i++) {
-            for (int j = 0; j < other.degree; j++) {
-                resultCoefs[i + j] += this.coefs[i] * other.coefs[j];
+        for (int i = 0; i < coefficients.length; i++) {
+            for (int j = 0; j < other.coefficients.length; j++) {
+                newCoefficients[i + j] += coefficients[i] * other.coefficients[j];
             }
         }
 
-        this.coefs = resultCoefs;
-        this.degree = this.degree * other.degree;
-        return this;
-    }
-
-
-    /**
-     * Метод для разворачивания массива.
-     * @param arr - массив, который нужно перевернуть.
-     * @return - перевернутый массив.
-     */
-    private static int[] reverseArray(int[] arr) {
-        int start = 0;
-        int end = arr.length - 1;
-
-        while (start < end) {
-            int temp = arr[start];
-            arr[start] = arr[end];
-            arr[end] = temp;
-
-            start++;
-            end--;
-        }
-        return arr;
+        return new Polynomial(newCoefficients);
     }
 
     /**
-     * Стандартная функция.
+     * Дефолтный метод.
      *
-     * @param args - стандартные параметры.
+     * @param args - дефолтные параметры main.
      */
-    public static void main(String[] args) {
-    }
+    public static void main(String[] args) {}
 }

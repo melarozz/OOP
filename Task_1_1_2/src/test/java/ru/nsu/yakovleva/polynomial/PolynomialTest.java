@@ -1,53 +1,72 @@
 package ru.nsu.yakovleva.polynomial;
 
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class PolynomialTest {
+    @Test
+    public void testEvaluate() {
+        int[] coefficients = {3, 2, 1}; // 3x^2 + 2x + 1
+        Polynomial poly = new Polynomial(coefficients);
 
-    private Polynomial polynomial1;
-    private Polynomial polynomial2;
+        assertEquals(6, poly.evaluate(1)); // 3(1)^2 + 2(1) + 1 = 6
+        assertEquals(17, poly.evaluate(2)); // 3*(2)^2 + 2(2) + 1 = 17
+        assertEquals(1, poly.evaluate(0));  // 3(0)^2 + 2(0) + 1 = 1
+    }
 
     @Test
-    public void testPlus() {
-        int[] coefficients1 = {1, 2}; // x+2
-        int[] coefficients2 = {3}; // 3
-        polynomial1 = new Polynomial(coefficients1);
-        polynomial2 = new Polynomial(coefficients2);
-        Polynomial result = polynomial1.plus(polynomial2);
-        int[] expectedCoefficients = {1,5};
-        Polynomial expectedPolynomial = new Polynomial(expectedCoefficients);
-        assertEquals(expectedPolynomial.degree, result.degree);
+    public void testAdd() {
+        int[] coefficients1 = {1, 2, 3}; // x^2 + 2x + 3
+        int[] coefficients2 = {2, 1};    // 2x + 1
+        Polynomial poly1 = new Polynomial(coefficients1);
+        Polynomial poly2 = new Polynomial(coefficients2);
+
+        Polynomial sum = poly1.add(poly2);
+        int[] expectedCoefficients = {3, 3, 3}; // 3x^2 + 4x + 4
+
+        assertArrayEquals(expectedCoefficients, sum.getCoefficients());
+    }
+
+    @Test
+    void testAddNegative() {
+        Polynomial p1 = new Polynomial(new int[] {-3, -2, -9});//-3x^2-2x-9
+        Polynomial p2 = new Polynomial(new int[] {4, 3, 2});//4x^2+3x+2
+        assertArrayEquals(new int[] {1,1,-7}, p1.add(p2).getCoefficients());
     }
 
     @Test
     public void testMinus() {
-        int[] coefficients1 = {1, 2}; // x+2
-        int[] coefficients2 = {3}; // 3
-        polynomial1 = new Polynomial(coefficients1);
-        polynomial2 = new Polynomial(coefficients2);
-        Polynomial result = polynomial1.minus(polynomial2);
-        int[] expectedCoefficients = {1,-1};
-        Polynomial expectedPolynomial = new Polynomial(expectedCoefficients);
-        assertEquals(expectedPolynomial.degree, result.degree);
-        assertArrayEquals(expectedPolynomial.coefs, result.coefs);
+        int[] coefficients1 = {3, 2, 1}; // 3x^2 + 2x + 1
+        int[] coefficients2 = {1, 2};    // x^2 + 2x
+        Polynomial poly1 = new Polynomial(coefficients1);
+        Polynomial poly2 = new Polynomial(coefficients2);
+
+        Polynomial difference = poly1.minus(poly2);
+        int[] expectedCoefficients = {2, 0, 1}; // 2x^2 + 1
+
+        assertArrayEquals(expectedCoefficients, difference.getCoefficients());
     }
 
     @Test
-    public void testTimes() {
-        int[] coefficients1 = {1, 2, 3}; // x^2+2x+3
-        int[] coefficients2 = {3}; // 3
-        polynomial1 = new Polynomial(coefficients1);
-        polynomial2 = new Polynomial(coefficients2);
-        Polynomial result = polynomial1.times(polynomial2);
-        int[] expectedCoefficients = {3, 6, 9};
-        Polynomial expectedPolynomial = new Polynomial(expectedCoefficients);
-        assertEquals(expectedPolynomial.degree, result.degree);
-        assertArrayEquals(expectedPolynomial.coefs, result.coefs);
+    public void testMultiply() {
+        int[] coefficients1 = {2, 1};    // 2x + 1
+        int[] coefficients2 = {1, 3};    // x + 3
+        Polynomial poly1 = new Polynomial(coefficients1);
+        Polynomial poly2 = new Polynomial(coefficients2);
+
+        Polynomial product = poly1.multiply(poly2);
+        int[] expectedCoefficients = {2, 7, 3}; // 2x^2 + 7x + 3
+
+        assertArrayEquals(expectedCoefficients, product.getCoefficients());
     }
 
+    @Test
+    public void testToString() {
+        int[] coefficients = {3, -2, 1, 2}; // 3x^3 - 2x^2 + x + 2
+        Polynomial poly = new Polynomial(coefficients);
 
+        assertEquals("3x^3 - 2x^2 + 1x + 2", poly.toString());
+    }
 
 
 }
