@@ -45,7 +45,7 @@ public class Polynomial {
         int res = 0;
 
         for (int i = 0; i < this.degree; i++) {
-            res += (int) (this.coefs[this.degree - i - 1] * Math.pow(x, this.degree-i-1));
+            res += (int) (this.coefs[this.degree-i-1] * Math.pow(x, this.degree-i-1));
         }
 
         return res;
@@ -165,9 +165,9 @@ public class Polynomial {
     //doesn't work
 
     /**
-     *
+     * Метод для взятия iтой производной.
      * @param diff
-     * @return
+     * @return - объект Polynomial
      */
     public Polynomial differentiate(int diff) {
         if (diff <= 0) {
