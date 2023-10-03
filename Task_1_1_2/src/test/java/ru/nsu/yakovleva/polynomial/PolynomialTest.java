@@ -104,8 +104,8 @@ public class PolynomialTest {
 
     @Test
     void testAddOne() {
-        Polynomial p1 = new Polynomial(new int[] {-3});//-3
-        Polynomial p2 = new Polynomial(new int[] {4});//4
+        Polynomial p1 = new Polynomial(new int[] {-3}); //-3
+        Polynomial p2 = new Polynomial(new int[] {4}); //4
         assertArrayEquals(new int[] {1}, p1.add(p2).getCoefficients());
     }
 
@@ -162,11 +162,6 @@ public class PolynomialTest {
         Polynomial poly = new Polynomial(coefficients);
 
         assertEquals("3", poly.toString());
-    }
-
-    @Test
-    public void testMain() {
-        assert(true);
     }
 
 }
