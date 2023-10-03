@@ -6,6 +6,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class PolynomialTest {
+
+    @Test
+    public void testGetCoefOne() {
+        int[] coefficients = {3}; // 3
+        Polynomial poly = new Polynomial(coefficients);
+        assertEquals(coefficients, poly.getCoefficients());
+    }
+
+    @Test
+    public void testGetCoefMany() {
+        int[] coefficients = {4,5,6,7,8,9};
+        Polynomial poly = new Polynomial(coefficients);
+        assertEquals(coefficients, poly.getCoefficients());
+    }
+
     @Test
     public void testEvaluate() {
         int[] coefficients = {3, 2, 1}; // 3x^2 + 2x + 1
