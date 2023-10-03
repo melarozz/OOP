@@ -16,7 +16,7 @@ public class PolynomialTest {
 
     @Test
     public void testGetCoefMany() {
-        int[] coefficients = {4,5,6,7,8,9};
+        int[] coefficients = {4, 5, 6, 7, 8, 9};
         Polynomial poly = new Polynomial(coefficients);
         assertEquals(coefficients, poly.getCoefficients());
     }
