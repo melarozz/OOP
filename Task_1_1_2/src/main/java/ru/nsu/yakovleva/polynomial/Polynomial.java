@@ -28,7 +28,7 @@ public class Polynomial {
         int power = coefficients.length - 1;
 
         for (int coefficient : coefficients) {
-            result += coefficient * (int) Math.pow(x,power);
+            result += coefficient * (int) Math.pow(x, power);
             power--;
         }
 

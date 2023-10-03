@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests.
+ */
 public class PolynomialTest {
 
     @Test
@@ -97,9 +100,9 @@ public class PolynomialTest {
 
     @Test
     void testAddNegative() {
-        Polynomial p1 = new Polynomial(new int[] {-3, -2, -9});//-3x^2-2x-9
-        Polynomial p2 = new Polynomial(new int[] {4, 3, 2});//4x^2+3x+2
-        assertArrayEquals(new int[] {1,1,-7}, p1.add(p2).getCoefficients());
+        Polynomial p1 = new Polynomial(new int[] {-3, -2, -9}); //-3x^2-2x-9
+        Polynomial p2 = new Polynomial(new int[] {4, 3, 2}); //4x^2+3x+2
+        assertArrayEquals(new int[] {1, 1, -7}, p1.add(p2).getCoefficients());
     }
 
     @Test
