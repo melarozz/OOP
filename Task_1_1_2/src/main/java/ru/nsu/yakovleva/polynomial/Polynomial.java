@@ -135,15 +135,17 @@ public class Polynomial {
      */
     public Polynomial derivative(int n) {
 
+        if (n <= 0){
+            return this;
+        }
+
         if (this.coefficients.length <= 1) {
             int[] derivativeCoefficients = new int[1];
             derivativeCoefficients[0] = 0;
             return new Polynomial(derivativeCoefficients);
         }
 
-        if (n <= 0){
-            return this;
-        }
+
 
         int[] derivativeCoefficients = new int[coefficients.length - 1];
 
