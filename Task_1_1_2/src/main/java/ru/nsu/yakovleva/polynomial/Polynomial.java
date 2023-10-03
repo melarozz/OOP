@@ -128,10 +128,10 @@ public class Polynomial {
     }
 
     /**
-     * Method to compute the derivative of the polynomial n times.
+     * Метод для вычисления производной n ной полинома.
      *
-     * @param n The number of times to take the derivative.
-     * @return The nth derivative polynomial.
+     * @param n - n ная производная.
+     * @return - n ная производная.
      */
     public Polynomial derivative(int n) {
 
