@@ -71,7 +71,7 @@ public class Polynomial {
      */
     @Override
     public String toString() {
-        String res = "";
+        StringBuilder res = new StringBuilder();
 
         int deg = this.coefficients.length;
 
@@ -79,26 +79,26 @@ public class Polynomial {
             if (this.coefficients[i] != 0) {
                 if (deg != this.coefficients.length) {
                     if (this.coefficients[i] > 0) {
-                        res += " + ";
+                        res.append(" + ");
                     } else {
-                        res += " - ";
+                        res.append(" - ");
                     }
                 }
 
-                res += (Integer.toString(Math.abs(this.coefficients[i])));
+                res.append(Math.abs(this.coefficients[i]));
                 deg--;
                 if (deg > 1) {
-                    res += "x^";
-                    res += (Integer.toString(deg));
+                    res.append("x^");
+                    res.append(deg);
                 } else if (deg == 1) {
-                    res += "x";
+                    res.append("x");
                 }
             } else {
                 deg--;
             }
         }
 
-        return res;
+        return res.toString();
     }
 
     /**
@@ -126,6 +126,36 @@ public class Polynomial {
 
         return this;
     }
+
+    /**
+     * Method to compute the derivative of the polynomial n times.
+     *
+     * @param n The number of times to take the derivative.
+     * @return The nth derivative polynomial.
+     */
+    public Polynomial derivative(int n) {
+
+        if (this.coefficients.length <= 1) {
+            int[] derivativeCoefficients = new int[1];
+            derivativeCoefficients[0] = 0;
+            return new Polynomial(derivativeCoefficients);
+        }
+
+        if (n <= 0){
+            return this;
+        }
+
+        int[] derivativeCoefficients = new int[coefficients.length - 1];
+
+        for (int i = 0; i < derivativeCoefficients.length; i++) {
+            derivativeCoefficients[i] = coefficients[i] * (coefficients.length - 1 - i);
+        }
+
+        Polynomial derivativePolynomial = new Polynomial(derivativeCoefficients);
+
+        return derivativePolynomial.derivative(n - 1);
+    }
+
 
     /**
      * Метод для вычитания двух полиномов.

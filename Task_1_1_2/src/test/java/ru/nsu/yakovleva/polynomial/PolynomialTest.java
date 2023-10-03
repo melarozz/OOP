@@ -73,6 +73,58 @@ public class PolynomialTest {
     }
 
     @Test
+    public void testDifTwo() {
+        int[] coefficients = {3, 2}; // 3x + 2
+        Polynomial poly = new Polynomial(coefficients);
+        int[] result = {0}; // 3
+        Polynomial resultPoly = new Polynomial(result);
+
+        assertEquals(resultPoly, poly.derivative(2));
+    }
+
+
+    @Test
+    public void testDifTwoLarge() {
+        int[] coefficients = {3, 2, 4, 5}; //9, 4, 4 -> 18, 4
+        Polynomial poly = new Polynomial(coefficients);
+        int[] result = {18, 4}; //
+        Polynomial resultPoly = new Polynomial(result);
+
+        assertEquals(resultPoly, poly.derivative(2));
+    }
+
+
+    @Test
+    public void testDifNegative() {
+        int[] coefficients = {-3, 2}; // -3x + 2
+        Polynomial poly = new Polynomial(coefficients);
+        int[] result = {-3}; // -3
+        Polynomial resultPoly = new Polynomial(result);
+
+        assertEquals(resultPoly, poly.derivative(1));
+    }
+
+    @Test
+    public void testDifLarge() {
+        int[] coefficients = {-3, 2, 5, 7, 8};
+        Polynomial poly = new Polynomial(coefficients);
+        int[] result = {-12, 6, 10, 7};
+        Polynomial resultPoly = new Polynomial(result);
+
+        assertEquals(resultPoly, poly.derivative(1));
+    }
+
+    @Test
+    public void testDifOne() {
+        int[] coefficients = {3}; // 3
+        Polynomial poly = new Polynomial(coefficients);
+        int[] result = {0}; // 0
+        Polynomial resultPoly = new Polynomial(result);
+
+        assertEquals(resultPoly, poly.derivative(1));
+    }
+
+    @Test
     public void testEvaluateZero() {
         int[] coefficients = {3, 2, 1}; // 3x^2 + 2x + 1
         Polynomial poly = new Polynomial(coefficients);
