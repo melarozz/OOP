@@ -37,6 +37,13 @@ public class PolynomialTest {
     }
 
     @Test
+    void testAddOne() {
+        Polynomial p1 = new Polynomial(new int[] {-3});//-3
+        Polynomial p2 = new Polynomial(new int[] {4});//4
+        assertArrayEquals(new int[] {1}, p1.add(p2).getCoefficients());
+    }
+
+    @Test
     public void testMinus() {
         int[] coefficients1 = {3, 2, 1}; // 3x^2 + 2x + 1
         int[] coefficients2 = {1, 2};    // x^2 + 2x
@@ -63,11 +70,32 @@ public class PolynomialTest {
     }
 
     @Test
+    public void testMultiplyDif() {
+        int[] coefficients1 = {2};    // 2
+        int[] coefficients2 = {1, 3};    // x + 3
+        Polynomial poly1 = new Polynomial(coefficients1);
+        Polynomial poly2 = new Polynomial(coefficients2);
+
+        Polynomial product = poly1.multiply(poly2);
+        int[] expectedCoefficients = {2, 6};
+
+        assertArrayEquals(expectedCoefficients, product.getCoefficients());
+    }
+
+    @Test
     public void testToString() {
         int[] coefficients = {3, -2, 1, 2}; // 3x^3 - 2x^2 + x + 2
         Polynomial poly = new Polynomial(coefficients);
 
         assertEquals("3x^3 - 2x^2 + 1x + 2", poly.toString());
+    }
+
+    @Test
+    public void testToStringOne() {
+        int[] coefficients = {3};
+        Polynomial poly = new Polynomial(coefficients);
+
+        assertEquals("3", poly.toString());
     }
 
 
