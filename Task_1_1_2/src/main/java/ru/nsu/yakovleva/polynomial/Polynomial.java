@@ -71,34 +71,37 @@ public class Polynomial {
      */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        int degree = coefficients.length - 1;
+        String res = "";
 
-        for (int i = 0; i <= degree; i++) {
-            int coefficient = coefficients[i];
-            if (coefficient != 0) {
-                if (!sb.isEmpty()) {
-                    if (coefficient > 0) {
-                        sb.append(" + ");
-                    } else {
-                        sb.append(" - ");
+        int deg = this.coefficients.length;
+
+        for (int i = 0; i < this.coefficients.length; i++) {
+            if (this.coefficients[i] != 0) {
+                if (deg != this.coefficients.length) {
+                    if (this.coefficients[i] > 0) {
+                        res += " + ";
+                    }
+                    else {
+                        res += " - ";
                     }
                 }
 
-                int absCoefficient = Math.abs(coefficient);
-                sb.append(absCoefficient);
-
-
-                if (i < degree) {
-                    sb.append("x");
-                    if (i < degree-1) {
-                        sb.append("^").append(degree-i);
-                    }
+                res += (Integer.toString(Math.abs(this.coefficients[i])));
+                deg--;
+                if (deg > 1) {
+                    res += "x^";
+                    res += (Integer.toString(deg));
                 }
+                else if (deg == 1) {
+                    res += "x";
+                }
+            }
+            else {
+                deg--;
             }
         }
 
-        return sb.toString();
+        return res;
     }
 
     /**
