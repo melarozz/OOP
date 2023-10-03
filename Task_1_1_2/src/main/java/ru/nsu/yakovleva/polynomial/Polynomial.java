@@ -80,8 +80,7 @@ public class Polynomial {
                 if (deg != this.coefficients.length) {
                     if (this.coefficients[i] > 0) {
                         res += " + ";
-                    }
-                    else {
+                    } else {
                         res += " - ";
                     }
                 }
@@ -91,12 +90,10 @@ public class Polynomial {
                 if (deg > 1) {
                     res += "x^";
                     res += (Integer.toString(deg));
-                }
-                else if (deg == 1) {
+                } else if (deg == 1) {
                     res += "x";
                 }
-            }
-            else {
+            } else {
                 deg--;
             }
         }
@@ -145,8 +142,7 @@ public class Polynomial {
                 resultcoefficients[i] -= this.coefficients[i];
             }
             
-        }
-        else {
+        } else {
             resultcoefficients = this.coefficients;
             for (int i = 0; i < other.coefficients.length; i++) {
                 resultcoefficients[i] -= other.coefficients[i];
