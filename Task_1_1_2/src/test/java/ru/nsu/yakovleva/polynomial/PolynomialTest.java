@@ -1,11 +1,40 @@
 package ru.nsu.yakovleva.polynomial;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class PolynomialTest {
+
+    @Test
+    public void testEquals() {
+        int[] coefficients1 = {3}; // 3
+        int[] coefficients2 = {3}; // 3
+        Polynomial poly1 = new Polynomial(coefficients1);
+        Polynomial poly2 = new Polynomial(coefficients2);
+        boolean result = poly1.equals(poly2);
+        assertTrue(result);
+    }
+
+    @Test
+    public void testEqualsFalse() {
+        int[] coefficients1 = {3}; // 3
+        int[] coefficients2 = {4}; // 4
+        Polynomial poly1 = new Polynomial(coefficients1);
+        Polynomial poly2 = new Polynomial(coefficients2);
+        boolean result = poly1.equals(poly2);
+        assertFalse(result);
+    }
+
+    @Test
+    public void testEqualsTrueLarge() {
+        int[] coefficients1 = {3, 4, 5, 6};
+        int[] coefficients2 = {3, 4, 5, 6};
+        Polynomial poly1 = new Polynomial(coefficients1);
+        Polynomial poly2 = new Polynomial(coefficients2);
+        boolean result = poly1.equals(poly2);
+        assertTrue(result);
+    }
 
     @Test
     public void testGetCoefOne() {
