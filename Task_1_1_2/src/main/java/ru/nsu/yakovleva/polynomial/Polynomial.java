@@ -43,11 +43,9 @@ public class Polynomial {
      */
     public int evaluate(int x) {
         int res = 0;
-
         for (int i = 0; i < this.degree; i++) {
             res += (int) (this.coefs[this.degree-i-1] * Math.pow(x, this.degree-i-1));
         }
-
         return res;
     }
 
