@@ -108,16 +108,23 @@ public class Polynomial {
      * @return - результат сложения.
      */
     public Polynomial add(Polynomial other) {
-        int maxLength = Math.max(coefficients.length, other.coefficients.length);
-        int[] newCoefficients = new int[maxLength];
+        int[] resultcoefficients;
 
-        for (int i = 0; i < maxLength; i++) {
-            int coef1 = (i < coefficients.length) ? coefficients[i] : 0;
-            int coef2 = (i < other.coefficients.length) ? other.coefficients[i] : 0;
-            newCoefficients[i] = coef1 + coef2;
+        if (this.coefficients.length < other.coefficients.length) {
+            resultcoefficients = other.coefficients;
+            for (int i = 0; i < this.coefficients.length; i++) {
+                resultcoefficients[i] += this.coefficients[i];
+            }
+        } else {
+            resultcoefficients = this.coefficients;
+            for (int i = 0; i < other.coefficients.length; i++) {
+                resultcoefficients[i] += other.coefficients[i];
+            }
         }
 
-        return new Polynomial(newCoefficients);
+        this.coefficients = resultcoefficients;
+
+        return this;
     }
 
     /**
@@ -127,16 +134,25 @@ public class Polynomial {
      * @return - результат вычитания.
      */
     public Polynomial minus(Polynomial other) {
-        int maxLength = Math.max(coefficients.length, other.coefficients.length);
-        int[] newCoefficients = new int[maxLength];
+        int[] resultcoefficients;
 
-        for (int i = 0; i < maxLength; i++) {
-            int coef1 = (i < coefficients.length) ? coefficients[i] : 0;
-            int coef2 = (i < other.coefficients.length) ? other.coefficients[i] : 0;
-            newCoefficients[i] = coef1 - coef2;
+        if (this.coefficients.length < other.coefficients.length) {
+            resultcoefficients = other.coefficients;
+            for (int i = 0; i < this.coefficients.length; i++) {
+                resultcoefficients[i] -= this.coefficients[i];
+            }
+            
+        }
+        else {
+            resultcoefficients = this.coefficients;
+            for (int i = 0; i < other.coefficients.length; i++) {
+                resultcoefficients[i] -= other.coefficients[i];
+            }
         }
 
-        return new Polynomial(newCoefficients);
+        this.coefficients = resultcoefficients;
+
+        return this;
     }
 
     /**
