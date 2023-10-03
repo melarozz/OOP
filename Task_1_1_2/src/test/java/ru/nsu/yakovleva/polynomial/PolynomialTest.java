@@ -47,14 +47,6 @@ public class PolynomialTest {
         assertArrayEquals(expectedPolynomial.coefs, result.coefs);
     }
 
-    @Test
-    public void testEval() {
-        int[] coefficients1 = {1,2,3}; // x^2+2x+3
-        polynomial1 = new Polynomial(coefficients1);
-        int actual = polynomial1.evaluate(10);
-        int expected = 123;
-        assertEquals(expected, actual);
-    }
 
 
 

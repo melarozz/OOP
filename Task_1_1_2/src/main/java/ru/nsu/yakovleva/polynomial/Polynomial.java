@@ -34,22 +34,6 @@ public class Polynomial {
         this.degree = parameters.length;
     }
 
-
-    /**
-     * Метод вычисления значения полинома в указанной точке x.
-     *
-     * @param x - значение x.
-     * @return - int.
-     */
-    public int evaluate(int x) {
-        int res = 0;
-        for (int i = 0; i < this.degree; i++) {
-            res += (int) (this.coefs[this.degree-i-1] * Math.pow(x, this.degree-i-1));
-        }
-        return res;
-    }
-
-
     /**
      * Строковое представление полинома.
      *
