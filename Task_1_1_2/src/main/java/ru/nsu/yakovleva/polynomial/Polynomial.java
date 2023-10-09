@@ -135,7 +135,7 @@ public class Polynomial {
      */
     public Polynomial derivative(int n) {
 
-        if (n <= 0){
+        if (n <= 0) {
             return this;
         }
 
@@ -204,10 +204,4 @@ public class Polynomial {
         return new Polynomial(newCoefficients);
     }
 
-    /**
-     * Дефолтный метод.
-     *
-     * @param args - дефолтные параметры main.
-     */
-    public static void main(String[] args) {}
 }
