@@ -1,7 +1,7 @@
 package ru.nsu.yakovleva.tree;
 
-import java.util.Iterator;
 import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 

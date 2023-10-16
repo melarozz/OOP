@@ -171,7 +171,7 @@ public class Tree<T> implements Iterable<T> {
      * @return an iterator for the tree.
      */
     public Iterator<T> iterator() {
-        if (flag == 0){
+        if (flag == 0) {
             return new BreadthFirstIterator();
         } else {
             return new DepthFirstIterator();
