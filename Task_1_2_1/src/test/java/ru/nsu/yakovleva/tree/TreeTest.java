@@ -57,7 +57,7 @@ public class TreeTest {
         subtree.addChild("child4");
         tree.addChild(subtree);
 
-        String dfsResult = tree.Dfs();
+        String dfsResult = tree.makeDfs();
         assertEquals("root1: child1: child2, root2: child3, child4", dfsResult);
     }
 
@@ -72,7 +72,7 @@ public class TreeTest {
         subtree.addChild("child4");
         tree.addChild(subtree);
 
-        String dfsResult = tree.Dfs();
+        String dfsResult = tree.makeDfs();
         assertEquals("root1: child1, root2: child3, child4", dfsResult);
     }
 
@@ -87,7 +87,7 @@ public class TreeTest {
         tree.addChild(subtree);
         subtree.remove();
 
-        String dfsResult = tree.Dfs();
+        String dfsResult = tree.makeDfs();
         assertEquals("root1: child1: child2, child3, child4", dfsResult);
     }
 
@@ -97,7 +97,7 @@ public class TreeTest {
         Tree<String> tree = new Tree<>("root1");
         tree.remove();
 
-        String dfsResult = tree.Dfs();
+        String dfsResult = tree.makeDfs();
         assertEquals("root1", dfsResult);
     }
 
