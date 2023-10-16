@@ -43,7 +43,7 @@ public class TreeTest {
         subtree.addChild("child4");
         tree.addChild(subtree);
 
-        String bfsResult = tree.Bfs();
+        String bfsResult = tree.makeBfs();
         assertEquals("root1: child1 root2 \nchild1: child2 \nroot2: child3 child4 \n", bfsResult);
     }
 
