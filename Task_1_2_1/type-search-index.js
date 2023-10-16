@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.yakovleva.tree","l":"Tree"},{"p":"ru.nsu.yakovleva.tree","l":"TreeIterator"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.yakovleva.tree","l":"Tree"}]
