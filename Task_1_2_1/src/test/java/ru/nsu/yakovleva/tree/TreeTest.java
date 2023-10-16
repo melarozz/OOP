@@ -1,8 +1,7 @@
 package ru.nsu.yakovleva.tree;
 
-
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.ConcurrentModificationException;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
@@ -234,7 +233,7 @@ public class TreeTest {
         Tree<String> f = c.addChild("F");
         Tree<String> g = c.addChild("G");
 
-        String bfsResult = root.MakeBfs();
+        String bfsResult = root.makeBfs();
 
         assertEquals("A: B C \nB: D E \nC: F G \n", bfsResult);
     }
@@ -249,7 +248,7 @@ public class TreeTest {
         Tree<String> f = c.addChild("F");
         Tree<String> g = c.addChild("G");
 
-        String dfsResult = root.MakeDfs();
+        String dfsResult = root.makeDfs();
 
         assertEquals("A: B: D, E, C: F, G", dfsResult);
     }

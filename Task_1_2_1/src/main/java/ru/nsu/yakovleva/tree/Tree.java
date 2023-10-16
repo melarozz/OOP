@@ -154,7 +154,7 @@ public class Tree<T> implements Iterable<T> {
      *
      * @return a string representation of the BFS traversal.
      */
-    public String MakeBfs() {
+    public String makeBfs() {
         StringBuilder result = new StringBuilder();
         if (!children.isEmpty()) {
             result.append(node.toString()).append(": ");
@@ -163,7 +163,7 @@ public class Tree<T> implements Iterable<T> {
             }
             result.append("\n");
             for (Tree<T> child : children) {
-                result.append(child.Bfs());
+                result.append(child.makeBfs());
             }
         }
         return result.toString();
@@ -174,12 +174,12 @@ public class Tree<T> implements Iterable<T> {
      *
      * @return a string representation of the DFS traversal.
      */
-    public String MakeDfs() {
+    public String makeDfs() {
         StringBuilder result = new StringBuilder(this.node.toString());
         if (!children.isEmpty()) {
             result.append(": ");
             for (int i = 0; i < children.size(); i++) {
-                result.append(children.get(i).Dfs());
+                result.append(children.get(i).makeDfs());
                 if (i < children.size() - 1) {
                     result.append(", ");
                 }
