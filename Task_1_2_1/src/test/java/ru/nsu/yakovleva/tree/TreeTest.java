@@ -68,6 +68,39 @@ public class TreeTest {
     }
 
     @Test
+    void checkRemoveOne() {
+        Tree<String> tree1 = new Tree<>("root1");
+        var a = tree1.addChild("child1");
+        tree1.remove(a);
+
+        Tree<String> tree2 = new Tree<>("root1");
+
+        assertEquals(tree1, tree2);
+
+    }
+
+    @Test
+    void checkRemoveSubtree() {
+        Tree<String> tree1 = new Tree<>("root1");
+        var a1 = tree1.addChild("child1");
+        a1.addChild("child2");
+
+        Tree<String> subtree1 = new Tree<>("root2");
+        subtree1.addChild("child3");
+        subtree1.addChild("child4");
+
+        tree1.addChild(subtree1);
+
+        tree1.remove(subtree1);
+        tree1.remove(a1);
+
+        Tree<String> tree2 = new Tree<>("root1");
+
+        assertEquals(tree1, tree2);
+
+    }
+
+    @Test
     void testEqualsWithModifiedTreeStructure() {
         Tree<String> tree1 = new Tree<>("root1");
         var a1 = tree1.addChild("child1");
@@ -136,7 +169,7 @@ public class TreeTest {
     }
 
     @Test
-    void checkBfsIteratorWithRemove() {
+    void checkBfsIterator() {
 
         Tree<String> tree = new Tree<>("root1");
         var a = tree.addChild("child1");
@@ -163,7 +196,7 @@ public class TreeTest {
     }
 
     @Test
-    void checkDfsIteratorWithRemove() {
+    void checkDfsIterator() {
 
         Tree<String> tree = new Tree<>("root1");
         var a = tree.addChild("child1");
