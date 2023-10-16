@@ -34,34 +34,6 @@ public class TreeTest {
     }
 
     @Test
-    void checkBfs() {
-        Tree<String> tree = new Tree<>("root1");
-        var a = tree.addChild("child1");
-        a.addChild("child2");
-        Tree<String> subtree = new Tree<>("root2");
-        subtree.addChild("child3");
-        subtree.addChild("child4");
-        tree.addChild(subtree);
-
-        String bfsResult = tree.makeBfs();
-        assertEquals("root1: child1 root2 \nchild1: child2 \nroot2: child3 child4 \n", bfsResult);
-    }
-
-    @Test
-    void checkDfs() {
-        Tree<String> tree = new Tree<>("root1");
-        var a = tree.addChild("child1");
-        a.addChild("child2");
-        Tree<String> subtree = new Tree<>("root2");
-        subtree.addChild("child3");
-        subtree.addChild("child4");
-        tree.addChild(subtree);
-
-        String dfsResult = tree.makeDfs();
-        assertEquals("root1: child1: child2, root2: child3, child4", dfsResult);
-    }
-
-    @Test
     void checkRemoveNode() {
         Tree<String> tree = new Tree<>("root1");
         var a = tree.addChild("child1");

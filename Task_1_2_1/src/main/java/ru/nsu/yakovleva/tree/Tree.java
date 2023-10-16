@@ -149,44 +149,6 @@ public class Tree<T> implements Iterable<T> {
         }
     }
 
-    /**
-     * Perform a breadth-first search on the tree and return a string representation.
-     *
-     * @return a string representation of the BFS traversal.
-     */
-    public String makeBfs() {
-        StringBuilder result = new StringBuilder();
-        if (!children.isEmpty()) {
-            result.append(node.toString()).append(": ");
-            for (Tree<T> child : children) {
-                result.append(child.getNodeName()).append(" ");
-            }
-            result.append("\n");
-            for (Tree<T> child : children) {
-                result.append(child.makeBfs());
-            }
-        }
-        return result.toString();
-    }
-
-    /**
-     * Perform a depth-first search on the tree and return a string representation.
-     *
-     * @return a string representation of the DFS traversal.
-     */
-    public String makeDfs() {
-        StringBuilder result = new StringBuilder(this.node.toString());
-        if (!children.isEmpty()) {
-            result.append(": ");
-            for (int i = 0; i < children.size(); i++) {
-                result.append(children.get(i).makeDfs());
-                if (i < children.size() - 1) {
-                    result.append(", ");
-                }
-            }
-        }
-        return result.toString();
-    }
 
     /**
      * Get an iterator for this tree.
