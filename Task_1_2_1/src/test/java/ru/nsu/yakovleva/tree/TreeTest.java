@@ -158,6 +158,45 @@ public class TreeTest {
 
 
     @Test
+    public void testDepthFirstIterator() {
+        Tree<String> root = new Tree<>("A");
+        Tree<String> nodeB = root.addChild("B");
+        Tree<String> nodeC = root.addChild("C");
+        Tree<String> nodeD = nodeB.addChild("D");
+        Tree<String> nodeE = nodeB.addChild("E");
+        Tree<String> nodeF = nodeC.addChild("F");
+
+        StringBuilder result = new StringBuilder();
+        for (Iterator<String> it = root.depthFirstIterator(); it.hasNext(); ) {
+            String value = it.next();
+            result.append(value);
+        }
+
+        String expected = "ABDECF";
+        assertEquals(expected, result.toString());
+    }
+
+    @Test
+    public void testBreadthFirstIterator() {
+        Tree<String> root = new Tree<>("A");
+        Tree<String> nodeB = root.addChild("B");
+        Tree<String> nodeC = root.addChild("C");
+        Tree<String> nodeD = nodeB.addChild("D");
+        Tree<String> nodeE = nodeB.addChild("E");
+        Tree<String> nodeF = nodeC.addChild("F");
+
+        StringBuilder result = new StringBuilder();
+        for (Iterator<String> it = root.breadthFirstIterator(); it.hasNext(); ) {
+            String value = it.next();
+            result.append(value);
+        }
+
+
+        String expected = "ABCDEF";
+        assertEquals(expected, result.toString());
+    }
+
+    @Test
     public void testConcurrentModificationExceptionInBfs() {
         Tree<String> root = new Tree<>("A");
         Tree<String> b = root.addChild("B");
