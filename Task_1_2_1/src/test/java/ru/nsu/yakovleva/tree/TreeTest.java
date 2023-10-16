@@ -11,7 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
+/**
+ * Test class.
+ */
 public class TreeTest {
 
     @Test
