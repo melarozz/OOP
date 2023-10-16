@@ -19,6 +19,7 @@ public class Tree<T> implements Iterable<T> {
     private final T node;
     private Tree<T> parent;
     private int modCount = 0;
+    public int flag = 0;
 
     /**
      * Constructor for the Tree class.
@@ -111,6 +112,20 @@ public class Tree<T> implements Iterable<T> {
     }
 
     /**
+     * Set the flag iterator to Dfs for this tree.
+     */
+    public void setFlagDfs() {
+        flag = 1;
+    }
+
+    /**
+     * Set the flag iterator to Bfs for this tree.
+     */
+    public void setFlagBfs() {
+        flag = 0;
+    }
+
+    /**
      * Add a child to this tree with the given node name.
      *
      * @param childName - the node name of the child.
@@ -155,28 +170,15 @@ public class Tree<T> implements Iterable<T> {
      *
      * @return an iterator for the tree.
      */
-    @Override
     public Iterator<T> iterator() {
-        return new TreeIterator<>(this);
+        if (flag == 0){
+            return new BreadthFirstIterator();
+        } else {
+            return new DepthFirstIterator();
+        }
     }
 
-    /**
-     * Get a breadth-first iterator for this tree.
-     *
-     * @return a breadth-first iterator for the tree.
-     */
-    public Iterator<T> breadthFirstIterator() {
-        return new BreadthFirstIterator();
-    }
 
-    /**
-     * Get a depth-first iterator for this tree.
-     *
-     * @return a depth-first iterator for the tree.
-     */
-    public Iterator<T> depthFirstIterator() {
-        return new DepthFirstIterator();
-    }
 
     /**
      * Iterator for performing breadth-first traversal of the tree.
