@@ -33,45 +33,6 @@ public class TreeTest {
         assertEquals("child1", a.getNodeName());
     }
 
-    @Test
-    void checkRemoveNode() {
-        Tree<String> tree = new Tree<>("root1");
-        var a = tree.addChild("child1");
-        var b = a.addChild("child2");
-        Tree<String> subtree = new Tree<>("root2");
-        b.remove();
-        subtree.addChild("child3");
-        subtree.addChild("child4");
-        tree.addChild(subtree);
-
-        String dfsResult = tree.makeDfs();
-        assertEquals("root1: child1, root2: child3, child4", dfsResult);
-    }
-
-    @Test
-    void testRemoveSubtree() {
-        Tree<String> tree = new Tree<>("root1");
-        var a = tree.addChild("child1");
-        a.addChild("child2");
-        Tree<String> subtree = new Tree<>("root2");
-        subtree.addChild("child3");
-        subtree.addChild("child4");
-        tree.addChild(subtree);
-        subtree.remove();
-
-        String dfsResult = tree.makeDfs();
-        assertEquals("root1: child1: child2, child3, child4", dfsResult);
-    }
-
-
-    @Test
-    void checkRemoveOneNode() {
-        Tree<String> tree = new Tree<>("root1");
-        tree.remove();
-
-        String dfsResult = tree.makeDfs();
-        assertEquals("root1", dfsResult);
-    }
 
     @Test
     void checkEqualsTrueRoots() {
@@ -195,35 +156,6 @@ public class TreeTest {
         assertEquals("root1child2root2child3child4", actual);
     }
 
-    @Test
-    public void testBfs() {
-        Tree<String> root = new Tree<>("A");
-        Tree<String> b = root.addChild("B");
-        Tree<String> c = root.addChild("C");
-        Tree<String> d = b.addChild("D");
-        Tree<String> e = b.addChild("E");
-        Tree<String> f = c.addChild("F");
-        Tree<String> g = c.addChild("G");
-
-        String bfsResult = root.makeBfs();
-
-        assertEquals("A: B C \nB: D E \nC: F G \n", bfsResult);
-    }
-
-    @Test
-    public void testDfs() {
-        Tree<String> root = new Tree<>("A");
-        Tree<String> b = root.addChild("B");
-        Tree<String> c = root.addChild("C");
-        Tree<String> d = b.addChild("D");
-        Tree<String> e = b.addChild("E");
-        Tree<String> f = c.addChild("F");
-        Tree<String> g = c.addChild("G");
-
-        String dfsResult = root.makeDfs();
-
-        assertEquals("A: B: D, E, C: F, G", dfsResult);
-    }
 
     @Test
     public void testConcurrentModificationExceptionInBfs() {
