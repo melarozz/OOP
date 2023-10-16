@@ -1,7 +1,7 @@
 package ru.nsu.yakovleva.tree;
 
-import java.util.ConcurrentModificationException;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
