@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-import java.util.Queue;
-import java.util.LinkedList;
 import java.util.ConcurrentModificationException;
+import java.util.LinkedList;
+import java.util.Queue;
+
 
 /**
  * Tree class.
@@ -22,7 +23,7 @@ public class Tree<T> implements Iterable<T> {
     /**
      * Constructor for the Tree class.
      *
-     * @param the root node of the tree.
+     * @param root - the root node of the tree.
      */
     public Tree(T root) {
         this.node = root;
@@ -153,7 +154,7 @@ public class Tree<T> implements Iterable<T> {
      *
      * @return a string representation of the BFS traversal.
      */
-    public String Bfs() {
+    public String MakeBfs() {
         StringBuilder result = new StringBuilder();
         if (!children.isEmpty()) {
             result.append(node.toString()).append(": ");
@@ -173,7 +174,7 @@ public class Tree<T> implements Iterable<T> {
      *
      * @return a string representation of the DFS traversal.
      */
-    public String Dfs() {
+    public String MakeDfs() {
         StringBuilder result = new StringBuilder(this.node.toString());
         if (!children.isEmpty()) {
             result.append(": ");

@@ -6,7 +6,11 @@ import java.util.Iterator;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class TreeTest {
@@ -230,7 +234,7 @@ public class TreeTest {
         Tree<String> f = c.addChild("F");
         Tree<String> g = c.addChild("G");
 
-        String bfsResult = root.Bfs();
+        String bfsResult = root.MakeBfs();
 
         assertEquals("A: B C \nB: D E \nC: F G \n", bfsResult);
     }
@@ -245,7 +249,7 @@ public class TreeTest {
         Tree<String> f = c.addChild("F");
         Tree<String> g = c.addChild("G");
 
-        String dfsResult = root.Dfs();
+        String dfsResult = root.MakeDfs();
 
         assertEquals("A: B: D, E, C: F, G", dfsResult);
     }
