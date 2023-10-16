@@ -22,7 +22,7 @@ public class Tree<T> implements Iterable<T> {
     /**
      * Constructor for the Tree class.
      *
-     * @param root - the root node of the tree.
+     * @param the root node of the tree.
      */
     public Tree(T root) {
         this.node = root;
