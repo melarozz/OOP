@@ -62,6 +62,7 @@ public class Tree<T> implements Iterable<T> {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+
         Tree<?> otherTree = (Tree<?>) o;
 
         if (parent == null && otherTree.getParent() != null) {
@@ -82,15 +83,6 @@ public class Tree<T> implements Iterable<T> {
      */
     public T getNodeName() {
         return this.node;
-    }
-
-    /**
-     * Get the children of this tree.
-     *
-     * @return a list of child trees.
-     */
-    public List<Tree<T>> getChildren() {
-        return children;
     }
 
     /**
