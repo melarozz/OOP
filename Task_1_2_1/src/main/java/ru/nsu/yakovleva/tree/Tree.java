@@ -15,11 +15,16 @@ import java.util.Queue;
  * @param <T> - type of nodes in the Tree.
  */
 public class Tree<T> implements Iterable<T> {
-    private final List<Tree<T>> children = new ArrayList<>();
+    final List<Tree<T>> children = new ArrayList<>();
     private final T node;
     private Tree<T> parent;
     private int modCount = 0;
-    public int flag = 0;
+    public enum TraversalFlag {
+        DFS,
+        BFS
+    }
+    private TraversalFlag flag = TraversalFlag.BFS;
+
 
     /**
      * Constructor for the Tree class.
@@ -107,14 +112,14 @@ public class Tree<T> implements Iterable<T> {
      * Set the flag iterator to Dfs for this tree.
      */
     public void setFlagDfs() {
-        flag = 1;
+        flag = TraversalFlag.DFS;
     }
 
     /**
      * Set the flag iterator to Bfs for this tree.
      */
     public void setFlagBfs() {
-        flag = 0;
+        flag = TraversalFlag.BFS;
     }
 
     /**
@@ -160,14 +165,12 @@ public class Tree<T> implements Iterable<T> {
      * @return an iterator for the tree.
      */
     public Iterator<T> iterator() {
-        if (flag == 0) {
+        if (flag == TraversalFlag.BFS) {
             return new BreadthFirstIterator();
         } else {
             return new DepthFirstIterator();
         }
     }
-
-
 
     /**
      * Iterator for performing breadth-first traversal of the tree.
