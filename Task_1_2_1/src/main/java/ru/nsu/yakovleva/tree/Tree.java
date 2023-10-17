@@ -177,7 +177,7 @@ public class Tree<T> implements Iterable<T> {
      */
     private class BreadthFirstIterator implements Iterator<T> {
         private final Queue<Tree<T>> queue = new LinkedList<>();
-        private int expectedModCount = modCount;
+        private final int expectedModCount = modCount;
 
         BreadthFirstIterator() {
             queue.offer(Tree.this);
@@ -214,7 +214,7 @@ public class Tree<T> implements Iterable<T> {
     private class DepthFirstIterator implements Iterator<T> {
         private final List<Tree<T>> stack = new ArrayList<>();
         private int index = 0;
-        private int expectedModCount = modCount;
+        private final int expectedModCount = modCount;
 
         DepthFirstIterator() {
             stack.add(Tree.this);
