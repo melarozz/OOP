@@ -145,9 +145,6 @@ public class Tree<T> implements Iterable<T> {
     /**
      * Remove this tree from its parent and move its children to the parent.
      */
-    /**
-     * Remove a child or a subtree from this tree.
-     */
     public void remove(Tree<T> childOrSubtree) {
         if (children.remove(childOrSubtree)) {
             childOrSubtree.setParent(null);
