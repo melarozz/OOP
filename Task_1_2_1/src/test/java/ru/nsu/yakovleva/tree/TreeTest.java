@@ -128,7 +128,7 @@ public class TreeTest {
 
 
     @Test
-    void testEqualsFalseBigWithModifiedTreeStructure() {
+    void testEqualsTrueBigWithModifiedTreeStructure() {
         Tree<String> tree1 = new Tree<>("root1");
         var a1 = tree1.addChild("child1");
         a1.addChild("child2");
@@ -141,12 +141,11 @@ public class TreeTest {
         var a2 = tree2.addChild("child1");
         a2.addChild("child2");
         Tree<String> subtree2 = new Tree<>("root2");
-
         subtree2.addChild("child5");
         tree2.addChild(subtree2);
         subtree2.addChild("child6");
 
-        assertNotEquals(tree1, tree2);
+        assertEquals(tree1, tree2);
     }
 
 
