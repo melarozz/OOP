@@ -19,7 +19,7 @@ public class Tree<T> implements Iterable<T> {
     private final T node;
     private Tree<T> parent;
     private int modCount = 0;
-    public enum TraversalFlag {
+    private enum TraversalFlag {
         DFS,
         BFS
     }
@@ -78,7 +78,7 @@ public class Tree<T> implements Iterable<T> {
             return false;
         }
 
-        return node.equals(otherTree.getNodeName()) && this.hashCode() == o.hashCode();
+        return node.equals(otherTree.getNodeName());
     }
 
 
