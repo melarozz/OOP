@@ -74,7 +74,7 @@ public class Tree<T> implements Iterable<T> {
             return false;
         }
 
-        if (parent!=null && !parent.getNodeName().equals(otherTree.parent.getNodeName())) {
+        if (parent != null && !parent.getNodeName().equals(otherTree.parent.getNodeName())) {
             return false;
         }
 
