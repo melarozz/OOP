@@ -1,18 +1,18 @@
 package ru.nsu.yakovleva.tree;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.ConcurrentModificationException;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 /**
@@ -321,6 +321,20 @@ public class TreeTest {
         Date childDate = new Date();
         var a = tree.addChild(childDate);
         assertEquals(childDate, a.getNodeName());
+    }
+
+    @Test
+    void testSetFlagDfs() {
+        Tree<String> tree = new Tree<String>("Root");
+        tree.setFlagDfs();
+        assertEquals(Tree.TraversalFlag.DFS, ((Tree<String>) tree).flag);
+    }
+
+    @Test
+    void testSetFlagBfs() {
+        Tree<String> tree = new Tree<String>("Root");
+        tree.setFlagBfs();
+        assertEquals(Tree.TraversalFlag.BFS, ((Tree<String>) tree).flag);
     }
 
 
