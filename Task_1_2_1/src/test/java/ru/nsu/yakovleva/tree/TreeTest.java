@@ -38,9 +38,6 @@ public class TreeTest {
         assertEquals("child1", a.getNodeName());
     }
 
-
-
-
     @Test
     void checkEqualsTrueRoots() {
         Tree<String> tree1 = new Tree<>("root1");
