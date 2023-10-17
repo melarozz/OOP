@@ -39,6 +39,8 @@ public class TreeTest {
     }
 
 
+
+
     @Test
     void checkEqualsTrueRoots() {
         Tree<String> tree1 = new Tree<>("root1");
@@ -188,13 +190,11 @@ public class TreeTest {
 
         while (iterator.hasNext()) {
             String item = iterator.next();
-            if (!Objects.equals(item, "child1")) {
-                actual = actual.concat(item);
-            }
+            actual = actual.concat(item);
         }
 
 
-        assertEquals("root1root2child2child3child4", actual);
+        assertEquals("root1child1root2child2child3child4", actual);
     }
 
     @Test
@@ -215,13 +215,10 @@ public class TreeTest {
 
         while (iterator.hasNext()) {
             String item = iterator.next();
-            if (!Objects.equals(item, "child1")) {
-                actual = actual.concat(item);
-            }
+            actual = actual.concat(item);
         }
 
-
-        assertEquals("root1child2root2child3child4", actual);
+        assertEquals("root1child1child2root2child3child4", actual);
     }
 
 
