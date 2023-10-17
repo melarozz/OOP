@@ -1,15 +1,12 @@
 package ru.nsu.yakovleva.tree;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
@@ -247,6 +244,27 @@ public class TreeTest {
         root.addChild("C"); // Modify the tree after getting the iterator.
 
         assertThrows(ConcurrentModificationException.class, iterator::next);
+    }
+
+    @Test
+    public void testNoSuchElementExceptionBfs() {
+        Tree<String> root = new Tree<>("Root");
+        Iterator<String> bfsIterator = root.iterator();
+
+        assertDoesNotThrow(bfsIterator::next);
+        assertThrows(NoSuchElementException.class, bfsIterator::next);
+
+    }
+
+    @Test
+    public void testNoSuchElementExceptionDfs() {
+        Tree<String> root = new Tree<>("Root");
+        root.setFlagDfs();
+
+        Iterator<String> dfsIterator = root.iterator();
+
+        assertDoesNotThrow(dfsIterator::next);
+        assertThrows(NoSuchElementException.class, dfsIterator::next);
     }
 
 }
