@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ConcurrentModificationException;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -39,6 +40,13 @@ public class TreeTest {
     }
 
     @Test
+    void checkAddChildInt() {
+        Tree<Integer> tree = new Tree<>(1);
+        var a = tree.addChild(2);
+        assertEquals(2, a.getNodeName());
+    }
+
+    @Test
     void checkEqualsTrueRoots() {
         Tree<String> tree1 = new Tree<>("root1");
         Tree<String> tree2 = new Tree<>("root1");
@@ -52,6 +60,16 @@ public class TreeTest {
         tree1.addChild("child1");
         Tree<String> tree2 = new Tree<>("root1");
         tree2.addChild("child1");
+
+        assertEquals(tree1, tree2);
+    }
+
+    @Test
+    void testEqualsTrueInt() {
+        Tree<Integer> tree1 = new Tree<>(1);
+        tree1.addChild(2);
+        Tree<Integer> tree2 = new Tree<>(1);
+        tree2.addChild(2);
 
         assertEquals(tree1, tree2);
     }
@@ -264,5 +282,46 @@ public class TreeTest {
         assertDoesNotThrow(dfsIterator::next);
         assertThrows(NoSuchElementException.class, dfsIterator::next);
     }
+
+    @Test
+    public void testNoSuchElementExceptionDfsInt() {
+        Tree<Integer> root = new Tree<>(1);
+        root.setFlagDfs();
+
+        Iterator<Integer> dfsIterator = root.iterator();
+
+        assertDoesNotThrow(dfsIterator::next);
+        assertThrows(NoSuchElementException.class, dfsIterator::next);
+    }
+
+    @Test
+    void checkAddChildForDifferentType() {
+        Tree<Double> tree = new Tree<>(3.14);
+        var a = tree.addChild(2.718);
+        assertEquals(2.718, a.getNodeName());
+    }
+
+    @Test
+    void checkRootForBooleanType() {
+        Tree<Boolean> tree = new Tree<>(true);
+        assertEquals(true, tree.getNodeName());
+    }
+
+    @Test
+    void checkRootForDateType() {
+        Date currentDate = new Date();
+        Tree<Date> tree = new Tree<>(currentDate);
+        assertEquals(currentDate, tree.getNodeName());
+    }
+
+    @Test
+    void checkAddChildForExistingType() {
+        Date currentDate = new Date();
+        Tree<Date> tree = new Tree<>(currentDate);
+        Date childDate = new Date();
+        var a = tree.addChild(childDate);
+        assertEquals(childDate, a.getNodeName());
+    }
+
 
 }
