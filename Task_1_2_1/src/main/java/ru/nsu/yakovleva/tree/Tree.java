@@ -19,10 +19,12 @@ public class Tree<T> implements Iterable<T> {
     private final T node;
     private Tree<T> parent;
     private int modCount = 0;
+
     private enum TraversalFlag {
         DFS,
         BFS
     }
+
     private TraversalFlag flag = TraversalFlag.BFS;
 
 
