@@ -1,11 +1,5 @@
 package ru.nsu.yakovleva.tree;
 
-import java.util.ConcurrentModificationException;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,6 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.ConcurrentModificationException;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class.
