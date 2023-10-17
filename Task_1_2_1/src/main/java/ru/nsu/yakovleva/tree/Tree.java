@@ -73,9 +73,11 @@ public class Tree<T> implements Iterable<T> {
         if (parent == null && otherTree.getParent() != null) {
             return false;
         }
-        if (parent != null && !parent.getNodeName().equals(otherTree.parent.getNodeName())) {
+
+        if (!parent.getNodeName().equals(otherTree.parent.getNodeName())) {
             return false;
         }
+
         return node.equals(otherTree.getNodeName()) && this.hashCode() == o.hashCode();
     }
 
@@ -157,8 +159,6 @@ public class Tree<T> implements Iterable<T> {
         }
     }
 
-
-
     /**
      * Get an iterator for this tree.
      *
@@ -195,6 +195,7 @@ public class Tree<T> implements Iterable<T> {
                 throw new java.util.NoSuchElementException();
             }
             Tree<T> current = queue.poll();
+            assert current != null;
             for (Tree<T> child : current.children) {
                 queue.offer(child);
             }
