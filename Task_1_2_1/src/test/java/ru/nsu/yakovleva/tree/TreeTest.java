@@ -81,7 +81,7 @@ public class TreeTest {
         Tree<String> tree2 = new Tree<>("root1");
         tree2.addChild("child2");
 
-        assertNotSame(tree1, tree2);
+        assertNotEquals(tree1, tree2);
 
     }
 
