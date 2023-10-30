@@ -133,6 +133,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">IncidenceMatrix</span>
 extends java.lang.Object</pre>
+<div class="block">This class represents an incidence matrix for an undirected graph with weighted edges.</div>
 </li>
 </ul>
 </div>
@@ -177,7 +178,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">IncidenceMatrix</a></span>&#8203;(int&nbsp;initialVertexCount)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Initializes an incidence matrix with the given number of vertices.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -202,51 +205,69 @@ extends java.lang.Object</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(int,int,double)">addEdge</a></span>&#8203;(int&nbsp;source,
        int&nbsp;destination,
        double&nbsp;weight)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds a weighted edge between two vertices in the graph.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addVertex()">addVertex</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds a new vertex to the graph.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeWeight(int,int,double)">changeWeight</a></span>&#8203;(int&nbsp;source,
             int&nbsp;destination,
             double&nbsp;newWeight)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Changes the weight of the edge between two vertices.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get(int,int)">get</a></span>&#8203;(int&nbsp;source,
    int&nbsp;destination)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets the weight of the edge between two vertices.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdge(int)">getEdge</a></span>&#8203;(int&nbsp;edgeIndex)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets the weight of a specific edge in the graph.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdgeCount()">getEdgeCount</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Returns the total number of edges in the graph.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertex(int)">getVertex</a></span>&#8203;(int&nbsp;vertex)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets the list of neighboring vertices for a specific vertex.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeEdge(int,int)">removeEdge</a></span>&#8203;(int&nbsp;source,
           int&nbsp;destination)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Removes the edge between two vertices if it exists.</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeVertex(int)">removeVertex</a></span>&#8203;(int&nbsp;vertex)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Removes a vertex and all edges connected to it from the graph.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -298,6 +319,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>IncidenceMatrix</h4>
 <pre>public&nbsp;IncidenceMatrix&#8203;(int&nbsp;initialVertexCount)</pre>
+<div class="block">Initializes an incidence matrix with the given number of vertices.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>initialVertexCount</code> - The initial number of vertices in the graph.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -319,6 +345,13 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;addEdge&#8203;(int&nbsp;source,
                     int&nbsp;destination,
                     double&nbsp;weight)</pre>
+<div class="block">Adds a weighted edge between two vertices in the graph.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>source</code> - The source vertex of the edge.</dd>
+<dd><code>destination</code> - The destination vertex of the edge.</dd>
+<dd><code>weight</code> - The weight of the edge.</dd>
+</dl>
 </li>
 </ul>
 <a id="getEdgeCount()">
@@ -328,6 +361,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getEdgeCount</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getEdgeCount()</pre>
+<div class="block">Returns the total number of edges in the graph.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The number of edges in the graph.</dd>
+</dl>
 </li>
 </ul>
 <a id="get(int,int)">
@@ -338,6 +376,14 @@ extends java.lang.Object</pre>
 <h4>get</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;get&#8203;(int&nbsp;source,
                   int&nbsp;destination)</pre>
+<div class="block">Gets the weight of the edge between two vertices.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>source</code> - The source vertex of the edge.</dd>
+<dd><code>destination</code> - The destination vertex of the edge.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The weight of the edge.</dd>
+</dl>
 </li>
 </ul>
 <a id="removeEdge(int,int)">
@@ -348,6 +394,12 @@ extends java.lang.Object</pre>
 <h4>removeEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;removeEdge&#8203;(int&nbsp;source,
                        int&nbsp;destination)</pre>
+<div class="block">Removes the edge between two vertices if it exists.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>source</code> - The source vertex of the edge to be removed.</dd>
+<dd><code>destination</code> - The destination vertex of the edge to be removed.</dd>
+</dl>
 </li>
 </ul>
 <a id="addVertex()">
@@ -357,6 +409,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>addVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addVertex()</pre>
+<div class="block">Adds a new vertex to the graph.</div>
 </li>
 </ul>
 <a id="removeVertex(int)">
@@ -366,6 +419,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>removeVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;removeVertex&#8203;(int&nbsp;vertex)</pre>
+<div class="block">Removes a vertex and all edges connected to it from the graph.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertex</code> - The index of the vertex to be removed.</dd>
+</dl>
 </li>
 </ul>
 <a id="getEdge(int)">
@@ -375,6 +433,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getEdge</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getEdge&#8203;(int&nbsp;edgeIndex)</pre>
+<div class="block">Gets the weight of a specific edge in the graph.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>edgeIndex</code> - The index of the edge.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The weight of the edge.</dd>
+</dl>
 </li>
 </ul>
 <a id="getVertex(int)">
@@ -384,6 +449,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getVertex</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getVertex&#8203;(int&nbsp;vertex)</pre>
+<div class="block">Gets the list of neighboring vertices for a specific vertex.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertex</code> - The index of the vertex.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A list of neighboring vertices.</dd>
+</dl>
 </li>
 </ul>
 <a id="changeWeight(int,int,double)">
@@ -395,6 +467,13 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;changeWeight&#8203;(int&nbsp;source,
                          int&nbsp;destination,
                          double&nbsp;newWeight)</pre>
+<div class="block">Changes the weight of the edge between two vertices.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>source</code> - The source vertex of the edge.</dd>
+<dd><code>destination</code> - The destination vertex of the edge.</dd>
+<dd><code>newWeight</code> - The new weight to be set for the edge.</dd>
+</dl>
 </li>
 </ul>
 </li>
