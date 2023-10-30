@@ -13,11 +13,11 @@ public class AdjacencyList {
     /**
      * Initializes an empty adjacency list with the given number of vertices.
      *
-     * @param V The number of vertices in the graph.
+     * @param v The number of vertices in the graph.
      */
-    public AdjacencyList(int V) {
-        adjList = new ArrayList<>(V);
-        for (int i = 0; i < V; i++) {
+    public AdjacencyList(int v) {
+        adjList = new ArrayList<>(v);
+        for (int i = 0; i < v; i++) {
             adjList.add(new ArrayList<>());
         }
     }

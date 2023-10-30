@@ -1,12 +1,11 @@
 package ru.nsu.yakovleva.graph.init;
 
-import ru.nsu.yakovleva.graph.Graph;
-
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
+import ru.nsu.yakovleva.graph.Graph;
 
 /**
  * GraphInitializer class provides methods to initialize graphs from input files.
@@ -16,11 +15,13 @@ public class GraphInitializer {
      * Initialize an adjacency list graph from an input file.
      *
      * @param inputFile   The path to the input file.
-     * @param matrixType  The type of matrix representation to create (e.g., Adjacency List, Adjacency Matrix, Incidence Matrix).
+     * @param matrixType  The type of matrix representation to create
+     *                    (e.g., Adjacency List, Adjacency Matrix, Incidence Matrix).
      * @return The initialized graph.
      * @throws FileNotFoundException if the input file is not found.
      */
-    public static Graph initAdjListGraph(String inputFile, Graph.MatrixType matrixType) throws FileNotFoundException {
+    public static Graph initAdjListGraph(String inputFile, Graph.MatrixType matrixType)
+            throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(inputFile));
         int vertexCount = scanner.nextInt();
         Graph graph = new Graph(vertexCount, matrixType);
@@ -44,12 +45,13 @@ public class GraphInitializer {
      * @return The initialized graph.
      * @throws FileNotFoundException if the input file is not found.
      */
-    public static Graph initAdjMatGraph(String inputFile, Graph.MatrixType matrixType) throws FileNotFoundException {
+    public static Graph initAdjMatGraph(String inputFile, Graph.MatrixType matrixType)
+            throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(inputFile));
-        int V = scanner.nextInt();
-        Graph graph = new Graph(V, matrixType);
-        for (int i = 0; i < V; i++) {
-            for (int j = 0; j < V; j++) {
+        int v = scanner.nextInt();
+        Graph graph = new Graph(v, matrixType);
+        for (int i = 0; i < v; i++) {
+            for (int j = 0; j < v; j++) {
                 double weight = scanner.nextDouble();
                 if (weight != 0.0) {
                     graph.addEdge(i, j, weight);
@@ -64,15 +66,17 @@ public class GraphInitializer {
      * Initialize an incidence matrix graph from an input file.
      *
      * @param inputFile   The path to the input file.
-     * @param matrixType  The type of matrix representation to create (e.g., Adjacency List, Adjacency Matrix, Incidence Matrix).
+     * @param matrixType  The type of matrix representation to create
+     *                    (e.g., Adjacency List, Adjacency Matrix, Incidence Matrix).
      * @return The initialized graph.
      * @throws FileNotFoundException if the input file is not found.
      */
-    public static Graph initIncMatGraph(String inputFile, Graph.MatrixType matrixType) throws FileNotFoundException {
+    public static Graph initIncMatGraph(String inputFile, Graph.MatrixType matrixType)
+            throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(inputFile));
-        int V = scanner.nextInt();
-        int E = scanner.nextInt();
-        Graph graph = new Graph(V, matrixType);
+        int v = scanner.nextInt();
+        int e = scanner.nextInt();
+        Graph graph = new Graph(v, matrixType);
         List<List<Integer>> edges = new ArrayList<>();
         scanner.nextLine();
         String edgePairsLine = scanner.nextLine();
@@ -87,9 +91,9 @@ public class GraphInitializer {
             edges.add(edge);
         }
 
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < v; i++) {
             int source = scanner.nextInt();
-            for (int j = 0; j < E; j++) {
+            for (int j = 0; j < e; j++) {
                 double weight = scanner.nextDouble();
                 int destination;
                 if (edges.get(j).get(0) == source) {

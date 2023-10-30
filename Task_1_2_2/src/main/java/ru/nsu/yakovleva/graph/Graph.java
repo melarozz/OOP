@@ -1,17 +1,16 @@
 package ru.nsu.yakovleva.graph;
 
+import java.util.List;
 import ru.nsu.yakovleva.graph.init.WeightedEdge;
 import ru.nsu.yakovleva.graph.types.AdjacencyList;
 import ru.nsu.yakovleva.graph.types.AdjacencyMatrix;
 import ru.nsu.yakovleva.graph.types.IncidenceMatrix;
 
-import java.util.List;
-
 /**
  * Graph class representing a graph with multiple representations.
  */
 public class Graph {
-    private int V; // Number of vertices
+    private int v; // Number of vertices
     private final MatrixType matrixType;
     private AdjacencyMatrix adjacencyMatrix;
     private AdjacencyList adjacencyList;
@@ -33,7 +32,7 @@ public class Graph {
      * @param matrixType The type of matrix representation.
      */
     public Graph(int V, MatrixType matrixType) {
-        this.V = V;
+        this.v = V;
         this.matrixType = matrixType;
 
         // Initialize the appropriate matrix representation based on the chosen matrix type.
@@ -76,7 +75,7 @@ public class Graph {
      * @return The number of vertices.
      */
     public int getVertexCount() {
-        return V;
+        return v;
     }
 
     /**
@@ -128,7 +127,7 @@ public class Graph {
         } else if (matrixType == MatrixType.INC_MATR && incidenceMatrix != null) {
             incidenceMatrix.addVertex();
         }
-        V++;
+        v++;
     }
 
     /**
@@ -144,7 +143,7 @@ public class Graph {
         } else if (matrixType == MatrixType.INC_MATR && incidenceMatrix != null) {
             incidenceMatrix.removeVertex(vertex);
         }
-        V--;
+        v--;
     }
 
     /**
@@ -195,7 +194,8 @@ public class Graph {
     }
 
     /**
-     * Get the vertices adjacent to a specific vertex in the adjacency matrix or incidence matrix representation.
+     * Get the vertices adjacent to a specific vertex in the adjacency
+     * matrix or incidence matrix representation.
      *
      * @param vertex The vertex for which adjacent vertices are requested.
      * @return List of adjacent vertices.

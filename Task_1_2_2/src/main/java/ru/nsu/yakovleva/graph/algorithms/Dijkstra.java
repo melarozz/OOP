@@ -1,16 +1,16 @@
 package ru.nsu.yakovleva.graph.algorithms;
 
-import ru.nsu.yakovleva.graph.Graph;
-import ru.nsu.yakovleva.graph.init.WeightedEdge;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
+import ru.nsu.yakovleva.graph.Graph;
+import ru.nsu.yakovleva.graph.init.WeightedEdge;
 
 /**
- * Dijkstra class provides methods for finding the shortest paths in a graph using Dijkstra's algorithm.
+ * Dijkstra class provides methods for finding the shortest paths
+ * in a graph using Dijkstra's algorithm.
  */
 public class Dijkstra {
     /**
@@ -33,13 +33,13 @@ public class Dijkstra {
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<VertexDistancePair> queue = new PriorityQueue<>(Comparator.comparingInt(p -> p.dist));
-            queue.add(new VertexDistancePair(source, 0));
+            PriorityQueue<pair> queue = new PriorityQueue<>(Comparator.comparingInt(p -> p.dist));
+            queue.add(new pair(source, 0));
 
             boolean[] visited = new boolean[V];
 
             while (!queue.isEmpty()) {
-                VertexDistancePair pair = queue.poll();
+                pair pair = queue.poll();
                 int currentVertex = pair.vertex;
 
                 if (visited[currentVertex]) {
@@ -59,7 +59,7 @@ public class Dijkstra {
 
                     if (newDistance < distances[neighborVertex]) {
                         distances[neighborVertex] = (int) newDistance;
-                        queue.add(new VertexDistancePair(neighborVertex, (int) newDistance));
+                        queue.add(new pair(neighborVertex, (int) newDistance));
                     }
                 }
             }
@@ -77,13 +77,13 @@ public class Dijkstra {
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<VertexDistancePair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
-            queue.add(new VertexDistancePair(source, 0));
+            PriorityQueue<pair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
+            queue.add(new pair(source, 0));
 
             boolean[] visited = new boolean[V];
 
             while (!queue.isEmpty()) {
-                VertexDistancePair pair = queue.poll();
+                pair pair = queue.poll();
                 int currentVertex = pair.vertex;
 
                 if (visited[currentVertex]) {
@@ -102,7 +102,7 @@ public class Dijkstra {
 
                     if (newDistance < distances[neighbor]) {
                         distances[neighbor] = newDistance;
-                        queue.add(new VertexDistancePair(neighbor, (int) newDistance));
+                        queue.add(new pair(neighbor, (int) newDistance));
                     }
                 }
             }
@@ -129,13 +129,13 @@ public class Dijkstra {
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<VertexDistancePair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
-            queue.add(new VertexDistancePair(source, 0));
+            PriorityQueue<pair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
+            queue.add(new pair(source, 0));
 
             boolean[] visited = new boolean[V];
 
             while (!queue.isEmpty()) {
-                VertexDistancePair pair = queue.poll();
+                pair pair = queue.poll();
                 int currentVertex = pair.vertex;
 
                 if (visited[currentVertex]) {
@@ -154,7 +154,7 @@ public class Dijkstra {
 
                     if (newDistance < distances[neighbor]) {
                         distances[neighbor] = newDistance;
-                        queue.add(new VertexDistancePair(neighbor, (int) newDistance));
+                        queue.add(new pair(neighbor, (int) newDistance));
                     }
                 }
             }
@@ -170,11 +170,11 @@ public class Dijkstra {
     /**
      * Private inner class to represent a pair of vertex and its distance for priority queue.
      */
-    private static class VertexDistancePair {
+    private static class pair {
         int vertex;
         int dist;
 
-        VertexDistancePair(int vertex, int dist) {
+        pair(int vertex, int dist) {
             this.vertex = vertex;
             this.dist = dist;
         }
