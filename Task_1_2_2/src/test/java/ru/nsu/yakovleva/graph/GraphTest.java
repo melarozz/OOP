@@ -3,8 +3,11 @@ package ru.nsu.yakovleva.graph;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import static ru.nsu.yakovleva.graph.algorithms.Dijkstra.findShortestPaths;
+
+import java.util.Arrays;
+import java.io.FileNotFoundException;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,22 +17,24 @@ import ru.nsu.yakovleva.graph.types.AdjacencyList;
 import ru.nsu.yakovleva.graph.types.AdjacencyMatrix;
 import ru.nsu.yakovleva.graph.types.IncidenceMatrix;
 
-import java.util.Arrays;
-import java.io.FileNotFoundException;
-import java.util.List;
+
 
 public class GraphTest {
     private Graph adjacencyMatrixGraph;
     private Graph adjacencyListGraph;
     private Graph incidenceMatrixGraph;
+    private String aMPath = "src/main/java/adjacency_matrix_input.txt";
+    private String aLPath = "src/main/java/adjacency_input.txt";
+    private String iMPath = "src/main/java/incidence_input.txt";
 
 
     @BeforeEach
     public void setup() {
         try {
-            adjacencyMatrixGraph = GraphInitializer.initializeAdjacencyMatrixGraph("src/main/java/adjacency_matrix_input.txt", Graph.MatrixType.ADJACENCY_MATRIX);
-            adjacencyListGraph = GraphInitializer.initializeAdjacencyListGraph("src/main/java/adjacency_input.txt", Graph.MatrixType.ADJACENCY_LIST);
-            incidenceMatrixGraph = GraphInitializer.initializeIncidenceMatrixGraph("src/main/java/incidence_input.txt", Graph.MatrixType.INCIDENCE_MATRIX);
+
+            adjacencyMatrixGraph = GraphInitializer.initializeAdjacencyMatrixGraph(aMPath, Graph.MatrixType.ADJ_MATR);
+            adjacencyListGraph = GraphInitializer.initializeAdjacencyListGraph(aLPath, Graph.MatrixType.ADJ_LIST);
+            incidenceMatrixGraph = GraphInitializer.initializeIncidenceMatrixGraph(iMPath, Graph.MatrixType.INC_MATR);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -159,7 +164,7 @@ public class GraphTest {
 
     @Test
     public void getEdgeAdjacencyMatrix() {
-        assertEquals(4.0, adjacencyMatrixGraph.getEdgeAdjacencyMatrix(1,2));
+        assertEquals(4.0, adjacencyMatrixGraph.getEdgeAdjacencyMatrix(1, 2));
     }
 
     @Test

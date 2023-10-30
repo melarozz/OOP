@@ -23,7 +23,7 @@ public class Dijkstra {
     public static List<String> findShortestPaths(Graph graph, int source) {
         Graph.MatrixType matrixType = graph.getMatrixType();
         int V = graph.getVertexCount();
-        if (matrixType == Graph.MatrixType.ADJACENCY_LIST) {
+        if (matrixType == Graph.MatrixType.ADJ_LIST) {
 
             List<String> shortestPaths = new ArrayList<>();
 
@@ -67,7 +67,7 @@ public class Dijkstra {
             shortestPaths.sort(Comparator.comparing(s -> Integer.parseInt(s.split(":")[1].trim())));
 
             return shortestPaths;
-        } else if (matrixType == Graph.MatrixType.ADJACENCY_MATRIX) {
+        } else if (matrixType == Graph.MatrixType.ADJ_MATR) {
 
             List<String> shortestPaths = new ArrayList<>();
 
@@ -111,8 +111,8 @@ public class Dijkstra {
 
             return shortestPaths;
 
-        } else if (matrixType == Graph.MatrixType.INCIDENCE_MATRIX) {
-            Graph newGraph = new Graph(V, Graph.MatrixType.ADJACENCY_MATRIX);
+        } else if (matrixType == Graph.MatrixType.INC_MATR) {
+            Graph newGraph = new Graph(V, Graph.MatrixType.ADJ_MATR);
             for (int i = 0; i < V; i++) {
                 for (int j = 0; j < V; j++) {
                     double weight = graph.getIncidenceMatrix().matrix[i][j];

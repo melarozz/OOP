@@ -21,9 +21,9 @@ public class Graph {
      * Enumeration representing the possible matrix types for the graph.
      */
     public enum MatrixType {
-        ADJACENCY_MATRIX,
-        ADJACENCY_LIST,
-        INCIDENCE_MATRIX
+        ADJ_MATR,
+        ADJ_LIST,
+        INC_MATR
     }
 
     /**
@@ -37,11 +37,11 @@ public class Graph {
         this.matrixType = matrixType;
 
         // Initialize the appropriate matrix representation based on the chosen matrix type.
-        if (matrixType == MatrixType.ADJACENCY_MATRIX) {
+        if (matrixType == MatrixType.ADJ_MATR) {
             adjacencyMatrix = new AdjacencyMatrix(V);
-        } else if (matrixType == MatrixType.ADJACENCY_LIST) {
+        } else if (matrixType == MatrixType.ADJ_LIST) {
             adjacencyList = new AdjacencyList(V);
-        } else if (matrixType == MatrixType.INCIDENCE_MATRIX) {
+        } else if (matrixType == MatrixType.INC_MATR) {
             incidenceMatrix = new IncidenceMatrix(V);
         }
     }
@@ -55,15 +55,15 @@ public class Graph {
      */
     public void addEdge(int source, int destination, double weight) {
         // Add the edge to the appropriate matrix representation based on the matrix type.
-        if (matrixType == MatrixType.ADJACENCY_MATRIX) {
+        if (matrixType == MatrixType.ADJ_MATR) {
             if (adjacencyMatrix != null) {
                 adjacencyMatrix.addEdge(source, destination, weight);
             }
-        } else if (matrixType == MatrixType.ADJACENCY_LIST) {
+        } else if (matrixType == MatrixType.ADJ_LIST) {
             if (adjacencyList != null) {
                 adjacencyList.addEdge(source, destination, weight);
             }
-        } else if (matrixType == MatrixType.INCIDENCE_MATRIX) {
+        } else if (matrixType == MatrixType.INC_MATR) {
             if (incidenceMatrix != null) {
                 incidenceMatrix.addEdge(source, destination, weight);
             }
@@ -85,15 +85,15 @@ public class Graph {
      * @return The number of edges.
      */
     public int getEdgeCount() {
-        if (matrixType == MatrixType.ADJACENCY_MATRIX) {
+        if (matrixType == MatrixType.ADJ_MATR) {
             if (adjacencyMatrix != null) {
                 return adjacencyMatrix.getEdgeCount();
             }
-        } else if (matrixType == MatrixType.ADJACENCY_LIST) {
+        } else if (matrixType == MatrixType.ADJ_LIST) {
             if (adjacencyList != null) {
                 return adjacencyList.getEdgeCount();
             }
-        } else if (matrixType == MatrixType.INCIDENCE_MATRIX) {
+        } else if (matrixType == MatrixType.INC_MATR) {
             if (incidenceMatrix != null) {
                 return incidenceMatrix.getEdgeCount();
             }
@@ -108,11 +108,11 @@ public class Graph {
      * @param destination The destination vertex of the edge.
      */
     public void removeEdge(int source, int destination) {
-        if (matrixType == MatrixType.INCIDENCE_MATRIX && incidenceMatrix != null) {
+        if (matrixType == MatrixType.INC_MATR && incidenceMatrix != null) {
             incidenceMatrix.removeEdge(source, destination);
-        } else if (matrixType == MatrixType.ADJACENCY_LIST && adjacencyList != null) {
+        } else if (matrixType == MatrixType.ADJ_LIST && adjacencyList != null) {
             adjacencyList.removeEdge(source, destination);
-        } else if (matrixType == MatrixType.ADJACENCY_MATRIX && adjacencyMatrix != null) {
+        } else if (matrixType == MatrixType.ADJ_MATR && adjacencyMatrix != null) {
             adjacencyMatrix.removeEdge(source, destination);
         }
     }
@@ -121,11 +121,11 @@ public class Graph {
      * Add a vertex to the graph.
      */
     public void addVertex() {
-        if (matrixType == MatrixType.ADJACENCY_LIST && adjacencyList != null) {
+        if (matrixType == MatrixType.ADJ_LIST && adjacencyList != null) {
             adjacencyList.addVertex();
-        } else if (matrixType == MatrixType.ADJACENCY_MATRIX && adjacencyMatrix != null) {
+        } else if (matrixType == MatrixType.ADJ_MATR && adjacencyMatrix != null) {
             adjacencyMatrix.addVertex();
-        } else if (matrixType == MatrixType.INCIDENCE_MATRIX && incidenceMatrix != null) {
+        } else if (matrixType == MatrixType.INC_MATR && incidenceMatrix != null) {
             incidenceMatrix.addVertex();
         }
         V++;
@@ -137,11 +137,11 @@ public class Graph {
      * @param vertex The vertex to be removed.
      */
     public void removeVertex(int vertex) {
-        if (matrixType == MatrixType.ADJACENCY_LIST && adjacencyList != null) {
+        if (matrixType == MatrixType.ADJ_LIST && adjacencyList != null) {
             adjacencyList.removeVertex(vertex);
-        } else if (matrixType == MatrixType.ADJACENCY_MATRIX && adjacencyMatrix != null) {
+        } else if (matrixType == MatrixType.ADJ_MATR && adjacencyMatrix != null) {
             adjacencyMatrix.removeVertex(vertex);
-        } else if (matrixType == MatrixType.INCIDENCE_MATRIX && incidenceMatrix != null) {
+        } else if (matrixType == MatrixType.INC_MATR && incidenceMatrix != null) {
             incidenceMatrix.removeVertex(vertex);
         }
         V--;
@@ -155,7 +155,7 @@ public class Graph {
      * @return The weight of the edge.
      */
     public double getEdgeAdjacencyMatrix(int source, int destination) {
-        if (matrixType == MatrixType.ADJACENCY_MATRIX) {
+        if (matrixType == MatrixType.ADJ_MATR) {
             if (adjacencyMatrix != null) {
                 return adjacencyMatrix.getEdge(source, destination);
             }
@@ -171,7 +171,7 @@ public class Graph {
      * @return The edge object with weight.
      */
     public WeightedEdge getEdgeAdjacencyList(int source, int destination) {
-        if (matrixType == MatrixType.ADJACENCY_LIST) {
+        if (matrixType == MatrixType.ADJ_LIST) {
             if (adjacencyList != null) {
                 return adjacencyList.getEdge(source, destination);
             }
@@ -186,7 +186,7 @@ public class Graph {
      * @return The weight of the edge.
      */
     public double getEdgeIncidenceMatrix(int index) {
-        if (matrixType == MatrixType.INCIDENCE_MATRIX) {
+        if (matrixType == MatrixType.INC_MATR) {
             if (incidenceMatrix != null) {
                 return incidenceMatrix.getEdge(index);
             }
@@ -201,11 +201,11 @@ public class Graph {
      * @return List of adjacent vertices.
      */
     public List<Integer> getVertex(int vertex) {
-        if (matrixType == MatrixType.ADJACENCY_MATRIX) {
+        if (matrixType == MatrixType.ADJ_MATR) {
             if (adjacencyMatrix != null) {
                 return adjacencyMatrix.getVertex(vertex);
             }
-        } else if (matrixType == MatrixType.INCIDENCE_MATRIX) {
+        } else if (matrixType == MatrixType.INC_MATR) {
             if (incidenceMatrix != null) {
                 return incidenceMatrix.getVertex(vertex);
             }
@@ -220,7 +220,7 @@ public class Graph {
      * @return List of incident edges.
      */
     public List<WeightedEdge> getVertexAdjacencyList(int vertex) {
-        if (matrixType == MatrixType.ADJACENCY_LIST) {
+        if (matrixType == MatrixType.ADJ_LIST) {
             if (adjacencyList != null) {
                 return adjacencyList.getVertex(vertex);
             }
@@ -236,11 +236,11 @@ public class Graph {
      * @param newWeight The new weight of the edge.
      */
     public void changeWeight(int source, int destination, double newWeight) {
-        if (matrixType == MatrixType.ADJACENCY_LIST && adjacencyList != null) {
+        if (matrixType == MatrixType.ADJ_LIST && adjacencyList != null) {
             adjacencyList.setWeight(source, destination, newWeight);
-        } else if (matrixType == MatrixType.ADJACENCY_MATRIX && adjacencyMatrix != null) {
+        } else if (matrixType == MatrixType.ADJ_MATR && adjacencyMatrix != null) {
             adjacencyMatrix.changeWeight(source, destination, newWeight);
-        } else if (matrixType == MatrixType.INCIDENCE_MATRIX && incidenceMatrix != null) {
+        } else if (matrixType == MatrixType.INC_MATR && incidenceMatrix != null) {
             incidenceMatrix.changeWeight(source, destination, newWeight);
         }
     }
