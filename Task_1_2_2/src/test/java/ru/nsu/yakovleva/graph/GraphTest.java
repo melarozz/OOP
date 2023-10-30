@@ -8,7 +8,6 @@ import static ru.nsu.yakovleva.graph.algorithms.Dijkstra.findShortestPaths;
 import java.util.Arrays;
 import java.io.FileNotFoundException;
 import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.graph.init.GraphInitializer;
@@ -23,18 +22,18 @@ public class GraphTest {
     private Graph adjacencyMatrixGraph;
     private Graph adjacencyListGraph;
     private Graph incidenceMatrixGraph;
-    private String aMPath = "src/main/java/adjacency_matrix_input.txt";
-    private String aLPath = "src/main/java/adjacency_input.txt";
-    private String iMPath = "src/main/java/incidence_input.txt";
 
 
     @BeforeEach
     public void setup() {
         try {
 
-            adjacencyMatrixGraph = GraphInitializer.initializeAdjacencyMatrixGraph(aMPath, Graph.MatrixType.ADJ_MATR);
-            adjacencyListGraph = GraphInitializer.initializeAdjacencyListGraph(aLPath, Graph.MatrixType.ADJ_LIST);
-            incidenceMatrixGraph = GraphInitializer.initializeIncidenceMatrixGraph(iMPath, Graph.MatrixType.INC_MATR);
+            String amPath = "src/main/java/adjacency_matrix_input.txt";
+            adjacencyMatrixGraph = GraphInitializer.initAdjMatGraph(amPath, Graph.MatrixType.ADJ_MATR);
+            String alPath = "src/main/java/adjacency_input.txt";
+            adjacencyListGraph = GraphInitializer.initAdjListGraph(alPath, Graph.MatrixType.ADJ_LIST);
+            String imPath = "src/main/java/incidence_input.txt";
+            incidenceMatrixGraph = GraphInitializer.initIncMatGraph(imPath, Graph.MatrixType.INC_MATR);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

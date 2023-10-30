@@ -2,9 +2,9 @@ package ru.nsu.yakovleva.graph.init;
 
 import ru.nsu.yakovleva.graph.Graph;
 
+import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,7 +20,7 @@ public class GraphInitializer {
      * @return The initialized graph.
      * @throws FileNotFoundException if the input file is not found.
      */
-    public static Graph initializeAdjacencyListGraph(String inputFile, Graph.MatrixType matrixType) throws FileNotFoundException {
+    public static Graph initAdjListGraph(String inputFile, Graph.MatrixType matrixType) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(inputFile));
         int vertexCount = scanner.nextInt();
         Graph graph = new Graph(vertexCount, matrixType);
@@ -44,7 +44,7 @@ public class GraphInitializer {
      * @return The initialized graph.
      * @throws FileNotFoundException if the input file is not found.
      */
-    public static Graph initializeAdjacencyMatrixGraph(String inputFile, Graph.MatrixType matrixType) throws FileNotFoundException {
+    public static Graph initAdjMatGraph(String inputFile, Graph.MatrixType matrixType) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(inputFile));
         int V = scanner.nextInt();
         Graph graph = new Graph(V, matrixType);
@@ -68,7 +68,7 @@ public class GraphInitializer {
      * @return The initialized graph.
      * @throws FileNotFoundException if the input file is not found.
      */
-    public static Graph initializeIncidenceMatrixGraph(String inputFile, Graph.MatrixType matrixType) throws FileNotFoundException {
+    public static Graph initIncMatGraph(String inputFile, Graph.MatrixType matrixType) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(inputFile));
         int V = scanner.nextInt();
         int E = scanner.nextInt();
