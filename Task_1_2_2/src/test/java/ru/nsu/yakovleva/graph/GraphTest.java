@@ -247,7 +247,12 @@ public class GraphTest {
     @Test
     public void dijkstraIncidenceMatrix() {
         List<String> sortedVertices = findShortestPaths(incMatGraph, 0);
-        List<String> expected = Arrays.asList("Vertex 0: 0.0", "Vertex 1: 2.0", "Vertex 2: 3.0", "Vertex 3: 6.0", "Vertex 4: 7.0");
+        String n1 = "Vertex 0: 0.0";
+        String n2 = "Vertex 1: 2.0";
+        String n3 = "Vertex 2: 3.0";
+        String n4 = "Vertex 3: 6.0";
+        String n5 = "Vertex 4: 7.0";
+        List<String> expected = Arrays.asList(n1, n2, n3, n4, n5);
         assertEquals(expected, sortedVertices);
     }
 
