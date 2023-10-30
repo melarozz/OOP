@@ -10,7 +10,7 @@ import ru.nsu.yakovleva.graph.types.IncidenceMatrix;
  * Graph class representing a graph with multiple representations.
  */
 public class Graph {
-    private int v; // Number of vertices
+    private int vert; // Number of vertices
     private final MatrixType matrixType;
     private AdjacencyMatrix adjacencyMatrix;
     private AdjacencyList adjacencyList;
@@ -28,20 +28,20 @@ public class Graph {
     /**
      * Constructor to create a graph with a specific number of vertices and matrix type.
      *
-     * @param V          The number of vertices.
+     * @param vert          The number of vertices.
      * @param matrixType The type of matrix representation.
      */
-    public Graph(int V, MatrixType matrixType) {
-        this.v = V;
+    public Graph(int vert, MatrixType matrixType) {
+        this.vert = vert;
         this.matrixType = matrixType;
 
         // Initialize the appropriate matrix representation based on the chosen matrix type.
         if (matrixType == MatrixType.ADJ_MATR) {
-            adjacencyMatrix = new AdjacencyMatrix(V);
+            adjacencyMatrix = new AdjacencyMatrix(vert);
         } else if (matrixType == MatrixType.ADJ_LIST) {
-            adjacencyList = new AdjacencyList(V);
+            adjacencyList = new AdjacencyList(vert);
         } else if (matrixType == MatrixType.INC_MATR) {
-            incidenceMatrix = new IncidenceMatrix(V);
+            incidenceMatrix = new IncidenceMatrix(vert);
         }
     }
 
@@ -75,7 +75,7 @@ public class Graph {
      * @return The number of vertices.
      */
     public int getVertexCount() {
-        return v;
+        return vert;
     }
 
     /**
@@ -127,7 +127,7 @@ public class Graph {
         } else if (matrixType == MatrixType.INC_MATR && incidenceMatrix != null) {
             incidenceMatrix.addVertex();
         }
-        v++;
+        vert++;
     }
 
     /**
@@ -143,7 +143,7 @@ public class Graph {
         } else if (matrixType == MatrixType.INC_MATR && incidenceMatrix != null) {
             incidenceMatrix.removeVertex(vertex);
         }
-        v--;
+        vert--;
     }
 
     /**

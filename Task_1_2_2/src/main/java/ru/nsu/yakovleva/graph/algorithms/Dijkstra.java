@@ -22,24 +22,24 @@ public class Dijkstra {
      */
     public static List<String> findShortestPaths(Graph graph, int source) {
         Graph.MatrixType matrixType = graph.getMatrixType();
-        int V = graph.getVertexCount();
+        int vert = graph.getVertexCount();
         if (matrixType == Graph.MatrixType.ADJ_LIST) {
 
             List<String> result = new ArrayList<>();
 
             // Initialize distances with infinity and set the source vertex distance to 0
-            int[] distances = new int[V];
+            int[] distances = new int[vert];
             Arrays.fill(distances, Integer.MAX_VALUE);
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<pair> queue = new PriorityQueue<>(Comparator.comparingInt(p -> p.dist));
-            queue.add(new pair(source, 0));
+            PriorityQueue<Pair> queue = new PriorityQueue<>(Comparator.comparingInt(p -> p.dist));
+            queue.add(new Pair(source, 0));
 
-            boolean[] visited = new boolean[V];
+            boolean[] visited = new boolean[vert];
 
             while (!queue.isEmpty()) {
-                pair pair = queue.poll();
+                Pair pair = queue.poll();
                 int currentVertex = pair.vertex;
 
                 if (visited[currentVertex]) {
@@ -59,7 +59,7 @@ public class Dijkstra {
 
                     if (newDistance < distances[neighborVertex]) {
                         distances[neighborVertex] = (int) newDistance;
-                        queue.add(new pair(neighborVertex, (int) newDistance));
+                        queue.add(new Pair(neighborVertex, (int) newDistance));
                     }
                 }
             }
@@ -72,18 +72,18 @@ public class Dijkstra {
             List<String> result = new ArrayList<>();
 
             // Initialize distances with infinity and set the source vertex distance to 0
-            double[] distances = new double[V];
+            double[] distances = new double[vert];
             Arrays.fill(distances, Double.POSITIVE_INFINITY);
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<pair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
-            queue.add(new pair(source, 0));
+            PriorityQueue<Pair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
+            queue.add(new Pair(source, 0));
 
-            boolean[] visited = new boolean[V];
+            boolean[] visited = new boolean[vert];
 
             while (!queue.isEmpty()) {
-                pair pair = queue.poll();
+                Pair pair = queue.poll();
                 int currentVertex = pair.vertex;
 
                 if (visited[currentVertex]) {
@@ -102,7 +102,7 @@ public class Dijkstra {
 
                     if (newDistance < distances[neighbor]) {
                         distances[neighbor] = newDistance;
-                        queue.add(new pair(neighbor, (int) newDistance));
+                        queue.add(new Pair(neighbor, (int) newDistance));
                     }
                 }
             }
@@ -112,9 +112,9 @@ public class Dijkstra {
             return result;
 
         } else if (matrixType == Graph.MatrixType.INC_MATR) {
-            Graph newGraph = new Graph(V, Graph.MatrixType.ADJ_MATR);
-            for (int i = 0; i < V; i++) {
-                for (int j = 0; j < V; j++) {
+            Graph newGraph = new Graph(vert, Graph.MatrixType.ADJ_MATR);
+            for (int i = 0; i < vert; i++) {
+                for (int j = 0; j < vert; j++) {
                     double weight = graph.getIncidenceMatrix().matrix[i][j];
                     if (weight != 0.0) {
                         newGraph.addEdge(i, j, weight);
@@ -124,18 +124,18 @@ public class Dijkstra {
             List<String> result = new ArrayList<>();
 
             // Initialize distances with infinity and set the source vertex distance to 0
-            double[] distances = new double[V];
+            double[] distances = new double[vert];
             Arrays.fill(distances, Double.POSITIVE_INFINITY);
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<pair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
-            queue.add(new pair(source, 0));
+            PriorityQueue<Pair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
+            queue.add(new Pair(source, 0));
 
-            boolean[] visited = new boolean[V];
+            boolean[] visited = new boolean[vert];
 
             while (!queue.isEmpty()) {
-                pair pair = queue.poll();
+                Pair pair = queue.poll();
                 int currentVertex = pair.vertex;
 
                 if (visited[currentVertex]) {
@@ -154,7 +154,7 @@ public class Dijkstra {
 
                     if (newDistance < distances[neighbor]) {
                         distances[neighbor] = newDistance;
-                        queue.add(new pair(neighbor, (int) newDistance));
+                        queue.add(new Pair(neighbor, (int) newDistance));
                     }
                 }
             }
@@ -170,11 +170,11 @@ public class Dijkstra {
     /**
      * Private inner class to represent a pair of vertex and its distance for priority queue.
      */
-    private static class pair {
+    private static class Pair {
         int vertex;
         int dist;
 
-        pair(int vertex, int dist) {
+        Pair(int vertex, int dist) {
             this.vertex = vertex;
             this.dist = dist;
         }

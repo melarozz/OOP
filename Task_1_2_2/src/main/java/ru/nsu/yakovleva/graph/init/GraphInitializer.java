@@ -1,8 +1,8 @@
 package ru.nsu.yakovleva.graph.init;
 
-import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import ru.nsu.yakovleva.graph.Graph;
@@ -41,7 +41,8 @@ public class GraphInitializer {
      * Initialize an adjacency matrix graph from an input file.
      *
      * @param inputFile   The path to the input file.
-     * @param matrixType  The type of matrix representation to create (e.g., Adjacency List, Adjacency Matrix, Incidence Matrix).
+     * @param matrixType  The type of matrix representation to create
+     *                    (e.g., Adjacency List, Adjacency Matrix, Incidence Matrix).
      * @return The initialized graph.
      * @throws FileNotFoundException if the input file is not found.
      */
