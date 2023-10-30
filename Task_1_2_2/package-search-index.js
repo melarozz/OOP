@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ru.nsu.yakovleva.graph"},{"l":"ru.nsu.yakovleva.graph.algorithms"},{"l":"ru.nsu.yakovleva.graph.init"},{"l":"ru.nsu.yakovleva.graph.types"}]
