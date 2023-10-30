@@ -25,7 +25,7 @@ public class Dijkstra {
         int V = graph.getVertexCount();
         if (matrixType == Graph.MatrixType.ADJ_LIST) {
 
-            List<String> shortestPaths = new ArrayList<>();
+            List<String> result = new ArrayList<>();
 
             // Initialize distances with infinity and set the source vertex distance to 0
             int[] distances = new int[V];
@@ -33,13 +33,13 @@ public class Dijkstra {
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<VertexDistancePair> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(p -> p.distance));
-            priorityQueue.add(new VertexDistancePair(source, 0));
+            PriorityQueue<VertexDistancePair> queue = new PriorityQueue<>(Comparator.comparingInt(p -> p.dist));
+            queue.add(new VertexDistancePair(source, 0));
 
             boolean[] visited = new boolean[V];
 
-            while (!priorityQueue.isEmpty()) {
-                VertexDistancePair pair = priorityQueue.poll();
+            while (!queue.isEmpty()) {
+                VertexDistancePair pair = queue.poll();
                 int currentVertex = pair.vertex;
 
                 if (visited[currentVertex]) {
@@ -47,7 +47,7 @@ public class Dijkstra {
                 }
 
                 visited[currentVertex] = true;
-                shortestPaths.add("Vertex " + currentVertex + ": " + distances[currentVertex]);
+                result.add("Vertex " + currentVertex + ": " + distances[currentVertex]);
 
                 List<WeightedEdge> neighbors = graph.getVertexAdjacencyList(currentVertex);
 
@@ -59,17 +59,17 @@ public class Dijkstra {
 
                     if (newDistance < distances[neighborVertex]) {
                         distances[neighborVertex] = (int) newDistance;
-                        priorityQueue.add(new VertexDistancePair(neighborVertex, (int) newDistance));
+                        queue.add(new VertexDistancePair(neighborVertex, (int) newDistance));
                     }
                 }
             }
 
-            shortestPaths.sort(Comparator.comparing(s -> Integer.parseInt(s.split(":")[1].trim())));
+            result.sort(Comparator.comparing(s -> Integer.parseInt(s.split(":")[1].trim())));
 
-            return shortestPaths;
+            return result;
         } else if (matrixType == Graph.MatrixType.ADJ_MATR) {
 
-            List<String> shortestPaths = new ArrayList<>();
+            List<String> result = new ArrayList<>();
 
             // Initialize distances with infinity and set the source vertex distance to 0
             double[] distances = new double[V];
@@ -77,13 +77,13 @@ public class Dijkstra {
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<VertexDistancePair> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.distance));
-            priorityQueue.add(new VertexDistancePair(source, 0));
+            PriorityQueue<VertexDistancePair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
+            queue.add(new VertexDistancePair(source, 0));
 
             boolean[] visited = new boolean[V];
 
-            while (!priorityQueue.isEmpty()) {
-                VertexDistancePair pair = priorityQueue.poll();
+            while (!queue.isEmpty()) {
+                VertexDistancePair pair = queue.poll();
                 int currentVertex = pair.vertex;
 
                 if (visited[currentVertex]) {
@@ -91,7 +91,7 @@ public class Dijkstra {
                 }
 
                 visited[currentVertex] = true;
-                shortestPaths.add("Vertex " + currentVertex + ": " + distances[currentVertex]);
+                result.add("Vertex " + currentVertex + ": " + distances[currentVertex]);
 
                 List<Integer> neighbors = graph.getVertex(currentVertex);
 
@@ -102,14 +102,14 @@ public class Dijkstra {
 
                     if (newDistance < distances[neighbor]) {
                         distances[neighbor] = newDistance;
-                        priorityQueue.add(new VertexDistancePair(neighbor, (int) newDistance));
+                        queue.add(new VertexDistancePair(neighbor, (int) newDistance));
                     }
                 }
             }
 
-            shortestPaths.sort(Comparator.comparing(s -> Double.parseDouble(s.split(":")[1].trim())));
+            result.sort(Comparator.comparing(s -> Double.parseDouble(s.split(":")[1].trim())));
 
-            return shortestPaths;
+            return result;
 
         } else if (matrixType == Graph.MatrixType.INC_MATR) {
             Graph newGraph = new Graph(V, Graph.MatrixType.ADJ_MATR);
@@ -121,7 +121,7 @@ public class Dijkstra {
                     }
                 }
             }
-            List<String> shortestPaths = new ArrayList<>();
+            List<String> result = new ArrayList<>();
 
             // Initialize distances with infinity and set the source vertex distance to 0
             double[] distances = new double[V];
@@ -129,13 +129,13 @@ public class Dijkstra {
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<VertexDistancePair> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.distance));
-            priorityQueue.add(new VertexDistancePair(source, 0));
+            PriorityQueue<VertexDistancePair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
+            queue.add(new VertexDistancePair(source, 0));
 
             boolean[] visited = new boolean[V];
 
-            while (!priorityQueue.isEmpty()) {
-                VertexDistancePair pair = priorityQueue.poll();
+            while (!queue.isEmpty()) {
+                VertexDistancePair pair = queue.poll();
                 int currentVertex = pair.vertex;
 
                 if (visited[currentVertex]) {
@@ -143,7 +143,7 @@ public class Dijkstra {
                 }
 
                 visited[currentVertex] = true;
-                shortestPaths.add("Vertex " + currentVertex + ": " + distances[currentVertex]);
+                result.add("Vertex " + currentVertex + ": " + distances[currentVertex]);
 
                 List<Integer> neighbors = newGraph.getVertex(currentVertex);
 
@@ -154,14 +154,14 @@ public class Dijkstra {
 
                     if (newDistance < distances[neighbor]) {
                         distances[neighbor] = newDistance;
-                        priorityQueue.add(new VertexDistancePair(neighbor, (int) newDistance));
+                        queue.add(new VertexDistancePair(neighbor, (int) newDistance));
                     }
                 }
             }
 
-            shortestPaths.sort(Comparator.comparing(s -> Double.parseDouble(s.split(":")[1].trim())));
+            result.sort(Comparator.comparing(s -> Double.parseDouble(s.split(":")[1].trim())));
 
-            return shortestPaths;
+            return result;
         }
 
         return null;
@@ -172,11 +172,11 @@ public class Dijkstra {
      */
     private static class VertexDistancePair {
         int vertex;
-        int distance;
+        int dist;
 
-        VertexDistancePair(int vertex, int distance) {
+        VertexDistancePair(int vertex, int dist) {
             this.vertex = vertex;
-            this.distance = distance;
+            this.dist = dist;
         }
     }
 }

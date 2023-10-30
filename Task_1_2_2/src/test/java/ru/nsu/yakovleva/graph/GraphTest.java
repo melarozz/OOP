@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static ru.nsu.yakovleva.graph.algorithms.Dijkstra.findShortestPaths;
 
-import java.util.Arrays;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,9 @@ import ru.nsu.yakovleva.graph.types.AdjacencyMatrix;
 import ru.nsu.yakovleva.graph.types.IncidenceMatrix;
 
 
-
+/**
+ * Test class.
+ */
 public class GraphTest {
     private Graph adjacencyMatrixGraph;
     private Graph adjacencyListGraph;
