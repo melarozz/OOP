@@ -384,7 +384,7 @@ public class GraphTest {
 
     @Test
     public void measureDijkstraTime() {
-        int numIterations = 100; // Adjust the number of iterations as needed
+        int numIterations = 100;
 
         long adjacencyMatrixTime = 0;
         long adjacencyListTime = 0;
