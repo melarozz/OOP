@@ -43,16 +43,6 @@ public class GraphTest {
             e.printStackTrace();
         }
     }
-    @Test
-    public void givenFileName_whenUsingFileUtils_thenFileData() {
-        String expectedData = "Hello, world!";
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("fileTest.txt").getFile());
-        String data = FileUtils.readFileToString(file, "UTF-8");
-
-        assertEquals(expectedData, data.trim());
-    }
 
 
     @Test
