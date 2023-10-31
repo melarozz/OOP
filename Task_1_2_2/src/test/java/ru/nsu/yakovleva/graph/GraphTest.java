@@ -1,8 +1,6 @@
 package ru.nsu.yakovleva.graph;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static ru.nsu.yakovleva.graph.algorithms.Dijkstra.findShortestPaths;
 
 import java.io.FileNotFoundException;
@@ -44,6 +42,21 @@ public class GraphTest {
     }
 
     @Test
+    public void testAdjacencyMatrixExists() {
+        assertNotNull(adjMatGraph);
+    }
+
+    @Test
+    public void testAdjacencyListExists() {
+        assertNotNull(adjListGraph);
+    }
+
+    @Test
+    public void testIncidenceMatrixExists() {
+        assertNotNull(incMatGraph);
+    }
+
+    @Test
     public void testAdjacencyMatrixCreation() {
         assertEquals(4, adjMatGraph.getVertexCount());
     }
@@ -64,6 +77,8 @@ public class GraphTest {
         adjMatGraph.addEdge(1, 3, 2.5); // Add an edge with weight 2.5
         assertEquals(5, adjMatGraph.getEdgeCount());
     }
+
+
 
     @Test
     public void testAdjacencyListEdgeAddition() {
@@ -104,6 +119,13 @@ public class GraphTest {
     }
 
     @Test
+    public void testRemoveEdgeAdjacencyListNotExisting() {
+        assertEquals(4, adjListGraph.getEdgeCount());
+        adjListGraph.removeEdge(0, 3);
+        assertEquals(4, adjListGraph.getEdgeCount());
+    }
+
+    @Test
     public void testRemoveEdgeAdjacencyMatrix() {
         assertEquals(4, adjMatGraph.getEdgeCount());
         adjMatGraph.removeEdge(0, 2);
@@ -111,10 +133,24 @@ public class GraphTest {
     }
 
     @Test
+    public void testRemoveEdgeAdjacencyMatrixNotExisting() {
+        assertEquals(4, adjMatGraph.getEdgeCount());
+        adjMatGraph.removeEdge(0, 3);
+        assertEquals(4, adjMatGraph.getEdgeCount());
+    }
+
+    @Test
     public void testRemoveEdgeIncidenceMatrix() {
         assertEquals(5, incMatGraph.getEdgeCount());
         incMatGraph.removeEdge(1, 2);
         assertEquals(4, incMatGraph.getEdgeCount());
+    }
+
+    @Test
+    public void testRemoveEdgeIncidenceMatrixNotExisting() {
+        assertEquals(5, incMatGraph.getEdgeCount());
+        incMatGraph.removeEdge(1, 4);
+        assertEquals(5, incMatGraph.getEdgeCount());
     }
 
     @Test
@@ -126,9 +162,11 @@ public class GraphTest {
 
     @Test
     public void testRemoveVertexAdjacencyList() {
+        assertEquals(4, adjListGraph.getEdgeCount());
         assertEquals(4, adjListGraph.getVertexCount());
         adjListGraph.removeVertex(2);
         assertEquals(3, adjListGraph.getVertexCount());
+        assertEquals(1, adjListGraph.getEdgeCount());
     }
 
     @Test
@@ -140,9 +178,11 @@ public class GraphTest {
 
     @Test
     public void testRemoveVertexAdjacencyMatrix() {
+        assertEquals(4, adjMatGraph.getEdgeCount());
         assertEquals(4, adjMatGraph.getVertexCount());
         adjMatGraph.removeVertex(2);
         assertEquals(3, adjMatGraph.getVertexCount());
+        assertEquals(1, adjMatGraph.getEdgeCount());
     }
 
     @Test
@@ -154,9 +194,11 @@ public class GraphTest {
 
     @Test
     public void testRemoveVertexIncidenceMatrix() {
+        assertEquals(5, incMatGraph.getEdgeCount());
         assertEquals(5, incMatGraph.getVertexCount());
         incMatGraph.removeVertex(2);
         assertEquals(4, incMatGraph.getVertexCount());
+        assertEquals(2, incMatGraph.getEdgeCount());
     }
 
     @Test
@@ -210,9 +252,22 @@ public class GraphTest {
     }
 
     @Test
+    public void changeWeightOfEdgeAdjacencyListNonExist() {
+        adjListGraph.changeWeight(0, 4, 3);
+        WeightedEdge result = adjListGraph.getEdgeAdjacencyList(0, 4);
+        assertNull(result);
+    }
+
+    @Test
     public void changeWeightOfEdgeAdjacencyMatrix() {
         adjMatGraph.changeWeight(0, 1, 3);
         assertEquals(3, adjMatGraph.getEdgeAdjacencyMatrix(0, 1));
+    }
+
+    @Test
+    public void changeWeightOfEdgeAdjacencyMatrixNonExist() {
+        adjMatGraph.changeWeight(0, 4, 3); //non-existing
+        assertEquals(0, adjMatGraph.getEdgeAdjacencyMatrix(0, 4));
     }
 
     @Test
@@ -222,12 +277,29 @@ public class GraphTest {
     }
 
     @Test
+    public void changeWeightOfEdgeIncidenceMatrixNonExist() {
+        incMatGraph.changeWeight(1, 5, 3);
+        assertEquals(0, incMatGraph.getEdgeIncidenceMatrix(6));
+    }
+
+    @Test
     public void dijkstraAdjacencyList() {
         List<String> sortedVertices = findShortestPaths(adjListGraph, 0);
         String n1 = "Vertex 0: 0";
         String n2 = "Vertex 1: 2";
         String n3 = "Vertex 2: 3";
         String n4 = "Vertex 3: 8";
+        List<String> expected = Arrays.asList(n1, n2, n3, n4);
+        assertEquals(expected, sortedVertices);
+    }
+
+    @Test
+    public void dijkstraAdjacencyListAnother() {
+        List<String> sortedVertices = findShortestPaths(adjListGraph, 1);
+        String n1 = "Vertex 1: 0";
+        String n2 = "Vertex 0: 2";
+        String n3 = "Vertex 2: 4";
+        String n4 = "Vertex 3: 9";
         List<String> expected = Arrays.asList(n1, n2, n3, n4);
         assertEquals(expected, sortedVertices);
     }
@@ -245,6 +317,18 @@ public class GraphTest {
     }
 
     @Test
+    public void dijkstraAdjacencyMatrixAnother() {
+        List<String> sortedVertices = findShortestPaths(adjMatGraph, 2);
+        String n1 = "Vertex 2: 0.0";
+        String n2 = "Vertex 0: 3.0";
+        String n3 = "Vertex 1: 4.0";
+        String n4 = "Vertex 3: 5.0";
+
+        List<String> expected = Arrays.asList(n1, n2, n3, n4);
+        assertEquals(expected, sortedVertices);
+    }
+
+    @Test
     public void dijkstraIncidenceMatrix() {
         List<String> sortedVertices = findShortestPaths(incMatGraph, 0);
         String n1 = "Vertex 0: 0.0";
@@ -252,6 +336,18 @@ public class GraphTest {
         String n3 = "Vertex 2: 3.0";
         String n4 = "Vertex 3: 6.0";
         String n5 = "Vertex 4: 7.0";
+        List<String> expected = Arrays.asList(n1, n2, n3, n4, n5);
+        assertEquals(expected, sortedVertices);
+    }
+
+    @Test
+    public void dijkstraIncidenceMatrixAnother() {
+        List<String> sortedVertices = findShortestPaths(incMatGraph, 3);
+        String n1 = "Vertex 3: 0.0";
+        String n2 = "Vertex 1: 4.0";
+        String n3 = "Vertex 0: 6.0";
+        String n4 = "Vertex 4: 9.0";
+        String n5 = "Vertex 2: 9.0";
         List<String> expected = Arrays.asList(n1, n2, n3, n4, n5);
         assertEquals(expected, sortedVertices);
     }
