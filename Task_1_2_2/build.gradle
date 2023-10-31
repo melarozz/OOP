@@ -3,7 +3,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'ru.nsu.yakovleva'
+group = 'ru.nsu.yakovleva.graph'
 version = '1.0-SNAPSHOT'
 
 repositories {
