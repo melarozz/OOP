@@ -33,7 +33,8 @@ public class Dijkstra {
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<Pair> queue = new PriorityQueue<>(Comparator.comparingInt(p -> p.dist));
+            PriorityQueue<Pair> queue = new PriorityQueue<>(Comparator.comparingInt(
+                    p -> p.dist));
             queue.add(new Pair(source, 0));
 
             boolean[] visited = new boolean[vert];
@@ -77,7 +78,8 @@ public class Dijkstra {
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<Pair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
+            PriorityQueue<Pair> queue = new PriorityQueue<>(Comparator.comparingDouble(
+                    p -> p.dist));
             queue.add(new Pair(source, 0));
 
             boolean[] visited = new boolean[vert];
@@ -129,7 +131,8 @@ public class Dijkstra {
             distances[source] = 0;
 
             // Create a priority queue to hold vertices based on their distances
-            PriorityQueue<Pair> queue = new PriorityQueue<>(Comparator.comparingDouble(p -> p.dist));
+            PriorityQueue<Pair> queue = new PriorityQueue<>(Comparator.comparingDouble(
+                    p -> p.dist));
             queue.add(new Pair(source, 0));
 
             boolean[] visited = new boolean[vert];
