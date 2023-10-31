@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -229,28 +229,13 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="types/AdjacencyList.html" title="class in ru.nsu.yakovleva.graph.types">AdjacencyList</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAdjacencyList()">getAdjacencyList</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get the adjacency list representation of the graph.</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="types/AdjacencyMatrix.html" title="class in ru.nsu.yakovleva.graph.types">AdjacencyMatrix</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAdjacencyMatrix()">getAdjacencyMatrix</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the adjacency matrix representation of the graph.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="init/WeightedEdge.html" title="class in ru.nsu.yakovleva.graph.init">WeightedEdge</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdgeAdjacencyList(int,int)">getEdgeAdjacencyList</a></span>&#8203;(int&nbsp;source,
-                    int&nbsp;destination)</code></th>
-<td class="colLast">
-<div class="block">Get the edge in the adjacency list representation.</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdgeAdjacencyMatrix(int,int)">getEdgeAdjacencyMatrix</a></span>&#8203;(int&nbsp;source,
                       int&nbsp;destination)</code></th>
@@ -258,35 +243,35 @@ extends java.lang.Object</pre>
 <div class="block">Get the weight of an edge in the adjacency matrix representation.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdgeCount()">getEdgeCount</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the number of edges in the graph.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdgeIncidenceMatrix(int)">getEdgeIncidenceMatrix</a></span>&#8203;(int&nbsp;index)</code></th>
 <td class="colLast">
 <div class="block">Get the weight of an edge in the incidence matrix representation.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="types/IncidenceMatrix.html" title="class in ru.nsu.yakovleva.graph.types">IncidenceMatrix</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getIncidenceMatrix()">getIncidenceMatrix</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the incidence matrix representation of the graph.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="Graph.MatrixType.html" title="enum in ru.nsu.yakovleva.graph">Graph.MatrixType</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMatrixType()">getMatrixType</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the matrix type (Adjacency Matrix, Adjacency List, or Incidence Matrix) of the graph.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertex(int)">getVertex</a></span>&#8203;(int&nbsp;vertex)</code></th>
 <td class="colLast">
@@ -294,21 +279,21 @@ extends java.lang.Object</pre>
  matrix or incidence matrix representation.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="init/WeightedEdge.html" title="class in ru.nsu.yakovleva.graph.init">WeightedEdge</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexAdjacencyList(int)">getVertexAdjacencyList</a></span>&#8203;(int&nbsp;vertex)</code></th>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexadjacencyMatrix(int)">getVertexadjacencyMatrix</a></span>&#8203;(int&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">Get the edges incident to a specific vertex in the adjacency list representation.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexCount()">getVertexCount</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the number of vertices in the graph.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeEdge(int,int)">removeEdge</a></span>&#8203;(int&nbsp;source,
           int&nbsp;destination)</code></th>
@@ -316,7 +301,7 @@ extends java.lang.Object</pre>
 <div class="block">Remove an edge from the graph.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeVertex(int)">removeVertex</a></span>&#8203;(int&nbsp;vertex)</code></th>
 <td class="colLast">
@@ -477,24 +462,6 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="getEdgeAdjacencyList(int,int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getEdgeAdjacencyList</h4>
-<pre class="methodSignature">public&nbsp;<a href="init/WeightedEdge.html" title="class in ru.nsu.yakovleva.graph.init">WeightedEdge</a>&nbsp;getEdgeAdjacencyList&#8203;(int&nbsp;source,
-                                         int&nbsp;destination)</pre>
-<div class="block">Get the edge in the adjacency list representation.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>source</code> - The source vertex of the edge.</dd>
-<dd><code>destination</code> - The destination vertex of the edge.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The edge object with weight.</dd>
-</dl>
-</li>
-</ul>
 <a id="getEdgeIncidenceMatrix(int)">
 <!--   -->
 </a>
@@ -528,13 +495,13 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="getVertexAdjacencyList(int)">
+<a id="getVertexadjacencyMatrix(int)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getVertexAdjacencyList</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="init/WeightedEdge.html" title="class in ru.nsu.yakovleva.graph.init">WeightedEdge</a>&gt;&nbsp;getVertexAdjacencyList&#8203;(int&nbsp;vertex)</pre>
+<h4>getVertexadjacencyMatrix</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;getVertexadjacencyMatrix&#8203;(int&nbsp;vertex)</pre>
 <div class="block">Get the edges incident to a specific vertex in the adjacency list representation.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -573,20 +540,6 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The adjacency matrix.</dd>
-</dl>
-</li>
-</ul>
-<a id="getAdjacencyList()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getAdjacencyList</h4>
-<pre class="methodSignature">public&nbsp;<a href="types/AdjacencyList.html" title="class in ru.nsu.yakovleva.graph.types">AdjacencyList</a>&nbsp;getAdjacencyList()</pre>
-<div class="block">Get the adjacency list representation of the graph.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The adjacency list.</dd>
 </dl>
 </li>
 </ul>
