@@ -12,7 +12,6 @@ public class Graph {
     private int vert; // Number of vertices
     private final MatrixType matrixType;
     private AdjacencyMatrix adjacencyMatrix;
-    //private adjacencyMatrix adjacencyMatrix;
     private IncidenceMatrix incidenceMatrix;
 
     /**

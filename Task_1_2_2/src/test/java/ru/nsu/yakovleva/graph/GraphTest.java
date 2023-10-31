@@ -3,10 +3,10 @@ package ru.nsu.yakovleva.graph;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.nsu.yakovleva.graph.algorithms.Dijkstra.findShortestPaths;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.ArrayIndexOutOfBoundsException;
 import java.util.Arrays;
@@ -14,7 +14,6 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.graph.init.GraphInitializer;
-import ru.nsu.yakovleva.graph.init.WeightedEdge;
 import ru.nsu.yakovleva.graph.types.AdjacencyMatrix;
 import ru.nsu.yakovleva.graph.types.IncidenceMatrix;
 
@@ -44,6 +43,17 @@ public class GraphTest {
             e.printStackTrace();
         }
     }
+    @Test
+    public void givenFileName_whenUsingFileUtils_thenFileData() {
+        String expectedData = "Hello, world!";
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("fileTest.txt").getFile());
+        String data = FileUtils.readFileToString(file, "UTF-8");
+
+        assertEquals(expectedData, data.trim());
+    }
+
 
     @Test
     public void testAdjacencyMatrixExists() {
