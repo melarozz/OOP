@@ -11,7 +11,6 @@ import java.lang.ArrayIndexOutOfBoundsException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.graph.init.GraphInitializer;
@@ -35,13 +34,16 @@ public class GraphTest {
         try {
             ClassLoader classLoader = getClass().getClassLoader();
 
-            String amPath = Objects.requireNonNull(classLoader.getResource("adjacency_matrix_input.txt")).getPath();
+            String amPath = Objects.requireNonNull(
+                    classLoader.getResource("adjacency_matrix_input.txt")).getPath();
             adjMatGraph = GraphInitializer.initAdjMatGraph(amPath, Graph.MatrixType.ADJ_MATR);
 
-            String alPath = Objects.requireNonNull(classLoader.getResource("adjacency_input.txt")).getPath();
+            String alPath = Objects.requireNonNull(
+                    classLoader.getResource("adjacency_input.txt")).getPath();
             adjListGraph = GraphInitializer.initAdjListGraph(alPath, Graph.MatrixType.ADJ_LIST);
 
-            String imPath = Objects.requireNonNull(classLoader.getResource("incidence_input.txt")).getPath();
+            String imPath = Objects.requireNonNull(
+                    classLoader.getResource("incidence_input.txt")).getPath();
             incMatGraph = GraphInitializer.initIncMatGraph(imPath, Graph.MatrixType.INC_MATR);
 
         } catch (FileNotFoundException e) {
@@ -50,7 +52,7 @@ public class GraphTest {
     }
 
     @Test
-    public void testNonExistingFile(){
+    public void testNonExistingFile() {
         ClassLoader classLoader = getClass().getClassLoader();
         assertThrows(NullPointerException.class, () -> {
             Objects.requireNonNull(classLoader.getResource("doesntexist.txt")).getPath();
