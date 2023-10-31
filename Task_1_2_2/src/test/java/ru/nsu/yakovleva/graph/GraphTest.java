@@ -6,11 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.nsu.yakovleva.graph.algorithms.Dijkstra.findShortestPaths;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.ArrayIndexOutOfBoundsException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.graph.init.GraphInitializer;
@@ -32,17 +33,31 @@ public class GraphTest {
     @BeforeEach
     public void setup() {
         try {
-            String amPath = "src/main/java/adjacency_matrix_input.txt";
+            ClassLoader classLoader = getClass().getClassLoader();
+
+            String amPath = Objects.requireNonNull(classLoader.getResource("adjacency_matrix_input.txt")).getPath();
             adjMatGraph = GraphInitializer.initAdjMatGraph(amPath, Graph.MatrixType.ADJ_MATR);
-            String alPath = "src/main/java/adjacency_input.txt";
+
+            String alPath = Objects.requireNonNull(classLoader.getResource("adjacency_input.txt")).getPath();
             adjListGraph = GraphInitializer.initAdjListGraph(alPath, Graph.MatrixType.ADJ_LIST);
-            String imPath = "src/main/java/incidence_input.txt";
+
+            String imPath = Objects.requireNonNull(classLoader.getResource("incidence_input.txt")).getPath();
             incMatGraph = GraphInitializer.initIncMatGraph(imPath, Graph.MatrixType.INC_MATR);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void testNonExistingFile(){
+        ClassLoader classLoader = getClass().getClassLoader();
+        assertThrows(NullPointerException.class, () -> {
+            Objects.requireNonNull(classLoader.getResource("doesntexist.txt")).getPath();
+        });
+
+    }
+
 
 
     @Test
