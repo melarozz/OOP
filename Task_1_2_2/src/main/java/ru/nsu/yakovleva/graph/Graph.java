@@ -1,7 +1,6 @@
 package ru.nsu.yakovleva.graph;
 
 import java.util.List;
-
 import ru.nsu.yakovleva.graph.types.AdjacencyMatrix;
 import ru.nsu.yakovleva.graph.types.IncidenceMatrix;
 

@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
-
 import ru.nsu.yakovleva.graph.Graph;
 
 /**
@@ -79,6 +78,7 @@ public class Dijkstra {
 
         return result;
     }
+
     /**
      * Private inner class to represent a pair of vertex and its distance for priority queue.
      */
