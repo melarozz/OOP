@@ -23,14 +23,19 @@ public class GraphInitializer {
     public static Graph initAdjListGraph(String inputFile, Graph.MatrixType matrixType)
             throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(inputFile));
-        int vertexCount = scanner.nextInt();
-        Graph graph = new Graph(vertexCount, matrixType);
+        int v = scanner.nextInt();
+        Graph graph = new Graph(v, matrixType);
+        for (int i = 0; i < v; i++) {
+            for (int j = 0; j < v; j++) {
+                graph.addEdge(i, j, 0);
+            }
+        }
 
         while (scanner.hasNext()) {
             int source = scanner.nextInt();
             int destination = scanner.nextInt();
             double weight = scanner.nextDouble();
-            graph.addEdge(source, destination, weight);
+            graph.changeWeight(source, destination, weight);
         }
         scanner.close();
 

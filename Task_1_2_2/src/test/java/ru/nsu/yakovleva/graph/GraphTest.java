@@ -15,7 +15,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.graph.init.GraphInitializer;
 import ru.nsu.yakovleva.graph.init.WeightedEdge;
-import ru.nsu.yakovleva.graph.types.AdjacencyList;
 import ru.nsu.yakovleva.graph.types.AdjacencyMatrix;
 import ru.nsu.yakovleva.graph.types.IncidenceMatrix;
 
@@ -83,8 +82,6 @@ public class GraphTest {
         assertEquals(5, adjMatGraph.getEdgeCount());
     }
 
-
-
     @Test
     public void testAdjacencyListEdgeAddition() {
         assertEquals(4, adjListGraph.getEdgeCount());
@@ -107,8 +104,8 @@ public class GraphTest {
 
     @Test
     public void testAdjacencyList() {
-        AdjacencyList adjacencyList = adjListGraph.getAdjacencyList();
-        assertEquals(5, adjacencyList.get(2, 3)); // Check the weight of the edge
+        AdjacencyMatrix adjacencyMatrix = adjListGraph.getAdjacencyMatrix();
+        assertEquals(5, adjacencyMatrix.get(2, 3)); // Check the weight of the edge
     }
 
     @Test
@@ -218,9 +215,7 @@ public class GraphTest {
 
     @Test
     public void getEdgeAdjacencyList() {
-        WeightedEdge resultEdge1 = adjListGraph.getEdgeAdjacencyList(1, 2);
-        assertNotNull(resultEdge1);
-        assertEquals(4, resultEdge1.getWeight());
+        assertEquals(4.0, adjListGraph.getEdgeAdjacencyMatrix(1, 2));
     }
 
     @Test
@@ -239,28 +234,20 @@ public class GraphTest {
 
     @Test
     public void getVertexAdjacencyList() {
-        List<WeightedEdge> neighbors1 = adjListGraph.getVertexAdjacencyList(0);
-        assertNotNull(neighbors1);
-        assertEquals(2, neighbors1.size());
-        assertEquals(1, neighbors1.get(0).getDestination());
-        assertEquals(2, neighbors1.get(0).getWeight());
-        assertEquals(2, neighbors1.get(1).getDestination());
-        assertEquals(3, neighbors1.get(1).getWeight());
+        List<Integer> neighbors1 = adjListGraph.getVertex(0);
+        assertIterableEquals(List.of(1, 2), neighbors1);
     }
 
     @Test
     public void changeWeightOfEdgeAdjacencyList() {
         adjListGraph.changeWeight(0, 1, 3);
-        WeightedEdge edge1 = new WeightedEdge(1, 3);
-        WeightedEdge result = adjListGraph.getEdgeAdjacencyList(0, 1);
-        assertEquals(edge1.getWeight(), result.getWeight());
+        assertEquals(3, adjListGraph.getEdgeAdjacencyMatrix(0, 1));
     }
 
     @Test
     public void changeWeightOfEdgeAdjacencyListNonExist() {
-        adjListGraph.changeWeight(0, 4, 3);
-        WeightedEdge result = adjListGraph.getEdgeAdjacencyList(0, 4);
-        assertNull(result);
+        adjListGraph.changeWeight(0, 4, 3); //non-existing
+        assertEquals(0, adjListGraph.getEdgeAdjacencyMatrix(0, 4));
     }
 
     @Test
@@ -290,10 +277,10 @@ public class GraphTest {
     @Test
     public void dijkstraAdjacencyList() {
         List<String> sortedVertices = findShortestPaths(adjListGraph, 0);
-        String n1 = "Vertex 0: 0";
-        String n2 = "Vertex 1: 2";
-        String n3 = "Vertex 2: 3";
-        String n4 = "Vertex 3: 8";
+        String n1 = "Vertex 0: 0.0";
+        String n2 = "Vertex 1: 2.0";
+        String n3 = "Vertex 2: 3.0";
+        String n4 = "Vertex 3: 8.0";
         List<String> expected = Arrays.asList(n1, n2, n3, n4);
         assertEquals(expected, sortedVertices);
     }
@@ -301,10 +288,10 @@ public class GraphTest {
     @Test
     public void dijkstraAdjacencyListAnother() {
         List<String> sortedVertices = findShortestPaths(adjListGraph, 1);
-        String n1 = "Vertex 1: 0";
-        String n2 = "Vertex 0: 2";
-        String n3 = "Vertex 2: 4";
-        String n4 = "Vertex 3: 9";
+        String n1 = "Vertex 1: 0.0";
+        String n2 = "Vertex 0: 2.0";
+        String n3 = "Vertex 2: 4.0";
+        String n4 = "Vertex 3: 9.0";
         List<String> expected = Arrays.asList(n1, n2, n3, n4);
         assertEquals(expected, sortedVertices);
     }
