@@ -1,9 +1,14 @@
 package ru.nsu.yakovleva.graph;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.nsu.yakovleva.graph.algorithms.Dijkstra.findShortestPaths;
 
 import java.io.FileNotFoundException;
+import java.lang.ArrayIndexOutOfBoundsException;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -350,6 +355,27 @@ public class GraphTest {
         String n5 = "Vertex 2: 9.0";
         List<String> expected = Arrays.asList(n1, n2, n3, n4, n5);
         assertEquals(expected, sortedVertices);
+    }
+
+    @Test
+    public void dijkstraIncidenceMatrixBreak() {
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            findShortestPaths(incMatGraph, -1);
+        });
+    }
+
+    @Test
+    public void dijkstraAdjacencyMatrixBreak() {
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            findShortestPaths(adjMatGraph, -1);
+        });
+    }
+
+    @Test
+    public void dijkstraAdjacencyListBreak() {
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            findShortestPaths(adjListGraph, -1);
+        });
     }
 
 
