@@ -381,6 +381,43 @@ public class GraphTest {
             findShortestPaths(adjListGraph, -1);
         });
     }
+    @Test
+    public void measureDijkstraTime() {
+        int numIterations = 100; // Adjust the number of iterations as needed
 
+        long adjacencyMatrixTime = 0;
+        long adjacencyListTime = 0;
+        long incidenceMatrixTime = 0;
+
+        for (int i = 0; i < numIterations; i++) {
+            long startTime = System.nanoTime();
+            findShortestPaths(adjMatGraph, 0);
+            long endTime = System.nanoTime();
+            adjacencyMatrixTime += (endTime - startTime);
+
+            startTime = System.nanoTime();
+            findShortestPaths(adjListGraph, 0);
+            endTime = System.nanoTime();
+            adjacencyListTime += (endTime - startTime);
+
+            startTime = System.nanoTime();
+            findShortestPaths(incMatGraph, 0);
+            endTime = System.nanoTime();
+            incidenceMatrixTime += (endTime - startTime);
+        }
+
+        adjacencyMatrixTime /= numIterations;
+        adjacencyListTime /= numIterations;
+        incidenceMatrixTime /= numIterations;
+
+        System.out.println("Average Dijkstra execution time with Adjacency Matrix: "
+                + adjacencyMatrixTime + " nanoseconds.");
+        System.out.println("Average Dijkstra execution time with Adjacency List: "
+                + adjacencyListTime + " nanoseconds.");
+        System.out.println("Average Dijkstra execution time with Incidence Matrix: "
+                + incidenceMatrixTime + " nanoseconds.");
+        //the Incidence Matrix is always the slowest, the Adjacency List is usually the fastest,
+        //but not so much faster than Adjacency Matrix
+    }
 
 }
