@@ -381,6 +381,7 @@ public class GraphTest {
             findShortestPaths(adjListGraph, -1);
         });
     }
+
     @Test
     public void measureDijkstraTime() {
         int numIterations = 100; // Adjust the number of iterations as needed
