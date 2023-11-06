@@ -24,7 +24,7 @@ public class GraphTest {
 
     /**
      * Initializing graphs.
-     * @throws FileNotFoundException
+     *
      */
     @BeforeEach
     public void testInitialize() throws FileNotFoundException {
