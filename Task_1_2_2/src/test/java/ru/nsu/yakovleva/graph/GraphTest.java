@@ -22,6 +22,10 @@ public class GraphTest {
     public Graph adjListGraph;
     public Graph incMatrGraph;
 
+    /**
+     * Initializing graphs.
+     * @throws FileNotFoundException
+     */
     @BeforeEach
     public void testInitialize() throws FileNotFoundException {
         ClassLoader classLoader = getClass().getClassLoader();
@@ -75,7 +79,7 @@ public class GraphTest {
     }
 
     @Test
-    public void removeEdge(){
+    public void removeEdge() {
         assertEquals(4, adjMatrGraph.getEdgeCount());
         adjMatrGraph.removeEdge(0, 1);
         assertEquals(3, adjMatrGraph.getEdgeCount());
@@ -90,7 +94,7 @@ public class GraphTest {
     }
 
     @Test
-    public void addVertex(){
+    public void addVertex() {
         assertEquals(4, adjMatrGraph.getVertexCount());
         adjMatrGraph.addVertex();
         assertEquals(5, adjMatrGraph.getVertexCount());
@@ -105,7 +109,7 @@ public class GraphTest {
     }
 
     @Test
-    public void removeVertex(){
+    public void removeVertex() {
         assertEquals(4, adjMatrGraph.getVertexCount());
         assertEquals(4, adjMatrGraph.getEdgeCount());
         adjMatrGraph.removeVertex(1);
@@ -126,14 +130,14 @@ public class GraphTest {
     }
 
     @Test
-    public void changeWeight(){
-        assertEquals(2, adjMatrGraph.getEdgeWeight(0,1));
+    public void changeWeight() {
+        assertEquals(2, adjMatrGraph.getEdgeWeight(0, 1));
         adjMatrGraph.changeWeight(0, 1, 3);
-        assertEquals(3, adjMatrGraph.getEdgeWeight(0,1));
+        assertEquals(3, adjMatrGraph.getEdgeWeight(0, 1));
 
-        assertEquals(2, adjListGraph.getEdgeWeight(0,1));
+        assertEquals(2, adjListGraph.getEdgeWeight(0, 1));
         adjListGraph.changeWeight(0, 1, 3);
-        assertEquals(3, adjListGraph.getEdgeWeight(0,1));
+        assertEquals(3, adjListGraph.getEdgeWeight(0, 1));
 
         assertEquals(2, incMatrGraph.getEdgeWeight(0, 1));
         incMatrGraph.changeWeight(0, 1, 3);
