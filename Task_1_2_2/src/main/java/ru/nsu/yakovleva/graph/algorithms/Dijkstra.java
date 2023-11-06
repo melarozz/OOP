@@ -20,31 +20,19 @@ public class Dijkstra {
      * @return A list of strings representing the shortest paths.
      */
     public static List<String> findShortestPaths(Graph graph, int source) {
-        Graph.MatrixType matrixType = graph.getMatrixType();
         int vert = graph.getVertexCount();
-        Graph newGraph = new Graph(vert, Graph.MatrixType.ADJ_MATR);
-        if (matrixType == Graph.MatrixType.INC_MATR) {
-            for (int i = 0; i < vert; i++) {
-                for (int j = 0; j < vert; j++) {
-                    double weight = graph.getIncidenceMatrix().matrix[i][j];
-                    if (weight != 0.0) {
-                        newGraph.addEdge(i, j, weight);
-                    }
-                }
-            }
-            graph = newGraph;
-        }
-
         List<String> result = new ArrayList<>();
 
-        // Initialize distances with infinity and set the source vertex distance to 0
+        if (source < 0 || source >= vert) {
+            throw new IllegalArgumentException("Source vertex is out of range.");
+        }
+
         double[] distances = new double[vert];
         Arrays.fill(distances, Double.POSITIVE_INFINITY);
         distances[source] = 0;
 
-        // Create a priority queue to hold vertices based on their distances
-        PriorityQueue<Pair> queue = new PriorityQueue<>(Comparator.comparingDouble(
-                p -> p.dist));
+        PriorityQueue<Pair> queue = new PriorityQueue<>(
+                Comparator.comparingDouble(p -> p.dist));
         queue.add(new Pair(source, 0));
 
         boolean[] visited = new boolean[vert];
@@ -60,21 +48,22 @@ public class Dijkstra {
             visited[currentVertex] = true;
             result.add("Vertex " + currentVertex + ": " + distances[currentVertex]);
 
-            List<Integer> neighbors = graph.getVertex(currentVertex);
+            List<Integer> neighbors = graph.getAdjacentVertices(currentVertex);
 
             for (int neighbor : neighbors) {
-                double edgeWeight = graph.getEdgeAdjacencyMatrix(currentVertex, neighbor);
+                double edgeWeight = graph.getEdgeWeight(currentVertex, neighbor);
 
                 double newDistance = distances[currentVertex] + edgeWeight;
 
                 if (newDistance < distances[neighbor]) {
                     distances[neighbor] = newDistance;
-                    queue.add(new Pair(neighbor, (int) newDistance));
+                    queue.add(new Pair(neighbor, newDistance));
                 }
             }
         }
 
-        result.sort(Comparator.comparing(s -> Double.parseDouble(s.split(":")[1].trim())));
+        result.sort(Comparator.comparing(
+                s -> Double.parseDouble(s.split(":")[1].trim())));
 
         return result;
     }
@@ -84,14 +73,11 @@ public class Dijkstra {
      */
     private static class Pair {
         int vertex;
-        int dist;
+        double dist;
 
-        Pair(int vertex, int dist) {
+        Pair(int vertex, double dist) {
             this.vertex = vertex;
             this.dist = dist;
         }
     }
 }
-
-
-
