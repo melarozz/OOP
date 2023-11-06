@@ -1,8 +1,7 @@
 package ru.nsu.yakovleva.graph;
 
-import ru.nsu.yakovleva.graph.types.GraphRepresentation;
-
 import java.util.List;
+import ru.nsu.yakovleva.graph.types.GraphRepresentation;
 
 /**
  * Graph class representing a graph with multiple representations.

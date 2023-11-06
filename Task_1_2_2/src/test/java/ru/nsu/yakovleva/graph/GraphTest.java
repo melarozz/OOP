@@ -14,10 +14,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.graph.init.GraphInitializer;
 
+/**
+ * Test class.
+ */
 public class GraphTest {
     public Graph adjMatrGraph;
     public Graph adjListGraph;
     public Graph incMatrGraph;
+
     @BeforeEach
     public void testInitialize() throws FileNotFoundException {
         ClassLoader classLoader = getClass().getClassLoader();
@@ -56,32 +60,32 @@ public class GraphTest {
     }
 
     @Test
-    public void addEdge(){
+    public void addEdge() {
         assertEquals(4, adjMatrGraph.getEdgeCount());
-        adjMatrGraph.addEdge(0,3,4);
+        adjMatrGraph.addEdge(0, 3, 4);
         assertEquals(5, adjMatrGraph.getEdgeCount());
 
         assertEquals(4, adjListGraph.getEdgeCount());
-        adjListGraph.addEdge(0,3,4);
+        adjListGraph.addEdge(0, 3, 4);
         assertEquals(5, adjListGraph.getEdgeCount());
 
         assertEquals(5, incMatrGraph.getEdgeCount());
-        incMatrGraph.addEdge(1,5,4);
+        incMatrGraph.addEdge(1, 5, 4);
         assertEquals(6, incMatrGraph.getEdgeCount());
     }
 
     @Test
     public void removeEdge(){
         assertEquals(4, adjMatrGraph.getEdgeCount());
-        adjMatrGraph.removeEdge(0,1);
+        adjMatrGraph.removeEdge(0, 1);
         assertEquals(3, adjMatrGraph.getEdgeCount());
 
         assertEquals(4, adjListGraph.getEdgeCount());
-        adjListGraph.removeEdge(0,1);
+        adjListGraph.removeEdge(0, 1);
         assertEquals(3, adjListGraph.getEdgeCount());
 
         assertEquals(5, incMatrGraph.getEdgeCount());
-        incMatrGraph.removeEdge(1,3);
+        incMatrGraph.removeEdge(1, 3);
         assertEquals(4, incMatrGraph.getEdgeCount());
     }
 
@@ -124,11 +128,11 @@ public class GraphTest {
     @Test
     public void changeWeight(){
         assertEquals(2, adjMatrGraph.getEdgeWeight(0,1));
-        adjMatrGraph.changeWeight(0,1,3);
+        adjMatrGraph.changeWeight(0, 1, 3);
         assertEquals(3, adjMatrGraph.getEdgeWeight(0,1));
 
         assertEquals(2, adjListGraph.getEdgeWeight(0,1));
-        adjListGraph.changeWeight(0,1,3);
+        adjListGraph.changeWeight(0, 1, 3);
         assertEquals(3, adjListGraph.getEdgeWeight(0,1));
 
         assertEquals(2, incMatrGraph.getEdgeWeight(0, 1));
