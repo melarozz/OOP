@@ -133,7 +133,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">GraphInitializer</span>
 extends java.lang.Object</pre>
-<div class="block">GraphInitializer class provides methods to initialize graphs from input files.</div>
+<div class="block">Class for initializing graph.</div>
 </li>
 </ul>
 </div>
@@ -177,24 +177,22 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static <a href="../Graph.html" title="class in ru.nsu.yakovleva.graph">Graph</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initAdjListGraph(java.lang.String,ru.nsu.yakovleva.graph.Graph.MatrixType)">initAdjListGraph</a></span>&#8203;(java.lang.String&nbsp;inputFile,
-                <a href="../Graph.MatrixType.html" title="enum in ru.nsu.yakovleva.graph">Graph.MatrixType</a>&nbsp;matrixType)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initAdjacencyListGraph(java.lang.String)">initAdjacencyListGraph</a></span>&#8203;(java.lang.String&nbsp;inputFile)</code></th>
 <td class="colLast">
-<div class="block">Initialize an adjacency list graph from an input file.</div>
+<div class="block">Initialize an adjacency list graph from an input file and
+ convert it to an adjacency matrix.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static <a href="../Graph.html" title="class in ru.nsu.yakovleva.graph">Graph</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initAdjMatGraph(java.lang.String,ru.nsu.yakovleva.graph.Graph.MatrixType)">initAdjMatGraph</a></span>&#8203;(java.lang.String&nbsp;inputFile,
-               <a href="../Graph.MatrixType.html" title="enum in ru.nsu.yakovleva.graph">Graph.MatrixType</a>&nbsp;matrixType)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initAdjacencyMatrixGraph(java.lang.String)">initAdjacencyMatrixGraph</a></span>&#8203;(java.lang.String&nbsp;inputFile)</code></th>
 <td class="colLast">
 <div class="block">Initialize an adjacency matrix graph from an input file.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static <a href="../Graph.html" title="class in ru.nsu.yakovleva.graph">Graph</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initIncMatGraph(java.lang.String,ru.nsu.yakovleva.graph.Graph.MatrixType)">initIncMatGraph</a></span>&#8203;(java.lang.String&nbsp;inputFile,
-               <a href="../Graph.MatrixType.html" title="enum in ru.nsu.yakovleva.graph">Graph.MatrixType</a>&nbsp;matrixType)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initIncidenceMatrixGraph(java.lang.String)">initIncidenceMatrixGraph</a></span>&#8203;(java.lang.String&nbsp;inputFile)</code></th>
 <td class="colLast">
 <div class="block">Initialize an incidence matrix graph from an input file.</div>
 </td>
@@ -242,67 +240,59 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="initAdjListGraph(java.lang.String,ru.nsu.yakovleva.graph.Graph.MatrixType)">
+<a id="initAdjacencyMatrixGraph(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>initAdjListGraph</h4>
-<pre class="methodSignature">public static&nbsp;<a href="../Graph.html" title="class in ru.nsu.yakovleva.graph">Graph</a>&nbsp;initAdjListGraph&#8203;(java.lang.String&nbsp;inputFile,
-                                     <a href="../Graph.MatrixType.html" title="enum in ru.nsu.yakovleva.graph">Graph.MatrixType</a>&nbsp;matrixType)
-                              throws java.io.FileNotFoundException</pre>
-<div class="block">Initialize an adjacency list graph from an input file.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>inputFile</code> - The path to the input file.</dd>
-<dd><code>matrixType</code> - The type of matrix representation to create
-                    (e.g., Adjacency List, Adjacency Matrix, Incidence Matrix).</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The initialized graph.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.FileNotFoundException</code> - if the input file is not found.</dd>
-</dl>
-</li>
-</ul>
-<a id="initAdjMatGraph(java.lang.String,ru.nsu.yakovleva.graph.Graph.MatrixType)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>initAdjMatGraph</h4>
-<pre class="methodSignature">public static&nbsp;<a href="../Graph.html" title="class in ru.nsu.yakovleva.graph">Graph</a>&nbsp;initAdjMatGraph&#8203;(java.lang.String&nbsp;inputFile,
-                                    <a href="../Graph.MatrixType.html" title="enum in ru.nsu.yakovleva.graph">Graph.MatrixType</a>&nbsp;matrixType)
-                             throws java.io.FileNotFoundException</pre>
+<h4>initAdjacencyMatrixGraph</h4>
+<pre class="methodSignature">public static&nbsp;<a href="../Graph.html" title="class in ru.nsu.yakovleva.graph">Graph</a>&nbsp;initAdjacencyMatrixGraph&#8203;(java.lang.String&nbsp;inputFile)
+                                      throws java.io.FileNotFoundException</pre>
 <div class="block">Initialize an adjacency matrix graph from an input file.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>inputFile</code> - The path to the input file.</dd>
-<dd><code>matrixType</code> - The type of matrix representation to create
-                    (e.g., Adjacency List, Adjacency Matrix, Incidence Matrix).</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The initialized graph.</dd>
+<dd>The initialized adjacency matrix graph.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.io.FileNotFoundException</code> - if the input file is not found.</dd>
 </dl>
 </li>
 </ul>
-<a id="initIncMatGraph(java.lang.String,ru.nsu.yakovleva.graph.Graph.MatrixType)">
+<a id="initIncidenceMatrixGraph(java.lang.String)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
-<h4>initIncMatGraph</h4>
-<pre class="methodSignature">public static&nbsp;<a href="../Graph.html" title="class in ru.nsu.yakovleva.graph">Graph</a>&nbsp;initIncMatGraph&#8203;(java.lang.String&nbsp;inputFile,
-                                    <a href="../Graph.MatrixType.html" title="enum in ru.nsu.yakovleva.graph">Graph.MatrixType</a>&nbsp;matrixType)
-                             throws java.io.FileNotFoundException</pre>
+<h4>initIncidenceMatrixGraph</h4>
+<pre class="methodSignature">public static&nbsp;<a href="../Graph.html" title="class in ru.nsu.yakovleva.graph">Graph</a>&nbsp;initIncidenceMatrixGraph&#8203;(java.lang.String&nbsp;inputFile)
+                                      throws java.io.FileNotFoundException</pre>
 <div class="block">Initialize an incidence matrix graph from an input file.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>inputFile</code> - The path to the input file.</dd>
-<dd><code>matrixType</code> - The type of matrix representation to create
-                    (e.g., Adjacency List, Adjacency Matrix, Incidence Matrix).</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The initialized graph.</dd>
+<dd>The initialized incidence matrix graph.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.FileNotFoundException</code> - if the input file is not found.</dd>
+</dl>
+</li>
+</ul>
+<a id="initAdjacencyListGraph(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>initAdjacencyListGraph</h4>
+<pre class="methodSignature">public static&nbsp;<a href="../Graph.html" title="class in ru.nsu.yakovleva.graph">Graph</a>&nbsp;initAdjacencyListGraph&#8203;(java.lang.String&nbsp;inputFile)
+                                    throws java.io.FileNotFoundException</pre>
+<div class="block">Initialize an adjacency list graph from an input file and
+ convert it to an adjacency matrix.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>inputFile</code> - The path to the input file.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The initialized adjacency matrix graph.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.io.FileNotFoundException</code> - if the input file is not found.</dd>
 </dl>
