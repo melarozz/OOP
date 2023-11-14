@@ -1,5 +1,6 @@
 package ru.nsu.yakovleva.string;
 
+import java.io.File;
 import java.io.IOException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -28,21 +29,23 @@ public class SubstringFinderTest {
     public void testEmptyFile() throws IOException {
         int[] indexes = SubstringFinder.boyerMooreSearch(
                 "emptyfile.txt", "pattern");
-        Assertions.assertArrayEquals(new int[]{-1}, indexes);
+        Assertions.assertEquals(0, indexes.length);
     }
 
     @Test
     public void testSearchInLargeFile10Mb() throws IOException {
         int[] indexes = SubstringFinder.boyerMooreSearch(
                 "large-file.txt", "text");
-        Assertions.assertNotEquals(-1, indexes[0]);
+        Assertions.assertEquals(0, indexes.length);
+        File f = new File("found_indexes.txt");
+        Assertions.assertTrue(f.exists());
     }
 
     @Test
     public void testNonExistingPattern() throws IOException {
         int[] indexes = SubstringFinder.boyerMooreSearch(
                 "input.txt", "nonexistent");
-        Assertions.assertArrayEquals(new int[]{-1}, indexes);
+        Assertions.assertEquals(0, indexes.length);
     }
 
     //字符串
