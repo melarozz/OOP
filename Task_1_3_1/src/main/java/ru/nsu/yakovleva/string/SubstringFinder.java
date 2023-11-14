@@ -55,7 +55,8 @@ public class SubstringFinder {
         FileWriter outputFile = null;
 
         // Use try-with-resources to ensure the BufferedReader is properly closed
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
+            inputStream, StandardCharsets.UTF_8))) {
             // Read data from the resource file into the buffer
 
             while ((bytesRead = reader.read(buffer)) != -1) {
@@ -125,9 +126,9 @@ public class SubstringFinder {
 
     /**
      * Writes found indexes to file if neccessary.
-     * @param outputFile
-     * @param indexes
-     * @throws IOException
+     * @param outputFile output file.
+     * @param indexes found indexes.
+     * @throws IOException if file gives error.
      */
     private static void writeIndexesToFile(FileWriter outputFile, List<Integer> indexes) throws IOException {
         for (int index : indexes) {
