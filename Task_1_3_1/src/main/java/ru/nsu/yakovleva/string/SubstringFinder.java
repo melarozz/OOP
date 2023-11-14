@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class SubstringFinder {
         FileWriter outputFile = null;
 
         // Use try-with-resources to ensure the BufferedReader is properly closed
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
             // Read data from the resource file into the buffer
 
             while ((bytesRead = reader.read(buffer)) != -1) {
