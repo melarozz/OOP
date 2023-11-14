@@ -126,11 +126,13 @@ public class SubstringFinder {
 
     /**
      * Writes found indexes to file if neccessary.
+     *
      * @param outputFile output file.
      * @param indexes found indexes.
      * @throws IOException if file gives error.
      */
-    private static void writeIndexesToFile(FileWriter outputFile, List<Integer> indexes) throws IOException {
+    private static void writeIndexesToFile(
+        FileWriter outputFile, List<Integer> indexes) throws IOException {
         for (int index : indexes) {
             outputFile.write(Integer.toString(index));
             outputFile.write("\n");
