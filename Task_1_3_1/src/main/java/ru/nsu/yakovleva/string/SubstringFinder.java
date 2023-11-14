@@ -19,7 +19,7 @@ public class SubstringFinder {
      * @param resourceName The name of the resource file to search within.
      * @param substring    The substring to search for.
      * @return An array of integers representing the starting indexes
-     * of found substrings or [-1] if none are found.
+     *         of found substrings or [-1] if none are found.
      * @throws IOException If there is an error reading the resource file.
      */
     public static int[] boyerMooreSearch(

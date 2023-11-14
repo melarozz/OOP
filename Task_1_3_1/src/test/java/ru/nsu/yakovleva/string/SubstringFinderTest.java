@@ -1,8 +1,9 @@
 package ru.nsu.yakovleva.string;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
 import java.io.IOException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 
 /**
  * Test class.
@@ -31,19 +32,11 @@ public class SubstringFinderTest {
     }
 
     @Test
-    public void testSearchInLargeFile10MB() throws IOException {
+    public void testSearchInLargeFile10Mb() throws IOException {
         int[] indexes = SubstringFinder.boyerMooreSearch(
                 "large-file.txt", "text");
         Assertions.assertNotEquals(-1, indexes[0]);
     }
-
-//    @Test
-//    public void testSearchInLargeFile100MB() throws IOException {
-//        int[] indexes = SubstringFinder.boyerMooreSearch(
-//                "more-large-file.txt", "text");
-//        Assertions.assertNotEquals(-1, indexes[0]);
-//    }
-
 
     @Test
     public void testNonExistingPattern() throws IOException {
