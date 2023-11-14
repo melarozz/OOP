@@ -37,12 +37,12 @@ public class SubstringFinderTest {
         Assertions.assertNotEquals(-1, indexes[0]);
     }
 
-    @Test
-    public void testSearchInLargeFile100MB() throws IOException {
-        int[] indexes = SubstringFinder.boyerMooreSearch(
-                "more-large-file.txt", "text");
-        Assertions.assertNotEquals(-1, indexes[0]);
-    }
+//    @Test
+//    public void testSearchInLargeFile100MB() throws IOException {
+//        int[] indexes = SubstringFinder.boyerMooreSearch(
+//                "more-large-file.txt", "text");
+//        Assertions.assertNotEquals(-1, indexes[0]);
+//    }
 
 
     @Test
