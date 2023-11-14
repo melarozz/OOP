@@ -51,12 +51,12 @@ public class SubstringFinder {
         List<Integer> foundIndexes = new ArrayList<>();
         int countIdx = 0;
 
-        File file = new File("src/main/resources/found_indexes.txt");
+        File file = new File("found_indexes.txt");
         FileWriter outputFile = null;
 
         // Use try-with-resources to ensure the BufferedReader is properly closed
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-            inputStream, StandardCharsets.UTF_8))) {
+                inputStream, StandardCharsets.UTF_8))) {
             // Read data from the resource file into the buffer
 
             while ((bytesRead = reader.read(buffer)) != -1) {
@@ -99,16 +99,7 @@ public class SubstringFinder {
             }
         }
 
-        // If no substrings are found, return an array containing -1
-        if (foundIndexes.isEmpty() && outputFile == null) {
-            return new int[]{-1};
-        } else if (outputFile != null) {
-            foundIndexes.add(-2);
-            // Convert the list of found indexes to an array of integers
-            return foundIndexes.stream().mapToInt(Integer::intValue).toArray();
-        } else {
-            return foundIndexes.stream().mapToInt(Integer::intValue).toArray();
-        }
+        return foundIndexes.stream().mapToInt(Integer::intValue).toArray();
     }
 
     /**
@@ -132,7 +123,7 @@ public class SubstringFinder {
      * @throws IOException if file gives error.
      */
     private static void writeIndexesToFile(
-        FileWriter outputFile, List<Integer> indexes) throws IOException {
+            FileWriter outputFile, List<Integer> indexes) throws IOException {
         for (int index : indexes) {
             outputFile.write(Integer.toString(index));
             outputFile.write("\n");
