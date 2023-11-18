@@ -55,11 +55,11 @@ class RecordBookTest {
 
         assertEquals(8, grades.size());
 
-        assertEquals("Discrete Mathematics", grades.get(0).subjectName());
-        assertEquals(5, grades.get(0).grade());
-        assertEquals("11.01.2023", grades.get(0).dateOfPassing());
-        assertEquals(1, grades.get(0).semester());
-        assertEquals("Stukachev A.I.", grades.get(0).teacherFullName());
+        assertEquals("Discrete Mathematics", grades.get(0).getSubjectName());
+        assertEquals(5, grades.get(0).getGrade());
+        assertEquals("11.01.2023", grades.get(0).getDateOfPassing());
+        assertEquals(1, grades.get(0).getSemester());
+        assertEquals("Stukachev A.I.", grades.get(0).getTeacherFullName());
     }
 
     @Test

@@ -7,6 +7,8 @@ import java.util.List;
  * Class for grades of a student.
  */
 class Grades {
+
+
     private final List<Grade> gradeList;
 
     /**

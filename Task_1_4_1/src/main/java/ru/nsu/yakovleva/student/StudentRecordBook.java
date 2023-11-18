@@ -30,7 +30,7 @@ class StudentRecordBook {
         int totalCredits = 0;
 
         for (Grade grade : allGrades) {
-            Integer gradeValue = grade.grade();
+            Integer gradeValue = grade.getGrade();
             totalGradePoints += gradeValue;
             totalCredits += 1;
         }
@@ -52,13 +52,13 @@ class StudentRecordBook {
         int totalSubjects = 0;
 
         for (Grade grade : allGrades) {
-            if (grade.grade().equals(5)) {
+            if (grade.getGrade().equals(5)) {
                 excellentCount++;
-            } else if (grade.grade().equals(3)) {
+            } else if (grade.getGrade().equals(3)) {
                 satisfactoryCount++;
             }
 
-            if (grade.subjectName().equals("Qualification Work") && grade.grade().equals(5)) {
+            if (grade.getSubjectName().equals("Qualification Work") && grade.getGrade().equals(5)) {
                 hasExcellentQualificationWork = true;
             }
 
@@ -86,7 +86,7 @@ class StudentRecordBook {
         boolean meetsScholarshipCriteria = true;
 
         for (Grade grade : currentSemesterGrades) {
-            if (!grade.grade().equals(5)) {
+            if (!grade.getGrade().equals(5)) {
                 meetsScholarshipCriteria = false;
                 break;
             }
@@ -106,7 +106,7 @@ class StudentRecordBook {
         List<Grade> currentSemesterGrades = new ArrayList<>();
 
         for (Grade grade : allGrades) {
-            if (Objects.equals(grade.semester(), currentSemester)) {
+            if (Objects.equals(grade.getSemester(), currentSemester)) {
                 currentSemesterGrades.add(grade);
             }
         }
