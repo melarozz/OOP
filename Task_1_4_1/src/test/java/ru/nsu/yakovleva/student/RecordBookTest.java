@@ -5,14 +5,20 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+/**
+ * Testing class.
+ */
 public class RecordBookTest {
 
     private Student student;
     private StudentRecordBook studentRecordBook;
 
+    /**
+     * Student and record book initializing.
+     */
     @BeforeEach
     public void testInitialize() {
         student = new Student("Valeria Yakovleva Viktorovna", "22213");
@@ -64,7 +70,7 @@ public class RecordBookTest {
 
     @Test
     public void testGpa() {
-        double gpa = studentRecordBook.calculateGPA();
+        double gpa = studentRecordBook.calculateGpa();
         double expectedGpa = ((5.0 + 4.0 + 5.0 + 5.0 + 5.0 + 4.0 + 5.0 + 5.0) / 8);
         assertEquals(expectedGpa, gpa);
     }

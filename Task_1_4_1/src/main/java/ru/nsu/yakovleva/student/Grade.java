@@ -19,7 +19,8 @@ public class Grade {
      * @param semester - number of semester (1-8).
      * @param teacherFullName - name of teacher who took an exam.
      */
-    public Grade(String subjectName, Integer grade, String dateOfPassing, Integer semester, String teacherFullName) {
+    public Grade(String subjectName, Integer grade,
+                 String dateOfPassing, Integer semester, String teacherFullName) {
         this.subjectName = subjectName;
         this.grade = grade;
         this.dateOfPassing = dateOfPassing;

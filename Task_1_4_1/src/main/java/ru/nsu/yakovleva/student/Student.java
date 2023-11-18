@@ -29,12 +29,14 @@ public class Student {
      * @param semester - number of semester (1-8).
      * @param teacherFullName - name of teacher who took an exam.
      */
-    public void addGrade(String subjectName, Integer grade, String dateOfPassing, Integer semester, String teacherFullName) {
+    public void addGrade(String subjectName, Integer grade,
+                         String dateOfPassing, Integer semester, String teacherFullName) {
         grades.addGrade(subjectName, grade, dateOfPassing, semester, teacherFullName);
     }
 
     /**
      * Get all grades of a student.
+     * 
      * @return - grades object.
      */
     public Grades getGrades() {

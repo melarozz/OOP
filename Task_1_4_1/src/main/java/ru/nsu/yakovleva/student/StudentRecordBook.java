@@ -24,7 +24,7 @@ public class StudentRecordBook {
      *
      * @return - GPA.
      */
-    public double calculateGPA() {
+    public double calculateGpa() {
         List<Grade> allGrades = student.getGrades().getGradeList();
         double totalGradePoints = 0;
         int totalCredits = 0;
