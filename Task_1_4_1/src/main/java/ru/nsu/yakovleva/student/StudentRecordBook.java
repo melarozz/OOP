@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Class for a Record book of a student.
  */
-class StudentRecordBook {
+public class StudentRecordBook {
     private final Student student;
 
     /**

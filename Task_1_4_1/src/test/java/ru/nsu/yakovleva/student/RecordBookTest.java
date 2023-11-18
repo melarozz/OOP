@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
-class RecordBookTest {
+public class RecordBookTest {
 
     private Student student;
     private StudentRecordBook studentRecordBook;

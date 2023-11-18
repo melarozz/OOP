@@ -3,7 +3,7 @@ package ru.nsu.yakovleva.student;
 /**
  * Class for each student.
  */
-class Student {
+public class Student {
     private final String fullName;
     private final String group;
     private final Grades grades;
