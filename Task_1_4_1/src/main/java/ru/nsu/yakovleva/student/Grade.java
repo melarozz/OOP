@@ -5,10 +5,10 @@ package ru.nsu.yakovleva.student;
  */
 public class Grade {
     private String subjectName;
-    private Integer grade;
-    private String dateOfPassing;
+    Integer grade;
+    String dateOfPassing;
     private Integer semester;
-    private String teacherFullName;
+    String teacherFullName;
 
     /**
      * Grade initialization.

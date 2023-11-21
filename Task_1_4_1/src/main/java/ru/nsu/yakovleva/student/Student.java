@@ -35,9 +35,39 @@ public class Student {
      */
     public void addGrade(String subjectName, Integer grade,
                          String dateOfPassing, Integer semester, String teacherFullName) {
-        Grade newGrade = new Grade(subjectName, grade, dateOfPassing, semester, teacherFullName);
-        gradeList.add(newGrade);
+        boolean found = false;
+        for (Grade existingGrade : gradeList) {
+            if (existingGrade.getSubjectName().equals(subjectName) &&
+                    existingGrade.getSemester().equals(semester)) {
+                existingGrade.grade = grade;
+                existingGrade.dateOfPassing = dateOfPassing;
+                existingGrade.teacherFullName = teacherFullName;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            Grade newGrade = new Grade(subjectName, grade, dateOfPassing, semester, teacherFullName);
+            gradeList.add(newGrade);
+        }
     }
+
+    /**
+     *
+     * @param subjectName
+     * @return
+     */
+    public List<Grade> getGradesForSubject(String subjectName) {
+        List<Grade> subjectGrades = new ArrayList<>();
+        for (Grade grade : gradeList) {
+            if (grade.getSubjectName().equals(subjectName)) {
+                subjectGrades.add(grade);
+            }
+        }
+        return subjectGrades;
+    }
+
+
 
     /**
      * Get all grades of a student.

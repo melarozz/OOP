@@ -90,6 +90,28 @@ public class RecordBookTest {
     }
 
     @Test
+    public void testDiplomaWithHonorsFalseAnother() {
+        student.addGrade("Discrete Mathematics", 4,
+                "11.06.2023", 2, "Stukachev A.I.");
+        student.addGrade("Mathematical Analysis", 4,
+                "09.06.2023", 2, "Vaskevich V.L.");
+        student.addGrade("English", 2,
+                "13.01.2024", 3, "Savilova T.K.");
+        student.addGrade("Differential Equations", 2,
+                "15.06.2024", 4, "Vaskevich V.L.");
+        student.addGrade("Differential Equations", 5,
+                "15.06.2024", 4, "Vaskevich V.L.");
+        student.addGrade("Computational Mathematics", 5,
+                "16.01.2025", 5, "Vaskevich V.L.");
+        student.addGrade("Computational Mathematics", 4,
+                "16.06.2025", 6, "Vaskevich V.L.");
+        student.addGrade("Bioinformatics", 4,
+                "15.06.2025", 6, "Ivanova A.A.");
+        boolean diploma = studentRecordBook.hasRedDiplomaWithHonors();
+        assertFalse(diploma);
+    }
+
+    @Test
     public void testScholarship() {
         boolean scholarship = studentRecordBook.hasIncreasedScholarship(7);
         assertTrue(scholarship);
@@ -103,5 +125,12 @@ public class RecordBookTest {
         assertFalse(scholarship);
     }
 
+    @Test
+    public void testAddTheSameSubject() {
+        student.addGrade("Mathematical Analysis", 5,
+                "19.06.2023", 2, "Vaskevich V.L.");
+        List<Grade> grades = student.getGradesForSubject("Mathematical Analysis");
+        assertEquals(grades.get(0).getGrade(), 5);
+    }
 
 }

@@ -26,17 +26,35 @@ public class StudentRecordBook {
      */
     public double calculateGpa() {
         List<Grade> allGrades = student.getGrades();
+        List<Grade> lastGrades = new ArrayList<>();
+
+        for (Grade grade : allGrades) {
+            boolean found = false;
+            for (int i = lastGrades.size() - 1; i >= 0; i--) {
+                if (lastGrades.get(i).getSubjectName().equals(grade.getSubjectName())
+                        && lastGrades.get(i).getSemester().equals(grade.getSemester())) {
+                    lastGrades.set(i, grade);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                lastGrades.add(grade);
+            }
+        }
+
         double totalGradePoints = 0;
         int totalCredits = 0;
 
-        for (Grade grade : allGrades) {
+        for (Grade grade : lastGrades) {
             Integer gradeValue = grade.getGrade();
             totalGradePoints += gradeValue;
             totalCredits += 1;
         }
 
-        return totalGradePoints / totalCredits;
+        return totalCredits > 0 ? totalGradePoints / totalCredits : 0;
     }
+
 
     /**
      * Method for calculating if the student can get a Red diploma with honors or not.
