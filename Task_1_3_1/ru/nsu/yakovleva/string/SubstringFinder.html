@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9};
+var data = {"i0":9,"i1":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -132,6 +132,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">SubstringFinder</span>
 extends java.lang.Object</pre>
+<div class="block">This class provides a method for searching for a
+ substring in a resource file using the Boyer-Moore algorithm.</div>
 </li>
 </ul>
 </div>
@@ -175,9 +177,21 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static int[]</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#boyerMooreSearch(java.lang.String,java.lang.String)">boyerMooreSearch</a></span>&#8203;(java.lang.String&nbsp;filePath,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#boyerMooreSearch(java.io.InputStream,java.lang.String)">boyerMooreSearch</a></span>&#8203;(java.io.InputStream&nbsp;inputStream,
                 java.lang.String&nbsp;substring)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Searches for the occurrences of a substring in a resource file
+ using the Boyer-Moore algorithm.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>static int[]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#boyerMooreSearch(java.lang.String,java.lang.String)">boyerMooreSearch</a></span>&#8203;(java.lang.String&nbsp;resourceName,
+                java.lang.String&nbsp;substring)</code></th>
+<td class="colLast">
+<div class="block">Searches for the occurrences of a substring in a resource file
+ using the Boyer-Moore algorithm.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -225,15 +239,46 @@ extends java.lang.Object</pre>
 <a id="boyerMooreSearch(java.lang.String,java.lang.String)">
 <!--   -->
 </a>
+<ul class="blockList">
+<li class="blockList">
+<h4>boyerMooreSearch</h4>
+<pre class="methodSignature">public static&nbsp;int[]&nbsp;boyerMooreSearch&#8203;(java.lang.String&nbsp;resourceName,
+                                     java.lang.String&nbsp;substring)
+                              throws java.io.IOException</pre>
+<div class="block">Searches for the occurrences of a substring in a resource file
+ using the Boyer-Moore algorithm.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>resourceName</code> - The name of the resource file to search within.</dd>
+<dd><code>substring</code> - The substring to search for.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>An array of integers representing the starting indexes
+         of found substrings or [-1] if none are found.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.IOException</code> - If there is an error reading the resource file.</dd>
+</dl>
+</li>
+</ul>
+<a id="boyerMooreSearch(java.io.InputStream,java.lang.String)">
+<!--   -->
+</a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>boyerMooreSearch</h4>
-<pre class="methodSignature">public static&nbsp;int[]&nbsp;boyerMooreSearch&#8203;(java.lang.String&nbsp;filePath,
+<pre class="methodSignature">public static&nbsp;int[]&nbsp;boyerMooreSearch&#8203;(java.io.InputStream&nbsp;inputStream,
                                      java.lang.String&nbsp;substring)
                               throws java.io.IOException</pre>
+<div class="block">Searches for the occurrences of a substring in a resource file
+ using the Boyer-Moore algorithm.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>inputStream</code> - inputStream.</dd>
+<dd><code>substring</code> - The substring to search for.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>An array of integers representing the starting indexes
+         of found substrings or [-1] if none are found.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
+<dd><code>java.io.IOException</code> - If there is an error reading the resource file.</dd>
 </dl>
 </li>
 </ul>
