@@ -25,7 +25,7 @@ public class StudentRecordBook {
      * @return - GPA.
      */
     public double calculateGpa() {
-        List<Grade> allGrades = student.getGrades().getGradeList();
+        List<Grade> allGrades = student.getGrades();
         double totalGradePoints = 0;
         int totalCredits = 0;
 
@@ -44,7 +44,7 @@ public class StudentRecordBook {
      * @return - true or false.
      */
     public boolean hasRedDiplomaWithHonors() {
-        List<Grade> allGrades = student.getGrades().getGradeList();
+        List<Grade> allGrades = student.getGrades();
 
         int excellentCount = 0;
         int satisfactoryCount = 0;
@@ -102,7 +102,7 @@ public class StudentRecordBook {
      * @return - list of grades.
      */
     private List<Grade> getSemesterGrades(Integer currentSemester) {
-        List<Grade> allGrades = student.getGrades().getGradeList();
+        List<Grade> allGrades = student.getGrades();
         List<Grade> currentSemesterGrades = new ArrayList<>();
 
         for (Grade grade : allGrades) {

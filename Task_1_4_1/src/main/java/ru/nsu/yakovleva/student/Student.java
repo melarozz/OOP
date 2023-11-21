@@ -1,23 +1,27 @@
 package ru.nsu.yakovleva.student;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class for each student.
  */
 public class Student {
     private final String fullName;
     private final String group;
-    private final Grades grades;
+    private final List<Grade> gradeList;
+
 
     /**
      * Initialization of a student.
      *
-     * @param fullName - name of a student.
-     * @param group - group of a student.
+     * @param fullName  - name of a student.
+     * @param group     - group of a student.
      */
     public Student(String fullName, String group) {
         this.fullName = fullName;
         this.group = group;
-        this.grades = new Grades();
+        this.gradeList = new ArrayList<>();
     }
 
     /**
@@ -31,16 +35,17 @@ public class Student {
      */
     public void addGrade(String subjectName, Integer grade,
                          String dateOfPassing, Integer semester, String teacherFullName) {
-        grades.addGrade(subjectName, grade, dateOfPassing, semester, teacherFullName);
+        Grade newGrade = new Grade(subjectName, grade, dateOfPassing, semester, teacherFullName);
+        gradeList.add(newGrade);
     }
 
     /**
      * Get all grades of a student.
-     * 
-     * @return - grades object.
+     *
+     * @return - list of grades.
      */
-    public Grades getGrades() {
-        return grades;
+    public List<Grade> getGrades() {
+        return gradeList;
     }
 
     /**

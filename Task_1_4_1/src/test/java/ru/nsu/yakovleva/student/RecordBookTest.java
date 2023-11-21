@@ -57,7 +57,7 @@ public class RecordBookTest {
 
     @Test
     public void testGetGrades() {
-        List<Grade> grades = student.getGrades().getGradeList();
+        List<Grade> grades = student.getGrades();
 
         assertEquals(8, grades.size());
 
