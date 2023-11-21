@@ -132,8 +132,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">SubstringFinder</span>
 extends java.lang.Object</pre>
-<div class="block">This class provides a method for searching for a
- substring in a resource file using the Boyer-Moore algorithm.</div>
 </li>
 </ul>
 </div>
@@ -177,12 +175,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static int[]</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#boyerMooreSearch(java.lang.String,java.lang.String)">boyerMooreSearch</a></span>&#8203;(java.lang.String&nbsp;resourceName,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#boyerMooreSearch(java.lang.String,java.lang.String)">boyerMooreSearch</a></span>&#8203;(java.lang.String&nbsp;filePath,
                 java.lang.String&nbsp;substring)</code></th>
-<td class="colLast">
-<div class="block">Searches for the occurrences of a substring in a resource file
- using the Boyer-Moore algorithm.</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -233,20 +228,12 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>boyerMooreSearch</h4>
-<pre class="methodSignature">public static&nbsp;int[]&nbsp;boyerMooreSearch&#8203;(java.lang.String&nbsp;resourceName,
+<pre class="methodSignature">public static&nbsp;int[]&nbsp;boyerMooreSearch&#8203;(java.lang.String&nbsp;filePath,
                                      java.lang.String&nbsp;substring)
                               throws java.io.IOException</pre>
-<div class="block">Searches for the occurrences of a substring in a resource file
- using the Boyer-Moore algorithm.</div>
 <dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>resourceName</code> - The name of the resource file to search within.</dd>
-<dd><code>substring</code> - The substring to search for.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>An array of integers representing the starting indexes
-         of found substrings or [-1] if none are found.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code> - If there is an error reading the resource file.</dd>
+<dd><code>java.io.IOException</code></dd>
 </dl>
 </li>
 </ul>
