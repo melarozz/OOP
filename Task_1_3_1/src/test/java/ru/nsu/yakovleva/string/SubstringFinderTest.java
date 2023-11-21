@@ -1,9 +1,13 @@
 package ru.nsu.yakovleva.string;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 
 /**
  * Test class.
@@ -41,10 +45,11 @@ public class SubstringFinderTest {
     }
 
     @Test
-    public void testSearchInLargeFile15GB() throws IOException {
+    public void testSearchInLargeFile15Gb() throws IOException {
         FileCreator.createFile(15);
+        InputStream inputStream = new FileInputStream("large.txt");
         int[] indexes = SubstringFinder.boyerMooreSearch(
-                "large.txt", "abc");
+                inputStream, "abc");
         Assertions.assertEquals(0, indexes.length);
         File f = new File("found_indexes.txt");
         Assertions.assertTrue(f.exists());
