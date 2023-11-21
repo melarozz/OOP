@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * Test class.
  */
@@ -36,6 +35,16 @@ public class SubstringFinderTest {
     public void testSearchInLargeFile10Mb() throws IOException {
         int[] indexes = SubstringFinder.boyerMooreSearch(
                 "large-file.txt", "text");
+        Assertions.assertEquals(0, indexes.length);
+        File f = new File("found_indexes.txt");
+        Assertions.assertTrue(f.exists());
+    }
+
+    @Test
+    public void testSearchInLargeFile15GB() throws IOException {
+        FileCreator.createFile(15);
+        int[] indexes = SubstringFinder.boyerMooreSearch(
+                "large.txt", "abc");
         Assertions.assertEquals(0, indexes.length);
         File f = new File("found_indexes.txt");
         Assertions.assertTrue(f.exists());
