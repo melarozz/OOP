@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.yakovleva.student","l":"Grade"},{"p":"ru.nsu.yakovleva.student","l":"Grades"},{"p":"ru.nsu.yakovleva.student","l":"Student"},{"p":"ru.nsu.yakovleva.student","l":"StudentRecordBook"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.yakovleva.student","l":"Grade"},{"p":"ru.nsu.yakovleva.student","l":"Student"},{"p":"ru.nsu.yakovleva.student","l":"StudentRecordBook"}]
