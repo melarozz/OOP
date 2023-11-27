@@ -53,7 +53,7 @@ public class Student {
     }
 
     /**
-     *
+     * Method for getting list of grades for a specific subject.
      * @param subjectName
      * @return
      */
@@ -66,8 +66,6 @@ public class Student {
         }
         return subjectGrades;
     }
-
-
 
     /**
      * Get all grades of a student.

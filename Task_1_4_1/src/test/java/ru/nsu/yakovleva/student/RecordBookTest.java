@@ -133,4 +133,32 @@ public class RecordBookTest {
         assertEquals(grades.get(0).getGrade(), 5);
     }
 
+    @Test
+    public void testGetSubject() {
+        student.addGrade("Mathematical Analysis", 5,
+                "19.01.2024", 3, "Vaskevich V.L.");
+        List<Grade> grades = student.getGradesForSubject("Mathematical Analysis");
+        Grade firstExpected = new Grade("Mathematical Analysis", 4,
+                "09.06.2023", 2, "Vaskevich V.L.");
+        Grade secondExpected = new Grade("Mathematical Analysis", 5,
+                "19.01.2024", 3, "Vaskevich V.L.");
+
+        assertEquals(grades.size(), 2);
+
+        Grade firstActual = grades.get(0);
+        Grade secondActual = grades.get(1);
+
+        assertEquals(firstExpected.getGrade(), firstActual.getGrade());
+        assertEquals(secondExpected.getGrade(), secondActual.getGrade());
+
+        assertEquals(firstExpected.getDateOfPassing(), firstActual.getDateOfPassing());
+        assertEquals(secondExpected.getDateOfPassing(), secondActual.getDateOfPassing());
+
+        assertEquals(firstExpected.getSemester(), firstActual.getSemester());
+        assertEquals(secondExpected.getSemester(), secondActual.getSemester());
+
+        assertEquals(firstExpected.getTeacherFullName(), firstActual.getTeacherFullName());
+        assertEquals(secondExpected.getTeacherFullName(), secondActual.getTeacherFullName());
+    }
+
 }
