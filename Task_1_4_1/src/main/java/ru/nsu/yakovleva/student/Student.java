@@ -36,39 +36,37 @@ public class Student {
     public void addGrade(String subjectName, Integer grade,
                          String dateOfPassing, Integer semester, String teacherFullName)
             throws Exception {
-        boolean found = false;
-        boolean hasPreviousFail = false;
-
-        for (Grade existingGrade : gradeList) {
-            if (existingGrade.getSemester().equals(semester - 1)) {
-                if (existingGrade.getGrade() == 2) {
-                    hasPreviousFail = true;
-                    break;
-                }
-            }
+        if (grade < 2 || grade > 5) {
+            throw new Exception("Grade must be between 2 and 5.");
         }
 
+        boolean hasPreviousFail = gradeList.stream()
+                .anyMatch(existingGrade -> existingGrade.getSemester().equals(semester - 1)
+                        && existingGrade.getGrade() == 2);
 
         if (hasPreviousFail) {
             throw new Exception("Cannot add a new grade. Previous semester has a '2' mark.");
         }
 
-        for (Grade existingGrade : gradeList) {
-            if (existingGrade.getSubjectName().equals(subjectName)
-                    && existingGrade.getSemester().equals(semester)) {
-                existingGrade.grade = grade;
-                existingGrade.dateOfPassing = dateOfPassing;
-                existingGrade.teacherFullName = teacherFullName;
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            Grade newGrade = new Grade(subjectName, grade,
-                    dateOfPassing, semester, teacherFullName);
+        boolean found = gradeList.stream()
+                .anyMatch(existingGrade -> existingGrade.getSubjectName().equals(subjectName)
+                        && existingGrade.getSemester().equals(semester));
+
+        if (found) {
+            gradeList.stream()
+                    .filter(existingGrade -> existingGrade.getSubjectName().equals(subjectName)
+                            && existingGrade.getSemester().equals(semester))
+                    .forEach(existingGrade -> {
+                        existingGrade.setGrade(grade);
+                        existingGrade.setDateOfPassing(dateOfPassing);
+                        existingGrade.setTeacherFullName(teacherFullName);
+                    });
+        } else {
+            Grade newGrade = new Grade(subjectName, grade, dateOfPassing, semester, teacherFullName);
             gradeList.add(newGrade);
         }
     }
+
 
     /**
      * Method for getting list of grades for a specific subject.

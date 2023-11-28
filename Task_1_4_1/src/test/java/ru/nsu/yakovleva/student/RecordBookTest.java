@@ -177,4 +177,14 @@ public class RecordBookTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
+    @Test
+    public void testAddWrongMark() throws Exception {
+        Exception exception = assertThrows(Exception.class, () ->
+                student.addGrade("Chemistry", 1, "2023-09-10", 3, "Teacher 3"));
+
+        String expectedMessage = "Grade must be between 2 and 5.";
+        String actualMessage = exception.getMessage();
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
 }
