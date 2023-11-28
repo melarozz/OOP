@@ -36,9 +36,11 @@ public class StudentRecordBook {
 
         List<Grade> lastGrades = groupedGrades.values().stream()
                 .flatMap(m -> m.values().stream().flatMap(List::stream))
-                .collect(Collectors.groupingBy(grade -> grade.getSubjectName() + grade.getSemester(),
+                .collect(Collectors.groupingBy(grade -> grade.getSubjectName()
+                                + grade.getSemester(),
                         Collectors.collectingAndThen(Collectors.toList(),
-                                grades -> grades.stream().max(Comparator.comparing(Grade::getSemester)).orElse(null))))
+                                grades -> grades.stream().max(Comparator.comparing(Grade::getSemester))
+                                        .orElse(null))))
                 .values().stream()
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
@@ -60,11 +62,14 @@ public class StudentRecordBook {
     public boolean hasRedDiplomaWithHonors() {
         List<Grade> allGrades = student.getGrades();
 
-        long excellentCount = allGrades.stream().filter(grade -> grade.getGrade().equals(5)).count();
-        long satisfactoryCount = allGrades.stream().filter(grade -> grade.getGrade().equals(3)).count();
+        long excellentCount = allGrades.stream()
+                .filter(grade -> grade.getGrade().equals(5)).count();
+        long satisfactoryCount = allGrades.stream()
+                .filter(grade -> grade.getGrade().equals(3)).count();
 
         boolean hasExcellentQualificationWork = allGrades.stream()
-                .anyMatch(grade -> grade.getSubjectName().equals("Qualification Work") && grade.getGrade().equals(5));
+                .anyMatch(grade -> grade.getSubjectName()
+                        .equals("Qualification Work") && grade.getGrade().equals(5));
 
         int totalSubjects = allGrades.size();
 

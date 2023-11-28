@@ -62,7 +62,8 @@ public class Student {
                         existingGrade.setTeacherFullName(teacherFullName);
                     });
         } else {
-            Grade newGrade = new Grade(subjectName, grade, dateOfPassing, semester, teacherFullName);
+            Grade newGrade = new Grade(subjectName, grade,
+                    dateOfPassing, semester, teacherFullName);
             gradeList.add(newGrade);
         }
     }
