@@ -34,7 +34,8 @@ public class Student {
      * @param teacherFullName - name of teacher who took an exam.
      */
     public void addGrade(String subjectName, Integer grade,
-                         String dateOfPassing, Integer semester, String teacherFullName) throws Exception {
+                         String dateOfPassing, Integer semester, String teacherFullName)
+            throws Exception {
         boolean found = false;
         boolean hasPreviousFail = false;
 
@@ -53,8 +54,8 @@ public class Student {
         }
 
         for (Grade existingGrade : gradeList) {
-            if (existingGrade.getSubjectName().equals(subjectName) &&
-                    existingGrade.getSemester().equals(semester)) {
+            if (existingGrade.getSubjectName().equals(subjectName)
+                    && existingGrade.getSemester().equals(semester)) {
                 existingGrade.grade = grade;
                 existingGrade.dateOfPassing = dateOfPassing;
                 existingGrade.teacherFullName = teacherFullName;
@@ -63,15 +64,15 @@ public class Student {
             }
         }
         if (!found) {
-            Grade newGrade = new Grade(subjectName, grade, dateOfPassing, semester, teacherFullName);
+            Grade newGrade = new Grade(subjectName, grade,
+                    dateOfPassing, semester, teacherFullName);
             gradeList.add(newGrade);
         }
     }
 
-
-
     /**
      * Method for getting list of grades for a specific subject.
+     *
      * @param subjectName
      * @return
      */
