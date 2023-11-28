@@ -39,7 +39,8 @@ public class StudentRecordBook {
                 .collect(Collectors.groupingBy(grade -> grade.getSubjectName()
                                 + grade.getSemester(),
                         Collectors.collectingAndThen(Collectors.toList(),
-                                grades -> grades.stream().max(Comparator.comparing(Grade::getSemester))
+                                grades -> grades.stream()
+                                        .max(Comparator.comparing(Grade::getSemester))
                                         .orElse(null))))
                 .values().stream()
                 .filter(Objects::nonNull)
