@@ -91,16 +91,8 @@ public class StudentRecordBook {
     public boolean hasIncreasedScholarship(Integer currentSemester) {
         List<Grade> currentSemesterGrades = getSemesterGrades(currentSemester);
 
-        boolean meetsScholarshipCriteria = true;
-
-        for (Grade grade : currentSemesterGrades) {
-            if (!grade.getGrade().equals(5)) {
-                meetsScholarshipCriteria = false;
-                break;
-            }
-        }
-
-        return meetsScholarshipCriteria;
+        return currentSemesterGrades.stream()
+                .allMatch(grade -> grade.getGrade().equals(5));
     }
 
     /**
@@ -111,14 +103,9 @@ public class StudentRecordBook {
      */
     private List<Grade> getSemesterGrades(Integer currentSemester) {
         List<Grade> allGrades = student.getGrades();
-        List<Grade> currentSemesterGrades = new ArrayList<>();
 
-        for (Grade grade : allGrades) {
-            if (Objects.equals(grade.getSemester(), currentSemester)) {
-                currentSemesterGrades.add(grade);
-            }
-        }
-
-        return currentSemesterGrades;
+        return allGrades.stream()
+                .filter(grade -> Objects.equals(grade.getSemester(), currentSemester))
+                .collect(Collectors.toList());
     }
 }

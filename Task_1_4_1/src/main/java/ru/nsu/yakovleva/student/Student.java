@@ -2,6 +2,7 @@ package ru.nsu.yakovleva.student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Class for each student.
@@ -73,13 +74,9 @@ public class Student {
      * Method for getting list of grades for a specific subject.
      */
     public List<Grade> getGradesForSubject(String subjectName) {
-        List<Grade> subjectGrades = new ArrayList<>();
-        for (Grade grade : gradeList) {
-            if (grade.getSubjectName().equals(subjectName)) {
-                subjectGrades.add(grade);
-            }
-        }
-        return subjectGrades;
+        return gradeList.stream()
+                .filter(grade -> grade.getSubjectName().equals(subjectName))
+                .collect(Collectors.toList());
     }
 
     /**
