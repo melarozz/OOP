@@ -41,7 +41,7 @@ public class StudentRecordBook {
                                 grades -> grades.stream().max(Comparator.comparing(Grade::getSemester)).orElse(null))))
                 .values().stream()
                 .filter(Objects::nonNull)
-                .toList();
+                .collect(Collectors.toList());
 
         double totalGradePoints = lastGrades.stream()
                 .mapToInt(Grade::getGrade)
