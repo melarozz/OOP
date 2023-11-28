@@ -34,8 +34,24 @@ public class Student {
      * @param teacherFullName - name of teacher who took an exam.
      */
     public void addGrade(String subjectName, Integer grade,
-                         String dateOfPassing, Integer semester, String teacherFullName) {
+                         String dateOfPassing, Integer semester, String teacherFullName) throws Exception {
         boolean found = false;
+        boolean hasPreviousFail = false;
+
+        for (Grade existingGrade : gradeList) {
+            if (existingGrade.getSemester().equals(semester - 1)) {
+                if (existingGrade.getGrade() == 2) {
+                    hasPreviousFail = true;
+                    break;
+                }
+            }
+        }
+
+
+        if (hasPreviousFail) {
+            throw new Exception("Cannot add a new grade. Previous semester has a '2' mark.");
+        }
+
         for (Grade existingGrade : gradeList) {
             if (existingGrade.getSubjectName().equals(subjectName) &&
                     existingGrade.getSemester().equals(semester)) {
@@ -51,6 +67,8 @@ public class Student {
             gradeList.add(newGrade);
         }
     }
+
+
 
     /**
      * Method for getting list of grades for a specific subject.

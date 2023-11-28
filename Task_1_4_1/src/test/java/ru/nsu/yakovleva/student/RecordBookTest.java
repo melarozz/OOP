@@ -2,6 +2,7 @@ package ru.nsu.yakovleva.student;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class RecordBookTest {
      * Student and record book initializing.
      */
     @BeforeEach
-    public void testInitialize() {
+    public void testInitialize() throws Exception {
         student = new Student("Valeria Yakovleva Viktorovna", "22213");
         student.addGrade("Discrete Mathematics", 5,
                "11.01.2023", 1, "Stukachev A.I.");
@@ -82,7 +83,7 @@ public class RecordBookTest {
     }
 
     @Test
-    public void testDiplomaWithHonorsFalse() {
+    public void testDiplomaWithHonorsFalse() throws Exception {
         student.addGrade("Computer Science", 3,
                 "19.01.2026", 7, "Smirnova A.V.");
         boolean diploma = studentRecordBook.hasRedDiplomaWithHonors();
@@ -90,14 +91,14 @@ public class RecordBookTest {
     }
 
     @Test
-    public void testDiplomaWithHonorsFalseAnother() {
+    public void testDiplomaWithHonorsFalseAnother() throws Exception {
         student.addGrade("Discrete Mathematics", 4,
                 "11.06.2023", 2, "Stukachev A.I.");
         student.addGrade("Mathematical Analysis", 4,
                 "09.06.2023", 2, "Vaskevich V.L.");
-        student.addGrade("English", 2,
+        student.addGrade("English", 3,
                 "13.01.2024", 3, "Savilova T.K.");
-        student.addGrade("Differential Equations", 2,
+        student.addGrade("Differential Equations", 3,
                 "15.06.2024", 4, "Vaskevich V.L.");
         student.addGrade("Differential Equations", 5,
                 "15.06.2024", 4, "Vaskevich V.L.");
@@ -118,7 +119,7 @@ public class RecordBookTest {
     }
 
     @Test
-    public void testScholarshipFalse() {
+    public void testScholarshipFalse() throws Exception {
         student.addGrade("Computer Science", 4,
                 "19.01.2026", 7, "Smirnova A.V.");
         boolean scholarship = studentRecordBook.hasIncreasedScholarship(7);
@@ -126,7 +127,7 @@ public class RecordBookTest {
     }
 
     @Test
-    public void testAddTheSameSubject() {
+    public void testAddTheSameSubject() throws Exception {
         student.addGrade("Mathematical Analysis", 5,
                 "19.06.2023", 2, "Vaskevich V.L.");
         List<Grade> grades = student.getGradesForSubject("Mathematical Analysis");
@@ -134,7 +135,7 @@ public class RecordBookTest {
     }
 
     @Test
-    public void testGetSubject() {
+    public void testGetSubject() throws Exception {
         student.addGrade("Mathematical Analysis", 5,
                 "19.01.2024", 3, "Vaskevich V.L.");
         List<Grade> grades = student.getGradesForSubject("Mathematical Analysis");
@@ -159,6 +160,22 @@ public class RecordBookTest {
 
         assertEquals(firstExpected.getTeacherFullName(), firstActual.getTeacherFullName());
         assertEquals(secondExpected.getTeacherFullName(), secondActual.getTeacherFullName());
+    }
+
+    @Test
+    public void testAddGradeWithPreviousFail() throws Exception {
+        Student student2 = new Student("John Doe", "Group A");
+        student2.addGrade("Math", 5, "2023-01-15", 1, "Teacher 1");
+        student2.addGrade("Math", 4, "2023-05-19", 2, "Teacher 3");
+        student2.addGrade("Physics", 2, "2023-05-20", 2, "Teacher 2");
+
+        Exception exception = assertThrows(Exception.class, () ->
+                student2.addGrade("Chemistry", 4, "2023-09-10", 3, "Teacher 3"));
+
+        String expectedMessage = "Cannot add a new grade. Previous semester has a '2' mark.";
+        String actualMessage = exception.getMessage();
+
+        assert(actualMessage.contains(expectedMessage));
     }
 
 }
