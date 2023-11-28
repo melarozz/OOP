@@ -174,7 +174,7 @@ public class RecordBookTest {
 
         String expectedMessage = "Cannot add a new grade. Previous semester has a '2' mark.";
         String actualMessage = exception.getMessage();
-        assert(actualMessage.contains(expectedMessage));
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
 }

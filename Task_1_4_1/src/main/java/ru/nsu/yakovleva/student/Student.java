@@ -72,9 +72,6 @@ public class Student {
 
     /**
      * Method for getting list of grades for a specific subject.
-     *
-     * @param subjectName
-     * @return
      */
     public List<Grade> getGradesForSubject(String subjectName) {
         List<Grade> subjectGrades = new ArrayList<>();
