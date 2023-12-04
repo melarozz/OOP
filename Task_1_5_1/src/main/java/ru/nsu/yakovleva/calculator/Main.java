@@ -1,8 +1,8 @@
 package ru.nsu.yakovleva.calculator;
 
+import java.lang.Math;
 import java.util.Scanner;
 import java.util.Stack;
-import java.lang.Math;
 
 /**
  * A simple calculator that evaluates expressions in prefix form.
@@ -72,6 +72,14 @@ public class Main {
                     // Cos function
                     double operand = stack.pop();
                     stack.push(Math.cos(operand));
+                } else if (token.equals("sind")) {
+                    // Sin function
+                    double operand = stack.pop();
+                    stack.push(Math.sin(Math.toRadians(operand)));
+                } else if (token.equals("cosd")) {
+                    // Cos function
+                    double operand = stack.pop();
+                    stack.push(Math.cos(Math.toRadians(operand)));
                 } else if (token.equals("log")) {
                     // Logarithm function
                     double base = stack.pop();

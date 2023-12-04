@@ -73,12 +73,53 @@ public class CalcTest {
         double result = Main.calculate(expression);
         assertEquals(0, result, 0.0001);
     }
+    @Test
+    void testSineDegrees0Function() {
+        String expression = "sind 0";
+        double result = Main.calculate(expression);
+        assertEquals(0, result, 0.0001);
+    }
+
+    @Test
+    void testSineDegrees90Function() {
+        String expression = "sind 90";
+        double result = Main.calculate(expression);
+        assertEquals(1, result, 0.0001);
+    }
+
+    @Test
+    void testSineDegrees30Function() {
+        String expression = "sind 30";
+        double result = Main.calculate(expression);
+        assertEquals(0.5, result, 0.0001);
+    }
 
     @Test
     void testCosineFunction() {
         String expression = "cos 0";
         double result = Main.calculate(expression);
         assertEquals(1, result, 0.0001);
+    }
+
+    @Test
+    void testCosineDegrees0Function() {
+        String expression = "cosd 0";
+        double result = Main.calculate(expression);
+        assertEquals(1, result, 0.0001);
+    }
+
+    @Test
+    void testCosineDegrees90Function() {
+        String expression = "cosd 90";
+        double result = Main.calculate(expression);
+        assertEquals(0, result, 0.0001);
+    }
+
+    @Test
+    void testCosineDegrees60Function() {
+        String expression = "cosd 60";
+        double result = Main.calculate(expression);
+        assertEquals(0.5, result, 0.0001);
     }
 
     @Test
