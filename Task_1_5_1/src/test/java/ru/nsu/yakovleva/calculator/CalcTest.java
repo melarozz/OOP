@@ -73,6 +73,7 @@ public class CalcTest {
         double result = Main.calculate(expression);
         assertEquals(0, result, 0.0001);
     }
+
     @Test
     void testSineDegrees0Function() {
         String expression = "sind 0";
