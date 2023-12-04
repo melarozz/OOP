@@ -4,10 +4,10 @@ package ru.nsu.yakovleva.student;
  * Class for a grade.
  */
 public class Grade {
-    private String subjectName;
+    private final String subjectName;
     private Integer grade;
     private String dateOfPassing;
-    private Integer semester;
+    private final Integer semester;
     private String teacherFullName;
 
     /**
@@ -71,5 +71,17 @@ public class Grade {
      */
     public String getTeacherFullName() {
         return teacherFullName;
+    }
+
+    public void setGrade(Integer gradeNew) {
+        grade  = gradeNew;
+    }
+
+    public void setDateOfPassing(String dateOfPassingNew) {
+        dateOfPassing = dateOfPassingNew;
+    }
+
+    public void setTeacherFullName(String teacherFullNameNew) {
+        teacherFullName = teacherFullNameNew;
     }
 }

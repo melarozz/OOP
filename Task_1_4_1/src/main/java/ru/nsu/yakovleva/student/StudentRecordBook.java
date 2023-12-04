@@ -1,8 +1,11 @@
 package ru.nsu.yakovleva.student;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Class for a Record book of a student.
@@ -25,17 +28,31 @@ public class StudentRecordBook {
      * @return - GPA.
      */
     public double calculateGpa() {
-        List<Grade> allGrades = student.getGrades().getGradeList();
-        double totalGradePoints = 0;
-        int totalCredits = 0;
+        List<Grade> allGrades = student.getGrades();
 
-        for (Grade grade : allGrades) {
-            Integer gradeValue = grade.getGrade();
-            totalGradePoints += gradeValue;
-            totalCredits += 1;
-        }
+        Map<String, Map<Integer, List<Grade>>> groupedGrades = allGrades.stream()
+                .collect(Collectors.groupingBy(Grade::getSubjectName,
+                        Collectors.groupingBy(Grade::getSemester, Collectors.toList())));
 
-        return totalGradePoints / totalCredits;
+        List<Grade> lastGrades = groupedGrades.values().stream()
+                .flatMap(m -> m.values().stream().flatMap(List::stream))
+                .collect(Collectors.groupingBy(grade -> grade.getSubjectName()
+                                + grade.getSemester(),
+                        Collectors.collectingAndThen(Collectors.toList(),
+                                grades -> grades.stream()
+                                        .max(Comparator.comparing(Grade::getSemester))
+                                        .orElse(null))))
+                .values().stream()
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        double totalGradePoints = lastGrades.stream()
+                .mapToInt(Grade::getGrade)
+                .sum();
+
+        int totalCredits = lastGrades.size();
+
+        return totalCredits > 0 ? (double) totalGradePoints / totalCredits : 0;
     }
 
     /**
@@ -44,26 +61,18 @@ public class StudentRecordBook {
      * @return - true or false.
      */
     public boolean hasRedDiplomaWithHonors() {
-        List<Grade> allGrades = student.getGrades().getGradeList();
+        List<Grade> allGrades = student.getGrades();
 
-        int excellentCount = 0;
-        int satisfactoryCount = 0;
-        boolean hasExcellentQualificationWork = false;
-        int totalSubjects = 0;
+        long excellentCount = allGrades.stream()
+                .filter(grade -> grade.getGrade().equals(5)).count();
+        long satisfactoryCount = allGrades.stream()
+                .filter(grade -> grade.getGrade().equals(3)).count();
 
-        for (Grade grade : allGrades) {
-            if (grade.getGrade().equals(5)) {
-                excellentCount++;
-            } else if (grade.getGrade().equals(3)) {
-                satisfactoryCount++;
-            }
+        boolean hasExcellentQualificationWork = allGrades.stream()
+                .anyMatch(grade -> grade.getSubjectName()
+                        .equals("Qualification Work") && grade.getGrade().equals(5));
 
-            if (grade.getSubjectName().equals("Qualification Work") && grade.getGrade().equals(5)) {
-                hasExcellentQualificationWork = true;
-            }
-
-            totalSubjects++;
-        }
+        int totalSubjects = allGrades.size();
 
         double percentageExcellent = ((double) excellentCount / totalSubjects) * 100;
 
@@ -83,16 +92,8 @@ public class StudentRecordBook {
     public boolean hasIncreasedScholarship(Integer currentSemester) {
         List<Grade> currentSemesterGrades = getSemesterGrades(currentSemester);
 
-        boolean meetsScholarshipCriteria = true;
-
-        for (Grade grade : currentSemesterGrades) {
-            if (!grade.getGrade().equals(5)) {
-                meetsScholarshipCriteria = false;
-                break;
-            }
-        }
-
-        return meetsScholarshipCriteria;
+        return currentSemesterGrades.stream()
+                .allMatch(grade -> grade.getGrade().equals(5));
     }
 
     /**
@@ -102,15 +103,10 @@ public class StudentRecordBook {
      * @return - list of grades.
      */
     private List<Grade> getSemesterGrades(Integer currentSemester) {
-        List<Grade> allGrades = student.getGrades().getGradeList();
-        List<Grade> currentSemesterGrades = new ArrayList<>();
+        List<Grade> allGrades = student.getGrades();
 
-        for (Grade grade : allGrades) {
-            if (Objects.equals(grade.getSemester(), currentSemester)) {
-                currentSemesterGrades.add(grade);
-            }
-        }
-
-        return currentSemesterGrades;
+        return allGrades.stream()
+                .filter(grade -> Objects.equals(grade.getSemester(), currentSemester))
+                .collect(Collectors.toList());
     }
 }
