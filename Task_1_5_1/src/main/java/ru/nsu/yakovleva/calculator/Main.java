@@ -105,7 +105,7 @@ public class Main {
      * @param str The string to be checked
      * @return True if the string represents a numeric value, false otherwise
      */
-    public static boolean isNumeric(String str) {
+    private static boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
             return true;
