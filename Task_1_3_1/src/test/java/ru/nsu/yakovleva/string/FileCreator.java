@@ -17,13 +17,13 @@ public class FileCreator {
      */
     static String getAlphaNumericString(int size) {
         // Characters used to generate the alphanumeric string
-        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz";
+        String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz";
 
         StringBuilder sb = new StringBuilder(size);
 
         for (int i = 0; i < size; i++) {
-            int index = (int) (AlphaNumericString.length() * Math.random());
-            sb.append(AlphaNumericString.charAt(index));
+            int index = (int) (alphaNumericString.length() * Math.random());
+            sb.append(alphaNumericString.charAt(index));
         }
 
         return sb.toString();
