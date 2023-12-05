@@ -4,9 +4,19 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * The FileCreator class generates a large text file filled with random alphanumeric characters.
+ */
 public class FileCreator {
-    static String getAlphaNumericString(int size) {
 
+    /**
+     * Generates a random alphanumeric string of a specified size.
+     *
+     * @param size The size of the alphanumeric string to generate
+     * @return A random alphanumeric string of the given size
+     */
+    static String getAlphaNumericString(int size) {
+        // Characters used to generate the alphanumeric string
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz";
 
         StringBuilder sb = new StringBuilder(size);
@@ -19,6 +29,11 @@ public class FileCreator {
         return sb.toString();
     }
 
+    /**
+     * Creates a large text file filled with random alphanumeric strings.
+     *
+     * @param size The size of the file to be created in gigabytes
+     */
     public static void createFile(int size) {
         String fileName = "large.txt";
         long sizeInBytes = size * 1024L * 1024L * 1024L;
