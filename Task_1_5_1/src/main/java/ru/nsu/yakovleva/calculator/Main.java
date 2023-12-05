@@ -1,9 +1,9 @@
 package ru.nsu.yakovleva.calculator;
 
 import java.lang.Math;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.Deque;
 
 /**
  * A simple calculator that evaluates expressions in prefix form.
@@ -85,6 +85,9 @@ public class Main {
                     // Logarithm function
                     double base = stack.pop();
                     double number = stack.pop();
+                    if (number <= 0 || base <= 0 || base == 1 ) {
+                        throw new ArithmeticException("Invalid arguments");
+                    }
                     stack.push(Math.log(number) / Math.log(base));
                 } else {
                     throw new IllegalArgumentException("Invalid expression");

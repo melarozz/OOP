@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.EmptyStackException;
+import java.util.NoSuchElementException;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -132,8 +134,25 @@ public class CalcTest {
     @Test
     void testEmptyStackException() {
         String expression = "log 10"; // Log requires two operands
-        assertThrows(EmptyStackException.class, () -> Main.calculate(expression));
+        assertThrows(NoSuchElementException.class, () -> Main.calculate(expression));
     }
 
+    @Test
+    void testLogInvalidBaseException() {
+        String expression = "log -2 10";
+        assertThrows(ArithmeticException.class, () -> Main.calculate(expression));
+    }
+
+    @Test
+    void testLogInvalidBase2Exception() {
+        String expression = "log 1 10";
+        assertThrows(ArithmeticException.class, () -> Main.calculate(expression));
+    }
+
+    @Test
+    void testLogInvalidNumberException() {
+        String expression = "log 2 -10";
+        assertThrows(ArithmeticException.class, () -> Main.calculate(expression));
+    }
 
 }
