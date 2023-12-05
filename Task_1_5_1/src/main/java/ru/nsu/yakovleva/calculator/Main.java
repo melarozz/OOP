@@ -41,61 +41,52 @@ public class Main {
             if (isNumeric(token)) {
                 stack.push(Double.parseDouble(token));
             } else {
-                switch (token) {
-                    case "+" -> {
-                        // Addition
-                        double operand1 = stack.pop();
-                        double operand2 = stack.pop();
-                        stack.push(operand1 + operand2);
+                if (token.equals("+")) {
+                    // Addition
+                    double operand1 = stack.pop();
+                    double operand2 = stack.pop();
+                    stack.push(operand1 + operand2);
+                } else if (token.equals("-")) {
+                    // Subtraction
+                    double operand1 = stack.pop();
+                    double operand2 = stack.pop();
+                    stack.push(operand1 - operand2);
+                } else if (token.equals("*")) {
+                    // Multiplication
+                    double operand1 = stack.pop();
+                    double operand2 = stack.pop();
+                    stack.push(operand1 * operand2);
+                } else if (token.equals("/")) {
+                    // Division
+                    double operand1 = stack.pop();
+                    double operand2 = stack.pop();
+                    if (operand2 == 0) {
+                        throw new ArithmeticException("Division by zero");
                     }
-                    case "-" -> {
-                        // Subtraction
-                        double operand1 = stack.pop();
-                        double operand2 = stack.pop();
-                        stack.push(operand1 - operand2);
-                    }
-                    case "*" -> {
-                        // Multiplication
-                        double operand1 = stack.pop();
-                        double operand2 = stack.pop();
-                        stack.push(operand1 * operand2);
-                    }
-                    case "/" -> {
-                        // Division
-                        double operand1 = stack.pop();
-                        double operand2 = stack.pop();
-                        if (operand2 == 0) {
-                            throw new ArithmeticException("Division by zero");
-                        }
-                        stack.push(operand1 / operand2);
-                    }
-                    case "sin" -> {
-                        // Sin function
-                        double operand = stack.pop();
-                        stack.push(Math.sin(operand));
-                    }
-                    case "cos" -> {
-                        // Cos function
-                        double operand = stack.pop();
-                        stack.push(Math.cos(operand));
-                    }
-                    case "sind" -> {
-                        // Sin function
-                        double operand = stack.pop();
-                        stack.push(Math.sin(Math.toRadians(operand)));
-                    }
-                    case "cosd" -> {
-                        // Cos function
-                        double operand = stack.pop();
-                        stack.push(Math.cos(Math.toRadians(operand)));
-                    }
-                    case "log" -> {
-                        // Logarithm function
-                        double base = stack.pop();
-                        double number = stack.pop();
-                        stack.push(Math.log(number) / Math.log(base));
-                    }
-                    default -> throw new IllegalArgumentException("Invalid expression");
+                    stack.push(operand1 / operand2);
+                } else if (token.equals("sin")) {
+                    // Sin function
+                    double operand = stack.pop();
+                    stack.push(Math.sin(operand));
+                } else if (token.equals("cos")) {
+                    // Cos function
+                    double operand = stack.pop();
+                    stack.push(Math.cos(operand));
+                } else if (token.equals("sind")) {
+                    // Sin function
+                    double operand = stack.pop();
+                    stack.push(Math.sin(Math.toRadians(operand)));
+                } else if (token.equals("cosd")) {
+                    // Cos function
+                    double operand = stack.pop();
+                    stack.push(Math.cos(Math.toRadians(operand)));
+                } else if (token.equals("log")) {
+                    // Logarithm function
+                    double base = stack.pop();
+                    double number = stack.pop();
+                    stack.push(Math.log(number) / Math.log(base));
+                } else {
+                    throw new IllegalArgumentException("Invalid expression");
                 }
             }
         }
