@@ -1,8 +1,9 @@
 package ru.nsu.yakovleva.calculator;
 
 import java.lang.Math;
+import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.Stack;
+import java.util.Deque;
 
 /**
  * A simple calculator that evaluates expressions in prefix form.
@@ -34,7 +35,7 @@ public class Main {
      */
     public static double calculate(String expression) {
         String[] tokens = expression.split("\\s+");
-        Stack<Double> stack = new Stack<>();
+        Deque<Double> stack = new LinkedList<>();
 
         for (int i = tokens.length - 1; i >= 0; i--) {
             String token = tokens[i];
