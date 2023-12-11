@@ -63,13 +63,16 @@ public class Main {
 
         for (int i = tokens.length - 1; i >= 0; i--) {
             String token = tokens[i];
-            if (("+".equals(token)) || ("-".equals(token)) || ("*".equals(token)) || ("/".equals(token))
+            if (("+".equals(token)) || ("-".equals(token))
+                    || ("*".equals(token)) || ("/".equals(token))
                     || ("sin".equals(token)) || ("cos".equals(token)) || ("log".equals(token))) {
                 if (flag == Flag.DEGREES && ("log".equals(token))) {
-                    throw new IllegalArgumentException("Logarithm function in degrees not supported");
+                    throw new IllegalArgumentException(
+                            "Logarithm function in degrees not supported");
                 }
                 double operand1, operand2;
-                if ("+".equals(token) || "-".equals(token) || "*".equals(token) || "/".equals(token)) {
+                if ("+".equals(token) || "-".equals(token)
+                        || "*".equals(token) || "/".equals(token)) {
                     operand1 = stack.pop();
                     operand2 = stack.pop();
                     stack.push(performOperation(token, operand1, operand2));
