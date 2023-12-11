@@ -70,7 +70,8 @@ public class Main {
                     throw new IllegalArgumentException(
                             "Logarithm function in degrees not supported");
                 }
-                double operand1, operand2;
+                double operand1;
+                double operand2;
                 if ("+".equals(token) || "-".equals(token)
                         || "*".equals(token) || "/".equals(token)) {
                     operand1 = stack.pop();
