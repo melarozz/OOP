@@ -21,9 +21,9 @@ public class NormalAndDegrees implements CalculatorStrategy {
      *                          (NORMAL or DEGREES).
      * @return The result of the calculation as a string representation of a numeric value.
      * @throws IllegalArgumentException If the expression is invalid or if
-     * an unsupported operator/function is used.
+     *                                  an unsupported operator/function is used.
      * @throws ArithmeticException      If there is a division by zero or
-     * invalid arguments for logarithmic functions.
+     *                                  invalid arguments for logarithmic functions.
      */
     @Override
     public String calculate(String expressionWithFlag, Calculator.Flag flag) {
@@ -61,6 +61,8 @@ public class NormalAndDegrees implements CalculatorStrategy {
                         double number = stack.pop();
                         stack.push(performLogarithmFunction(base, number));
                         break;
+                    default:
+                        throw new IllegalArgumentException("Invalid operator");
                 }
             } else {
                 if (isNumeric(token)) {

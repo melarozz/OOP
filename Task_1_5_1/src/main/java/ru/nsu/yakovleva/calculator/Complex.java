@@ -15,7 +15,7 @@ public class Complex implements CalculatorStrategy {
      * @param flag       The flag indicating the type of operation to perform.
      * @return The result of the calculation as a string representation of a complex number.
      * @throws IllegalArgumentException If the expression is invalid or if an
-     * unsupported operator/function is used.
+     *                                  unsupported operator/function is used.
      */
     @Override
     public String calculate(String expression, Calculator.Flag flag) {
@@ -44,6 +44,8 @@ public class Complex implements CalculatorStrategy {
                         ComplexNumber operand = stack.pop();
                         stack.push(performComplexFunction(token, operand));
                         break;
+                    default:
+                        throw new IllegalArgumentException("Invalid operator");
                 }
             } else {
                 if (isComplexNumber(token)) {

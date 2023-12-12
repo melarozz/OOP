@@ -6,7 +6,8 @@ import java.util.Scanner;
  * Represents a complex number and provides operations for arithmetic and trigonometric functions.
  */
 class ComplexNumber {
-    double real, imaginary;
+    double real;
+    double imaginary;
 
     /**
      * Constructor for creating a complex number.
