@@ -241,7 +241,7 @@ public class CalcTest {
     }
 
     @Test
-    public void testComplexCalculator_AllOperations() {
+    void testComplexCalculator_AllOperations() {
         // Testing an expression with all operations
         String expression = "-c sin cos log - + * / [2,3] [4,5] [2,3] [4,5] [6,7]";
         //sin(cos(ln((2+3i)/(4+5i)*(2+3i)+(4+5i)-(6+7i))))
@@ -251,7 +251,7 @@ public class CalcTest {
     }
 
     @Test
-    public void testDegreesCalculator_AllOperations() {
+    void testDegreesCalculator_AllOperations() {
         // Testing an expression with all operations
         String expression = "-d sin cos - + * / 20 444 25 43 60";
         //sin(cos(20/444*25+43-60))
@@ -261,7 +261,7 @@ public class CalcTest {
     }
 
     @Test
-    public void testNormalCalculator_AllOperations() {
+    void testNormalCalculator_AllOperations() {
         // Testing an expression with all operations
         String expression = "-n sin cos log  - + * / 4 2 2 3 1 100";
         //sin(cos(log(4/2*2+3-1, 100)))
