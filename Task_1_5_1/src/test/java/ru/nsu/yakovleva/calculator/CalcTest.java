@@ -269,4 +269,12 @@ public class CalcTest {
         String actualResult = Calculator.calculate(expression);
         assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    void testNonIntegerValues() {
+        String expression = "-n / 5.5 2.2";
+        String result = Calculator.calculate(expression);
+        assertEquals("2.5", result);
+    }
+
 }
