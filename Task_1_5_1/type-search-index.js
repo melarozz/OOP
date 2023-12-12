@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.yakovleva.calculator","l":"Main"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.yakovleva.calculator","l":"Calculator"},{"p":"ru.nsu.yakovleva.calculator","l":"CalculatorStrategy"},{"p":"ru.nsu.yakovleva.calculator","l":"Complex"},{"p":"ru.nsu.yakovleva.calculator","l":"NormalAndDegrees"}]
