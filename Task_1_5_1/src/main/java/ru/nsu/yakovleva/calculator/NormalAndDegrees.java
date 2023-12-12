@@ -12,14 +12,18 @@ public class NormalAndDegrees implements CalculatorStrategy {
     static boolean isDegreeFlag = false;
 
     /**
-     * Calculates the result of an expression based on the provided flag, supporting degree-based trigonometry
+     * Calculates the result of an expression based on the provided flag,
+     * supporting degree-based trigonometry
      * and logarithmic functions.
      *
      * @param expressionWithFlag The expression to be calculated, including the specific flag.
-     * @param flag               The flag indicating the type of operation to perform (NORMAL or DEGREES).
+     * @param flag               The flag indicating the type of operation to perform
+     *                          (NORMAL or DEGREES).
      * @return The result of the calculation as a string representation of a numeric value.
-     * @throws IllegalArgumentException If the expression is invalid or if an unsupported operator/function is used.
-     * @throws ArithmeticException      If there is a division by zero or invalid arguments for logarithmic functions.
+     * @throws IllegalArgumentException If the expression is invalid or if
+     * an unsupported operator/function is used.
+     * @throws ArithmeticException      If there is a division by zero or
+     * invalid arguments for logarithmic functions.
      */
     @Override
     public String calculate(String expressionWithFlag, Calculator.Flag flag) {

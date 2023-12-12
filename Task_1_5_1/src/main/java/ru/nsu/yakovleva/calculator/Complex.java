@@ -14,7 +14,8 @@ public class Complex implements CalculatorStrategy {
      * @param expression The expression to be calculated.
      * @param flag       The flag indicating the type of operation to perform.
      * @return The result of the calculation as a string representation of a complex number.
-     * @throws IllegalArgumentException If the expression is invalid or if an unsupported operator/function is used.
+     * @throws IllegalArgumentException If the expression is invalid or if an
+     * unsupported operator/function is used.
      */
     @Override
     public String calculate(String expression, Calculator.Flag flag) {
@@ -71,7 +72,8 @@ public class Complex implements CalculatorStrategy {
     /**
      * Parses a string to create a ComplexNumber object.
      *
-     * @param str The string representation of the complex number in the format "[real,imaginary]".
+     * @param str The string representation of the complex
+     *            number in the format "[real,imaginary]".
      * @return The ComplexNumber object parsed from the string.
      */
     private static ComplexNumber parseComplex(String str) {
@@ -93,7 +95,8 @@ public class Complex implements CalculatorStrategy {
      * @return The result of the arithmetic operation on the complex numbers.
      * @throws IllegalArgumentException If an unsupported operator is provided.
      */
-    private ComplexNumber performOperation(String operator, ComplexNumber operand1, ComplexNumber operand2) {
+    private ComplexNumber performOperation(String operator, ComplexNumber operand1,
+                                           ComplexNumber operand2) {
         switch (operator) {
             case "+":
                 return operand1.add(operand2);
