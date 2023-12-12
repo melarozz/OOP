@@ -1,72 +1,31 @@
 package ru.nsu.yakovleva.calculator;
 
-import java.lang.Math;
 import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * A simple calculator that evaluates expressions in prefix form.
+ * A calculator strategy that performs arithmetic and trigonometric operations on numeric values,
+ * including support for degree-based trigonometric functions and logarithmic operations.
  */
-public class Main {
+public class NormalAndDegrees implements CalculatorStrategy {
 
-    enum Flag {
-        NORMAL, DEGREES
-    }
-
-    private static Flag flag = Flag.NORMAL;
+    static boolean isDegreeFlag = false;
 
     /**
-     * Sets the flag for the calculator.
+     * Calculates the result of an expression based on the provided flag, supporting degree-based trigonometry
+     * and logarithmic functions.
      *
-     * @param newFlag The new flag value (-n or -d)
+     * @param expressionWithFlag The expression to be calculated, including the specific flag.
+     * @param flag               The flag indicating the type of operation to perform (NORMAL or DEGREES).
+     * @return The result of the calculation as a string representation of a numeric value.
+     * @throws IllegalArgumentException If the expression is invalid or if an unsupported operator/function is used.
+     * @throws ArithmeticException      If there is a division by zero or invalid arguments for logarithmic functions.
      */
-    private static void setFlag(String newFlag) {
-        switch (newFlag) {
-            case "-n":
-                flag = Flag.NORMAL;
-                break;
-            case "-d":
-                flag = Flag.DEGREES;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid flag");
-        }
-    }
-
-    /**
-     * Extracts the flag from the expression and sets it accordingly.
-     *
-     * @param expression The expression in prefix form to be evaluated, including the flag
-     * @return The expression without the flag
-     */
-    private static String extractFlag(String expression) {
-        String flag = expression.substring(0, 3);
-        switch (flag) {
-            case "-n ":
-                setFlag("-n");
-                return expression.substring(3);
-            case "-d ":
-                setFlag("-d");
-                return expression.substring(3);
-            default:
-                throw new IllegalArgumentException("Flag not provided or invalid");
-        }
-
-    }
-
-    /**
-     * Evaluates a prefix expression and returns the result.
-     *
-     * @param expressionWithFlag The expression in prefix form with the flag to be evaluated
-     * @return The result of the expression evaluation
-     * @throws IllegalArgumentException If the expression is invalid
-     * @throws ArithmeticException      If there is a division by zero
-     */
-    public static double calculate(String expressionWithFlag) {
-        String expression = extractFlag(expressionWithFlag);
-        String[] tokens = expression.split("\\s+");
+    @Override
+    public String calculate(String expressionWithFlag, Calculator.Flag flag) {
+        isDegreeFlag = (flag == Calculator.Flag.DEGREES);
+        String[] tokens = expressionWithFlag.split("\\s+");
         Deque<Double> stack = new LinkedList<>();
-        boolean degreesFlag = flag == Flag.DEGREES;
 
         for (int i = tokens.length - 1; i >= 0; i--) {
             String token = tokens[i];
@@ -90,7 +49,7 @@ public class Main {
                         stack.push(performTrigonometricFunction(token, operand));
                         break;
                     case "log":
-                        if (degreesFlag) {
+                        if (isDegreeFlag) {
                             throw new IllegalArgumentException(
                                     "Logarithm function in degrees not supported");
                         }
@@ -108,7 +67,7 @@ public class Main {
             }
         }
 
-        return stack.pop();
+        return stack.pop().toString();
     }
 
     /**
@@ -151,9 +110,9 @@ public class Main {
     private static double performTrigonometricFunction(String function, double operand) {
         switch (function) {
             case "sin":
-                return (flag == Flag.DEGREES) ? Math.sin(Math.toRadians(operand)) : Math.sin(operand);
+                return (isDegreeFlag) ? Math.sin(Math.toRadians(operand)) : Math.sin(operand);
             case "cos":
-                return (flag == Flag.DEGREES) ? Math.cos(Math.toRadians(operand)) : Math.cos(operand);
+                return (isDegreeFlag) ? Math.cos(Math.toRadians(operand)) : Math.cos(operand);
             default:
                 throw new IllegalArgumentException("Invalid function");
         }
@@ -188,4 +147,5 @@ public class Main {
             return false;
         }
     }
+
 }
