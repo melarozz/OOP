@@ -21,12 +21,15 @@ public class Main {
      * @param newFlag The new flag value (-n or -d)
      */
     private static void setFlag(String newFlag) {
-        if (newFlag.equals("-n")) {
-            flag = Flag.NORMAL;
-        } else if (newFlag.equals("-d")) {
-            flag = Flag.DEGREES;
-        } else {
-            throw new IllegalArgumentException("Invalid flag");
+        switch (newFlag) {
+            case "-n":
+                flag = Flag.NORMAL;
+                break;
+            case "-d":
+                flag = Flag.DEGREES;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid flag");
         }
     }
 
@@ -37,15 +40,18 @@ public class Main {
      * @return The expression without the flag
      */
     private static String extractFlag(String expression) {
-        if (expression.startsWith("-n ")) {
-            setFlag("-n");
-            return expression.substring(3); // Remove the flag (-n)
-        } else if (expression.startsWith("-d ")) {
-            setFlag("-d");
-            return expression.substring(3); // Remove the flag (-d)
-        } else {
-            throw new IllegalArgumentException("Flag not provided or invalid");
+        String flag = expression.substring(0, 3);
+        switch (flag) {
+            case "-n ":
+                setFlag("-n");
+                return expression.substring(3);
+            case "-d ":
+                setFlag("-d");
+                return expression.substring(3);
+            default:
+                throw new IllegalArgumentException("Flag not provided or invalid");
         }
+
     }
 
     /**
@@ -60,33 +66,38 @@ public class Main {
         String expression = extractFlag(expressionWithFlag);
         String[] tokens = expression.split("\\s+");
         Deque<Double> stack = new LinkedList<>();
+        boolean degreesFlag = flag == Flag.DEGREES;
 
         for (int i = tokens.length - 1; i >= 0; i--) {
             String token = tokens[i];
-            if (("+".equals(token)) || ("-".equals(token))
+            boolean isOperator = ("+".equals(token)) || ("-".equals(token))
                     || ("*".equals(token)) || ("/".equals(token))
-                    || ("sin".equals(token)) || ("cos".equals(token)) || ("log".equals(token))) {
-                if (flag == Flag.DEGREES && ("log".equals(token))) {
-                    throw new IllegalArgumentException(
-                            "Logarithm function in degrees not supported");
-                }
-                double operand1;
-                double operand2;
+                    || ("sin".equals(token)) || ("cos".equals(token)) || ("log".equals(token));
+
+            if (isOperator) {
                 switch (token) {
-                    case "+", "-", "*", "/": {
-                        operand1 = stack.pop();
-                        operand2 = stack.pop();
+                    case "+":
+                    case "-":
+                    case "*":
+                    case "/":
+                        double operand1 = stack.pop();
+                        double operand2 = stack.pop();
                         stack.push(performOperation(token, operand1, operand2));
-                    }
-                    case "sin", "cos": {
-                        operand1 = stack.pop();
-                        stack.push(performTrigonometricFunction(token, operand1));
-                    }
-                    case "log": {
+                        break;
+                    case "sin":
+                    case "cos":
+                        double operand = stack.pop();
+                        stack.push(performTrigonometricFunction(token, operand));
+                        break;
+                    case "log":
+                        if (degreesFlag) {
+                            throw new IllegalArgumentException(
+                                    "Logarithm function in degrees not supported");
+                        }
                         double base = stack.pop();
                         double number = stack.pop();
                         stack.push(performLogarithmFunction(base, number));
-                    }
+                        break;
                 }
             } else {
                 if (isNumeric(token)) {
@@ -95,10 +106,6 @@ public class Main {
                     throw new IllegalArgumentException("Invalid expression");
                 }
             }
-        }
-
-        if (stack.size() != 1) {
-            throw new IllegalArgumentException("Invalid expression");
         }
 
         return stack.pop();
@@ -115,19 +122,20 @@ public class Main {
      * @throws ArithmeticException      If there is a division by zero
      */
     private static double performOperation(String operator, double operand1, double operand2) {
-        if ("+".equals(operator)) {
-            return operand1 + operand2;
-        } else if ("-".equals(operator)) {
-            return operand1 - operand2;
-        } else if ("*".equals(operator)) {
-            return operand1 * operand2;
-        } else if ("/".equals(operator)) {
-            if (operand2 == 0) {
-                throw new ArithmeticException("Division by zero");
-            }
-            return operand1 / operand2;
-        } else {
-            throw new IllegalArgumentException("Invalid operator");
+        switch (operator) {
+            case "+":
+                return operand1 + operand2;
+            case "-":
+                return operand1 - operand2;
+            case "*":
+                return operand1 * operand2;
+            case "/":
+                if (operand2 == 0) {
+                    throw new ArithmeticException("Division by zero");
+                }
+                return operand1 / operand2;
+            default:
+                throw new IllegalArgumentException("Invalid operator");
         }
     }
 
@@ -141,12 +149,13 @@ public class Main {
      * @throws IllegalArgumentException If the function is invalid
      */
     private static double performTrigonometricFunction(String function, double operand) {
-        if ("sin".equals(function)) {
-            return (flag == Flag.DEGREES) ? Math.sin(Math.toRadians(operand)) : Math.sin(operand);
-        } else if ("cos".equals(function)) {
-            return (flag == Flag.DEGREES) ? Math.cos(Math.toRadians(operand)) : Math.cos(operand);
-        } else {
-            throw new IllegalArgumentException("Invalid function");
+        switch (function) {
+            case "sin":
+                return (flag == Flag.DEGREES) ? Math.sin(Math.toRadians(operand)) : Math.sin(operand);
+            case "cos":
+                return (flag == Flag.DEGREES) ? Math.cos(Math.toRadians(operand)) : Math.cos(operand);
+            default:
+                throw new IllegalArgumentException("Invalid function");
         }
     }
 
