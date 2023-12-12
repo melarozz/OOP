@@ -185,7 +185,8 @@ implements <a href="CalculatorStrategy.html" title="interface in ru.nsu.yakovlev
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calculate(java.lang.String,ru.nsu.yakovleva.calculator.Calculator.Flag)">calculate</a></span>&#8203;(java.lang.String&nbsp;expressionWithFlag,
          ru.nsu.yakovleva.calculator.Calculator.Flag&nbsp;flag)</code></th>
 <td class="colLast">
-<div class="block">Calculates the result of an expression based on the provided flag, supporting degree-based trigonometry
+<div class="block">Calculates the result of an expression based on the provided flag,
+ supporting degree-based trigonometry
  and logarithmic functions.</div>
 </td>
 </tr>
@@ -240,19 +241,23 @@ implements <a href="CalculatorStrategy.html" title="interface in ru.nsu.yakovlev
 <h4>calculate</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;calculate&#8203;(java.lang.String&nbsp;expressionWithFlag,
                                   ru.nsu.yakovleva.calculator.Calculator.Flag&nbsp;flag)</pre>
-<div class="block">Calculates the result of an expression based on the provided flag, supporting degree-based trigonometry
+<div class="block">Calculates the result of an expression based on the provided flag,
+ supporting degree-based trigonometry
  and logarithmic functions.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="CalculatorStrategy.html#calculate(java.lang.String,ru.nsu.yakovleva.calculator.Calculator.Flag)">calculate</a></code>&nbsp;in interface&nbsp;<code><a href="CalculatorStrategy.html" title="interface in ru.nsu.yakovleva.calculator">CalculatorStrategy</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>expressionWithFlag</code> - The expression to be calculated, including the specific flag.</dd>
-<dd><code>flag</code> - The flag indicating the type of operation to perform (NORMAL or DEGREES).</dd>
+<dd><code>flag</code> - The flag indicating the type of operation to perform
+                          (NORMAL or DEGREES).</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The result of the calculation as a string representation of a numeric value.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalArgumentException</code> - If the expression is invalid or if an unsupported operator/function is used.</dd>
-<dd><code>java.lang.ArithmeticException</code> - If there is a division by zero or invalid arguments for logarithmic functions.</dd>
+<dd><code>java.lang.IllegalArgumentException</code> - If the expression is invalid or if
+ an unsupported operator/function is used.</dd>
+<dd><code>java.lang.ArithmeticException</code> - If there is a division by zero or
+ invalid arguments for logarithmic functions.</dd>
 </dl>
 </li>
 </ul>
