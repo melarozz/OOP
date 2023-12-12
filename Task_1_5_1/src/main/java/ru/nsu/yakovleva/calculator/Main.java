@@ -72,18 +72,21 @@ public class Main {
                 }
                 double operand1;
                 double operand2;
-                if ("+".equals(token) || "-".equals(token)
-                        || "*".equals(token) || "/".equals(token)) {
-                    operand1 = stack.pop();
-                    operand2 = stack.pop();
-                    stack.push(performOperation(token, operand1, operand2));
-                } else if ("sin".equals(token) || "cos".equals(token)) {
-                    operand1 = stack.pop();
-                    stack.push(performTrigonometricFunction(token, operand1));
-                } else if ("log".equals(token)) {
-                    double base = stack.pop();
-                    double number = stack.pop();
-                    stack.push(performLogarithmFunction(base, number));
+                switch (token) {
+                    case "+", "-", "*", "/": {
+                        operand1 = stack.pop();
+                        operand2 = stack.pop();
+                        stack.push(performOperation(token, operand1, operand2));
+                    }
+                    case "sin", "cos": {
+                        operand1 = stack.pop();
+                        stack.push(performTrigonometricFunction(token, operand1));
+                    }
+                    case "log": {
+                        double base = stack.pop();
+                        double number = stack.pop();
+                        stack.push(performLogarithmFunction(base, number));
+                    }
                 }
             } else {
                 if (isNumeric(token)) {
