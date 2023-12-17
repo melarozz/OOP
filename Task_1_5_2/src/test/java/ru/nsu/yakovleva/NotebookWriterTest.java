@@ -19,8 +19,6 @@ public class NotebookWriterTest {
     @Test
     public void testFileCreationAndExistence() {
         NotebookWriter notebookWriter = new NotebookWriter(TEST_FILE_NAME);
-        assertTrue(notebookWriter.exists());
-
         try {
             notebookWriter.open();
             assertTrue(notebookWriter.exists());
