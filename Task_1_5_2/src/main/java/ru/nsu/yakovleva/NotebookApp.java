@@ -18,8 +18,8 @@ import org.apache.commons.cli.Options;
  * Uses JSON files for storing data.
  */
 public class NotebookApp {
-    private final Options options;
-    private NotebookWriter writer;
+    final Options options;
+    NotebookWriter writer;
 
     /**
      * Creates an instance of the class NotebookApplication
@@ -174,7 +174,7 @@ public class NotebookApp {
      * @throws java.text.ParseException if one of the arguments of an
      *                                  operation is in the wrong format.
      */
-    private void parseLine(CommandLine line) throws IOException, java.text.ParseException {
+    void parseLine(CommandLine line) throws IOException, java.text.ParseException {
         if (line.hasOption("help")) {
             help();
             return;
