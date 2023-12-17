@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.text.SimpleDateFormat;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -47,5 +48,18 @@ class NoteTest {
         Note note = new Note("Title 5", "Content 5");
         Integer integer = 10;
         assertNotEquals(note, integer);
+    }
+
+    @Test
+    public void testNoteStringRepresentation() {
+        String title = "Test Title";
+        String content = "Test Content";
+        Note note = new Note(title, content);
+
+        String expectedString = "Title: \"" + title + "\"\n" +
+                "Date of creation: " + new SimpleDateFormat("yyyy.MM.dd HH:mm").format(note.getTimestamp()) + "\n" +
+                "Note: \"" + content + "\"";
+
+        assertEquals(expectedString, note.toString());
     }
 }

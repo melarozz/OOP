@@ -62,7 +62,7 @@ public class NotebookApp {
     /**
      * Displays a description of all the operations available in Notebook Application.
      */
-    private void help() {
+    void help() {
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp("notebook.jar", options);
     }
@@ -73,7 +73,7 @@ public class NotebookApp {
      * @param note - the note to save
      * @throws IOException if there are problems when working with the file.
      */
-    private void add(Note note) throws IOException {
+    void add(Note note) throws IOException {
         Notebook notebook = new Notebook(writer.getFileName());
         notebook.addNote(note);
         notebook.addNotes(writer.read());
@@ -98,7 +98,7 @@ public class NotebookApp {
      *
      * @throws IOException if there are problems when working with the file.
      */
-    private void show() throws IOException {
+    void show() throws IOException {
         Notebook notebook = new Notebook(writer.getFileName());
         Note[] notes = writer.read();
         if (notes == null || notes.length == 0) {
