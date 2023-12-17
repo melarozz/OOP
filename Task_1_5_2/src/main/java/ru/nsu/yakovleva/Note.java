@@ -76,9 +76,11 @@ public class Note {
       return true;
     }
 
-    if (!(object instanceof Note note)) {
+    if (!(object instanceof Note)) {
       return false;
     }
+
+    Note note = (Note) object;
 
     String title = note.getTitle();
     String content = note.getContent();

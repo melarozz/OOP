@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'ru.nsu,yakovleva.notebook'
+group 'ru.nsu.yakovleva.notebook'
 version '1.0-SNAPSHOT'
 
 repositories {

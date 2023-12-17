@@ -218,7 +218,6 @@ public class NotebookApp {
     writer.close();
   }
 
-
   /**
    * Starts the Notebook Application and presents the arguments for
    * parsing in an appropriate format, then passes them
