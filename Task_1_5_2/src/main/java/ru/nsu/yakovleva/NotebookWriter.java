@@ -10,115 +10,115 @@ import java.io.*;
  * and writing them in a suitable format to JSON files.
  */
 public class NotebookWriter {
-  private final File file;
-  private final String fileName;
-  private BufferedReader fileReader;
+    private final File file;
+    private final String fileName;
+    private BufferedReader fileReader;
 
-  /**
-   * Creates an instance of the class NotebookWriter
-   * and sets the default file name for storing notes.
-   */
-  public NotebookWriter() {
-    this.fileName = "Notebook";
-    this.file = new File(this.fileName + ".json");
-  }
-
-  /**
-   * Creates an instance of the class NotebookWriter and
-   * sets the specified file name for storing notes.
-   *
-   * @param fileName - the name of the file for storing notes.
-   */
-  public NotebookWriter(String fileName) {
-    this.fileName = fileName;
-    this.file = new File(this.fileName + ".json");
-  }
-
-  /**
-   * Allows getting the name of the file associated with this writer.
-   *
-   * @return the file name.
-   */
-  public String getFileName() {
-    return fileName;
-  }
-
-  /**
-   * Checks for the existence of a file associated with this writer.
-   *
-   * @return true if file exists, false otherwise.
-   */
-  public boolean exists() {
-    return file.exists();
-  }
-
-  /**
-   * Creates, if necessary, a file for storing notes with the specified name
-   * and opens it for reading.
-   *
-   * @throws IOException there are problems if there are
-   *                     problems when working with the file.
-   */
-  public void open() throws IOException {
-    if (!exists()) {
-      file.createNewFile();
+    /**
+     * Creates an instance of the class NotebookWriter
+     * and sets the default file name for storing notes.
+     */
+    public NotebookWriter() {
+        this.fileName = "Notebook";
+        this.file = new File(this.fileName + ".json");
     }
-    fileReader = new BufferedReader(new FileReader(file));
-  }
 
-  /**
-   * Reads all text from the file.
-   *
-   * @param reader - buffered reader associated with the file.
-   * @return read text from the file.
-   * @throws IOException there are problems
-   *                     if there are problems when reading from the file.
-   */
-  private String readAllLines(BufferedReader reader) throws IOException {
-    StringBuilder content = new StringBuilder();
-    String currentLine;
-    while ((currentLine = reader.readLine()) != null) {
-      content.append(currentLine).append("\n");
+    /**
+     * Creates an instance of the class NotebookWriter and
+     * sets the specified file name for storing notes.
+     *
+     * @param fileName - the name of the file for storing notes.
+     */
+    public NotebookWriter(String fileName) {
+        this.fileName = fileName;
+        this.file = new File(this.fileName + ".json");
     }
-    return content.toString();
-  }
 
-  /**
-   * Reads all notes from the file.
-   *
-   * @return the array of read notes.
-   * @throws IOException there are problems if there are problems when reading notes.
-   */
-  public Note[] read() throws IOException {
-    String content = readAllLines(fileReader);
-    if (content.isEmpty()) {
-      return null;
+    /**
+     * Allows getting the name of the file associated with this writer.
+     *
+     * @return the file name.
+     */
+    public String getFileName() {
+        return fileName;
     }
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    return gson.fromJson(content, Note[].class);
-  }
 
-  /**
-   * Writes notes from specified array to the file.
-   *
-   * @param notes - the array of notes to write.
-   * @throws IOException there are problems if there are problems when writing notes to the file.
-   */
-  public void write(Note[] notes) throws IOException {
-    BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file, false));
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    String content = gson.toJson(notes, Note[].class);
-    fileWriter.append(content);
-    fileWriter.close();
-  }
+    /**
+     * Checks for the existence of a file associated with this writer.
+     *
+     * @return true if file exists, false otherwise.
+     */
+    public boolean exists() {
+        return file.exists();
+    }
 
-  /**
-   * Closes buffered reader associated with the file.
-   *
-   * @throws IOException could not close buffered reader.
-   */
-  public void close() throws IOException {
-    fileReader.close();
-  }
+    /**
+     * Creates, if necessary, a file for storing notes with the specified name
+     * and opens it for reading.
+     *
+     * @throws IOException there are problems if there are
+     *                     problems when working with the file.
+     */
+    public void open() throws IOException {
+        if (!exists()) {
+            file.createNewFile();
+        }
+        fileReader = new BufferedReader(new FileReader(file));
+    }
+
+    /**
+     * Reads all text from the file.
+     *
+     * @param reader - buffered reader associated with the file.
+     * @return read text from the file.
+     * @throws IOException there are problems
+     *                     if there are problems when reading from the file.
+     */
+    private String readAllLines(BufferedReader reader) throws IOException {
+        StringBuilder content = new StringBuilder();
+        String currentLine;
+        while ((currentLine = reader.readLine()) != null) {
+            content.append(currentLine).append("\n");
+        }
+        return content.toString();
+    }
+
+    /**
+     * Reads all notes from the file.
+     *
+     * @return the array of read notes.
+     * @throws IOException there are problems if there are problems when reading notes.
+     */
+    public Note[] read() throws IOException {
+        String content = readAllLines(fileReader);
+        if (content.isEmpty()) {
+            return null;
+        }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.fromJson(content, Note[].class);
+    }
+
+    /**
+     * Writes notes from specified array to the file.
+     *
+     * @param notes - the array of notes to write.
+     * @throws IOException there are problems if there are problems when writing notes to the file.
+     */
+    public void write(Note[] notes) throws IOException {
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file, false));
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String content = gson.toJson(notes, Note[].class);
+        fileWriter.append(content);
+        fileWriter.close();
+    }
+
+    /**
+     * Closes buffered reader associated with the file.
+     *
+     * @throws IOException could not close buffered reader.
+     */
+    public void close() throws IOException {
+        fileReader.close();
+    }
 }
 
