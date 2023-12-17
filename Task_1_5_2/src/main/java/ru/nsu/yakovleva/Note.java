@@ -59,9 +59,15 @@ public class Note {
     public String toString() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd HH:mm");
         String date = formatter.format(timestamp);
-        return "Title: \"" + title + "\"\n" +
-                "Date of creation: " + date + "\n" +
-                "Note: \"" + content + "\"";
+        return "Title: \""
+                + title
+                + "\"\n"
+                + "Date of creation: "
+                + date
+                + "\n"
+                + "Note: \""
+                + content
+                + "\"";
     }
 
     /**

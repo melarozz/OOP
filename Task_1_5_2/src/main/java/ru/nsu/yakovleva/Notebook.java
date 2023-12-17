@@ -112,7 +112,8 @@ public class Notebook {
     public Note[] getNotesByDate(Date after) {
         Stream<Note> notebookStream = Arrays.stream(getAllNotes());
         return notebookStream
-                .filter(note -> (note.getTimestamp().after(after) || note.getTimestamp().equals(after)))
+                .filter(note -> (note.getTimestamp().after(after)
+                        || note.getTimestamp().equals(after)))
                 .toArray(Note[]::new);
     }
 
@@ -126,8 +127,10 @@ public class Notebook {
     public Note[] getNotesByDate(Date after, Date before) {
         Stream<Note> notebookStream = Arrays.stream(getAllNotes());
         return notebookStream
-                .filter(note -> (note.getTimestamp().after(after) || note.getTimestamp().equals(after)))
-                .filter(note -> (note.getTimestamp().before(before) || note.getTimestamp().equals(before)))
+                .filter(note -> (note.getTimestamp().after(after)
+                        || note.getTimestamp().equals(after)))
+                .filter(note -> (note.getTimestamp().before(before)
+                        || note.getTimestamp().equals(before)))
                 .toArray(Note[]::new);
     }
 
@@ -143,8 +146,10 @@ public class Notebook {
         Note[] byKeywords = getNotesByKeywords(keywords);
         Stream<Note> notebookStream = Arrays.stream(byKeywords);
         return notebookStream
-                .filter(note -> (note.getTimestamp().after(after) || note.getTimestamp().equals(after)))
-                .filter(note -> (note.getTimestamp().before(before) || note.getTimestamp().equals(before)))
+                .filter(note -> (note.getTimestamp().after(after)
+                        || note.getTimestamp().equals(after)))
+                .filter(note -> (note.getTimestamp().before(before)
+                        || note.getTimestamp().equals(before)))
                 .toArray(Note[]::new);
     }
 
