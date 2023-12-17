@@ -27,6 +27,12 @@ public class AppExecuteTest {
     }
 
     @Test
+    public void testAppExecuteClass() {
+        AppExecute appExecute = new AppExecute();
+        assertNotNull(appExecute);
+    }
+
+    @Test
     public void testMainMethod() {
         String[] testArgs = {"-help"};
 

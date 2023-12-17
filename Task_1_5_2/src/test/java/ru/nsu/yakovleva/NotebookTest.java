@@ -1,6 +1,7 @@
 package ru.nsu.yakovleva;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -259,6 +260,14 @@ class NotebookTest {
 
         String actualString = notebook.toString();
         assertEquals(expectedString.toString(), actualString);
+    }
+
+    @Test
+    public void testAddNotesWithNull() {
+        Notebook notebook = new Notebook("Test Notebook");
+        Note[] nullNotes = null;
+        assertDoesNotThrow(() -> notebook.addNotes(nullNotes));
+        assertEquals(0, notebook.getAllNotes().length);
     }
 
 }

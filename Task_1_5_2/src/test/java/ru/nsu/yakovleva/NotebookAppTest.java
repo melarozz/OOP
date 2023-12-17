@@ -61,9 +61,16 @@ public class NotebookAppTest {
         assertEquals(expectedOutput, outContent.toString().trim());
     }
 
-
     @Test
     public void testRunWithInvalidArguments() {
+        String[] args = {"invalid", "arguments"};
+        notebookApp.run(args);
+        String expectedOutput = "";
+        assertEquals(expectedOutput, outContent.toString().trim());
+    }
+
+    @Test
+    public void testRunWithInvalidArgumentsThrow() {
         String[] args = {"invalid", "arguments"};
         notebookApp.run(args);
         String expectedOutput = "";
