@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -33,10 +35,9 @@ public class NotebookWriterTest {
 
         try {
             notebookWriter.open();
-            Note[] notesToWrite = {
-                    new Note("Title 1", "Content 1"),
-                    new Note("Title 2", "Content 2"),
-            };
+            Note[] notesToWrite = new Note[2];
+            notesToWrite[0] = new Note("Title 1", "Content 1");
+            notesToWrite[1] = new Note("Title 2", "Content 2");
 
             notebookWriter.write(notesToWrite);
 

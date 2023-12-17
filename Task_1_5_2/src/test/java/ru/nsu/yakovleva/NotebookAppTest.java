@@ -6,7 +6,6 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -57,7 +56,9 @@ class NotebookAppTest {
         when(writer.getFileName()).thenReturn("testFile.json");
         doNothing().when(writer).open();
         doNothing().when(writer).close();
-        when(writer.read()).thenReturn(new Note[]{new Note("Title", "Content")});
+        Note[] notesToWrite = new Note[1];
+        notesToWrite[0] = new Note("Title 1", "Content 1");
+        when(writer.read()).thenReturn(notesToWrite);
 
         assertDoesNotThrow(() -> notebookApp.show());
     }
@@ -67,13 +68,14 @@ class NotebookAppTest {
         when(writer.getFileName()).thenReturn("testFile.json");
         doNothing().when(writer).open();
         doNothing().when(writer).close();
-        when(writer.read()).thenReturn(new Note[]{
-                new Note("Title 1", "Content with keyword"),
-                new Note("Title 2", "Content without keyword")
-        });
+        Note[] notesToWrite = new Note[2];
+        notesToWrite[0] = new Note("Title 1", "Content 1");
+        notesToWrite[1] = new Note("Title 2", "Content 2");
+
+        when(writer.read()).thenReturn(notesToWrite);
 
         assertDoesNotThrow(() -> notebookApp.show("2023.01.01 00:00",
-                "2024.01.01 00:00", new String[]{"keyword"}));
+                "2024.01.01 00:00", new String[]{"Title"}));
     }
 
     @Test
@@ -98,10 +100,10 @@ class NotebookAppTest {
         when(writer.getFileName()).thenReturn("testFile.json");
         doNothing().when(writer).open();
         doNothing().when(writer).close();
-        when(writer.read()).thenReturn(new Note[]{
-                new Note("Title 1", "Content 1"),
-                new Note("Title 2", "Content 2")
-        });
+        Note[] notesToWrite = new Note[2];
+        notesToWrite[0] = new Note("Title 1", "Content 1");
+        notesToWrite[1] = new Note("Title 2", "Content 2");
+        when(writer.read()).thenReturn(notesToWrite);
 
         assertDoesNotThrow(() -> notebookApp.show());
     }
@@ -111,10 +113,10 @@ class NotebookAppTest {
         when(writer.getFileName()).thenReturn("testFile.json");
         doNothing().when(writer).open();
         doNothing().when(writer).close();
-        when(writer.read()).thenReturn(new Note[]{
-                new Note("Title 1", "Content 1"),
-                new Note("Title 2", "Content 2")
-        });
+        Note[] notesToWrite = new Note[2];
+        notesToWrite[0] = new Note("Title 1", "Content 1");
+        notesToWrite[1] = new Note("Title 2", "Content 2");
+        when(writer.read()).thenReturn(notesToWrite);
 
         assertDoesNotThrow(() -> notebookApp.show("2023.01.01 00:00", "2024.01.01 00:00"));
     }
@@ -124,10 +126,10 @@ class NotebookAppTest {
         when(writer.getFileName()).thenReturn("testFile.json");
         doNothing().when(writer).open();
         doNothing().when(writer).close();
-        when(writer.read()).thenReturn(new Note[]{
-                new Note("Title 1", "Content with keyword"),
-                new Note("Title 2", "Content without keyword")
-        });
+        Note[] notesToWrite = new Note[2];
+        notesToWrite[0] = new Note("Title 1", "Content 1");
+        notesToWrite[1] = new Note("Title 2", "Content 2");
+        when(writer.read()).thenReturn(notesToWrite);
 
         assertDoesNotThrow(() -> notebookApp.show("2023.01.01 00:00",
                 "2024.01.01 00:00", new String[]{"Title"}));
