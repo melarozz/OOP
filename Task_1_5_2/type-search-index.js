@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.yakovleva","l":"AppExecute"},{"p":"ru.nsu.yakovleva","l":"Note"},{"p":"ru.nsu.yakovleva","l":"Notebook"},{"p":"ru.nsu.yakovleva","l":"NotebookApp"},{"p":"ru.nsu.yakovleva","l":"NotebookWriter"}]
