@@ -56,9 +56,14 @@ class NoteTest {
         String content = "Test Content";
         Note note = new Note(title, content);
 
-        String expectedString = "Title: \"" + title + "\"\n" +
-                "Date of creation: " + new SimpleDateFormat("yyyy.MM.dd HH:mm").format(note.getTimestamp()) + "\n" +
-                "Note: \"" + content + "\"";
+        String expectedString = "Title: \""
+                + title + "\"\n"
+                + "Date of creation: "
+                + new SimpleDateFormat("yyyy.MM.dd HH:mm").format(note.getTimestamp())
+                + "\n"
+                + "Note: \""
+                + content
+                + "\"";
 
         assertEquals(expectedString, note.toString());
     }

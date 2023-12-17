@@ -179,11 +179,11 @@ class NotebookTest {
 
     @Test
     public void testPerformance() {
-        final int NUM_NOTES = 10000;
-        Note[] expected = new Note[NUM_NOTES];
+        final int num = 10000;
+        Note[] expected = new Note[num];
 
         // Add a large number of notes
-        for (int i = 0; i < NUM_NOTES; i++) {
+        for (int i = 0; i < num; i++) {
             expected[i] = new Note("Title " + i, "Content " + i);
         }
         notebook.addNotes(expected);

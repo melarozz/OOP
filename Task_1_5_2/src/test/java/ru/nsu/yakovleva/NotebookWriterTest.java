@@ -14,11 +14,11 @@ import org.junit.jupiter.api.Test;
  * Test class.
  */
 public class NotebookWriterTest {
-    private static final String TEST_FILE_NAME = "TestNotebook";
+    private static final String testFileName = "TestNotebook";
 
     @Test
     public void testFileCreationAndExistence() throws IOException {
-        NotebookWriter notebookWriter = new NotebookWriter(TEST_FILE_NAME);
+        NotebookWriter notebookWriter = new NotebookWriter(testFileName);
         try {
             notebookWriter.open();
             assertTrue(notebookWriter.exists());
@@ -29,7 +29,7 @@ public class NotebookWriterTest {
 
     @Test
     public void testReadWriteOperations() throws IOException {
-        NotebookWriter notebookWriter = new NotebookWriter(TEST_FILE_NAME);
+        NotebookWriter notebookWriter = new NotebookWriter(testFileName);
 
         try {
             notebookWriter.open();
