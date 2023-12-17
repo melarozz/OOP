@@ -29,6 +29,14 @@ class NotebookTest {
         assertEquals(note, notebook.getAllNotes()[0]);
     }
 
+    @Test
+    public void testAddNoteStrings() {
+        Note note = new Note("Test2 Title", "Test Content");
+        notebook.addNote("Test2 Title", "Test Content");
+
+        assertEquals(1, notebook.getAllNotes().length);
+        assertEquals(note, notebook.getAllNotes()[0]);
+    }
 
     @Test
     public void addNotes() {
@@ -222,6 +230,35 @@ class NotebookTest {
             assertTrue(note.getTimestamp().after(after) || note.getTimestamp().equals(after));
             assertTrue(note.getTimestamp().before(before) || note.getTimestamp().equals(before));
         }
+    }
+
+    @Test
+    public void testRemoveMultipleNotesWithSameTitle() {
+        Note[] expected = new Note[3];
+        expected[0] = new Note("Title 24", "Content 24");
+        expected[1] = new Note("Title 24", "Content 25");
+        expected[2] = new Note("Title 25", "Content 26");
+        notebook.addNotes(expected);
+
+        notebook.removeNote("Title 24");
+
+        assertEquals(1, notebook.getAllNotes().length);
+    }
+
+    @Test
+    public void testToString() {
+        Note[] expected = new Note[2];
+        expected[0] = new Note("Title 38", "Content 38");
+        expected[1] = new Note("Title 39", "Content 39");
+        notebook.addNotes(expected);
+
+        StringBuilder expectedString = new StringBuilder("---Test---\n");
+        for (Note note : expected) {
+            expectedString.append(note.toString()).append("\n------\n");
+        }
+
+        String actualString = notebook.toString();
+        assertEquals(expectedString.toString(), actualString);
     }
 
 }
