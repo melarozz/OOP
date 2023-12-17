@@ -17,7 +17,7 @@ public class NotebookWriterTest {
     private static final String TEST_FILE_NAME = "TestNotebook";
 
     @Test
-    public void testFileCreationAndExistence() {
+    public void testFileCreationAndExistence() throws IOException {
         NotebookWriter notebookWriter = new NotebookWriter(TEST_FILE_NAME);
         try {
             notebookWriter.open();
@@ -28,7 +28,7 @@ public class NotebookWriterTest {
     }
 
     @Test
-    public void testReadWriteOperations() {
+    public void testReadWriteOperations() throws IOException {
         NotebookWriter notebookWriter = new NotebookWriter(TEST_FILE_NAME);
 
         try {
@@ -61,7 +61,8 @@ public class NotebookWriterTest {
     public void testReadWithEmptyContent() {
         try {
             File tempFile = File.createTempFile("tempFile", ".json");
-            NotebookWriter notebookWriter = new NotebookWriter(tempFile.getName().replace(".json", ""));
+            NotebookWriter notebookWriter = new NotebookWriter(
+                    tempFile.getName().replace(".json", ""));
             notebookWriter.open();
             Note[] notes = notebookWriter.read();
             assertNull(notes);

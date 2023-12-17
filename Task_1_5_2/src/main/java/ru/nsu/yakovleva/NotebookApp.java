@@ -86,7 +86,7 @@ public class NotebookApp {
      * @param title - the name of the note to be removed.
      * @throws IOException if there are problems when working with the file.
      */
-    private void remove(String title) throws IOException {
+    void remove(String title) throws IOException {
         Notebook notebook = new Notebook(writer.getFileName());
         notebook.addNotes(writer.read());
         notebook.removeNote(title);
@@ -118,7 +118,7 @@ public class NotebookApp {
      * @throws IOException              if there are problems when working with the file.
      * @throws java.text.ParseException if the date was specified in the wrong format.
      */
-    private void show(String date1, String date2) throws IOException, java.text.ParseException {
+    void show(String date1, String date2) throws IOException, java.text.ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd HH:mm");
         Date before = formatter.parse(date1);
         Date after = formatter.parse(date2);
@@ -146,7 +146,7 @@ public class NotebookApp {
      * @throws IOException              if there are problems when working with the file.
      * @throws java.text.ParseException if the date was specified in the wrong format.
      */
-    private void show(String date1, String date2, String[] keywords)
+    void show(String date1, String date2, String[] keywords)
             throws IOException, java.text.ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd HH:mm");
         Date before = formatter.parse(date1);

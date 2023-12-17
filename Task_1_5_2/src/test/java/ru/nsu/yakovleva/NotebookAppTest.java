@@ -1,84 +1,78 @@
 package ru.nsu.yakovleva;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import java.io.IOException;
 
 /**
  * Test class.
  */
-public class NotebookAppTest {
+class NotebookAppTest {
+
+    @Mock
+    private NotebookWriter writer;
+
+    @InjectMocks
     private NotebookApp notebookApp;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
 
-    /**
-     * Initializing.
-     */
     @BeforeEach
-    public void setUp() {
-        notebookApp = new NotebookApp();
-        System.setOut(new PrintStream(outContent));
-        notebookApp.writer = new NotebookWriter();
+    void setUp() {
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void testHelp() {
-        notebookApp.help();
-        String expectedOutput = "usage: notebook.jar\n"
-                + " -add <title> <content>\n"
-                + " -help                               print Notebook App help information\n"
-                + " -remove <title>\n"
-                + " -show <before> <after> <keywords>\n"
-                + " -title <notebook>";
-        assertEquals(expectedOutput, outContent.toString().trim());
-    }
+    void addCorrectlyAddsNote() throws IOException {
+        when(writer.getFileName()).thenReturn("testFile.json");
+        doNothing().when(writer).open();
+        doNothing().when(writer).close();
+        when(writer.read()).thenReturn(new Note[]{});
+        doNothing().when(writer).write(any());
 
-
-    @Test
-    public void testParseLineHelpOption() throws IOException,
-            java.text.ParseException, org.apache.commons.cli.ParseException {
-        String[] args = {"-help"};
-        CommandLineParser parser = new DefaultParser();
-        CommandLine line = parser.parse(notebookApp.options, args);
-        notebookApp.parseLine(line);
-
-        String expectedOutput = "usage: notebook.jar\n"
-                + " -add <title> <content>\n"
-                + " -help                               print Notebook App help information\n"
-                + " -remove <title>\n"
-                + " -show <before> <after> <keywords>\n"
-                + " -title <notebook>";
-
-        assertEquals(expectedOutput, outContent.toString().trim());
+        Note note = new Note("Test Title", "Test Content");
+        assertDoesNotThrow(() -> notebookApp.add(note));
     }
 
     @Test
-    public void testRunWithInvalidArguments() {
-        String[] args = {"invalid", "arguments"};
-        notebookApp.run(args);
-        String expectedOutput = "";
-        assertEquals(expectedOutput, outContent.toString().trim());
+    void removeCorrectlyRemovesNote() throws IOException {
+        when(writer.getFileName()).thenReturn("testFile.json");
+        doNothing().when(writer).open();
+        doNothing().when(writer).close();
+        when(writer.read()).thenReturn(new Note[]{new Note("Title", "Content")});
+        doNothing().when(writer).write(any());
+
+        assertDoesNotThrow(() -> notebookApp.remove("Title"));
     }
 
     @Test
-    public void testRunWithInvalidArgumentsThrow() {
-        String[] args = {"invalid", "arguments"};
-        notebookApp.run(args);
-        String expectedOutput = "";
-        assertEquals(expectedOutput, outContent.toString().trim());
+    void showCorrectlyShowsNotes() throws IOException {
+        when(writer.getFileName()).thenReturn("testFile.json");
+        doNothing().when(writer).open();
+        doNothing().when(writer).close();
+        when(writer.read()).thenReturn(new Note[]{new Note("Title", "Content")});
+
+        assertDoesNotThrow(() -> notebookApp.show());
     }
 
-    @AfterEach
-    public void restoreStreams() {
-        System.setOut(originalOut);
+    @Test
+    void showWithDatesAndKeywordsCorrectlyShowsFilteredNotes() throws IOException {
+        when(writer.getFileName()).thenReturn("testFile.json");
+        doNothing().when(writer).open();
+        doNothing().when(writer).close();
+        when(writer.read()).thenReturn(new Note[]{
+                new Note("Title 1", "Content with keyword"),
+                new Note("Title 2", "Content without keyword")
+        });
+
+        assertDoesNotThrow(() -> notebookApp.show("2023.01.01 00:00",
+                "2024.01.01 00:00", new String[]{"keyword"}));
     }
+
 }

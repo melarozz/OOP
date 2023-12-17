@@ -33,7 +33,7 @@ public class NotebookWriter {
      *
      * @param fileName - the name of the file for storing notes.
      */
-    public NotebookWriter(String fileName) {
+    public NotebookWriter(String fileName) throws IOException {
         this.fileName = fileName;
         this.file = new File(this.fileName + ".json");
     }
