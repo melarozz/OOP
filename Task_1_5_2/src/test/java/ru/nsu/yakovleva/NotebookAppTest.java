@@ -20,6 +20,9 @@ public class NotebookAppTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
+    /**
+     * Initializing.
+     */
     @BeforeEach
     public void setUp() {
         notebookApp = new NotebookApp();
@@ -30,29 +33,30 @@ public class NotebookAppTest {
     @Test
     public void testHelp() {
         notebookApp.help();
-        String expectedOutput = "usage: notebook.jar\n" +
-                " -add <title> <content>\n" +
-                " -help                               print Notebook App help information\n" +
-                " -remove <title>\n" +
-                " -show <before> <after> <keywords>\n" +
-                " -title <notebook>";
+        String expectedOutput = "usage: notebook.jar\n"
+                + " -add <title> <content>\n"
+                + " -help                               print Notebook App help information\n"
+                + " -remove <title>\n"
+                + " -show <before> <after> <keywords>\n"
+                + " -title <notebook>";
         assertEquals(expectedOutput, outContent.toString().trim());
     }
 
 
     @Test
-    public void testParseLineHelpOption() throws IOException, java.text.ParseException, org.apache.commons.cli.ParseException {
+    public void testParseLineHelpOption() throws IOException,
+            java.text.ParseException, org.apache.commons.cli.ParseException {
         String[] args = {"-help"};
         CommandLineParser parser = new DefaultParser();
         CommandLine line = parser.parse(notebookApp.options, args);
         notebookApp.parseLine(line);
 
-        String expectedOutput = "usage: notebook.jar\n" +
-                " -add <title> <content>\n" +
-                " -help                               print Notebook App help information\n" +
-                " -remove <title>\n" +
-                " -show <before> <after> <keywords>\n" +
-                " -title <notebook>";
+        String expectedOutput = "usage: notebook.jar\n"
+                + " -add <title> <content>\n"
+                + " -help                               print Notebook App help information\n"
+                + " -remove <title>\n"
+                + " -show <before> <after> <keywords>\n"
+                + " -title <notebook>";
 
         assertEquals(expectedOutput, outContent.toString().trim());
     }

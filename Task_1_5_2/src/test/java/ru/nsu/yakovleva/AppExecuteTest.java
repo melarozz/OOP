@@ -35,4 +35,43 @@ public class AppExecuteTest {
         String consoleOutput = outputStreamCaptor.toString().trim();
         assertNotNull(consoleOutput);
     }
+
+    @Test
+    public void testMainMethodWithValidArgs() {
+        String[] testArgs = {"-add", "test1", "test1"};
+
+        AppExecute.main(testArgs);
+
+        String consoleOutput = outputStreamCaptor.toString().trim();
+        assertNotNull(consoleOutput);
+    }
+
+    @Test
+    public void testMainMethodWithNullArgs() {
+        AppExecute.main(null);
+
+        String consoleOutput = outputStreamCaptor.toString().trim();
+        assertNotNull(consoleOutput);
+    }
+
+    @Test
+    public void testMainMethodWithEmptyArgs() {
+        String[] testArgs = {};
+
+        AppExecute.main(testArgs);
+
+        String consoleOutput = outputStreamCaptor.toString().trim();
+        assertNotNull(consoleOutput);
+    }
+
+    @Test
+    public void testMainMethodWithInvalidArgs() {
+        String[] testArgs = {"invalidArg"};
+
+        AppExecute.main(testArgs);
+
+        String consoleOutput = outputStreamCaptor.toString().trim();
+        assertNotNull(consoleOutput);
+    }
+
 }
