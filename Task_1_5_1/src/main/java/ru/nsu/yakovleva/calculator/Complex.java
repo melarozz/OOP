@@ -99,18 +99,13 @@ public class Complex implements CalculatorStrategy {
      */
     private ComplexNumber performOperation(String operator, ComplexNumber operand1,
                                            ComplexNumber operand2) {
-        switch (operator) {
-            case "+":
-                return operand1.add(operand2);
-            case "-":
-                return operand1.subtract(operand2);
-            case "*":
-                return operand1.multiply(operand2);
-            case "/":
-                return operand1.divide(operand2);
-            default:
-                throw new IllegalArgumentException("Invalid operator");
-        }
+        return switch (operator) {
+            case "+" -> operand1.add(operand2);
+            case "-" -> operand1.subtract(operand2);
+            case "*" ->operand1.multiply(operand2);
+            case "/" -> operand1.divide(operand2);
+            default -> throw new IllegalArgumentException("Invalid operator");
+        };
     }
 
     /**
@@ -122,16 +117,12 @@ public class Complex implements CalculatorStrategy {
      * @throws IllegalArgumentException If an unsupported function is provided.
      */
     private ComplexNumber performComplexFunction(String function, ComplexNumber operand) {
-        switch (function) {
-            case "sin":
-                return operand.sin();
-            case "cos":
-                return operand.cos();
-            case "log":
-                return operand.log();
-            default:
-                throw new IllegalArgumentException("Invalid function");
-        }
+        return switch (function) {
+            case "sin" -> operand.sin();
+            case "cos" -> operand.cos();
+            case "log" -> operand.log();
+            default -> throw new IllegalArgumentException("Invalid function");
+        };
     }
 
 }

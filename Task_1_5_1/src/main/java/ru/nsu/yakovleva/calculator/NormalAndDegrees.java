@@ -33,11 +33,10 @@ public class NormalAndDegrees implements CalculatorStrategy {
 
         for (int i = tokens.length - 1; i >= 0; i--) {
             String token = tokens[i];
-            boolean isOperator = ("+".equals(token)) || ("-".equals(token))
-                    || ("*".equals(token)) || ("/".equals(token))
-                    || ("sin".equals(token)) || ("cos".equals(token)) || ("log".equals(token));
-
-            if (isOperator) {
+            if (!isNumeric(token) && !isOperator(token)) {
+                throw new IllegalArgumentException("Invalid expression");
+            }
+            if (isOperator(token)) {
                 switch (token) {
                     case "+":
                     case "-":
@@ -87,23 +86,30 @@ public class NormalAndDegrees implements CalculatorStrategy {
      * @throws ArithmeticException      If there is a division by zero
      */
     private static double performOperation(String operator, double operand1, double operand2) {
-        switch (operator) {
-            case "+":
-                return operand1 + operand2;
-            case "-":
-                return operand1 - operand2;
-            case "*":
-                return operand1 * operand2;
-            case "/":
+        return switch (operator) {
+            case "+" -> operand1 + operand2;
+            case "-" -> operand1 - operand2;
+            case "*" -> operand1 * operand2;
+            case "/" -> {
                 if (operand2 == 0) {
                     throw new ArithmeticException("Division by zero");
                 }
-                return operand1 / operand2;
-            default:
-                throw new IllegalArgumentException("Invalid operator");
-        }
+                yield operand1 / operand2;}
+            default -> throw new IllegalArgumentException("Invalid operator");
+        };
     }
 
+    /**
+     * Checks if a given string is an operator.
+     *
+     * @param str The string to be checked
+     * @return True if the string represents an operator, false otherwise
+     */
+    private static boolean isOperator(String str) {
+        return ("+".equals(str)) || ("-".equals(str)) || ("*".equals(str))
+                || ("/".equals(str)) || ("sin".equals(str)) || ("cos".equals(str))
+                || ("log".equals(str));
+    }
 
     /**
      * Performs trigonometric functions based on the specified function.
@@ -114,14 +120,11 @@ public class NormalAndDegrees implements CalculatorStrategy {
      * @throws IllegalArgumentException If the function is invalid
      */
     private static double performTrigonometricFunction(String function, double operand) {
-        switch (function) {
-            case "sin":
-                return (isDegreeFlag) ? Math.sin(Math.toRadians(operand)) : Math.sin(operand);
-            case "cos":
-                return (isDegreeFlag) ? Math.cos(Math.toRadians(operand)) : Math.cos(operand);
-            default:
-                throw new IllegalArgumentException("Invalid function");
-        }
+        return switch (function) {
+            case "sin" -> (isDegreeFlag) ? Math.sin(Math.toRadians(operand)) : Math.sin(operand);
+            case "cos" -> (isDegreeFlag) ? Math.cos(Math.toRadians(operand)) : Math.cos(operand);
+            default -> throw new IllegalArgumentException("Invalid function");
+        };
     }
 
     /**
