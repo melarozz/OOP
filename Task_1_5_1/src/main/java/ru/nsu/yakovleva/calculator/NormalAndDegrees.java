@@ -94,7 +94,8 @@ public class NormalAndDegrees implements CalculatorStrategy {
                 if (operand2 == 0) {
                     throw new ArithmeticException("Division by zero");
                 }
-                yield operand1 / operand2;}
+                yield operand1 / operand2;
+            }
             default -> throw new IllegalArgumentException("Invalid operator");
         };
     }

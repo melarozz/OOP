@@ -102,7 +102,7 @@ public class Complex implements CalculatorStrategy {
         return switch (operator) {
             case "+" -> operand1.add(operand2);
             case "-" -> operand1.subtract(operand2);
-            case "*" ->operand1.multiply(operand2);
+            case "*" -> operand1.multiply(operand2);
             case "/" -> operand1.divide(operand2);
             default -> throw new IllegalArgumentException("Invalid operator");
         };
