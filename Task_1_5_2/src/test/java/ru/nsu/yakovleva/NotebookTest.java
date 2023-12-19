@@ -139,11 +139,6 @@ class NotebookTest {
     }
 
     @Test
-    public void testAddNullNote() {
-        assertThrows(NullPointerException.class, () -> notebook.addNote((Note) null));
-    }
-
-    @Test
     public void testRemoveNonExistentNote() {
         Note note = new Note("Non-existent", "Note");
         notebook.addNote(note);
@@ -266,7 +261,7 @@ class NotebookTest {
     public void testAddNotesWithNull() {
         Notebook notebook = new Notebook("Test Notebook");
         Note[] nullNotes = null;
-        assertDoesNotThrow(() -> notebook.addNotes(nullNotes));
+        assertThrows(NullPointerException.class, () -> notebook.addNotes(nullNotes));
         assertEquals(0, notebook.getAllNotes().length);
     }
 

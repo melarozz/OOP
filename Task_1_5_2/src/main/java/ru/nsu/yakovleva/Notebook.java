@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Stack;
 import java.util.stream.Stream;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Class for a notebook and methods for working with it.
@@ -27,10 +28,7 @@ public class Notebook {
      *
      * @param note - the note to add.
      */
-    public void addNote(Note note) {
-        if (note == null) {
-            throw new NullPointerException();
-        }
+    public void addNote(@NotNull Note note) {
         notebook.push(note);
     }
 
@@ -50,10 +48,7 @@ public class Notebook {
      *
      * @param notes - the notes to add.
      */
-    public void addNotes(Note[] notes) {
-        if (notes == null) {
-            return;
-        }
+    public void addNotes(@NotNull Note[] notes) {
         for (Note note : notes) {
             addNote(note);
         }
@@ -92,10 +87,7 @@ public class Notebook {
      * @param keywords - words that should be in the titles of the searched notes.
      * @return the array of matching notes.
      */
-    public Note[] getNotesByKeywords(String[] keywords) {
-        if (keywords == null) {
-            throw new NullPointerException();
-        }
+    public Note[] getNotesByKeywords(@NotNull String[] keywords) {
         Stream<Note> notebookStream = Arrays.stream(getAllNotes());
         for (String keyword : keywords) {
             notebookStream = notebookStream.filter(note -> note.getTitle().contains(keyword));
