@@ -178,22 +178,22 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addNote(ru.nsu.yakovleva.Note)">addNote</a></span>&#8203;(@NotNull <a href="Note.html" title="class in ru.nsu.yakovleva">Note</a>&nbsp;note)</code></th>
+<td class="colLast">
+<div class="block">Adds note to a notebook.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addNote(java.lang.String,java.lang.String)">addNote</a></span>&#8203;(java.lang.String&nbsp;title,
        java.lang.String&nbsp;content)</code></th>
 <td class="colLast">
 <div class="block">Creates a note with specified title and content and adds it to a notebook.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addNote(ru.nsu.yakovleva.Note)">addNote</a></span>&#8203;(<a href="Note.html" title="class in ru.nsu.yakovleva">Note</a>&nbsp;note)</code></th>
-<td class="colLast">
-<div class="block">Adds note to a notebook.</div>
-</td>
-</tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addNotes(ru.nsu.yakovleva.Note%5B%5D)">addNotes</a></span>&#8203;(<a href="Note.html" title="class in ru.nsu.yakovleva">Note</a>[]&nbsp;notes)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addNotes(ru.nsu.yakovleva.Note%5B%5D)">addNotes</a></span>&#8203;(@NotNull <a href="Note.html" title="class in ru.nsu.yakovleva">Note</a>[]&nbsp;notes)</code></th>
 <td class="colLast">
 <div class="block">Adds several notes to the notebook.</div>
 </td>
@@ -231,7 +231,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="Note.html" title="class in ru.nsu.yakovleva">Note</a>[]</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNotesByKeywords(java.lang.String%5B%5D)">getNotesByKeywords</a></span>&#8203;(java.lang.String[]&nbsp;keywords)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNotesByKeywords(java.lang.String%5B%5D)">getNotesByKeywords</a></span>&#8203;(@NotNull java.lang.String[]&nbsp;keywords)</code></th>
 <td class="colLast">
 <div class="block">Returns all notes, containing in the title specified keywords, from the notebook.</div>
 </td>
@@ -311,7 +311,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>addNote</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;addNote&#8203;(<a href="Note.html" title="class in ru.nsu.yakovleva">Note</a>&nbsp;note)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;addNote&#8203;(@NotNull
+                    @NotNull <a href="Note.html" title="class in ru.nsu.yakovleva">Note</a>&nbsp;note)</pre>
 <div class="block">Adds note to a notebook.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -341,7 +342,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>addNotes</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;addNotes&#8203;(<a href="Note.html" title="class in ru.nsu.yakovleva">Note</a>[]&nbsp;notes)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;addNotes&#8203;(@NotNull
+                     @NotNull <a href="Note.html" title="class in ru.nsu.yakovleva">Note</a>[]&nbsp;notes)</pre>
 <div class="block">Adds several notes to the notebook.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -397,7 +399,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getNotesByKeywords</h4>
-<pre class="methodSignature">public&nbsp;<a href="Note.html" title="class in ru.nsu.yakovleva">Note</a>[]&nbsp;getNotesByKeywords&#8203;(java.lang.String[]&nbsp;keywords)</pre>
+<pre class="methodSignature">public&nbsp;<a href="Note.html" title="class in ru.nsu.yakovleva">Note</a>[]&nbsp;getNotesByKeywords&#8203;(@NotNull
+                                 @NotNull java.lang.String[]&nbsp;keywords)</pre>
 <div class="block">Returns all notes, containing in the title specified keywords, from the notebook.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
