@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 /**
  * The PTest class contains performance tests for various prime number search algorithms.
  */
-public class PTest {
+public class PerfTest {
     /**
      * Creates an array of the specified size with all
      * elements except the last set to a constant value,
