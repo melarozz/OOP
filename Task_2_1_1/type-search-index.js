@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.yakovleva.notprime","l":"NotPrimeSearch"},{"p":"ru.nsu.yakovleva.notprime","l":"StreamNotPrimeSearch"},{"p":"ru.nsu.yakovleva.notprime","l":"ThreadNotPrimeSearch"}]
