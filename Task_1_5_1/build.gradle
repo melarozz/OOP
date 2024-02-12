@@ -1,4 +1,4 @@
-plugins {
+taplugins {
     id 'java'
     id 'jacoco'
 }

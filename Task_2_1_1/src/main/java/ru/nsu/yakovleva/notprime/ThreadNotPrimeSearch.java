@@ -46,13 +46,9 @@ public class ThreadNotPrimeSearch extends NotPrimeSearch {
      *
      * @param array The integer array to search.
      * @return true if a non-prime number is found, false otherwise.
-     * @throws ExecutionException   if the computation threw an exception.
-     * @throws InterruptedException if the current thread was interrupted while waiting.
-     * @throws NullPointerException if the input array is null.
      */
     @Override
-    public boolean search(int[] array) throws ExecutionException,
-            InterruptedException, NullPointerException {
+    public boolean search(int[] array) {
         if (array == null) {
             throw new NullPointerException();
         }
@@ -73,16 +69,21 @@ public class ThreadNotPrimeSearch extends NotPrimeSearch {
         };
 
         ExecutorService pool = Executors.newFixedThreadPool(numThreads);
-        List<Future<Boolean>> results = pool.invokeAll(Collections.nCopies(numThreads, task));
+        try {
+            List<Future<Boolean>> results = pool.invokeAll(Collections.nCopies(numThreads, task));
 
-        for (Future<Boolean> result : results) {
-            if (result.get()) {
-                pool.shutdownNow();
-                return true;
+            for (Future<Boolean> result : results) {
+                if (result.get()) {
+                    return true;
+                }
             }
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();  // Print the exception details
+        } finally {
+            pool.shutdownNow();
         }
 
-        pool.shutdownNow();
         return false;
     }
+
 }
