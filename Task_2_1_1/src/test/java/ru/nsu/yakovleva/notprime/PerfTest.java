@@ -46,19 +46,14 @@ public class PerfTest {
     private long singleTest(NotPrimeSearch notPrimeSearch, int[] array) throws
             ExecutionException, InterruptedException {
         List<Long> results = new ArrayList<>();
-
         for (int i = 0; i < 3; ++i) {
-            long startTime = System.nanoTime();
+            long time = System.nanoTime();
             notPrimeSearch.search(array);
-            long endTime = System.nanoTime();
-            results.add(endTime - startTime);
+            time = System.nanoTime() - time;
+            results.add(time);
         }
-
-        // calculate the average time
-        long total = results.stream().mapToLong(Long::longValue).sum();
-        return total / results.size();
+        return Collections.min(results);
     }
-
 
     /**
      * Conducts a performance test for different
@@ -75,22 +70,15 @@ public class PerfTest {
         XYSeries series2 = new XYSeries("Thread 2");
         XYSeries series3 = new XYSeries("Thread 4");
         XYSeries series4 = new XYSeries("Thread 8");
-        XYSeries series5 = new XYSeries("Thread 16");
-        XYSeries series6 = new XYSeries("Thread 32");
-        XYSeries series7 = new XYSeries("Thread 64");
-        XYSeries series8 = new XYSeries("Stream");
+        XYSeries series5 = new XYSeries("Stream");
 
-        //try 20mil
-        for (int size = 20; size <= 2000000; size *= 10) {
+        for (int size = 10; size <= 10000; size *= 10) {
             int[] array = createArray(size);
             series1.add(size, singleTest(new NotPrimeSearch(), array));
             series2.add(size, singleTest(new ThreadNotPrimeSearch(2), array));
             series3.add(size, singleTest(new ThreadNotPrimeSearch(4), array));
             series4.add(size, singleTest(new ThreadNotPrimeSearch(8), array));
-            series5.add(size, singleTest(new ThreadNotPrimeSearch(16), array));
-            series6.add(size, singleTest(new ThreadNotPrimeSearch(32), array));
-            series7.add(size, singleTest(new ThreadNotPrimeSearch(64), array));
-            series8.add(size, singleTest(new StreamNotPrimeSearch(), array));
+            series5.add(size, singleTest(new StreamNotPrimeSearch(), array));
         }
 
         dataset.addSeries(series1);
@@ -98,9 +86,6 @@ public class PerfTest {
         dataset.addSeries(series3);
         dataset.addSeries(series4);
         dataset.addSeries(series5);
-        dataset.addSeries(series6);
-        dataset.addSeries(series7);
-        dataset.addSeries(series8);
         PerformanceTest chart = new PerformanceTest(dataset);
         chart.createFile();
     }
