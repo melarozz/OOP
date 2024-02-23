@@ -161,7 +161,7 @@ extends <a href="NotPrimeSearch.html" title="class in ru.nsu.yakovleva.notprime"
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">ThreadNotPrimeSearch</a></span>&#8203;(int&nbsp;numThreads)</code></th>
 <td class="colLast">
-<div class="block">Constructs a ThreadNotPrimeSearch object with the specified number of threads.</div>
+<div class="block">Constructs a ThreadNotPrimeSearch with the specified number of threads.</div>
 </td>
 </tr>
 </table>
@@ -184,9 +184,9 @@ extends <a href="NotPrimeSearch.html" title="class in ru.nsu.yakovleva.notprime"
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#search(int%5B%5D)">search</a></span>&#8203;(int[]&nbsp;array)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#search(int%5B%5D)">search</a></span>&#8203;(int @NotNull []&nbsp;array)</code></th>
 <td class="colLast">
-<div class="block">Searches for non-prime numbers in the given array using multiple threads.</div>
+<div class="block">Searches for non-prime numbers in the given two-dimensional integer array using multiple threads.</div>
 </td>
 </tr>
 </table>
@@ -227,10 +227,10 @@ extends <a href="NotPrimeSearch.html" title="class in ru.nsu.yakovleva.notprime"
 <li class="blockList">
 <h4>ThreadNotPrimeSearch</h4>
 <pre>public&nbsp;ThreadNotPrimeSearch&#8203;(int&nbsp;numThreads)</pre>
-<div class="block">Constructs a ThreadNotPrimeSearch object with the specified number of threads.</div>
+<div class="block">Constructs a ThreadNotPrimeSearch with the specified number of threads.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>numThreads</code> - The number of threads to use for the parallel search.</dd>
+<dd><code>numThreads</code> - The number of threads to be used for parallel processing.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.IllegalArgumentException</code> - if the number of threads is less than or equal to 0.</dd>
 </dl>
@@ -252,15 +252,15 @@ extends <a href="NotPrimeSearch.html" title="class in ru.nsu.yakovleva.notprime"
 <ul class="blockListLast">
 <li class="blockList">
 <h4>search</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;search&#8203;(int[]&nbsp;array)</pre>
-<div class="block">Searches for non-prime numbers in the given array using multiple threads.</div>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;search&#8203;(int @NotNull []&nbsp;array)</pre>
+<div class="block">Searches for non-prime numbers in the given two-dimensional integer array using multiple threads.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="NotPrimeSearch.html#search(int%5B%5D)">search</a></code>&nbsp;in class&nbsp;<code><a href="NotPrimeSearch.html" title="class in ru.nsu.yakovleva.notprime">NotPrimeSearch</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>array</code> - The integer array to search.</dd>
+<dd><code>array</code> - The array to be searched for non-prime numbers.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>true if a non-prime number is found, false otherwise.</dd>
+<dd>true if a non-prime number is found, otherwise false.</dd>
 </dl>
 </li>
 </ul>
