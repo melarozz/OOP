@@ -1,5 +1,6 @@
 package ru.nsu.yakovleva.notprime;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import org.jfree.chart.ChartFactory;
@@ -8,6 +9,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.ui.RectangleInsets;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -57,10 +59,19 @@ public class PerformanceTest {
                 false,
                 false
         );
+
         XYPlot plot = chart.getXYPlot();
         plot.setAxisOffset(new RectangleInsets(1, 1, 1, 1));
+
+        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer(true, false);
+        for (int i = 0; i < dataset.getSeriesCount(); i++) {
+            renderer.setSeriesStroke(i, new BasicStroke(2.0f));
+        }
+
+        plot.setRenderer(renderer);
         ValueAxis axis = plot.getDomainAxis();
         axis.setAxisLineVisible(false);
+
         return chart;
     }
 }

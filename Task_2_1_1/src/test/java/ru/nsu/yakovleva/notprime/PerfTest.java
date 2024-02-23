@@ -81,7 +81,7 @@ public class PerfTest {
         XYSeries series8 = new XYSeries("Stream");
 
         //try 20mil
-        for (int size = 20; size <= 2000000; size *= 10) {
+        for (int size = 2000000; size <= 3000000; size += 300000) {
             int[] array = createArray(size);
             series1.add(size, singleTest(new NotPrimeSearch(), array));
             series2.add(size, singleTest(new ThreadNotPrimeSearch(2), array));

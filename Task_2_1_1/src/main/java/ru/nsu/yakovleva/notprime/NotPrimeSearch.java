@@ -1,6 +1,8 @@
 package ru.nsu.yakovleva.notprime;
 
-import java.util.concurrent.ExecutionException;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
 
 /**
  * The NotPrimeSearch class provides methods for checking if a num is prime
@@ -33,22 +35,9 @@ public class NotPrimeSearch {
      *
      * @param array The array of integers to be searched.
      * @return true if there is a non-prime num in the array, false otherwise.
-     * @throws ExecutionException   If an execution exception occurs during the search.
-     * @throws InterruptedException If the search is interrupted.
-     * @throws NullPointerException If the input array is null.
      */
-    public boolean search(int[] array) throws ExecutionException,
-            InterruptedException, NullPointerException {
-        if (array == null) {
-            throw new NullPointerException();
-        }
-
-        for (int num : array) {
-            if (!isPrime(num)) {
-                return true;
-            }
-        }
-
-        return false;
+    public boolean search(int @NotNull [] array) {
+        return Arrays.stream(array)
+                .anyMatch(num -> !isPrime(num));
     }
 }

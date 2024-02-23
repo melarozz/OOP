@@ -1,5 +1,6 @@
 package ru.nsu.yakovleva.notprime;
 
+import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 
 /**
@@ -17,10 +18,7 @@ public class StreamNotPrimeSearch extends NotPrimeSearch {
      * @throws NullPointerException If the input array is null.
      */
     @Override
-    public boolean search(int[] array) throws NullPointerException {
-        if (array == null) {
-            throw new NullPointerException();
-        }
+    public boolean search(int @NotNull [] array) throws NullPointerException {
 
         return Arrays.stream(array)
                 .parallel()

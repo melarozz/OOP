@@ -20,7 +20,7 @@ class ThreadNotPrimeSearchTest {
     }
 
     @Test
-    public void smallData() throws ExecutionException, InterruptedException {
+    public void smallData() {
         int size = 100;
         int[] array = new int[size];
         Arrays.fill(array, 0, size, 23);
@@ -28,7 +28,7 @@ class ThreadNotPrimeSearchTest {
     }
 
     @Test
-    public void anotherSmallData() throws ExecutionException, InterruptedException {
+    public void anotherSmallData() {
         int size = 100;
         int[] array = new int[size];
         Arrays.fill(array, 0, size - 1, 19);
@@ -37,7 +37,7 @@ class ThreadNotPrimeSearchTest {
     }
 
     @Test
-    public void largeData() throws ExecutionException, InterruptedException {
+    public void largeData() {
         int size = 10000000;
         int[] array = new int[size];
         Arrays.fill(array, 0, size, 999983);
@@ -45,11 +45,22 @@ class ThreadNotPrimeSearchTest {
     }
 
     @Test
-    public void anotherLargeData() throws ExecutionException, InterruptedException {
+    public void anotherLargeData() {
         int size = 10000000;
         int[] array = new int[size];
         Arrays.fill(array, 0, size - 1, 524287);
         array[size - 1] = 555;
         assertTrue(new ThreadNotPrimeSearch(4).search(array));
+    }
+
+    @Test
+    public void interruptTest() {
+        int size = 100000000;
+        int[] array = new int[size];
+        Arrays.fill(array, 0, size - 1, 524287);
+        array[size - 1] = 555;
+        ThreadNotPrimeSearch search = new ThreadNotPrimeSearch(2);
+        Thread.currentThread().interrupt();
+        assertFalse(search.search(array));
     }
 }
