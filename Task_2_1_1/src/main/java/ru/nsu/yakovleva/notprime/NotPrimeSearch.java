@@ -1,8 +1,7 @@
 package ru.nsu.yakovleva.notprime;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The NotPrimeSearch class provides methods for checking if a num is prime

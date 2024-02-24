@@ -1,6 +1,6 @@
 package ru.nsu.yakovleva.notprime;
 
-import java.awt.*;
+import java.awt.BasicStroke;
 import java.io.File;
 import java.io.IOException;
 import org.jfree.chart.ChartFactory;

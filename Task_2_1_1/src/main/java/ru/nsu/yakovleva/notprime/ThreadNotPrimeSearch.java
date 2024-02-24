@@ -31,7 +31,8 @@ public class ThreadNotPrimeSearch extends NotPrimeSearch {
 
 
     /**
-     * Searches for non-prime numbers in the given two-dimensional integer array using multiple threads.
+     * Searches for non-prime numbers in the given two-dimensional
+     * integer array using multiple threads.
      *
      * @param array The array to be searched for non-prime numbers.
      * @return true if a non-prime number is found, otherwise false.
@@ -78,7 +79,7 @@ public class ThreadNotPrimeSearch extends NotPrimeSearch {
     private boolean searchSlice(int[] array, int start, int end) {
         for (int i = start; i < end; i++) {
             if (Thread.currentThread().isInterrupted()) {
-            // Handle interruption by stopping the processing
+                // Handle interruption by stopping the processing
                 return false;
             }
 

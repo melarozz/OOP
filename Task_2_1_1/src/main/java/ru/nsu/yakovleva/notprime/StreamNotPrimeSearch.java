@@ -1,7 +1,7 @@
 package ru.nsu.yakovleva.notprime;
 
-import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The StreamNotPrimeSearch class extends the functionality of NotPrimeSearch
