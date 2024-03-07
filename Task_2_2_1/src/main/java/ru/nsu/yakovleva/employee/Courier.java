@@ -13,7 +13,7 @@ import static ru.nsu.yakovleva.order.State.*;
 public class Courier extends Employee implements User<List<Order>> {
 
     // Constant representing the maximum delivery time for a set of orders
-    private static final long MAX_DELIVERY_TIME = 1000;
+    private static final int MAX_DELIVERY_TIME = 1000;
 
     // Variable to store the bag capacity of the courier
     private final int bagCapacity;
@@ -46,7 +46,7 @@ public class Courier extends Employee implements User<List<Order>> {
     @Override
     public List<Order> take() {
         // Generating a random delivery time for the set of orders
-        long deliveryTime = random.nextLong(MAX_DELIVERY_TIME);
+        int deliveryTime = random.nextInt(MAX_DELIVERY_TIME);
         try {
             // Attempting to retrieve a set of orders from the storage
             orders = storage.get(bagCapacity);

@@ -10,7 +10,7 @@ import java.util.Random;
 public class Customer implements Producer<Order> {
 
     // Maximum ordering time constant
-    private static final long MAX_ORDERING_TIME = 100;
+    private static final int MAX_ORDERING_TIME = 100;
 
     // Random number generator for simulating ordering time
     private final Random random;
@@ -29,7 +29,7 @@ public class Customer implements Producer<Order> {
     public void produce(Order order) {
         try {
             // Simulate random ordering time with sleep
-            Thread.sleep(random.nextLong(MAX_ORDERING_TIME));
+            Thread.sleep(random.nextInt(MAX_ORDERING_TIME));
 
             // Set the order state to IN_QUEUE
             order.setState(State.IN_QUEUE);

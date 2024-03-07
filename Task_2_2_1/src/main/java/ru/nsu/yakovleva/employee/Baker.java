@@ -13,7 +13,7 @@ import static ru.nsu.yakovleva.order.State.IN_STOCK;
 public class Baker extends Employee implements User<Order>, Producer<Order> {
 
     // Constant representing the maximum cooking time for an order
-    private static final long MAX_COOKING_TIME = 5000;
+    private static final int MAX_COOKING_TIME = 5000;
 
     // Variable to store the working experience of the baker
     private final int workingExperience;
@@ -57,7 +57,7 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
     @Override
     public void produce(Order order) {
         // Generating a random lead time for cooking based on working experience
-        long leadTime = random.nextLong(MAX_COOKING_TIME) / workingExperience;
+        int leadTime = random.nextInt(MAX_COOKING_TIME) / workingExperience;
         try {
             // Simulating the cooking time by sleeping the thread
             Thread.sleep(leadTime);
