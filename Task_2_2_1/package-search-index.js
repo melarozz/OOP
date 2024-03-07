@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ru.nsu.yakovleva.customer"},{"l":"ru.nsu.yakovleva.employee"},{"l":"ru.nsu.yakovleva.json"},{"l":"ru.nsu.yakovleva.order"},{"l":"ru.nsu.yakovleva.pizzeria"},{"l":"ru.nsu.yakovleva.producer"},{"l":"ru.nsu.yakovleva.queue"},{"l":"ru.nsu.yakovleva.user"}]
