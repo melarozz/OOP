@@ -30,3 +30,9 @@ jar {
         configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
     }
 }
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
