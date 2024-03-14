@@ -1,6 +1,5 @@
 package ru.nsu.yakovleva.employee;
 
-import ru.nsu.yakovleva.user.User;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.producer.Producer;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
@@ -10,7 +9,7 @@ import java.util.Random;
 import static ru.nsu.yakovleva.order.State.COOKING;
 import static ru.nsu.yakovleva.order.State.IN_STOCK;
 
-public class Baker extends Employee implements User<Order>, Producer<Order> {
+public class Baker extends Employee implements Producer<Order> {
 
     // Constant representing the maximum cooking time for an order
     private static final int MAX_COOKING_TIME = 5000;
@@ -39,19 +38,25 @@ public class Baker extends Employee implements User<Order>, Producer<Order> {
     }
 
     // Implementation of the consume method from the Consumer interface
-    @Override
     public Order take() {
         try {
             // Attempting to retrieve an order from the queue and setting its state to COOKING
             Order order = queue.get();
-            order.setState(COOKING);
-            return order;
+            if (!Thread.interrupted()) {
+                order.setState(COOKING);
+                return order;
+            } else {
+                // If interrupted, stop the thread
+                System.err.println("Baker #" + getId() + " cooking was interrupted.");
+                return null;
+            }
         } catch (InterruptedException exception) {
             // Handling an exception if the baker cannot take an order
             System.err.println("Baker #" + getId() + " couldn't take the order.");
             return null;
         }
     }
+
 
     // Implementation of the produce method from the Producer interface
     @Override

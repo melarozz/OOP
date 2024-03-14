@@ -1,6 +1,5 @@
 package ru.nsu.yakovleva.employee;
 
-import ru.nsu.yakovleva.user.User;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 import ru.nsu.yakovleva.order.State;
@@ -10,7 +9,7 @@ import java.util.Random;
 
 import static ru.nsu.yakovleva.order.State.*;
 
-public class Courier extends Employee implements User<List<Order>> {
+public class Courier extends Employee {
 
     // Constant representing the maximum delivery time for a set of orders
     private static final int MAX_DELIVERY_TIME = 1000;
@@ -43,7 +42,6 @@ public class Courier extends Employee implements User<List<Order>> {
     }
 
     // Implementation of the consume method from the Consumer interface
-    @Override
     public List<Order> take() {
         // Generating a random delivery time for the set of orders
         int deliveryTime = random.nextInt(MAX_DELIVERY_TIME);

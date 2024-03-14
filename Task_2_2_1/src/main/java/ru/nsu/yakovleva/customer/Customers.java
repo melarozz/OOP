@@ -19,14 +19,20 @@ public class Customers implements Runnable {
         this.queue = queue;
     }
 
-    // The run method, required by the Runnable interface
     @Override
     public void run() {
         // Setting the runCustomers flag to true, starting the loop
         areCustomersRunning = true;
+
         // Loop for producing orders by creating Customer objects and invoking their produce method
         for (int i = 0; areCustomersRunning; ++i) {
             new Customer(queue).produce(new Order(i));
+
+            try {
+                Thread.sleep(1000); // 1000 milliseconds = 1 second
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
