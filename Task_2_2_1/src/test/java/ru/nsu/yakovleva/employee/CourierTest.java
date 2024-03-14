@@ -1,6 +1,7 @@
 package ru.nsu.yakovleva.employee;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.nsu.yakovleva.order.State.DELIVERED;
 
@@ -70,4 +71,24 @@ class CourierTest {
         couriers.forEach(Courier::stop);
         orders.forEach(order -> assertEquals(DELIVERED, order.getState()));
     }
+    @Test
+    public void bagCapacityLimit() {
+        int bagCapacity = 2; // Set a smaller bag capacity
+        Courier courier = new Courier(ID, bagCapacity, storage);
+        while (!storage.isEmpty()) {
+            List<Order> consumed = courier.take();
+            assertTrue(consumed.size() <= bagCapacity);
+        }
+    }
+
+    @Test
+    public void takeMethod() {
+        Courier courier = new Courier(ID, BAG_CAPACITY, storage);
+        List<Order> ordersBeforeTake = orders;
+        List<Order> deliveredOrders = courier.take();
+        assertNotNull(deliveredOrders);
+        assertTrue(ordersBeforeTake.containsAll(deliveredOrders));
+        deliveredOrders.forEach(order -> assertEquals(DELIVERED, order.getState()));
+    }
+
 }

@@ -2,9 +2,12 @@ package ru.nsu.yakovleva.pizzeria;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.io.ByteArrayOutputStream;
 import org.junit.jupiter.api.Test;
 
 public class PizzeriaApplicationTest {
+
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @Test
     public void testPizzeriaConfigurationSetup() {
@@ -32,6 +35,5 @@ public class PizzeriaApplicationTest {
         app.setPizzeria();
         assertNotNull(app.pizzeria);
     }
-
 
 }
