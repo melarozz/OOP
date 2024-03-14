@@ -16,10 +16,10 @@ import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
 
 class BakerTest {
-    private final static int MAX_QUEUE_SIZE = 10;
-    private final static int MAX_STORAGE_SIZE = 20;
-    private final static int MAX_ORDERS_NUMBER = 10;
-    private final static int BAKERS_NUMBER = 3;
+    private static final int MAX_QUEUE_SIZE = 10;
+    private static final int MAX_STORAGE_SIZE = 20;
+    private static final int MAX_ORDERS_NUMBER = 10;
+    private static final int BAKERS_NUMBER = 3;
     private CustomBlockingDeque<Order> queue;
     private CustomBlockingDeque<Order> storage;
     private List<Order> orders;

@@ -13,11 +13,11 @@ import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
 class CourierTest {
-    private final static int MAX_STORAGE_SIZE = 20;
-    private final static int MAX_ORDERS_NUMBER = 20;
-    private final static int COURIERS_NUMBER = 3;
-    private final static int BAG_CAPACITY = 3;
-    private final static int ID = 0;
+    private static final int MAX_STORAGE_SIZE = 20;
+    private static final int MAX_ORDERS_NUMBER = 20;
+    private static final int COURIERS_NUMBER = 3;
+    private static final int BAG_CAPACITY = 3;
+    private static final int ID = 0;
     private CustomBlockingDeque<Order> storage;
     private List<Order> orders;
     private final Random random = new Random();
