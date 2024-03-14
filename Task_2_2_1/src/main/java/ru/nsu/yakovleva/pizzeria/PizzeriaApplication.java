@@ -19,7 +19,9 @@ public class PizzeriaApplication implements Runnable {
     // Instance of the Pizzeria class
     Pizzeria pizzeria;
 
-    // Method to read Pizzeria configuration from JSON
+    /**
+     * Method to read Pizzeria configuration from JSON
+      */
     public void setPizzeriaJson() {
         ReadJson jsonReader = new ReadJson();
         jsonReader.open();
@@ -27,7 +29,9 @@ public class PizzeriaApplication implements Runnable {
         jsonReader.close();
     }
 
-    // Method to initialize Pizzeria based on the read configuration
+    /**
+     * Method to initialize Pizzeria based on the read configuration
+     */
     public void setPizzeria() {
         if (pizzeriaJson == null) {
             System.err.println("Missing pizzeria configuration.");

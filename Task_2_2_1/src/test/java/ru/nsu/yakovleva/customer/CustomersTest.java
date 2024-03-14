@@ -10,7 +10,6 @@ import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.order.Order;
-import ru.nsu.yakovleva.order.State;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
 class CustomersTest {
@@ -23,6 +22,18 @@ class CustomersTest {
     public void init() {
         queueSize = random.nextInt(MAX_QUEUE_SIZE);
         queue = new CustomBlockingDeque<>(queueSize);
+    }
+
+    @Test
+    public void customers() throws InterruptedException {
+        Customers customers = new Customers(queue);
+        Thread customersThread = new Thread(new Customers(queue));
+        customersThread.start();
+        while (queue.getSize() != queueSize) {}
+        Thread.sleep(100);
+        customers.stop();
+        List<Order> orders = queue.get(queueSize);
+        orders.forEach(order -> assertEquals(IN_QUEUE, order.getState()));
     }
 
     @Test
@@ -67,7 +78,6 @@ class CustomersTest {
         Customer customer = new Customer(queue);
         customer.produce(order);
         Order retrievedOrder = queue.get();
-        assertEquals(State.IN_QUEUE, retrievedOrder.getState());
+        assertEquals(IN_QUEUE, retrievedOrder.getState());
     }
-
 }
