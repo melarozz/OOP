@@ -1,7 +1,6 @@
 package ru.nsu.yakovleva.pizzeria;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,38 +18,20 @@ public class PizzeriaApplicationTest {
         assertNotNull(app.pizzeria, "Pizzeria instance should not be null");
     }
 
-
+    @Test
+    public void testPizzeriaJson() {
+        PizzeriaApplication app = new PizzeriaApplication();
+        app.setPizzeriaJson();
+        assertNotNull(app.pizzeriaJson);
+    }
 
     @Test
-    public void testConcurrentAccess() {
-        // Simulate concurrent access to shared resources
+    public void testPizzeria() {
         PizzeriaApplication app = new PizzeriaApplication();
-
-        Thread thread1 = new Thread(() -> {
-            try {
-                assertNotNull(app.pizzeria.queue, "Queue should not be null");
-            } catch (Throwable t) {
-                fail("Unexpected exception occurred: " + t.getMessage());
-            }
-        });
-
-        Thread thread2 = new Thread(() -> {
-            try {
-                assertNotNull(app.pizzeria.storage, "Storage should not be null");
-            } catch (Throwable t) {
-                fail("Unexpected exception occurred: " + t.getMessage());
-            }
-        });
-
-        thread1.start();
-        thread2.start();
-
-        try {
-            thread1.join();
-            thread2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        app.setPizzeriaJson();
+        app.setPizzeria();
+        assertNotNull(app.pizzeria);
     }
+
 
 }

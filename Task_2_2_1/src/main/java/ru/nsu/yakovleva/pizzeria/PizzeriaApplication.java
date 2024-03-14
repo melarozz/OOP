@@ -20,7 +20,7 @@ public class PizzeriaApplication implements Runnable {
     Pizzeria pizzeria;
 
     // Method to read Pizzeria configuration from JSON
-    private void setPizzeriaJson() {
+    public void setPizzeriaJson() {
         ReadJson jsonReader = new ReadJson();
         jsonReader.open();
         pizzeriaJson = jsonReader.read();
@@ -28,7 +28,7 @@ public class PizzeriaApplication implements Runnable {
     }
 
     // Method to initialize Pizzeria based on the read configuration
-    private void setPizzeria() {
+    public void setPizzeria() {
         if (pizzeriaJson == null) {
             System.err.println("Missing pizzeria configuration.");
             return;
