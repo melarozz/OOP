@@ -138,6 +138,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">Customers</span>
 extends java.lang.Object
 implements java.lang.Runnable</pre>
+<div class="block">Represents a group of customers that continuously generate orders and place them in a shared queue.</div>
 </li>
 </ul>
 </div>
@@ -159,7 +160,9 @@ implements java.lang.Runnable</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.yakovleva.queue.CustomBlockingDeque)">Customers</a></span>&#8203;(<a href="../queue/CustomBlockingDeque.html" title="class in ru.nsu.yakovleva.queue">CustomBlockingDeque</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;&nbsp;queue)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructs a new Customers object with the given queue.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -182,12 +185,16 @@ implements java.lang.Runnable</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#run()">run</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">The main run method of the Customers thread, responsible for continuously generating orders.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#stop()">stop</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Stops the execution of the run loop.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -220,6 +227,11 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>Customers</h4>
 <pre>public&nbsp;Customers&#8203;(<a href="../queue/CustomBlockingDeque.html" title="class in ru.nsu.yakovleva.queue">CustomBlockingDeque</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;&nbsp;queue)</pre>
+<div class="block">Constructs a new Customers object with the given queue.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>queue</code> - The shared queue where orders will be placed.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -239,6 +251,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>run</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;run()</pre>
+<div class="block">The main run method of the Customers thread, responsible for continuously generating orders.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>run</code>&nbsp;in interface&nbsp;<code>java.lang.Runnable</code></dd>
@@ -252,6 +265,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>stop</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;stop()</pre>
+<div class="block">Stops the execution of the run loop.</div>
 </li>
 </ul>
 </li>

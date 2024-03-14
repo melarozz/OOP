@@ -133,6 +133,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">ReadJSON</span>
 extends java.lang.Object</pre>
+<div class="block">Reads JSON data from a file and converts it into Java objects.</div>
 </li>
 </ul>
 </div>
@@ -154,11 +155,15 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">ReadJSON</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructs a new ReadJSON object with the default file name.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">ReadJSON</a></span>&#8203;(java.lang.String&nbsp;fileName)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructs a new ReadJSON object with the specified file name.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -181,22 +186,30 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#close()">close</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Closes the reader.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFileName()">getFileName</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Retrieves the file name being read.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#open()">open</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Opens the file for reading.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="PizzeriaJSON.html" title="class in ru.nsu.yakovleva.json">PizzeriaJSON</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#read()">read</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Reads JSON data from the file and converts it into a PizzeriaJSON object.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -229,6 +242,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>ReadJSON</h4>
 <pre>public&nbsp;ReadJSON()</pre>
+<div class="block">Constructs a new ReadJSON object with the default file name.</div>
 </li>
 </ul>
 <a id="&lt;init&gt;(java.lang.String)">
@@ -238,6 +252,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>ReadJSON</h4>
 <pre>public&nbsp;ReadJSON&#8203;(java.lang.String&nbsp;fileName)</pre>
+<div class="block">Constructs a new ReadJSON object with the specified file name.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>fileName</code> - The name of the file to read JSON data from.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -257,6 +276,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getFileName</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getFileName()</pre>
+<div class="block">Retrieves the file name being read.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The file name.</dd>
+</dl>
 </li>
 </ul>
 <a id="open()">
@@ -266,6 +290,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>open</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;open()</pre>
+<div class="block">Opens the file for reading.</div>
 </li>
 </ul>
 <a id="read()">
@@ -275,6 +300,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>read</h4>
 <pre class="methodSignature">public&nbsp;<a href="PizzeriaJSON.html" title="class in ru.nsu.yakovleva.json">PizzeriaJSON</a>&nbsp;read()</pre>
+<div class="block">Reads JSON data from the file and converts it into a PizzeriaJSON object.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The PizzeriaJSON object representing the JSON data read from the file.</dd>
+</dl>
 </li>
 </ul>
 <a id="close()">
@@ -284,6 +314,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>close</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;close()</pre>
+<div class="block">Closes the reader.</div>
 </li>
 </ul>
 </li>

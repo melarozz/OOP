@@ -143,6 +143,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">Baker</span>
 extends <a href="Employee.html" title="class in ru.nsu.yakovleva.employee">Employee</a>
 implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovleva.producer">Producer</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;</pre>
+<div class="block">Represents a baker who takes orders from a queue, cooks them, and places them in storage.</div>
 </li>
 </ul>
 </div>
@@ -167,7 +168,9 @@ implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovl
      int&nbsp;workingExperience,
      <a href="../queue/CustomBlockingDeque.html" title="class in ru.nsu.yakovleva.queue">CustomBlockingDeque</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;&nbsp;queue,
      <a href="../queue/CustomBlockingDeque.html" title="class in ru.nsu.yakovleva.queue">CustomBlockingDeque</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;&nbsp;storage)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructs a new Baker object with the specified parameters.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -190,17 +193,23 @@ implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovl
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#produce(ru.nsu.yakovleva.order.Order)">produce</a></span>&#8203;(<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&nbsp;order)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Cooks the provided order and places it in the storage.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#take()">take</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Takes an order from the queue and sets its state to cooking.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#work()">work</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Implements the overall work cycle of the baker: taking an order and producing it.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -243,6 +252,14 @@ implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovl
              int&nbsp;workingExperience,
              <a href="../queue/CustomBlockingDeque.html" title="class in ru.nsu.yakovleva.queue">CustomBlockingDeque</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;&nbsp;queue,
              <a href="../queue/CustomBlockingDeque.html" title="class in ru.nsu.yakovleva.queue">CustomBlockingDeque</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;&nbsp;storage)</pre>
+<div class="block">Constructs a new Baker object with the specified parameters.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>id</code> - The unique identifier of the baker.</dd>
+<dd><code>workingExperience</code> - The working experience of the baker.</dd>
+<dd><code>queue</code> - The shared queue where incoming orders are placed.</dd>
+<dd><code>storage</code> - The shared storage where finished orders are placed.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -262,6 +279,11 @@ implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovl
 <li class="blockList">
 <h4>take</h4>
 <pre class="methodSignature">public&nbsp;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&nbsp;take()</pre>
+<div class="block">Takes an order from the queue and sets its state to cooking.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The order taken from the queue.</dd>
+</dl>
 </li>
 </ul>
 <a id="produce(ru.nsu.yakovleva.order.Order)">
@@ -271,9 +293,12 @@ implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovl
 <li class="blockList">
 <h4>produce</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;produce&#8203;(<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&nbsp;order)</pre>
+<div class="block">Cooks the provided order and places it in the storage.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../producer/Producer.html#produce(T)">produce</a></code>&nbsp;in interface&nbsp;<code><a href="../producer/Producer.html" title="interface in ru.nsu.yakovleva.producer">Producer</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>order</code> - The order to be cooked and placed in the storage.</dd>
 </dl>
 </li>
 </ul>
@@ -284,6 +309,7 @@ implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovl
 <li class="blockList">
 <h4>work</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;work()</pre>
+<div class="block">Implements the overall work cycle of the baker: taking an order and producing it.</div>
 </li>
 </ul>
 </li>

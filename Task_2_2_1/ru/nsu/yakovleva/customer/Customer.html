@@ -138,6 +138,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">Customer</span>
 extends java.lang.Object
 implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovleva.producer">Producer</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;</pre>
+<div class="block">Represents a customer who places orders in a system.</div>
 </li>
 </ul>
 </div>
@@ -159,7 +160,9 @@ implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovl
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.yakovleva.queue.CustomBlockingDeque)">Customer</a></span>&#8203;(<a href="../queue/CustomBlockingDeque.html" title="class in ru.nsu.yakovleva.queue">CustomBlockingDeque</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;&nbsp;queue)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructs a new Customer object with the given queue.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -182,7 +185,9 @@ implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovl
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#produce(ru.nsu.yakovleva.order.Order)">produce</a></span>&#8203;(<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&nbsp;order)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Simulates the process of a customer placing an order.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -215,6 +220,11 @@ implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovl
 <li class="blockList">
 <h4>Customer</h4>
 <pre>public&nbsp;Customer&#8203;(<a href="../queue/CustomBlockingDeque.html" title="class in ru.nsu.yakovleva.queue">CustomBlockingDeque</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;&nbsp;queue)</pre>
+<div class="block">Constructs a new Customer object with the given queue.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>queue</code> - The blocking deque where orders are placed.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -234,9 +244,12 @@ implements <a href="../producer/Producer.html" title="interface in ru.nsu.yakovl
 <li class="blockList">
 <h4>produce</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;produce&#8203;(<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&nbsp;order)</pre>
+<div class="block">Simulates the process of a customer placing an order.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../producer/Producer.html#produce(T)">produce</a></code>&nbsp;in interface&nbsp;<code><a href="../producer/Producer.html" title="interface in ru.nsu.yakovleva.producer">Producer</a>&lt;<a href="../order/Order.html" title="class in ru.nsu.yakovleva.order">Order</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>order</code> - The order to be placed.</dd>
 </dl>
 </li>
 </ul>

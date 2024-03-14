@@ -142,6 +142,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public abstract class <span class="typeNameLabel">Employee</span>
 extends java.lang.Object
 implements java.lang.Runnable</pre>
+<div class="block">Represents an abstract employee capable of performing work.</div>
 </li>
 </ul>
 </div>
@@ -163,7 +164,9 @@ implements java.lang.Runnable</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">Employee</a></span>&#8203;(int&nbsp;id)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructs a new Employee object with the given unique identifier.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -186,17 +189,23 @@ implements java.lang.Runnable</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getId()">getId</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Retrieves the unique identifier of the employee.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#run()">run</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overrides the run method from the Runnable interface, starting the work loop.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#stop()">stop</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Stops the execution of the employee's work loop.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -229,6 +238,11 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>Employee</h4>
 <pre>public&nbsp;Employee&#8203;(int&nbsp;id)</pre>
+<div class="block">Constructs a new Employee object with the given unique identifier.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>id</code> - The unique identifier of the employee.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -248,6 +262,11 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>getId</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getId()</pre>
+<div class="block">Retrieves the unique identifier of the employee.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The ID of the employee.</dd>
+</dl>
 </li>
 </ul>
 <a id="run()">
@@ -257,6 +276,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>run</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;run()</pre>
+<div class="block">Overrides the run method from the Runnable interface, starting the work loop.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>run</code>&nbsp;in interface&nbsp;<code>java.lang.Runnable</code></dd>
@@ -270,6 +290,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>stop</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;stop()</pre>
+<div class="block">Stops the execution of the employee's work loop.</div>
 </li>
 </ul>
 </li>

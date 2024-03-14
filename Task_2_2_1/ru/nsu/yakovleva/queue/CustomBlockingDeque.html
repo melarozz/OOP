@@ -130,9 +130,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - The type of elements stored in the deque.</dd>
+</dl>
 <hr>
 <pre>public class <span class="typeNameLabel">CustomBlockingDeque&lt;T&gt;</span>
 extends java.lang.Object</pre>
+<div class="block">Custom blocking deque implementation with a fixed size.</div>
 </li>
 </ul>
 </div>
@@ -154,7 +159,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">CustomBlockingDeque</a></span>&#8203;(int&nbsp;size)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructs a new CustomBlockingDeque with the specified size.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -177,27 +184,37 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="CustomBlockingDeque.html" title="type parameter in CustomBlockingDeque">T</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get()">get</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Retrieves and removes the first element of the deque.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="CustomBlockingDeque.html" title="type parameter in CustomBlockingDeque">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get(int)">get</a></span>&#8203;(int&nbsp;amount)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Retrieves and removes the specified number of elements from the deque.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSize()">getSize</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets the current size of the deque.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isEmpty()">isEmpty</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Checks if the deque is empty.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#put(T)">put</a></span>&#8203;(<a href="CustomBlockingDeque.html" title="type parameter in CustomBlockingDeque">T</a>&nbsp;object)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Inserts the specified element into the deque.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -230,6 +247,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>CustomBlockingDeque</h4>
 <pre>public&nbsp;CustomBlockingDeque&#8203;(int&nbsp;size)</pre>
+<div class="block">Constructs a new CustomBlockingDeque with the specified size.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>size</code> - The maximum size of the deque.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -249,6 +271,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>isEmpty</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;isEmpty()</pre>
+<div class="block">Checks if the deque is empty.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if the deque is empty, false otherwise.</dd>
+</dl>
 </li>
 </ul>
 <a id="getSize()">
@@ -258,6 +285,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getSize</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getSize()</pre>
+<div class="block">Gets the current size of the deque.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The number of elements in the deque.</dd>
+</dl>
 </li>
 </ul>
 <a id="get()">
@@ -268,9 +300,12 @@ extends java.lang.Object</pre>
 <h4>get</h4>
 <pre class="methodSignature">public&nbsp;<a href="CustomBlockingDeque.html" title="type parameter in CustomBlockingDeque">T</a>&nbsp;get()
       throws java.lang.InterruptedException</pre>
+<div class="block">Retrieves and removes the first element of the deque.</div>
 <dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The first element of the deque.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.InterruptedException</code></dd>
+<dd><code>java.lang.InterruptedException</code> - If the thread is interrupted while waiting.</dd>
 </dl>
 </li>
 </ul>
@@ -283,10 +318,15 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="CustomBlockingDeque.html" title="type parameter in CustomBlockingDeque">T</a>&gt;&nbsp;get&#8203;(int&nbsp;amount)
                       throws java.lang.IllegalArgumentException,
                              java.lang.InterruptedException</pre>
+<div class="block">Retrieves and removes the specified number of elements from the deque.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>amount</code> - The number of elements to retrieve.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A list containing the retrieved elements.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalArgumentException</code></dd>
-<dd><code>java.lang.InterruptedException</code></dd>
+<dd><code>java.lang.IllegalArgumentException</code> - If the specified amount is invalid.</dd>
+<dd><code>java.lang.InterruptedException</code> - If the thread is interrupted while waiting.</dd>
 </dl>
 </li>
 </ul>
@@ -301,10 +341,13 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;put&#8203;(<a href="CustomBlockingDeque.html" title="type parameter in CustomBlockingDeque">T</a>&nbsp;object)
          throws java.lang.NullPointerException,
                 java.lang.InterruptedException</pre>
+<div class="block">Inserts the specified element into the deque.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>object</code> - The element to be inserted.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.NullPointerException</code></dd>
-<dd><code>java.lang.InterruptedException</code></dd>
+<dd><code>java.lang.NullPointerException</code> - If the specified element is null.</dd>
+<dd><code>java.lang.InterruptedException</code> - If the thread is interrupted while waiting.</dd>
 </dl>
 </li>
 </ul>
