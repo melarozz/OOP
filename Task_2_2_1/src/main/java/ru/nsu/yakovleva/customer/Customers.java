@@ -4,7 +4,8 @@ import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
 /**
- * Represents a group of customers that continuously generate orders and place them in a shared queue.
+ * Represents a group of customers that continuously generate orders
+ * and place them in a shared queue.
  */
 public class Customers implements Runnable {
 

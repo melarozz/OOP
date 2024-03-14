@@ -1,16 +1,16 @@
 package ru.nsu.yakovleva.employee;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import ru.nsu.yakovleva.order.Order;
-import ru.nsu.yakovleva.queue.CustomBlockingDeque;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static ru.nsu.yakovleva.order.State.DELIVERED;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static ru.nsu.yakovleva.order.State.DELIVERED;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import ru.nsu.yakovleva.order.Order;
+import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
 class CourierTest {
     private final static int MAX_STORAGE_SIZE = 20;

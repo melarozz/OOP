@@ -1,17 +1,19 @@
 package ru.nsu.yakovleva.employee;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static ru.nsu.yakovleva.order.State.COOKING;
+import static ru.nsu.yakovleva.order.State.IN_STOCK;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static ru.nsu.yakovleva.order.State.COOKING;
-import static ru.nsu.yakovleva.order.State.IN_STOCK;
 
 class BakerTest {
     private final static int MAX_QUEUE_SIZE = 10;

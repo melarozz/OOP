@@ -1,7 +1,7 @@
 package ru.nsu.yakovleva.employee;
 
-import static ru.nsu.yakovleva.order.State.DELIVERING;
 import static ru.nsu.yakovleva.order.State.DELIVERED;
+import static ru.nsu.yakovleva.order.State.DELIVERING;
 
 import java.util.List;
 import java.util.Random;

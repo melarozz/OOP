@@ -68,7 +68,8 @@ public class CustomBlockingDeque<T> {
      * @throws IllegalArgumentException If the specified amount is invalid.
      * @throws InterruptedException     If the thread is interrupted while waiting.
      */
-    public synchronized List<T> get(int amount) throws IllegalArgumentException, InterruptedException {
+    public synchronized List<T> get(int amount) throws IllegalArgumentException,
+            InterruptedException {
         if (amount < 1 || amount > size) {
             throw new IllegalArgumentException();
         }

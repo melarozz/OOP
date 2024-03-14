@@ -1,11 +1,11 @@
 package ru.nsu.yakovleva.json;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 /**
  * Reads JSON data from a file and converts it into Java objects.

@@ -14,49 +14,49 @@ public class PizzeriaApplication implements Runnable {
     private final static long RUNNING_TIME = 30 * 1000;
 
     // Pizzeria configuration read from JSON
-    private PizzeriaJson pizzeriaJSON;
+    private PizzeriaJson pizzeriaJson;
 
     // Instance of the Pizzeria class
     private Pizzeria pizzeria;
 
     // Method to read Pizzeria configuration from JSON
-    private void setPizzeriaJSON() {
+    private void setPizzeriaJson() {
         ReadJson jsonReader = new ReadJson();
         jsonReader.open();
-        pizzeriaJSON = jsonReader.read();
+        pizzeriaJson = jsonReader.read();
         jsonReader.close();
     }
 
     // Method to initialize Pizzeria based on the read configuration
     private void setPizzeria() {
-        if (pizzeriaJSON == null) {
+        if (pizzeriaJson == null) {
             System.err.println("Missing pizzeria configuration.");
             return;
         }
-        if (pizzeriaJSON.queueSize() <= 0) {
+        if (pizzeriaJson.queueSize() <= 0) {
             System.err.println("Queue size must be a positive number.");
             return;
         }
-        if (pizzeriaJSON.storageSize() <= 0) {
+        if (pizzeriaJson.storageSize() <= 0) {
             System.err.println("Storage size must be a positive number.");
             return;
         }
-        BakerJson[] bakersJSON = pizzeriaJSON.bakers();
-        if (bakersJSON == null || bakersJSON.length == 0) {
+        BakerJson[] bakersJson = pizzeriaJson.bakers();
+        if (bakersJson == null || bakersJson.length == 0) {
             System.err.println("Add bakers to the pizzeria configuration.");
             return;
         }
-        CourierJson[] couriersJSON = pizzeriaJSON.couriers();
-        if (couriersJSON == null || couriersJSON.length == 0) {
+        CourierJson[] couriersJson = pizzeriaJson.couriers();
+        if (couriersJson == null || couriersJson.length == 0) {
             System.err.println("Add couriers to the pizzeria configuration.");
             return;
         }
-        pizzeria = new Pizzeria(pizzeriaJSON);
+        pizzeria = new Pizzeria(pizzeriaJson);
     }
 
     // Constructor to set up the PizzeriaApplication
     public PizzeriaApplication() {
-        setPizzeriaJSON();
+        setPizzeriaJson();
         setPizzeria();
     }
 

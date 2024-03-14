@@ -49,8 +49,8 @@ public class Pizzeria implements Runnable {
 
     // Method to initialize Bakers based on the provided BakerJSON array
     private void setBakers(BakerJson[] bakers) {
-        Stream<BakerJson> bakerJSONStream = Arrays.stream(bakers);
-        this.bakers = bakerJSONStream
+        Stream<BakerJson> bakerJsonStream = Arrays.stream(bakers);
+        this.bakers = bakerJsonStream
                 .map(bakerJson -> new Baker(bakerJson.id(),
                         bakerJson.workingExperience(), this.queue, this.storage))
                 .collect(Collectors.toCollection(ArrayList::new));
@@ -58,8 +58,8 @@ public class Pizzeria implements Runnable {
 
     // Method to initialize Couriers based on the provided CourierJSON array
     private void setCouriers(CourierJson[] couriers) {
-        Stream<CourierJson> courierJSONStream = Arrays.stream(couriers);
-        this.couriers = courierJSONStream
+        Stream<CourierJson> courierJsonStream = Arrays.stream(couriers);
+        this.couriers = courierJsonStream
                 .map(courierJson -> new Courier(courierJson.id(),
                         courierJson.bagCapacity(), this.storage))
                 .collect(Collectors.toCollection(ArrayList::new));
