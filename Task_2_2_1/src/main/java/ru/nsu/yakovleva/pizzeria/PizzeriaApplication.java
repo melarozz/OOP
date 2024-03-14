@@ -5,6 +5,9 @@ import ru.nsu.yakovleva.json.CourierJSON;
 import ru.nsu.yakovleva.json.ReadJSON;
 import ru.nsu.yakovleva.json.PizzeriaJSON;
 
+/**
+ * Represents the main application for running the pizzeria simulation.
+ */
 public class PizzeriaApplication implements Runnable {
 
     // Running time for the Pizzeria application in milliseconds

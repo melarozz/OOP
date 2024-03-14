@@ -1,12 +1,14 @@
 package ru.nsu.yakovleva.customer;
 
+import java.util.Random;
 import ru.nsu.yakovleva.order.Order;
+import ru.nsu.yakovleva.order.State;
 import ru.nsu.yakovleva.producer.Producer;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
-import ru.nsu.yakovleva.order.State;
 
-import java.util.Random;
-
+/**
+ * Represents a customer who places orders in a system.
+ */
 public class Customer implements Producer<Order> {
 
     // Maximum ordering time constant
@@ -18,13 +20,21 @@ public class Customer implements Producer<Order> {
     // Reference to the blocking deque where orders are placed
     private final CustomBlockingDeque<Order> queue;
 
-    // Constructor initializing the random number generator and the queue reference
+    /**
+     * Constructs a new Customer object with the given queue.
+     *
+     * @param queue The blocking deque where orders are placed.
+     */
     public Customer(CustomBlockingDeque<Order> queue) {
         random = new Random();
         this.queue = queue;
     }
 
-    // Implementation of the produce method from the Producer interface
+    /**
+     * Simulates the process of a customer placing an order.
+     *
+     * @param order The order to be placed.
+     */
     @Override
     public void produce(Order order) {
         try {

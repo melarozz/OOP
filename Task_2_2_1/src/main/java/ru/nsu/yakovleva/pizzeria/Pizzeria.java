@@ -1,5 +1,12 @@
 package ru.nsu.yakovleva.pizzeria;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import ru.nsu.yakovleva.customer.Customers;
 import ru.nsu.yakovleva.employee.Baker;
 import ru.nsu.yakovleva.employee.Courier;
@@ -9,14 +16,9 @@ import ru.nsu.yakovleva.json.PizzeriaJSON;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+/**
+ * Represents a pizzeria with bakers, couriers, and customers.
+ */
 public class Pizzeria implements Runnable {
 
     // Flag to control the execution of the Pizzeria's run loop
@@ -30,6 +32,20 @@ public class Pizzeria implements Runnable {
     private final Customers customers;
     private final CustomBlockingDeque<Order> queue;
     private final CustomBlockingDeque<Order> storage;
+
+    /**
+     * Constructs a new Pizzeria based on the provided settings.
+     *
+     * @param settings The settings for the pizzeria.
+     */
+    public Pizzeria(PizzeriaJSON settings) {
+        this.isPizzeriaRunning = false;
+        this.queue = new CustomBlockingDeque<>(settings.queueSize());
+        this.storage = new CustomBlockingDeque<>(settings.storageSize());
+        this.customers = new Customers(this.queue);
+        setBakers(settings.bakers());
+        setCouriers(settings.couriers());
+    }
 
     // Method to initialize Bakers based on the provided BakerJSON array
     private void setBakers(BakerJSON[] bakers) {
@@ -47,17 +63,9 @@ public class Pizzeria implements Runnable {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    // Constructor to initialize Pizzeria based on provided settings
-    public Pizzeria(PizzeriaJSON settings) {
-        this.isPizzeriaRunning = false;
-        this.queue = new CustomBlockingDeque<>(settings.queueSize());
-        this.storage = new CustomBlockingDeque<>(settings.storageSize());
-        this.customers = new Customers(this.queue);
-        setBakers(settings.bakers());
-        setCouriers(settings.couriers());
-    }
-
-    // Overriding the run method from the Runnable interface
+    /**
+     * Overrides the run method from the Runnable interface, starting the Pizzeria's operation.
+     */
     @Override
     public void run() {
         // Setting the runPizzeria flag to true, starting the Pizzeria loop
@@ -94,7 +102,9 @@ public class Pizzeria implements Runnable {
         customers.stop();
     }
 
-    // Method to stop the execution of the Pizzeria
+    /**
+     * Stops the execution of the Pizzeria.
+     */
     public void stop() {
         System.out.println("The pizzeria is closed, goodbye!");
         isPizzeriaRunning = false;

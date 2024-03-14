@@ -1,40 +1,57 @@
 package ru.nsu.yakovleva.employee;
 
+/**
+ * Represents an abstract employee capable of performing work.
+ */
 public abstract class Employee implements Runnable {
 
     // Employee's unique identifier
     private final int id;
 
-    // Flag to control the execution of the runEmployee loop
+    // Flag to control the execution of the work loop
     private boolean isEmployeeRunning;
 
-    // Constructor to initialize the Employee with a unique identifier
+    /**
+     * Constructs a new Employee object with the given unique identifier.
+     *
+     * @param id The unique identifier of the employee.
+     */
     public Employee(int id) {
         this.id = id;
-        // Initializing the runEmployee flag to false
+        // Initializing the flag to false
         this.isEmployeeRunning = false;
     }
 
-    // Getter method to retrieve the Employee's ID
+    /**
+     * Retrieves the unique identifier of the employee.
+     *
+     * @return The ID of the employee.
+     */
     public int getId() {
         return id;
     }
 
-    // Abstract method representing the work that an Employee performs
+    /**
+     * Represents the work that an employee performs. This method must be implemented by subclasses.
+     */
     abstract void work();
 
-    // Overriding the run method from the Runnable interface
+    /**
+     * Overrides the run method from the Runnable interface, starting the work loop.
+     */
     @Override
     public void run() {
-        // Setting the runEmployee flag to true, starting the work loop
+        // Setting the flag to true, starting the work loop
         isEmployeeRunning = true;
-        // Continuous execution of the work method as long as runEmployee is true
+        // Continuous execution of the work method as long as the flag is true
         while (isEmployeeRunning) {
             work();
         }
     }
 
-    // Method to stop the execution of the Employee's work
+    /**
+     * Stops the execution of the employee's work loop.
+     */
     public void stop() {
         isEmployeeRunning = false;
     }

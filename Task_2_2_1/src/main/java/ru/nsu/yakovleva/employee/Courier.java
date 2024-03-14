@@ -1,14 +1,17 @@
 package ru.nsu.yakovleva.employee;
 
-import ru.nsu.yakovleva.order.Order;
-import ru.nsu.yakovleva.queue.CustomBlockingDeque;
-import ru.nsu.yakovleva.order.State;
-
 import java.util.List;
 import java.util.Random;
+import ru.nsu.yakovleva.order.Order;
+import ru.nsu.yakovleva.order.State;
+import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
-import static ru.nsu.yakovleva.order.State.*;
+import static ru.nsu.yakovleva.order.State.DELIVERING;
+import static ru.nsu.yakovleva.order.State.DELIVERED;
 
+/**
+ * Represents a courier who delivers orders from a storage.
+ */
 public class Courier extends Employee {
 
     // Constant representing the maximum delivery time for a set of orders
@@ -26,7 +29,13 @@ public class Courier extends Employee {
     // Random object for generating random delivery times
     private final Random random;
 
-    // Constructor for creating a Courier object with specified parameters
+    /**
+     * Constructs a new Courier object with the specified parameters.
+     *
+     * @param id           The unique identifier of the courier.
+     * @param bagCapacity  The bag capacity of the courier.
+     * @param storage      The shared storage where delivered orders are placed.
+     */
     public Courier(int id, int bagCapacity, CustomBlockingDeque<Order> storage) {
         // Calling the constructor of the superclass (Employee)
         super(id);
@@ -36,12 +45,20 @@ public class Courier extends Employee {
         this.random = new Random();
     }
 
-    // Method to set the state of all orders in the list to a specified state
+    /**
+     * Sets the state of all orders in the list to a specified state.
+     *
+     * @param state The state to set for the orders.
+     */
     private void setOrdersState(State state) {
         orders.forEach(order -> order.setState(state));
     }
 
-    // Implementation of the consume method from the Consumer interface
+    /**
+     * Takes a set of orders from the storage, delivers them, and updates their states accordingly.
+     *
+     * @return The set of orders taken and delivered.
+     */
     public List<Order> take() {
         // Generating a random delivery time for the set of orders
         int deliveryTime = random.nextInt(MAX_DELIVERY_TIME);
@@ -62,7 +79,9 @@ public class Courier extends Employee {
         }
     }
 
-    // Implementation of the work method for the courier's overall work cycle
+    /**
+     * Implements the overall work cycle of the courier: taking orders from storage and delivering them.
+     */
     @Override
     void work() {
         // Consuming a set of orders from the storage
