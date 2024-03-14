@@ -22,7 +22,7 @@ import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 public class Pizzeria implements Runnable {
 
     // Flag to control the execution of the Pizzeria's run loop
-    private boolean isPizzeriaRunning;
+    boolean isPizzeriaRunning;
 
     // Lists to store instances of Bakers and Couriers
     private List<Baker> bakers;
@@ -30,8 +30,8 @@ public class Pizzeria implements Runnable {
 
     // Customers and Queues for orders
     private final Customers customers;
-    private final CustomBlockingDeque<Order> queue;
-    private final CustomBlockingDeque<Order> storage;
+    final CustomBlockingDeque<Order> queue;
+    final CustomBlockingDeque<Order> storage;
 
     /**
      * Constructs a new Pizzeria based on the provided settings.
