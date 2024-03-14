@@ -10,9 +10,9 @@ import java.util.stream.Stream;
 import ru.nsu.yakovleva.customer.Customers;
 import ru.nsu.yakovleva.employee.Baker;
 import ru.nsu.yakovleva.employee.Courier;
-import ru.nsu.yakovleva.json.BakerJSON;
-import ru.nsu.yakovleva.json.CourierJSON;
-import ru.nsu.yakovleva.json.PizzeriaJSON;
+import ru.nsu.yakovleva.json.BakerJson;
+import ru.nsu.yakovleva.json.CourierJson;
+import ru.nsu.yakovleva.json.PizzeriaJson;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
@@ -38,7 +38,7 @@ public class Pizzeria implements Runnable {
      *
      * @param settings The settings for the pizzeria.
      */
-    public Pizzeria(PizzeriaJSON settings) {
+    public Pizzeria(PizzeriaJson settings) {
         this.isPizzeriaRunning = false;
         this.queue = new CustomBlockingDeque<>(settings.queueSize());
         this.storage = new CustomBlockingDeque<>(settings.storageSize());
@@ -48,18 +48,20 @@ public class Pizzeria implements Runnable {
     }
 
     // Method to initialize Bakers based on the provided BakerJSON array
-    private void setBakers(BakerJSON[] bakers) {
-        Stream<BakerJSON> bakerJSONStream = Arrays.stream(bakers);
+    private void setBakers(BakerJson[] bakers) {
+        Stream<BakerJson> bakerJSONStream = Arrays.stream(bakers);
         this.bakers = bakerJSONStream
-                .map(bakerJSON -> new Baker(bakerJSON.id(), bakerJSON.workingExperience(), this.queue, this.storage))
+                .map(bakerJson -> new Baker(bakerJson.id(),
+                        bakerJson.workingExperience(), this.queue, this.storage))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
     // Method to initialize Couriers based on the provided CourierJSON array
-    private void setCouriers(CourierJSON[] couriers) {
-        Stream<CourierJSON> courierJSONStream = Arrays.stream(couriers);
+    private void setCouriers(CourierJson[] couriers) {
+        Stream<CourierJson> courierJSONStream = Arrays.stream(couriers);
         this.couriers = courierJSONStream
-                .map(courierJSON -> new Courier(courierJSON.id(), courierJSON.bagCapacity(), this.storage))
+                .map(courierJson -> new Courier(courierJson.id(),
+                        courierJson.bagCapacity(), this.storage))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -87,7 +89,8 @@ public class Pizzeria implements Runnable {
         System.out.println("The pizzeria is opened!");
 
         // Waiting for the Pizzeria loop to complete
-        while (isPizzeriaRunning && !bakersThreadPool.isTerminated() && !couriersThreadPool.isTerminated()) {
+        while (isPizzeriaRunning && !bakersThreadPool.isTerminated()
+                && !couriersThreadPool.isTerminated()) {
         }
 
         // Handling termination scenarios

@@ -3,7 +3,7 @@ package ru.nsu.yakovleva.json;
 /**
  * Represents JSON data for a courier, including their ID and bag capacity.
  */
-public class CourierJSON {
+public class CourierJson {
 
     // Courier's unique identifier
     private int id;

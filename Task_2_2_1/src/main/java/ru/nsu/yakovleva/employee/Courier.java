@@ -1,13 +1,13 @@
 package ru.nsu.yakovleva.employee;
 
+import static ru.nsu.yakovleva.order.State.DELIVERING;
+import static ru.nsu.yakovleva.order.State.DELIVERED;
+
 import java.util.List;
 import java.util.Random;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.order.State;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
-
-import static ru.nsu.yakovleva.order.State.DELIVERING;
-import static ru.nsu.yakovleva.order.State.DELIVERED;
 
 /**
  * Represents a courier who delivers orders from a storage.
@@ -55,7 +55,8 @@ public class Courier extends Employee {
     }
 
     /**
-     * Takes a set of orders from the storage, delivers them, and updates their states accordingly.
+     * Takes a set of orders from the storage, delivers them,
+     * and updates their states accordingly.
      *
      * @return The set of orders taken and delivered.
      */
@@ -80,7 +81,8 @@ public class Courier extends Employee {
     }
 
     /**
-     * Implements the overall work cycle of the courier: taking orders from storage and delivering them.
+     * Implements the overall work cycle of the courier: taking orders from storage
+     * and delivering them.
      */
     @Override
     void work() {

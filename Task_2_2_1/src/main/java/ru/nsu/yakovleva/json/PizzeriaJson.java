@@ -3,7 +3,7 @@ package ru.nsu.yakovleva.json;
 /**
  * Represents JSON data for a pizzeria, including queue size, storage size, bakers, and couriers.
  */
-public class PizzeriaJSON {
+public class PizzeriaJson {
 
     // Size of the queue for incoming orders
     private int queueSize;
@@ -12,10 +12,10 @@ public class PizzeriaJSON {
     private int storageSize;
 
     // Array of BakerJSON objects representing the bakers in the pizzeria
-    private BakerJSON[] bakers;
+    private BakerJson[] bakers;
 
     // Array of CourierJSON objects representing the couriers in the pizzeria
-    private CourierJSON[] couriers;
+    private CourierJson[] couriers;
 
     /**
      * Retrieves the size of the queue for incoming orders.
@@ -40,7 +40,7 @@ public class PizzeriaJSON {
      *
      * @return The array of bakers.
      */
-    public BakerJSON[] bakers() {
+    public BakerJson[] bakers() {
         return bakers;
     }
 
@@ -49,7 +49,7 @@ public class PizzeriaJSON {
      *
      * @return The array of couriers.
      */
-    public CourierJSON[] couriers() {
+    public CourierJson[] couriers() {
         return couriers;
     }
 }

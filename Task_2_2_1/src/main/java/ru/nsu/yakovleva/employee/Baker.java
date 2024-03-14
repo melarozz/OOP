@@ -1,12 +1,12 @@
 package ru.nsu.yakovleva.employee;
 
+import static ru.nsu.yakovleva.order.State.COOKING;
+import static ru.nsu.yakovleva.order.State.IN_STOCK;
+
 import java.util.Random;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.producer.Producer;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
-
-import static ru.nsu.yakovleva.order.State.COOKING;
-import static ru.nsu.yakovleva.order.State.IN_STOCK;
 
 /**
  * Represents a baker who takes orders from a queue, cooks them, and places them in storage.
@@ -36,7 +36,8 @@ public class Baker extends Employee implements Producer<Order> {
      * @param queue             The shared queue where incoming orders are placed.
      * @param storage           The shared storage where finished orders are placed.
      */
-    public Baker(int id, int workingExperience, CustomBlockingDeque<Order> queue, CustomBlockingDeque<Order> storage) {
+    public Baker(int id, int workingExperience, CustomBlockingDeque<Order> queue,
+                 CustomBlockingDeque<Order> storage) {
         // Calling the constructor of the superclass (Employee)
         super(id);
         // Initializing working experience, random, queue, and storage with provided values

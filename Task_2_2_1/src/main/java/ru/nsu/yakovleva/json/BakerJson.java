@@ -3,7 +3,7 @@ package ru.nsu.yakovleva.json;
 /**
  * Represents JSON data for a baker, including their ID and working experience.
  */
-public class BakerJSON {
+public class BakerJson {
 
     // Baker's unique identifier
     private int id;

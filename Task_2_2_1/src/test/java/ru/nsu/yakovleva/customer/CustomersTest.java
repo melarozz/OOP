@@ -1,15 +1,15 @@
 package ru.nsu.yakovleva.customer;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static ru.nsu.yakovleva.order.State.IN_QUEUE;
+
+import java.util.List;
+import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
-
-import java.util.List;
-import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static ru.nsu.yakovleva.order.State.IN_QUEUE;
 
 class CustomersTest {
     private final static int MAX_QUEUE_SIZE = 100;
@@ -28,8 +28,7 @@ class CustomersTest {
         Customers customers = new Customers(queue);
         Thread customersThread = new Thread(new Customers(queue));
         customersThread.start();
-        while (queue.getSize() != queueSize) {
-        }
+        while (queue.getSize() != queueSize) {}
         Thread.sleep(100);
         customers.stop();
         List<Order> orders = queue.get(queueSize);

@@ -1,9 +1,9 @@
 package ru.nsu.yakovleva.pizzeria;
 
-import ru.nsu.yakovleva.json.BakerJSON;
-import ru.nsu.yakovleva.json.CourierJSON;
-import ru.nsu.yakovleva.json.ReadJSON;
-import ru.nsu.yakovleva.json.PizzeriaJSON;
+import ru.nsu.yakovleva.json.BakerJson;
+import ru.nsu.yakovleva.json.CourierJson;
+import ru.nsu.yakovleva.json.PizzeriaJson;
+import ru.nsu.yakovleva.json.ReadJson;
 
 /**
  * Represents the main application for running the pizzeria simulation.
@@ -14,14 +14,14 @@ public class PizzeriaApplication implements Runnable {
     private final static long RUNNING_TIME = 30 * 1000;
 
     // Pizzeria configuration read from JSON
-    private PizzeriaJSON pizzeriaJSON;
+    private PizzeriaJson pizzeriaJSON;
 
     // Instance of the Pizzeria class
     private Pizzeria pizzeria;
 
     // Method to read Pizzeria configuration from JSON
     private void setPizzeriaJSON() {
-        ReadJSON jsonReader = new ReadJSON();
+        ReadJson jsonReader = new ReadJson();
         jsonReader.open();
         pizzeriaJSON = jsonReader.read();
         jsonReader.close();
@@ -41,12 +41,12 @@ public class PizzeriaApplication implements Runnable {
             System.err.println("Storage size must be a positive number.");
             return;
         }
-        BakerJSON[] bakersJSON = pizzeriaJSON.bakers();
+        BakerJson[] bakersJSON = pizzeriaJSON.bakers();
         if (bakersJSON == null || bakersJSON.length == 0) {
             System.err.println("Add bakers to the pizzeria configuration.");
             return;
         }
-        CourierJSON[] couriersJSON = pizzeriaJSON.couriers();
+        CourierJson[] couriersJSON = pizzeriaJSON.couriers();
         if (couriersJSON == null || couriersJSON.length == 0) {
             System.err.println("Add couriers to the pizzeria configuration.");
             return;

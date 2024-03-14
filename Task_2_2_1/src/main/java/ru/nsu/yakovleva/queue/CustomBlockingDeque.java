@@ -52,7 +52,9 @@ public class CustomBlockingDeque<T> {
      * @throws InterruptedException If the thread is interrupted while waiting.
      */
     public synchronized T get() throws InterruptedException {
-        while (deque.isEmpty()) wait();
+        while (deque.isEmpty()) {
+            wait();
+        }
         T object = deque.pop();
         notifyAll();
         return object;
@@ -67,10 +69,16 @@ public class CustomBlockingDeque<T> {
      * @throws InterruptedException     If the thread is interrupted while waiting.
      */
     public synchronized List<T> get(int amount) throws IllegalArgumentException, InterruptedException {
-        if (amount < 1 || amount > size) throw new IllegalArgumentException();
-        while (deque.isEmpty()) wait();
+        if (amount < 1 || amount > size) {
+            throw new IllegalArgumentException();
+        }
+        while (deque.isEmpty()) {
+            wait();
+        }
         List<T> objects = new ArrayList<>();
-        while (!deque.isEmpty() && objects.size() != amount) objects.add(deque.pop());
+        while (!deque.isEmpty() && objects.size() != amount) {
+            objects.add(deque.pop());
+        }
         return objects;
     }
 
@@ -82,8 +90,12 @@ public class CustomBlockingDeque<T> {
      * @throws InterruptedException If the thread is interrupted while waiting.
      */
     public synchronized void put(T object) throws NullPointerException, InterruptedException {
-        if (object == null) throw new NullPointerException();
-        while (deque.size() == size) wait();
+        if (object == null) {
+            throw new NullPointerException();
+        }
+        while (deque.size() == size) {
+            wait();
+        }
         deque.push(object);
         notifyAll();
     }

@@ -1,14 +1,16 @@
 package ru.nsu.yakovleva.json;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import java.io.*;
 
 /**
  * Reads JSON data from a file and converts it into Java objects.
  */
-public class ReadJSON {
+public class ReadJson {
 
     // Default file name for JSON data
     private static final String DEFAULT_FILE_NAME = "pizzeria.json";
@@ -25,7 +27,7 @@ public class ReadJSON {
     /**
      * Constructs a new ReadJSON object with the default file name.
      */
-    public ReadJSON() {
+    public ReadJson() {
         this.fileName = DEFAULT_FILE_NAME;
         this.file = new File(DEFAULT_FILE_NAME);
     }
@@ -35,7 +37,7 @@ public class ReadJSON {
      *
      * @param fileName The name of the file to read JSON data from.
      */
-    public ReadJSON(String fileName) {
+    public ReadJson(String fileName) {
         this.fileName = fileName;
         this.file = new File(fileName);
     }
@@ -84,7 +86,7 @@ public class ReadJSON {
      *
      * @return The PizzeriaJSON object representing the JSON data read from the file.
      */
-    public PizzeriaJSON read() {
+    public PizzeriaJson read() {
         String content;
         try {
             content = readAllLines(reader);
@@ -97,7 +99,7 @@ public class ReadJSON {
             return null;
         }
         Gson gson = new GsonBuilder().create();
-        return gson.fromJson(content, PizzeriaJSON.class);
+        return gson.fromJson(content, PizzeriaJson.class);
     }
 
     /**
