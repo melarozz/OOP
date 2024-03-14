@@ -102,4 +102,15 @@ class BakerTest {
         orders.forEach(order -> assertEquals(IN_STOCK, order.getState()));
     }
 
+    @Test
+    public void testInterruptionDuringProduction() throws InterruptedException {
+        Baker baker = new Baker(0, 10, queue, storage);
+        Thread thread = new Thread(baker::work);
+        thread.start();
+        thread.interrupt();
+        Thread.sleep(100);
+        assertTrue(storage.isEmpty());
+    }
+
+
 }

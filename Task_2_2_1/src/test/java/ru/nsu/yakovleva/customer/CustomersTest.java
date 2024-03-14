@@ -12,7 +12,7 @@ import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
 class CustomersTest {
-    private final static int MAX_QUEUE_SIZE = 100;
+    private static final int MAX_QUEUE_SIZE = 100;
     private CustomBlockingDeque<Order> queue;
     private int queueSize;
     private final Random random = new Random();

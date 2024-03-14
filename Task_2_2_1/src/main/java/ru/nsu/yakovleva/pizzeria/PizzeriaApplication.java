@@ -14,10 +14,10 @@ public class PizzeriaApplication implements Runnable {
     private static final long RUNNING_TIME = 30 * 1000;
 
     // Pizzeria configuration read from JSON
-    private PizzeriaJson pizzeriaJson;
+    PizzeriaJson pizzeriaJson;
 
     // Instance of the Pizzeria class
-    private Pizzeria pizzeria;
+    Pizzeria pizzeria;
 
     // Method to read Pizzeria configuration from JSON
     private void setPizzeriaJson() {
