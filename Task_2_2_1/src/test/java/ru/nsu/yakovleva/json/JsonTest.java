@@ -27,7 +27,7 @@ public class JsonTest {
     @Test
     public void testCourierJsonConstructorAndGetters() {
         PizzeriaJson pizzeriaJson;
-        ReadJson jsonReader = new ReadJson();
+        ReadJson jsonReader = new ReadJson("pizzeria.json");
         jsonReader.open();
         pizzeriaJson = jsonReader.read();
         jsonReader.close();
