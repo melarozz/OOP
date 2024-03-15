@@ -36,4 +36,12 @@ public class PizzeriaApplicationTest {
         assertNotNull(app.pizzeria);
     }
 
+    @Test
+    public void testPizzeriaRun() {
+        PizzeriaApplication app = new PizzeriaApplication();
+        Thread pizzeriaThread = new Thread(app.pizzeria);
+        pizzeriaThread.start();
+        assertNotNull(pizzeriaThread);
+    }
+
 }
