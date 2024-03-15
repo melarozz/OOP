@@ -103,7 +103,7 @@ public class Baker extends Employee implements Producer<Order> {
         if (order == null) {
             stop();
         }
-        // Producing the order (cooking and placing it in the storage)
+        // Producing the order
         produce(order);
     }
 }
