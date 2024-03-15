@@ -94,10 +94,10 @@ public class Pizzeria implements Runnable {
         }
 
         // Setting the runPizzeria flag to false and shutting down thread pools
-        isPizzeriaRunning = false;
-        bakersThreadPool.shutdownNow();
-        couriersThreadPool.shutdownNow();
         customers.stop();
+        isPizzeriaRunning = false;
+        bakersThreadPool.shutdown();
+        couriersThreadPool.shutdown();
     }
 
     /**

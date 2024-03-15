@@ -11,7 +11,7 @@ import ru.nsu.yakovleva.json.ReadJson;
 public class PizzeriaApplication implements Runnable {
 
     // Running time for the Pizzeria application in milliseconds
-    private static final long RUNNING_TIME = 30 * 1000;
+    private static final long RUNNING_TIME = 30 * 1000 ;
     PizzeriaJson pizzeriaJson;
     Pizzeria pizzeria;
 

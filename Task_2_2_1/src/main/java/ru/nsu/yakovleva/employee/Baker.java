@@ -84,8 +84,14 @@ public class Baker extends Employee implements Producer<Order> {
             // Simulating the cooking time by sleeping the thread
             Thread.sleep(leadTime);
             // Setting the order state to IN_STOCK and putting it in the storage
-            order.setState(IN_STOCK);
-            storage.put(order);
+            if (!Thread.interrupted()) {
+                order.setState(IN_STOCK);
+                storage.put(order);
+            } else {
+                // If interrupted, stop the thread
+                System.err.println("Baker #" + getId() + " cooking was interrupted.");
+            }
+
         } catch (NullPointerException | InterruptedException exception) {
             // Handling exceptions if there are issues performing the order
             System.err.println("Baker #" + getId() + " had an issue performing the order.");

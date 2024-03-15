@@ -1,13 +1,12 @@
 package ru.nsu.yakovleva.employee;
 
-import static ru.nsu.yakovleva.order.State.DELIVERED;
-import static ru.nsu.yakovleva.order.State.DELIVERING;
-
 import java.util.List;
 import java.util.Random;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.order.State;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
+
+import static ru.nsu.yakovleva.order.State.*;
 
 /**
  * Represents a courier who delivers orders from a storage.
@@ -67,12 +66,21 @@ public class Courier extends Employee {
             // Attempting to retrieve a set of orders from the storage
             orders = storage.get(bagCapacity);
             // Setting the state of orders to DELIVERING
-            setOrdersState(DELIVERING);
-            // Simulating the delivery time by sleeping the thread
-            Thread.sleep(deliveryTime);
-            // Setting the state of orders to DELIVERED
-            setOrdersState(DELIVERED);
-            return orders;
+            if (!Thread.interrupted()) {
+                setOrdersState(DELIVERING);
+                Thread.sleep(deliveryTime);
+            } else {
+                // If interrupted, stop the thread
+                System.err.println("Courier #" + getId() + " delivering was interrupted.");
+            }
+            if (!Thread.interrupted()) {
+                setOrdersState(DELIVERED);
+                return orders;
+            } else {
+                // If interrupted, stop the thread
+                System.err.println("Courier #" + getId() + " end of delivery was interrupted.");
+                return null;
+            }
         } catch (InterruptedException exception) {
             // Handling an exception if the courier cannot deliver the order
             System.err.println("Courier #" + getId() + " couldn't deliver the order.");
