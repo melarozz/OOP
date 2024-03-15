@@ -12,11 +12,7 @@ public class PizzeriaApplication implements Runnable {
 
     // Running time for the Pizzeria application in milliseconds
     private static final long RUNNING_TIME = 30 * 1000;
-
-    // Pizzeria configuration read from JSON
     PizzeriaJson pizzeriaJson;
-
-    // Instance of the Pizzeria class
     Pizzeria pizzeria;
 
     /**
@@ -58,7 +54,9 @@ public class PizzeriaApplication implements Runnable {
         pizzeria = new Pizzeria(pizzeriaJson);
     }
 
-    // Constructor to set up the PizzeriaApplication
+    /**
+     * Constructor to set up the PizzeriaApplication
+     */
     public PizzeriaApplication() {
         setPizzeriaJson();
         setPizzeria();
@@ -78,10 +76,7 @@ public class PizzeriaApplication implements Runnable {
         pizzeriaThread.start();
 
         try {
-            // Running the Pizzeria application for a specified time
             Thread.sleep(RUNNING_TIME);
-
-            // Stopping the Pizzeria and exiting the application
             pizzeria.stop();
             System.exit(0);
 

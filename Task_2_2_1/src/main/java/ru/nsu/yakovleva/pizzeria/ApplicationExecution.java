@@ -11,10 +11,7 @@ public class ApplicationExecution {
      * @param args Command-line arguments (not used in this application).
      */
     public static void main(String[] args) {
-        // Create an instance of the PizzeriaApplication
         PizzeriaApplication application = new PizzeriaApplication();
-
-        // Run the application
         application.run();
     }
 }

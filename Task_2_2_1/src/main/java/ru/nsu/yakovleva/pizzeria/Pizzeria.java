@@ -21,14 +21,9 @@ import ru.nsu.yakovleva.queue.CustomBlockingDeque;
  */
 public class Pizzeria implements Runnable {
 
-    // Flag to control the execution of the Pizzeria's run loop
     boolean isPizzeriaRunning;
-
-    // Lists to store instances of Bakers and Couriers
     private List<Baker> bakers;
     private List<Courier> couriers;
-
-    // Customers and Queues for orders
     private final Customers customers;
     final CustomBlockingDeque<Order> queue;
     final CustomBlockingDeque<Order> storage;
