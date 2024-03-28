@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="300.0" prefWidth="300.0" styleClass="background" stylesheets="@../css/styles.css"
+           xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="ru.nsu.yakovleva.application.settings.SettingsController">
+    <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+        <StackPane.margin>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
+        </StackPane.margin>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="text">
+            <Label styleClass="h2" text="Rows:"/>
+            <TextField fx:id="rowsNumber"/>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+            <Label styleClass="h2" text="Columns:"/>
+            <TextField fx:id="columnsNumber"/>
+        </HBox>
+        <BorderPane prefHeight="100.0" prefWidth="200.0">
+            <left>
+                <Button onAction="#saveConfiguration" text="Save" BorderPane.alignment="CENTER"/>
+            </left>
+            <right>
+                <Button onAction="#openMenu" text="Menu" BorderPane.alignment="CENTER"/>
+            </right>
+        </BorderPane>
+    </VBox>
+</StackPane>
