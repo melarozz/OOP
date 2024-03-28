@@ -11,13 +11,13 @@ import ru.nsu.yakovleva.json.ReadJson;
 public class PizzeriaApplication implements Runnable {
 
     // Running time for the Pizzeria application in milliseconds
-    private static final long RUNNING_TIME = 30 * 1000 ;
+    private static final long RUNNING_TIME = 30 * 1000;
     PizzeriaJson pizzeriaJson;
     Pizzeria pizzeria;
 
     /**
-     * Method to read Pizzeria configuration from JSON
-      */
+     * Method to read Pizzeria configuration from JSON.
+     */
     public void setPizzeriaJson() {
         ReadJson jsonReader = new ReadJson();
         jsonReader.open();
@@ -26,7 +26,7 @@ public class PizzeriaApplication implements Runnable {
     }
 
     /**
-     * Method to initialize Pizzeria based on the read configuration
+     * Method to initialize Pizzeria based on the read configuration.
      */
     public void setPizzeria() {
         if (pizzeriaJson == null) {
@@ -55,7 +55,7 @@ public class PizzeriaApplication implements Runnable {
     }
 
     /**
-     * Constructor to set up the PizzeriaApplication
+     * Constructor to set up the PizzeriaApplication.
      */
     public PizzeriaApplication() {
         setPizzeriaJson();

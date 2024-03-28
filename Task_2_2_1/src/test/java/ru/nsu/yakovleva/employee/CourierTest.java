@@ -13,6 +13,9 @@ import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
+/**
+ * Test class.
+ */
 class CourierTest {
     private static final int MAX_STORAGE_SIZE = 20;
     private static final int MAX_ORDERS_NUMBER = 20;

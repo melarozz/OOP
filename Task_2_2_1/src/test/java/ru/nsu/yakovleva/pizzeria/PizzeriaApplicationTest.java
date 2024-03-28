@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.io.ByteArrayOutputStream;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test class.
+ */
 public class PizzeriaApplicationTest {
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();

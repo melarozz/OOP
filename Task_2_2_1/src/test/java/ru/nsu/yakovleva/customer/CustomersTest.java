@@ -12,6 +12,9 @@ import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
+/**
+ * Test class.
+ */
 class CustomersTest {
     private static final int MAX_QUEUE_SIZE = 100;
     private CustomBlockingDeque<Order> queue;

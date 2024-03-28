@@ -1,12 +1,14 @@
 package ru.nsu.yakovleva.employee;
 
+import static ru.nsu.yakovleva.order.State.DELIVERED;
+import static ru.nsu.yakovleva.order.State.DELIVERING;
+
 import java.util.List;
 import java.util.Random;
 import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.order.State;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
-import static ru.nsu.yakovleva.order.State.*;
 
 /**
  * Represents a courier who delivers orders from a storage.

@@ -14,7 +14,9 @@ import ru.nsu.yakovleva.order.Order;
 import ru.nsu.yakovleva.queue.CustomBlockingDeque;
 
 
-
+/**
+ * Test class.
+ */
 class BakerTest {
     private static final int MAX_QUEUE_SIZE = 10;
     private static final int MAX_STORAGE_SIZE = 20;
