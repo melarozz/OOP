@@ -12,7 +12,7 @@ import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 /**
  * Represents the visual representation of a snake in a JavaFX environment.
  */
-public class SnakeFX extends Snake {
+public class SnakeFx extends Snake {
     private Skin headSkin;
     private Skin rotatedSkin;
     private Skin straightSkin;
@@ -24,7 +24,7 @@ public class SnakeFX extends Snake {
      * @param width  The width of the snake.
      * @param height The height of the snake.
      */
-    public SnakeFX(double width, double height) {
+    public SnakeFx(double width, double height) {
         super(width, height);
     }
 

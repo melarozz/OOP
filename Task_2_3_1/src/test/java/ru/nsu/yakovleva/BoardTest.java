@@ -6,49 +6,49 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.yakovleva.logic.sprite.board.Board;
-import ru.nsu.yakovleva.snakegamefx.sprite.BoardFX;
 import ru.nsu.yakovleva.logic.sprite.cell.Cell;
 import ru.nsu.yakovleva.logic.sprite.fruit.Fruit;
-import ru.nsu.yakovleva.snakegamefx.sprite.FruitFX;
 import ru.nsu.yakovleva.logic.sprite.snake.Snake;
-import ru.nsu.yakovleva.snakegamefx.sprite.SnakeFX;
+import ru.nsu.yakovleva.snakegamefx.sprite.BoardFx;
+import ru.nsu.yakovleva.snakegamefx.sprite.FruitFx;
+import ru.nsu.yakovleva.snakegamefx.sprite.SnakeFx;
 
 
 /**
  * Test class.
  */
 public class BoardTest {
-    private final int ROWS_NUMBER = 10;
-    private final int COLUMNS_NUMBER = ROWS_NUMBER;
-    private final int SQUARE_SIZE = 20;
+    private final int rowsNumber = 10;
+    private final int columnsNumber = rowsNumber;
+    private final int squareSize = 20;
     private Board board;
 
     @BeforeEach
     public void initialize() {
-        board = new BoardFX(ROWS_NUMBER * SQUARE_SIZE, COLUMNS_NUMBER * SQUARE_SIZE);
+        board = new BoardFx(rowsNumber * squareSize, columnsNumber * squareSize);
     }
 
     @Test
     void getBoundary() {
         Cell actual = board.getBoundary();
-        Cell expected = new Cell(ROWS_NUMBER * SQUARE_SIZE, COLUMNS_NUMBER * SQUARE_SIZE);
+        Cell expected = new Cell(rowsNumber * squareSize, columnsNumber * squareSize);
         assertEquals(expected, actual);
     }
 
     @Test
     void intersects() {
-        Fruit fruit = new FruitFX(SQUARE_SIZE, SQUARE_SIZE);
-        fruit.update(ROWS_NUMBER, COLUMNS_NUMBER);
+        Fruit fruit = new FruitFx(squareSize, squareSize);
+        fruit.update(rowsNumber, columnsNumber);
         board.intersects(fruit);
-        Snake snake = new SnakeFX(SQUARE_SIZE, SQUARE_SIZE);
-        snake.start(snake.getLength() * SQUARE_SIZE, (COLUMNS_NUMBER << 1) * SQUARE_SIZE);
+        Snake snake = new SnakeFx(squareSize, squareSize);
+        snake.start(snake.getLength() * squareSize, (columnsNumber << 1) * squareSize);
         board.intersects(snake);
     }
 
     @Test
     void update() {
-        board.update(SQUARE_SIZE, SQUARE_SIZE);
+        board.update(squareSize, squareSize);
         Cell boundary = board.getBoundary();
-        assertTrue(boundary.getX() == SQUARE_SIZE && boundary.getY() == SQUARE_SIZE);
+        assertTrue(boundary.getX() == squareSize && boundary.getY() == squareSize);
     }
 }

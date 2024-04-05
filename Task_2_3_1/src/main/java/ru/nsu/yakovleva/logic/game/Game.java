@@ -1,7 +1,7 @@
 package ru.nsu.yakovleva.logic.game;
 
-import static ru.nsu.yakovleva.logic.game.GameState.PLAY;
 import static ru.nsu.yakovleva.logic.game.GameState.DEFEAT;
+import static ru.nsu.yakovleva.logic.game.GameState.PLAY;
 import static ru.nsu.yakovleva.logic.game.GameState.VICTORY;
 
 import java.util.List;
@@ -79,8 +79,8 @@ public class Game {
     private void updateSprite(Sprite sprite) {
         do {
             sprite.update(configuration.rowsNumber(), configuration.columnsNumber());
-        } while (snake.intersects(sprite) ||
-                food.stream().anyMatch(other -> other != sprite && other.intersects(sprite)));
+        } while (snake.intersects(sprite)
+                || food.stream().anyMatch(other -> other != sprite && other.intersects(sprite)));
     }
 
     private void eatFood() {
@@ -96,7 +96,8 @@ public class Game {
      * Starts the game by initializing the snake and food positions.
      */
     public void start() {
-        snake.start(snake.getLength() * configuration.cellSize(), (configuration.columnsNumber() >> 1) * configuration.cellSize());
+        snake.start(snake.getLength() * configuration.cellSize(),
+                (configuration.columnsNumber() >> 1) * configuration.cellSize());
         food.forEach(this::updateSprite);
     }
 

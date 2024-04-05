@@ -1,5 +1,8 @@
 package ru.nsu.yakovleva.logic.game;
 
+/**
+ * Enum for state of the game.
+ */
 public enum GameState {
     DEFEAT("GAME OVER"),
     VICTORY("YOU WIN"),
@@ -11,6 +14,10 @@ public enum GameState {
         this.state = state;
     }
 
+    /**
+     * Return the state of a game in a string value.
+     * @return state of a game in a string value.
+     */
     @Override
     public String toString() {
         return state;

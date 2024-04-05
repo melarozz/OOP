@@ -13,39 +13,39 @@ import ru.nsu.yakovleva.logic.sprite.cell.Cell;
  * Test class.
  */
 public class CellTest {
-    private final double WIDTH = 10;
-    private final double HEIGHT = 20;
-    private final double X = -5;
-    private final double Y = 3;
+    private final double width = 10;
+    private final double height = 20;
+    private final double xCoord = -5;
+    private final double yCoord = 3;
     private Cell cell;
 
     @BeforeEach
     public void initialize() {
-        cell = new Cell(WIDTH, HEIGHT);
+        cell = new Cell(width, height);
     }
 
     @Test
     public void getWidth() {
-        cell = new Cell(WIDTH, HEIGHT);
-        assertEquals(WIDTH, cell.getWidth());
+        cell = new Cell(width, height);
+        assertEquals(width, cell.getWidth());
     }
 
     @Test
     public void getHeight() {
-        cell = new Cell(WIDTH, HEIGHT);
-        assertEquals(HEIGHT, cell.getHeight());
+        cell = new Cell(width, height);
+        assertEquals(height, cell.getHeight());
     }
 
     @Test
     public void getX() {
-        cell.setPosition(X, Y);
-        assertEquals(X, cell.getX());
+        cell.setPosition(xCoord, yCoord);
+        assertEquals(xCoord, cell.getX());
     }
 
     @Test
     public void getY() {
-        cell.setPosition(X, Y);
-        assertEquals(Y, cell.getY());
+        cell.setPosition(xCoord, yCoord);
+        assertEquals(yCoord, cell.getY());
     }
 
     @Test
@@ -56,10 +56,10 @@ public class CellTest {
 
     @Test
     public void testEquals() {
-        Cell cell = new Cell(WIDTH, HEIGHT);
+        Cell cell = new Cell(width, height);
         assertEquals(this.cell, this.cell);
         assertEquals(cell, this.cell);
-        cell.setPosition(X, Y);
+        cell.setPosition(xCoord, yCoord);
         assertNotEquals(cell, this.cell);
     }
 }

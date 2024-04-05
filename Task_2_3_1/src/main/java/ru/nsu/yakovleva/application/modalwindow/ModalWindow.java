@@ -23,10 +23,11 @@ public class ModalWindow {
      * @param timeline      The timeline for the animation.
      */
     public ModalWindow(Stage stage, Configuration configuration, Timeline timeline) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ru/nsu/yakovleva/fxml/modalWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass()
+                .getResource("/ru/nsu/yakovleva/fxml/modalWindow.fxml"));
         try {
-            Parent root = loader.load();
             controller = loader.getController();
+            Parent root = loader.load();
             controller.initialize(stage, configuration, timeline);
             modalWindowStage = new Stage();
             modalWindowStage.setScene(new Scene(root));

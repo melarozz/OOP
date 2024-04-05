@@ -20,7 +20,7 @@ import ru.nsu.yakovleva.application.snakegame.SnakeGameController;
  */
 public class GameController {
     private final SnakeGameController controller;
-    private final GameFX snakeGame;
+    private final GameFx snakeGame;
     private final Timeline timeline;
 
     /**
@@ -30,7 +30,7 @@ public class GameController {
      * @param snakeGame  The GameFX instance.
      * @param timeline   The Timeline instance.
      */
-    public GameController(SnakeGameController controller, GameFX snakeGame, Timeline timeline) {
+    public GameController(SnakeGameController controller, GameFx snakeGame, Timeline timeline) {
         this.controller = controller;
         this.snakeGame = snakeGame;
         this.timeline = timeline;
@@ -62,7 +62,8 @@ public class GameController {
      * @param frame The Group representing the game frame.
      */
     public void run(Group frame) {
-        if (timeline.getStatus() == RUNNING && (snakeGame.getGameState() == DEFEAT || snakeGame.getGameState() == VICTORY)) {
+        if (timeline.getStatus() == RUNNING && (snakeGame.getGameState() == DEFEAT
+                || snakeGame.getGameState() == VICTORY)) {
             timeline.stop();
             controller.openModalWindow();
         }

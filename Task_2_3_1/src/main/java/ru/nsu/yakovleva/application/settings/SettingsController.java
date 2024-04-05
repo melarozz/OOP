@@ -47,9 +47,12 @@ public class SettingsController {
 
     @FXML
     private void saveConfiguration() {
-        int rowsNumber = Objects.equals(this.rowsNumber.getText(), "") ? configuration.rowsNumber() : Integer.parseInt(this.rowsNumber.getText());
-        int columnsNumber = Objects.equals(this.rowsNumber.getText(), "") ? configuration.columnsNumber() : Integer.parseInt(this.columnsNumber.getText());
-        int maximumScore = Objects.equals(this.rowsNumber.getText(), "") ? configuration.maximumScore() : Integer.parseInt(this.maximumScore.getText());
+        int rowsNumber = Objects.equals(this.rowsNumber.getText(), "")
+                ? configuration.rowsNumber() : Integer.parseInt(this.rowsNumber.getText());
+        int columnsNumber = Objects.equals(this.rowsNumber.getText(), "")
+                ? configuration.columnsNumber() : Integer.parseInt(this.columnsNumber.getText());
+        int maximumScore = Objects.equals(this.rowsNumber.getText(), "")
+                ? configuration.maximumScore() : Integer.parseInt(this.maximumScore.getText());
         int fruitsNumber = (int) this.fruitsNumber.getValue();
         int snakeSpeed = switch (this.snakeSpeed.getText()) {
             case "Slowly" -> 300;
@@ -57,7 +60,8 @@ public class SettingsController {
             case "Fast" -> 100;
             default -> 150;
         };
-        this.configuration = new Configuration(40, rowsNumber, columnsNumber, maximumScore, fruitsNumber, snakeSpeed);
+        this.configuration = new Configuration(40, rowsNumber, columnsNumber,
+                maximumScore, fruitsNumber, snakeSpeed);
         openMenu();
     }
 

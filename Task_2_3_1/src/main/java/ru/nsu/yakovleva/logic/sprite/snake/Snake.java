@@ -7,17 +7,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import ru.nsu.yakovleva.logic.sprite.cell.Cell;
-import ru.nsu.yakovleva.logic.sprite.fruit.Fruit;
 import ru.nsu.yakovleva.logic.sprite.Sprite;
 import ru.nsu.yakovleva.logic.sprite.board.Board;
+import ru.nsu.yakovleva.logic.sprite.cell.Cell;
+import ru.nsu.yakovleva.logic.sprite.fruit.Fruit;
 
 
 /**
  * Represents the snake in the game.
  */
 public abstract class Snake implements Sprite {
-    private final int INITIAL_LENGTH = 3;
+    private final int initLength = 3;
     private Direction direction;
     private Cell head;
     private final List<Cell> body;
@@ -31,7 +31,7 @@ public abstract class Snake implements Sprite {
     public Snake(double width, double height) {
         this.body = Stream.generate(() ->
                 new Cell(width, height))
-                .limit(INITIAL_LENGTH)
+                .limit(initLength)
                 .collect(
                         Collectors.toCollection(ArrayList::new));
         this.head = this.body.get(0);
@@ -76,7 +76,7 @@ public abstract class Snake implements Sprite {
     public void start(double headPositionX, double headPositionY) {
         direction = RIGHT;
         head.setPosition(headPositionX, headPositionY);
-        for (int i = 1; i < INITIAL_LENGTH; ++i) {
+        for (int i = 1; i < initLength; ++i) {
             body.get(i).setPosition(body.get(i - 1).getX() - head.getWidth(), headPositionY);
         }
     }

@@ -10,9 +10,10 @@ import ru.nsu.yakovleva.application.menu.Menu;
  */
 public class Application extends javafx.application.Application {
     // Default configuration for the game
-    private final Configuration DEFAULT_CONFIGURATION = new Configuration(40, 20, 20, 30, 5,100);
+    private final Configuration defaultConfiguration = new Configuration(40, 20, 20, 30, 5, 100);
     // Icon image for the application window
-    private final Image ICON = new Image(String.valueOf(getClass().getResource("/ru/nsu/yakovleva/images/fruit/apple.png")));
+    private final Image icon = new Image(String.valueOf(getClass()
+            .getResource("/ru/nsu/yakovleva/images/fruit/apple.png")));
 
     /**
      * The main entry point of the JavaFX application.
@@ -26,9 +27,9 @@ public class Application extends javafx.application.Application {
         // Prevent the stage from being resizable
         primaryStage.setResizable(false);
         // Set the application icon
-        primaryStage.getIcons().add(ICON);
+        primaryStage.getIcons().add(icon);
         // Create an instance of the Menu class with default configuration
-        Menu menu = new Menu(DEFAULT_CONFIGURATION);
+        Menu menu = new Menu(defaultConfiguration);
         // Set the stage for the menu
         menu.setStage(primaryStage);
         // Display the stage

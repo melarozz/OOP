@@ -30,7 +30,8 @@ public class SnakeGameController {
      * @param timeline      The timeline for the animation.
      * @param game          The game instance.
      */
-    public void initialize(Stage mainStage, Configuration configuration, Timeline timeline, Game game) {
+    public void initialize(Stage mainStage,
+                           Configuration configuration, Timeline timeline, Game game) {
         this.modalWindow = new ModalWindow(mainStage, configuration, timeline);
         this.game = game;
         this.timeline = timeline;

@@ -6,8 +6,8 @@ package ru.nsu.yakovleva.logic.sprite.cell;
 public class Cell {
     private final double width;
     private final double height;
-    private double x;
-    private double y;
+    private double xCoord;
+    private double yCoord;
 
     /**
      * Constructs a Cell instance with the given width and height.
@@ -18,8 +18,8 @@ public class Cell {
     public Cell(double width, double height) {
         this.width = width;
         this.height = height;
-        this.x = 0;
-        this.y = 0;
+        this.xCoord = 0;
+        this.yCoord = 0;
     }
 
     /**
@@ -46,7 +46,7 @@ public class Cell {
      * @return The x-coordinate of the cell.
      */
     public double getX() {
-        return x;
+        return xCoord;
     }
 
     /**
@@ -55,18 +55,18 @@ public class Cell {
      * @return The y-coordinate of the cell.
      */
     public double getY() {
-        return y;
+        return yCoord;
     }
 
     /**
      * Sets the position of the cell.
      *
-     * @param x The x-coordinate to set.
-     * @param y The y-coordinate to set.
+     * @param xCoord The x-coordinate to set.
+     * @param yCoord The y-coordinate to set.
      */
-    public void setPosition(double x, double y) {
-        this.x = x;
-        this.y = y;
+    public void setPosition(double xCoord, double yCoord) {
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
     }
 
     /**
@@ -76,7 +76,9 @@ public class Cell {
      * @return True if the cells intersect, false otherwise.
      */
     public boolean intersects(Cell cell) {
-        return cell.x + cell.width > x && cell.y + cell.height > y && cell.x < x + width && cell.y < y + height;
+        return cell.xCoord + cell.width > xCoord && cell.yCoord
+                + cell.height > yCoord && cell.xCoord < xCoord + width
+                && cell.yCoord < yCoord + height;
     }
 
     @Override
@@ -85,7 +87,10 @@ public class Cell {
             return true;
         }
         if (object instanceof Cell cell) {
-            return cell.x == x && cell.y == y && cell.x + cell.width == x + width && cell.y + cell.height == y + height;
+            return cell.xCoord == xCoord
+                    && cell.yCoord == yCoord
+                    && cell.xCoord + cell.width == xCoord + width
+                    && cell.yCoord + cell.height == yCoord + height;
         }
         return false;
     }

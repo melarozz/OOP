@@ -23,7 +23,8 @@ public class Settings {
      */
     public Settings(Configuration configuration) {
         this.configuration = configuration;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ru/nsu/yakovleva/fxml/settings.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass()
+                .getResource("/ru/nsu/yakovleva/fxml/settings.fxml"));
         try {
             Parent root = loader.load();
             controller = loader.getController();

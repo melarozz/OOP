@@ -2,13 +2,14 @@ package ru.nsu.yakovleva.snakegamefx.sprite;
 
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-import ru.nsu.yakovleva.logic.sprite.cell.Cell;
 import ru.nsu.yakovleva.logic.sprite.board.Board;
+import ru.nsu.yakovleva.logic.sprite.cell.Cell;
+
 
 /**
  * Represents the visual representation of the game board in a JavaFX environment.
  */
-public class BoardFX extends Board {
+public class BoardFx extends Board {
     private Skin skin;
 
     /**
@@ -17,7 +18,7 @@ public class BoardFX extends Board {
      * @param width  The width of the board.
      * @param height The height of the board.
      */
-    public BoardFX(double width, double height) {
+    public BoardFx(double width, double height) {
         super(width, height);
     }
 

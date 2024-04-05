@@ -14,7 +14,7 @@ import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 /**
  * Represents the game logic and rendering for a JavaFX environment.
  */
-public class GameFX extends Game {
+public class GameFx extends Game {
     private final Board board;
     private final Snake snake;
     private final List<Fruit> food;
@@ -27,7 +27,7 @@ public class GameFX extends Game {
      * @param snake         The game snake.
      * @param food          The list of food items in the game.
      */
-    public GameFX(Configuration configuration, Board board, Snake snake, List<Fruit> food) {
+    public GameFx(Configuration configuration, Board board, Snake snake, List<Fruit> food) {
         super(configuration, board, snake, food);
         this.board = board;
         this.snake = snake;

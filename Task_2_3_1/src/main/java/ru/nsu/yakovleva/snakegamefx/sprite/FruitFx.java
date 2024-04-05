@@ -8,7 +8,7 @@ import ru.nsu.yakovleva.logic.sprite.fruit.Fruit;
 /**
  * Represents the visual representation of a fruit in a JavaFX environment.
  */
-public class FruitFX extends Fruit {
+public class FruitFx extends Fruit {
     private Skin skin;
 
     /**
@@ -17,7 +17,7 @@ public class FruitFX extends Fruit {
      * @param width  The width of the fruit.
      * @param height The height of the fruit.
      */
-    public FruitFX(double width, double height) {
+    public FruitFx(double width, double height) {
         super(width, height);
     }
 

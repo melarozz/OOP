@@ -22,7 +22,8 @@ public class Menu {
      */
     public Menu(Configuration configuration) {
         this.configuration = configuration;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ru/nsu/yakovleva/fxml/menu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass()
+                .getResource("/ru/nsu/yakovleva/fxml/menu.fxml"));
         try {
             Parent root = loader.load();
             scene = new Scene(root);

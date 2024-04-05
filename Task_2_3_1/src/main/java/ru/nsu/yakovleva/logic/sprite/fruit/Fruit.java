@@ -2,8 +2,8 @@ package ru.nsu.yakovleva.logic.sprite.fruit;
 
 import java.util.List;
 import java.util.Random;
-import ru.nsu.yakovleva.logic.sprite.cell.Cell;
 import ru.nsu.yakovleva.logic.sprite.Sprite;
+import ru.nsu.yakovleva.logic.sprite.cell.Cell;
 import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 
 

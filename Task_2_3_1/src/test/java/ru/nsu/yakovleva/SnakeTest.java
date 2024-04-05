@@ -3,7 +3,6 @@ package ru.nsu.yakovleva;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static ru.nsu.yakovleva.logic.sprite.snake.Direction.DOWN;
 import static ru.nsu.yakovleva.logic.sprite.snake.Direction.LEFT;
 import static ru.nsu.yakovleva.logic.sprite.snake.Direction.RIGHT;
 import static ru.nsu.yakovleva.logic.sprite.snake.Direction.UP;
@@ -11,24 +10,24 @@ import static ru.nsu.yakovleva.logic.sprite.snake.Direction.UP;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.nsu.yakovleva.logic.sprite.cell.Cell;
 import ru.nsu.yakovleva.logic.sprite.board.Board;
+import ru.nsu.yakovleva.logic.sprite.cell.Cell;
 import ru.nsu.yakovleva.logic.sprite.snake.Snake;
-import ru.nsu.yakovleva.snakegamefx.sprite.BoardFX;
-import ru.nsu.yakovleva.snakegamefx.sprite.SnakeFX;
+import ru.nsu.yakovleva.snakegamefx.sprite.BoardFx;
+import ru.nsu.yakovleva.snakegamefx.sprite.SnakeFx;
 
 
 /**
  * Test class.
  */
 public class SnakeTest {
-    private final int SQUARE_SIZE = 40;
+    private final int squareSize = 40;
     private Snake snake;
 
     @BeforeEach
     public void initialize() {
-        snake = new SnakeFX(SQUARE_SIZE, SQUARE_SIZE);
-        snake.start(3 * SQUARE_SIZE, SQUARE_SIZE);
+        snake = new SnakeFx(squareSize, squareSize);
+        snake.start(3 * squareSize, squareSize);
     }
 
     @Test
@@ -58,16 +57,16 @@ public class SnakeTest {
     @Test
     public void getBoundary() {
         List<Cell> boundary = snake.getBoundary();
-        for (int i = boundary.size(); i > 0 ; --i) {
-            Cell cell = new Cell(SQUARE_SIZE, SQUARE_SIZE);
-            cell.setPosition(i * SQUARE_SIZE, SQUARE_SIZE);
+        for (int i = boundary.size(); i > 0; --i) {
+            Cell cell = new Cell(squareSize, squareSize);
+            cell.setPosition(i * squareSize, squareSize);
             assertEquals(boundary.get(boundary.size() - i), cell);
         }
     }
 
     @Test
     public void intersects() {
-        Board board = new BoardFX(SQUARE_SIZE, SQUARE_SIZE);
+        Board board = new BoardFx(squareSize, squareSize);
         board.update(1000, 1000);
         assertFalse(snake.intersects(board));
         assertFalse(snake.intersects(snake));
@@ -75,11 +74,11 @@ public class SnakeTest {
 
     @Test
     public void update() {
-        snake.update(SQUARE_SIZE, SQUARE_SIZE);
+        snake.update(squareSize, squareSize);
         List<Cell> boundary = snake.getBoundary();
-        for (int i = boundary.size(); i > 0 ; --i) {
-            Cell cell = new Cell(SQUARE_SIZE, SQUARE_SIZE);
-            cell.setPosition((i + 1) * SQUARE_SIZE, SQUARE_SIZE);
+        for (int i = boundary.size(); i > 0; --i) {
+            Cell cell = new Cell(squareSize, squareSize);
+            cell.setPosition((i + 1) * squareSize, squareSize);
             assertEquals(boundary.get(boundary.size() - i), cell);
         }
     }

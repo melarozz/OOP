@@ -2,8 +2,8 @@ package ru.nsu.yakovleva.application.menu;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
-import ru.nsu.yakovleva.application.snakegame.SnakeGame;
 import ru.nsu.yakovleva.application.settings.Settings;
+import ru.nsu.yakovleva.application.snakegame.SnakeGame;
 
 /**
  * Controller class for the menu UI.

@@ -5,9 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import ru.nsu.yakovleva.application.snakegame.SnakeGame;
 import ru.nsu.yakovleva.application.menu.Configuration;
 import ru.nsu.yakovleva.application.menu.Menu;
+import ru.nsu.yakovleva.application.snakegame.SnakeGame;
+
 
 /**
  * Controller class for the modal window UI.
