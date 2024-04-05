@@ -1,37 +1,65 @@
 package ru.nsu.yakovleva.logic.sprite.snake;
 
-import ru.nsu.yakovleva.logic.sprite.cell.Cell;
-import ru.nsu.yakovleva.logic.sprite.fruit.Fruit;
-import ru.nsu.yakovleva.logic.sprite.Sprite;
-import ru.nsu.yakovleva.logic.sprite.board.Board;
+import static ru.nsu.yakovleva.logic.sprite.snake.Direction.RIGHT;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import ru.nsu.yakovleva.logic.sprite.cell.Cell;
+import ru.nsu.yakovleva.logic.sprite.fruit.Fruit;
+import ru.nsu.yakovleva.logic.sprite.Sprite;
+import ru.nsu.yakovleva.logic.sprite.board.Board;
 
-import static ru.nsu.yakovleva.logic.sprite.snake.Direction.RIGHT;
 
+/**
+ * Represents the snake in the game.
+ */
 public abstract class Snake implements Sprite {
     private final int INITIAL_LENGTH = 3;
     private Direction direction;
     private Cell head;
     private final List<Cell> body;
 
+    /**
+     * Constructs a Snake instance with the given width and height.
+     *
+     * @param width  The width of the snake.
+     * @param height The height of the snake.
+     */
     public Snake(double width, double height) {
-        this.body = Stream.generate(() -> new Cell(width, height)).limit(INITIAL_LENGTH).collect(Collectors.toCollection(ArrayList::new));
+        this.body = Stream.generate(() ->
+                new Cell(width, height))
+                .limit(INITIAL_LENGTH)
+                .collect(
+                        Collectors.toCollection(ArrayList::new));
         this.head = this.body.get(0);
     }
 
+    /**
+     * Gets the direction of the snake.
+     *
+     * @return The direction of the snake.
+     */
     public Direction getDirection() {
         return direction;
     }
 
+    /**
+     * Gets the length of the snake.
+     *
+     * @return The length of the snake.
+     */
     public int getLength() {
         return body.size();
     }
 
+    /**
+     * Sets the direction of the snake.
+     *
+     * @param direction The direction to set for the snake.
+     */
     public void setDirection(Direction direction) {
         if (this.direction.opposite(direction)) {
             return;
@@ -39,6 +67,12 @@ public abstract class Snake implements Sprite {
         this.direction = direction;
     }
 
+    /**
+     * Initializes the snake at the specified position.
+     *
+     * @param headPositionX The x-coordinate of the snake's head.
+     * @param headPositionY The y-coordinate of the snake's head.
+     */
     public void start(double headPositionX, double headPositionY) {
         direction = RIGHT;
         head.setPosition(headPositionX, headPositionY);
@@ -47,6 +81,9 @@ public abstract class Snake implements Sprite {
         }
     }
 
+    /**
+     * Grows the snake by adding a new cell to its body.
+     */
     public void grow() {
         Cell flake = new Cell(head.getWidth(), head.getHeight());
         body.add(flake);
@@ -83,7 +120,6 @@ public abstract class Snake implements Sprite {
         this.head = head;
         body.add(0, head);
         body.remove(getLength() - 1);
-
     }
 
     @Override

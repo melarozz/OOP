@@ -1,5 +1,10 @@
 package ru.nsu.yakovleva.application.snakegame;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -21,9 +26,9 @@ import ru.nsu.yakovleva.snakegamefx.sprite.Skin;
 import ru.nsu.yakovleva.snakegamefx.sprite.FruitFX;
 import ru.nsu.yakovleva.snakegamefx.sprite.SnakeFX;
 
-import java.io.IOException;
-import java.util.*;
-
+/**
+ * Represents the main game logic and UI for the Snake game.
+ */
 public class SnakeGame {
     private Stage stage;
     private final Configuration configuration;
@@ -37,6 +42,11 @@ public class SnakeGame {
     private Scene scene;
     private Timeline timeline;
 
+    /**
+     * Constructs a SnakeGame instance with the given configuration.
+     *
+     * @param configuration The configuration settings for the game.
+     */
     public SnakeGame(Configuration configuration) {
         this.configuration = configuration;
         setImages();
@@ -114,6 +124,11 @@ public class SnakeGame {
         timeline.play();
     }
 
+    /**
+     * Sets the stage for the Snake game.
+     *
+     * @param stage The stage to set for the game.
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
         setTimeline();

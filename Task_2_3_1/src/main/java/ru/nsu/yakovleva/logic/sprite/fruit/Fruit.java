@@ -1,16 +1,25 @@
 package ru.nsu.yakovleva.logic.sprite.fruit;
 
+import java.util.List;
+import java.util.Random;
 import ru.nsu.yakovleva.logic.sprite.cell.Cell;
 import ru.nsu.yakovleva.logic.sprite.Sprite;
 import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 
-import java.util.List;
-import java.util.Random;
 
+/**
+ * Represents a fruit in the game.
+ */
 public abstract class Fruit implements Sprite {
     private final Cell fruit;
     private final Random random;
 
+    /**
+     * Constructs a Fruit instance with the given width and height.
+     *
+     * @param width  The width of the fruit.
+     * @param height The height of the fruit.
+     */
     public Fruit(double width, double height) {
         this.fruit = new Cell(width, height);
         this.random = new Random();

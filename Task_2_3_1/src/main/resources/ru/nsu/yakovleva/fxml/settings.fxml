@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane prefHeight="300.0" prefWidth="300.0" styleClass="background" stylesheets="@../css/styles.css"
+<StackPane prefHeight="400.0" prefWidth="400.0" styleClass="background" stylesheets="@../css/styles.css"
            xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="ru.nsu.yakovleva.application.settings.SettingsController">
     <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
@@ -18,6 +18,25 @@
         <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
             <Label styleClass="h2" text="Columns:"/>
             <TextField fx:id="columnsNumber"/>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="text">
+            <Label styleClass="h2" text="Maximum score:"/>
+            <TextField fx:id="maximumScore"/>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+            <Label styleClass="h2" text="Snake speed:"/>
+            <MenuButton fx:id="snakeSpeed" text="Select speed">
+                <items>
+                    <MenuItem onAction="#changeSpeed" text="Slowly"/>
+                    <MenuItem onAction="#changeSpeed" text="Normal"/>
+                    <MenuItem onAction="#changeSpeed" text="Fast"/>
+                </items>
+            </MenuButton>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="text">
+            <Label styleClass="h2" text="Fruits number: "/>
+            <Slider fx:id="fruitsNumber" blockIncrement="5" majorTickUnit="5" max="15" min="1" showTickLabels="true"
+                    showTickMarks="true"/>
         </HBox>
         <BorderPane prefHeight="100.0" prefWidth="200.0">
             <left>

@@ -1,24 +1,41 @@
 package ru.nsu.yakovleva.snakegamefx.sprite;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import ru.nsu.yakovleva.logic.sprite.cell.Cell;
 import ru.nsu.yakovleva.logic.sprite.snake.Direction;
 import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Represents the visual representation of a snake in a JavaFX environment.
+ */
 public class SnakeFX extends Snake {
     private Skin headSkin;
     private Skin rotatedSkin;
     private Skin straightSkin;
     private Skin tailSkin;
 
+    /**
+     * Constructs a SnakeFX object with the specified width and height.
+     *
+     * @param width  The width of the snake.
+     * @param height The height of the snake.
+     */
     public SnakeFX(double width, double height) {
         super(width, height);
     }
 
+    /**
+     * Sets the skins for different parts of the snake.
+     *
+     * @param headSkin     The skin for the snake's head.
+     * @param rotatedSkin  The skin for the rotated parts of the snake.
+     * @param straightSkin The skin for the straight parts of the snake.
+     * @param tailSkin     The skin for the snake's tail.
+     */
     public void setSkins(Skin headSkin, Skin rotatedSkin, Skin straightSkin, Skin tailSkin) {
         this.headSkin = headSkin;
         this.rotatedSkin = rotatedSkin;
@@ -110,6 +127,11 @@ public class SnakeFX extends Snake {
         return body;
     }
 
+    /**
+     * Renders the snake on the screen.
+     *
+     * @param object The object representing the screen.
+     */
     @Override
     public void render(Object object) {
         Group frame = ((Group) object);

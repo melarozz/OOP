@@ -1,14 +1,22 @@
 package ru.nsu.yakovleva.logic.sprite.board;
 
+import java.util.List;
 import ru.nsu.yakovleva.logic.sprite.cell.Cell;
 import ru.nsu.yakovleva.logic.sprite.Sprite;
 import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 
-import java.util.List;
-
+/**
+ * Represents the game board.
+ */
 public abstract class Board implements Sprite {
     private final Cell board;
 
+    /**
+     * Constructs a Board instance with the given width and height.
+     *
+     * @param width  The width of the board.
+     * @param height The height of the board.
+     */
     public Board(double width, double height) {
         board = new Cell(width, height);
     }
