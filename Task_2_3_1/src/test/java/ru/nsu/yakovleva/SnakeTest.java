@@ -2,6 +2,8 @@ package ru.nsu.yakovleva;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static ru.nsu.yakovleva.logic.sprite.snake.Direction.DOWN;
 import static ru.nsu.yakovleva.logic.sprite.snake.Direction.LEFT;
 import static ru.nsu.yakovleva.logic.sprite.snake.Direction.RIGHT;
 import static ru.nsu.yakovleva.logic.sprite.snake.Direction.UP;
@@ -81,4 +83,12 @@ public class SnakeTest {
             assertEquals(boundary.get(boundary.size() - i), cell);
         }
     }
+
+    @Test
+    public void testSnakeGrowth() {
+        int initialLength = snake.getLength();
+        snake.grow();
+        assertEquals(snake.getLength(), initialLength + 1);
+    }
+
 }
