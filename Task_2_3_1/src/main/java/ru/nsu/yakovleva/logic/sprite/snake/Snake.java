@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import ru.nsu.yakovleva.logic.sprite.Sprite;
 import ru.nsu.yakovleva.logic.sprite.board.Board;
-import ru.nsu.yakovleva.logic.sprite.cell.Cell;
+import ru.nsu.yakovleva.logic.cell.Cell;
 import ru.nsu.yakovleva.logic.sprite.fruit.Fruit;
 
 

@@ -14,8 +14,8 @@ module ru.nsu.yakovleva {
     opens ru.nsu.yakovleva.logic.sprite.fruit to javafx.fxml;
     exports ru.nsu.yakovleva.logic.game;
     opens ru.nsu.yakovleva.logic.game to javafx.fxml;
-    exports ru.nsu.yakovleva.logic.sprite.cell;
-    opens ru.nsu.yakovleva.logic.sprite.cell to javafx.fxml;
+    exports ru.nsu.yakovleva.logic.cell;
+    opens ru.nsu.yakovleva.logic.cell to javafx.fxml;
     exports ru.nsu.yakovleva.snakegamefx.sprite;
     opens ru.nsu.yakovleva.snakegamefx.sprite to javafx.fxml;
     exports ru.nsu.yakovleva.snakegamefx.game;

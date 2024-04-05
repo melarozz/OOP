@@ -1,4 +1,4 @@
-package ru.nsu.yakovleva.logic.sprite.cell;
+package ru.nsu.yakovleva.logic.cell;
 
 /**
  * Represents a cell in the game board.

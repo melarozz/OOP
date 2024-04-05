@@ -26,8 +26,8 @@ public class ModalWindow {
         FXMLLoader loader = new FXMLLoader(getClass()
                 .getResource("/ru/nsu/yakovleva/fxml/modalWindow.fxml"));
         try {
-            controller = loader.getController();
             Parent root = loader.load();
+            controller = loader.getController();
             controller.initialize(stage, configuration, timeline);
             modalWindowStage = new Stage();
             modalWindowStage.setScene(new Scene(root));

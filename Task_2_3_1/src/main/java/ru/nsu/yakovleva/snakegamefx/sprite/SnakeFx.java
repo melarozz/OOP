@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-import ru.nsu.yakovleva.logic.sprite.cell.Cell;
+import ru.nsu.yakovleva.logic.cell.Cell;
 import ru.nsu.yakovleva.logic.sprite.snake.Direction;
 import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 
