@@ -11,6 +11,7 @@ public enum Direction {
 
     /**
      * Returns the opposite direction to the given one.
+     *
      * @param direction The given direction.
      * @return The opposite direction.
      */

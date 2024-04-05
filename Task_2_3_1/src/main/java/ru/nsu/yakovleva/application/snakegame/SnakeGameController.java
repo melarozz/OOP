@@ -44,6 +44,9 @@ public class SnakeGameController {
         score.setText("Score: " + game.getScore());
     }
 
+    /**
+     * Method for opening the modal window with the state.
+     */
     @FXML
     public void openModalWindow() {
         timeline.pause();

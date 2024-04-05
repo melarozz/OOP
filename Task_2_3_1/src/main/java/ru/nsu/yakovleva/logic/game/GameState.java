@@ -16,6 +16,7 @@ public enum GameState {
 
     /**
      * Return the state of a game in a string value.
+     *
      * @return state of a game in a string value.
      */
     @Override
