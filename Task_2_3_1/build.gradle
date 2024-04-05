@@ -1,60 +1,58 @@
 plugins {
-    id 'java'
-    id 'jacoco'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
-    id 'org.beryx.jlink' version '2.24.1'
+    id 'jacoco'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
-group 'ru.nsu.yakovleva'
-version '1.0-SNAPSHOT'
+group = 'ru.nsu.yakovleva'
+version = '1.0-SNAPSHOT'
+mainClassName = 'ru.nsu.yakovleva.Application'
 
 repositories {
     mavenCentral()
 }
 
-sourceCompatibility = '19'
-targetCompatibility = '19'
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-application {
-    mainModule = 'ru.nsu.yakovleva'
-    mainClass = 'ru.nsu.yakovleva.Application'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 javafx {
-    version = '17.0.1'
-    modules = ['javafx.controls', 'javafx.fxml']
+    version = "21.0.2"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
 dependencies {
-
-    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                'Implementation-Version': version,
+                'Main-Class': 'Application'
+    }
 }
 
 test {
     useJUnitPlatform()
 }
 
-jlink {
-    imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
-    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
-    launcher {
-        name = 'app'
-    }
-}
-
-jlinkZip {
-    group = 'distribution'
-}
-
 jacocoTestReport {
     reports {
         xml.required = true
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                counter = "LINE"
+                minimum = 0.80
+            }
+        }
     }
 }
