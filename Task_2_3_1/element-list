@@ -1,0 +1,14 @@
+module:ru.nsu.yakovleva
+ru.nsu.yakovleva
+ru.nsu.yakovleva.application.menu
+ru.nsu.yakovleva.application.modalwindow
+ru.nsu.yakovleva.application.settings
+ru.nsu.yakovleva.application.snakegame
+ru.nsu.yakovleva.logic.game
+ru.nsu.yakovleva.logic.sprite
+ru.nsu.yakovleva.logic.sprite.board
+ru.nsu.yakovleva.logic.sprite.cell
+ru.nsu.yakovleva.logic.sprite.fruit
+ru.nsu.yakovleva.logic.sprite.snake
+ru.nsu.yakovleva.snakegamefx.game
+ru.nsu.yakovleva.snakegamefx.sprite
