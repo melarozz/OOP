@@ -1,5 +1,10 @@
 package ru.nsu.yakovleva.logic.sprite;
 
+import ru.nsu.yakovleva.logic.cell.Cell;
+import ru.nsu.yakovleva.logic.sprite.snake.Snake;
+
+import java.util.List;
+
 /**
  * Represents a game object in the application.
  */
@@ -28,6 +33,22 @@ public interface Sprite {
      */
     boolean intersects(Sprite sprite);
 
+    /**
+     * Class that returns if item intersects sprite.
+     *
+     * @param item Item.
+     * @return Boolean
+     */
+    default boolean handleIntersection(Cell item) {
+        if (this.getBoundary() instanceof Cell cell) {
+            return item != cell && item.intersects(cell);
+        }
+        if (this instanceof Snake snake) {
+            List<Cell> boundary = snake.getBoundary();
+            return boundary.stream().anyMatch(cell -> item != cell && item.intersects(cell));
+        }
+        return false;
+    }
     /**
      * Renders the sprite.
      *

@@ -1,12 +1,9 @@
 package ru.nsu.yakovleva.logic.sprite.fruit;
 
-import java.util.List;
 import java.util.Random;
 
-import ru.nsu.yakovleva.logic.sprite.IntersectionUtils;
 import ru.nsu.yakovleva.logic.sprite.Sprite;
 import ru.nsu.yakovleva.logic.cell.Cell;
-import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 
 
 /**
@@ -34,7 +31,7 @@ public abstract class Fruit implements Sprite {
 
     @Override
     public boolean intersects(Sprite sprite) {
-        return IntersectionUtils.handleIntersection(fruit, sprite);
+        return handleIntersection(fruit);
     }
 
     @Override
