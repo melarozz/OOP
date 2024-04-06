@@ -1,9 +1,10 @@
 package ru.nsu.yakovleva.logic.sprite.fruit;
 
+import java.util.List;
 import java.util.Random;
-
 import ru.nsu.yakovleva.logic.sprite.Sprite;
 import ru.nsu.yakovleva.logic.cell.Cell;
+import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 
 
 /**
@@ -31,7 +32,14 @@ public abstract class Fruit implements Sprite {
 
     @Override
     public boolean intersects(Sprite sprite) {
-        return handleIntersection(fruit);
+        if (sprite.getBoundary() instanceof Cell boundary) {
+            return fruit != boundary && fruit.intersects(boundary);
+        }
+        if (sprite instanceof Snake snake) {
+            List<Cell> boundary = snake.getBoundary();
+            return boundary.stream().anyMatch(cell -> fruit != cell && fruit.intersects(cell));
+        }
+        return false;
     }
 
     @Override

@@ -34,22 +34,6 @@ public interface Sprite {
     boolean intersects(Sprite sprite);
 
     /**
-     * Class that returns if item intersects sprite.
-     *
-     * @param item Item.
-     * @return Boolean
-     */
-    default boolean handleIntersection(Cell item) {
-        if (this.getBoundary() instanceof Cell cell) {
-            return item != cell && item.intersects(cell);
-        }
-        if (this instanceof Snake snake) {
-            List<Cell> boundary = snake.getBoundary();
-            return boundary.stream().anyMatch(cell -> item != cell && item.intersects(cell));
-        }
-        return false;
-    }
-    /**
      * Renders the sprite.
      *
      * @param object The object to render the sprite on.
