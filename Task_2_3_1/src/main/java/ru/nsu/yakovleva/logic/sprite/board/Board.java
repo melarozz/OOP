@@ -1,8 +1,8 @@
 package ru.nsu.yakovleva.logic.sprite.board;
 
 import java.util.List;
-import ru.nsu.yakovleva.logic.sprite.Sprite;
 import ru.nsu.yakovleva.logic.cell.Cell;
+import ru.nsu.yakovleva.logic.sprite.Sprite;
 import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 
 

@@ -2,8 +2,8 @@ package ru.nsu.yakovleva.snakegamefx.sprite;
 
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-import ru.nsu.yakovleva.logic.sprite.board.Board;
 import ru.nsu.yakovleva.logic.cell.Cell;
+import ru.nsu.yakovleva.logic.sprite.board.Board;
 
 
 /**

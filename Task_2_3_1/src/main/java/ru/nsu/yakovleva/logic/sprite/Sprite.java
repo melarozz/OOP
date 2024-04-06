@@ -1,10 +1,5 @@
 package ru.nsu.yakovleva.logic.sprite;
 
-import ru.nsu.yakovleva.logic.cell.Cell;
-import ru.nsu.yakovleva.logic.sprite.snake.Snake;
-
-import java.util.List;
-
 /**
  * Represents a game object in the application.
  */

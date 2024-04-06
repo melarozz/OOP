@@ -2,7 +2,6 @@ package ru.nsu.yakovleva;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.nsu.yakovleva.logic.sprite.snake.Direction.LEFT;
 import static ru.nsu.yakovleva.logic.sprite.snake.Direction.RIGHT;
 import static ru.nsu.yakovleva.logic.sprite.snake.Direction.UP;
@@ -10,8 +9,8 @@ import static ru.nsu.yakovleva.logic.sprite.snake.Direction.UP;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.nsu.yakovleva.logic.sprite.board.Board;
 import ru.nsu.yakovleva.logic.cell.Cell;
+import ru.nsu.yakovleva.logic.sprite.board.Board;
 import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 import ru.nsu.yakovleva.snakegamefx.sprite.BoardFx;
 import ru.nsu.yakovleva.snakegamefx.sprite.SnakeFx;

@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.nsu.yakovleva.logic.sprite.board.Board;
 import ru.nsu.yakovleva.logic.cell.Cell;
+import ru.nsu.yakovleva.logic.sprite.board.Board;
 import ru.nsu.yakovleva.logic.sprite.fruit.Fruit;
 import ru.nsu.yakovleva.logic.sprite.snake.Snake;
 import ru.nsu.yakovleva.snakegamefx.sprite.BoardFx;
