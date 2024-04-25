@@ -6,19 +6,21 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import lombok.SneakyThrows;
 import ru.nsu.yakovleva.dsl.CourseConfiguration;
 import ru.nsu.yakovleva.dsl.Group;
 import ru.nsu.yakovleva.dsl.Student;
 import ru.nsu.yakovleva.dsl.TaskAssignment;
 import ru.nsu.yakovleva.util.Download;
 import ru.nsu.yakovleva.util.GitHubCommitCounter;
+import ru.nsu.yakovleva.util.Run;
 import ru.nsu.yakovleva.util.TableBuild;
 import ru.nsu.yakovleva.util.TestsAndDocs;
-import ru.nsu.yakovleva.util.Run;
-import lombok.SneakyThrows;
+
 
 /**
- * Main application class for processing course configurations, student assignments, and generating reports.
+ * Main application class for processing course configurations,
+ * student assignments, and generating reports.
  */
 public class App {
     // Directory paths
@@ -42,9 +44,9 @@ public class App {
                 .getResource("configuration.groovy")).toURI(); //путь к конфигу
         config.runFrom(configPath); //запуск конфига
         config.postProcess(); //постобработка конфига
-        for (Group group : config.getGroups()) {//для всех групп из конфига
+        for (Group group : config.getGroups()) { //для всех групп из конфига
             int tasks = 0;
-            for (Student student : group.getStudents()) {//все студенты группы
+            for (Student student : group.getStudents()) { //все студенты группы
                 boolean downloaded = Download.download(student.getRepo(), student.getUsername(),
                         config.getSettings().getBranch()); //качаем репу
 
