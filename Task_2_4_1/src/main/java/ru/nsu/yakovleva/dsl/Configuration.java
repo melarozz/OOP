@@ -54,6 +54,20 @@ public class Configuration extends GroovyObjectSupport {
      */
     @SneakyThrows
     public void methodMissing(String name, Object args) {
+        /*
+        Каждый раз, когда groovy встречает вызов метода, отсутствующего у объекта,
+        он пытается вызвать methodMissing().
+
+        Смотрим, что вызванный метод совпадает по имени с одним из полей
+        с помощью обращения к метаклассу. Метакласс позволяет получать информацию о полях
+        и доступ к ним через аксессоры, даже если сами поля приватные.
+
+        Получаем тип поля через тот же метакласс, чтобы создать новый экземпляр его.
+
+        Получаем значение поля через getProperty() и устанавливаем новое значение
+        через setProperty(). Это методы из GroovyObjectSupport и они обращаются
+        к полю через аксессоры, если найдет их, или напрямую.
+         */
         MetaProperty metaProperty = getMetaClass().getMetaProperty(name);
         if (metaProperty != null) {
             Closure<?> closure = (Closure<?>) ((Object[]) args)[0];
@@ -107,21 +121,27 @@ public class Configuration extends GroovyObjectSupport {
         Object value = getProperty(propName);
         if (Collection.class.isAssignableFrom(metaProperty.getType())
                 && value instanceof Collection) {
+            // у коллекции тип всегда параметризован
             ParameterizedType collectionType = (ParameterizedType) getClass()
                     .getDeclaredField(metaProperty.getName()).getGenericType();
             Class<?> itemClass = (Class<?>) collectionType.getActualTypeArguments()[0];
+            // развернем замыкания только в том случае,
+            // если в коллекции должны лежать объекты Configuration
             if (Configuration.class.isAssignableFrom(itemClass)) {
                 Collection<?> collection = (Collection<?>) value;
+                // мы не знаем конкретный класс коллекции,
+                // поэтому создадим такой же, какой уже у этого поля
                 @SuppressWarnings("unchecked") Collection<Object> newValue = collection
                         .getClass().getDeclaredConstructor().newInstance();
                 for (Object o : collection) {
                     if (o instanceof Closure<?>) {
+                        // создадим делегата и выполним код
                         Object item = itemClass.getDeclaredConstructor().newInstance();
                         ((Configuration) item).setProperty("scriptPath", scriptPath);
                         ((Closure<?>) o).setDelegate(item);
                         ((Closure<?>) o).setResolveStrategy(Closure.DELEGATE_FIRST);
                         ((Closure<?>) o).call();
-                        ((Configuration) item).postProcess();
+                        ((Configuration) item).postProcess(); // вдруг там внутри тоже коллекции?
                         newValue.add(item);
                     } else {
                         newValue.add(o);

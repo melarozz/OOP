@@ -202,6 +202,7 @@
             }
         });
     }
+
     function changeDocsColor() {
         const activityPercentageCells = document.querySelectorAll('.docs');
         activityPercentageCells.forEach((cell) => {
@@ -214,10 +215,24 @@
         });
     }
 
+
+    function changeDocsColor() {
+        const docs = document.querySelectorAll('.docs');
+        docs.forEach((cell) => {
+            const doc = cell.textContent.trim();
+            if (doc === "Generated") {
+                docs.style.color = '#f66262';
+            } else {
+                docs.style.color = '#2da919';
+            }
+        });
+    }
+
     handleCheckboxSoftChange(softDeadlineCheckboxes);
     handleCheckboxHardChange(hardDeadlineCheckboxes);
     changeActivityPercentageColor();
     changeBuildColor();
+    changeDocsColor();
 </script>
 
 
