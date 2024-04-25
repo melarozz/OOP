@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 public class GitHubCommitCounter {
 
     private static final String GITHUB_API_URL = "https://api.github.com/repos/";
-    private static final String AUTH_TOKEN = "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";
+    private static final String AUTH_TOKEN = "";
 
     public static int count(String owner, String repo, LocalDate sinceDate, LocalDate untilDate) {
         try {
