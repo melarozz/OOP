@@ -77,6 +77,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Download</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Utility class for downloading files from a Git repository.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -91,7 +92,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color"><code><a href="#labs" class="member-name-link">labs</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The default path to the destination folder.</div>
+</div>
 </div>
 </section>
 </li>
@@ -123,7 +126,9 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#download(java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">download</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;repo,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;folder,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;branch)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Downloads files from a Git repository to a specified folder and branch.</div>
+</div>
 </div>
 </div>
 </div>
@@ -145,6 +150,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="labs">
 <h3>labs</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">labs</span></div>
+<div class="block">The default path to the destination folder.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -183,6 +189,15 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">download</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;repo,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;folder,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;branch)</span></div>
+<div class="block">Downloads files from a Git repository to a specified folder and branch.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>repo</code> - The URL of the Git repository.</dd>
+<dd><code>folder</code> - The destination folder.</dd>
+<dd><code>branch</code> - The branch name to clone.</dd>
+<dt>Returns:</dt>
+<dd>True if the download is successful, false otherwise.</dd>
+</dl>
 </section>
 </li>
 </ul>
