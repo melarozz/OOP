@@ -2,6 +2,26 @@
 <html lang="en">
 <head>
     <title>Students Table Chart</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        td.student-points {
+            color: #f66262;
+        }
+        td.checkbox {
+            background-color: #fcc2c2;
+        }
+    </style>
 </head>
 <body>
 <table border="1">
@@ -15,6 +35,7 @@
         <th>Documentation</th>
         <th>Tests total</th>
         <th>Tests passed</th>
+        <th>Tests ignored</th>
         <th>Points</th>
     </tr>
     <#list groups as group>
@@ -30,13 +51,14 @@
                             <td rowspan="${student.assignments?size}">${student.name}</td>
                         </#if>
                         <td>${assignment.info.title}</td>
-                        <td><input type="checkbox" class="soft-deadline-checkbox" data-points="${assignment.points}" data-student="${student.name}">${assignment.softDeadline} </td>
-                        <td><input type="checkbox" class="hard-deadline-checkbox" data-points="${assignment.points}" data-student="${student.name}">${assignment.hardDeadline} </td>
+                        <td class="checkbox"><input type="checkbox" class="soft-deadline-checkbox" data-points="${assignment.points}" data-student="${student.name}">${assignment.softDeadline} </td>
+                        <td class="checkbox"><input type="checkbox" class="hard-deadline-checkbox" data-points="${assignment.points}" data-student="${student.name}">${assignment.hardDeadline} </td>
 
-                        <td>${assignment.build}</td>
-                        <td>${assignment.docs}</td>
+                        <td class="build">${assignment.build}</td>
+                        <td class="docs">${assignment.docs}</td>
                         <td>${assignment.testsTotal}</td>
                         <td>${assignment.testsPassed}</td>
+                        <td>${assignment.testsIgnored}</td>
                         <td class="student-points">0</td>
                         </tr>
                     </#list>
@@ -69,7 +91,7 @@
                         <td rowspan="${group.students?size}">${group.name}</td>
                     </#if>
                     <td>${student.name}</td>
-                    <td>${student.activityPercentage}%</td>
+                    <td class="student-activity-percentage">${student.activityPercentage}%</td>
                 </tr>
             </#list>
         <#else>
@@ -83,19 +105,13 @@
 
 <script>
 
-    // Get all soft deadline checkboxes
     const softDeadlineCheckboxes = document.querySelectorAll('.soft-deadline-checkbox');
-    // Get all hard deadline checkboxes
     const hardDeadlineCheckboxes = document.querySelectorAll('.hard-deadline-checkbox');
 
-    // Function to handle checkbox change event
     function handleCheckboxSoftChange(checkboxes) {
         checkboxes.forEach((checkbox) => {
             checkbox.addEventListener('change', () => {
-                // Get the corresponding points and student name
-                const points = parseInt(checkbox.getAttribute('data-points'));
-                const studentName = checkbox.getAttribute('data-student');
-                const pointsCell = checkbox.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
+                const pointsCell = checkbox.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
                 const buildCell = checkbox.parentNode.nextElementSibling.nextElementSibling;
                 const buildStatus = buildCell.textContent.trim()
 
@@ -103,25 +119,34 @@
                     return;
                 }
 
-                // Increment points if checkbox is checked, else decrement
                 if (checkbox.checked) {
                     pointsCell.textContent = parseInt(pointsCell.textContent) + 1;
                 } else {
                     pointsCell.textContent = parseInt(pointsCell.textContent) - 1;
                 }
 
+                // Update checkbox color
+                checkbox.parentNode.style.backgroundColor = checkbox.checked ? '#c0dcbb' : '#fcc2c2';
+
+                // Update points color
+                const points = parseInt(pointsCell.textContent);
+                if (points === 0) {
+                    pointsCell.style.color = '#f66262';
+                } else if (points === 1) {
+                    pointsCell.style.color = '#e6a037';
+                } else {
+                    pointsCell.style.color = '#2da919';
+                }
+
+
             });
         });
     }
 
-    // Function to handle checkbox change event
     function handleCheckboxHardChange(checkboxes) {
         checkboxes.forEach((checkbox) => {
             checkbox.addEventListener('change', () => {
-                // Get the corresponding points and student name
-                const points = parseInt(checkbox.getAttribute('data-points'));
-                const studentName = checkbox.getAttribute('data-student');
-                const pointsCell = checkbox.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
+                const pointsCell = checkbox.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
                 const buildCell = checkbox.parentNode.nextElementSibling;
                 const buildStatus = buildCell.textContent.trim()
 
@@ -129,21 +154,70 @@
                     return;
                 }
 
-                // Increment points if checkbox is checked, else decrement
                 if (checkbox.checked) {
                     pointsCell.textContent = parseInt(pointsCell.textContent) + 1;
                 } else {
                     pointsCell.textContent = parseInt(pointsCell.textContent) - 1;
                 }
 
+                // Update checkbox color
+                checkbox.parentNode.style.backgroundColor = checkbox.checked ? '#c0dcbb' : '#fcc2c2';
+
+                // Update points color
+                const points = parseInt(pointsCell.textContent);
+                if (points === 0) {
+                    pointsCell.style.color = '#f66262';
+                } else if (points === 1) {
+                    pointsCell.style.color = '#e6a037';
+                } else {
+                    pointsCell.style.color = '#2da919';
+                }
+
             });
         });
     }
 
-    // Call the function for soft deadline checkboxes
+    function changeActivityPercentageColor() {
+        const activityPercentageCells = document.querySelectorAll('.student-activity-percentage');
+        activityPercentageCells.forEach((cell) => {
+            const activityPercentage = parseFloat(cell.textContent.replace('%', ''));
+            if (activityPercentage <= 50) {
+                cell.style.color = '#f66262';
+            } else if (activityPercentage <= 75) {
+                cell.style.color = '#e6a037';
+            } else {
+                cell.style.color = '#2da919';
+            }
+        });
+    }
+
+    function changeBuildColor() {
+        const activityPercentageCells = document.querySelectorAll('.build');
+        activityPercentageCells.forEach((cell) => {
+            const activityPercentage = cell.textContent.trim();
+            if (activityPercentage === "Failed to build") {
+                cell.style.color = '#f66262';
+            } else {
+                cell.style.color = '#2da919';
+            }
+        });
+    }
+    function changeDocsColor() {
+        const activityPercentageCells = document.querySelectorAll('.docs');
+        activityPercentageCells.forEach((cell) => {
+            const activityPercentage = cell.textContent.trim();
+            if (activityPercentage === "Generated") {
+                cell.style.color = '#f66262';
+            } else {
+                cell.style.color = '#2da919';
+            }
+        });
+    }
+
     handleCheckboxSoftChange(softDeadlineCheckboxes);
-    // Call the function for hard deadline checkboxes
     handleCheckboxHardChange(hardDeadlineCheckboxes);
+    changeActivityPercentageColor();
+    changeBuildColor();
 </script>
 
 

@@ -4,6 +4,10 @@ import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import ru.nsu.yakovleva.dsl.Configuration;
+
+/**
+ * Student.
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Student extends Configuration {

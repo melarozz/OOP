@@ -1,17 +1,20 @@
 package ru.nsu.yakovleva;
 
-import ru.nsu.yakovleva.dsl.CourseConfiguration;
-import ru.nsu.yakovleva.dsl.Group;
-import ru.nsu.yakovleva.dsl.Student;
-import ru.nsu.yakovleva.dsl.TaskAssignment;
-import ru.nsu.yakovleva.util.*;
-
 import java.io.File;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import ru.nsu.yakovleva.dsl.CourseConfiguration;
+import ru.nsu.yakovleva.util.Download;
+import ru.nsu.yakovleva.util.GitHubCommitCounter;
+import ru.nsu.yakovleva.dsl.Group;
+import ru.nsu.yakovleva.dsl.Student;
+import ru.nsu.yakovleva.dsl.TaskAssignment;
+import ru.nsu.yakovleva.util.TableBuild;
+import ru.nsu.yakovleva.util.TestsAndDocs;
+import ru.nsu.yakovleva.util.Run;
 import lombok.SneakyThrows;
 
 public class App {
@@ -36,7 +39,8 @@ public class App {
                         config.getSettings().getBranch()); //качаем репу
 
                 String repo = extractRepo(student.getRepo());
-                int[] activityArray = generateActivityArray(student.getUsername(), repo, sinceDate, untilDate);
+                int[] activityArray = generateActivityArray(student.getUsername(), repo,
+                        sinceDate, untilDate);
                 String activityPercentage = calculateActivity(activityArray);
                 student.setActivityPercentage(activityPercentage);
 
@@ -47,7 +51,8 @@ public class App {
                         assignment.setBuild("Failed to download");
                         continue;
                     }
-                    String assignmentDirPath = labDir + student.getUsername() + "/" + assignment.getInfo().getId();
+                    String assignmentDirPath = labDir + student.getUsername() + "/"
+                            + assignment.getInfo().getId();
                     File assignmentDir = new File(assignmentDirPath);
                     if (!assignmentDir.exists()) {
                         assignment.setBuild("Failed to build");
@@ -78,7 +83,8 @@ public class App {
                         assignment.setTestsPassed(testsAndDocs.getPassedTests());
                         assignment.setTestsTotal(testsAndDocs.getTotalTests());
                         if ((Objects.equals(testsAndDocs.getDocumentationExists(), "Generated"))
-                                && (testsAndDocs.getPassedTests() == testsAndDocs.getTotalTests())) {
+                                && (testsAndDocs.getPassedTests() == testsAndDocs.getTotalTests()))
+                        {
                             assignment.setPoints(1);
                         } else {
                             assignment.setPoints(0);
@@ -117,7 +123,8 @@ public class App {
         List<Integer> activityList = new ArrayList<>();
         LocalDate currentDate = sinceDate;
         while (!currentDate.isAfter(untilDate)) {
-            int commitCount = GitHubCommitCounter.count(owner, repo, currentDate, currentDate.plusDays(6));
+            int commitCount = GitHubCommitCounter.count(owner, repo, currentDate,
+                    currentDate.plusDays(6));
             activityList.add(commitCount > 1 ? 1 : 0);
             currentDate = currentDate.plusWeeks(1);
         }

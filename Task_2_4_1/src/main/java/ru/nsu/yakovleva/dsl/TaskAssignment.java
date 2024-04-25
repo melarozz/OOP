@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+
+/**
+ * Task Assignment.
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class TaskAssignment extends Configuration {
@@ -14,5 +18,6 @@ public class TaskAssignment extends Configuration {
     String docs = "";
     int testsTotal;
     int testsPassed;
+    int testsIgnored;
     int points;
 }
