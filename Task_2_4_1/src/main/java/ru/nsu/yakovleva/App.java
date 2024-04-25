@@ -7,24 +7,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import ru.nsu.yakovleva.dsl.CourseConfiguration;
-import ru.nsu.yakovleva.util.Download;
-import ru.nsu.yakovleva.util.GitHubCommitCounter;
 import ru.nsu.yakovleva.dsl.Group;
 import ru.nsu.yakovleva.dsl.Student;
 import ru.nsu.yakovleva.dsl.TaskAssignment;
+import ru.nsu.yakovleva.util.Download;
+import ru.nsu.yakovleva.util.GitHubCommitCounter;
 import ru.nsu.yakovleva.util.TableBuild;
 import ru.nsu.yakovleva.util.TestsAndDocs;
 import ru.nsu.yakovleva.util.Run;
 import lombok.SneakyThrows;
 
+/**
+ * Main application class for processing course configurations, student assignments, and generating reports.
+ */
 public class App {
+    // Directory paths
     private static final String testResDir = "/build/test-results/test/";
     private static final String documentationDir = "/build/docs/javadoc/";
     private static final String labDir = "src/main/resources/labs/";
 
+    // Date range for activity calculation
     private static final LocalDate sinceDate = LocalDate.parse("2023-09-12");
     private static final LocalDate untilDate = LocalDate.parse("2023-11-28");
 
+    /**
+     * Main method to run the application.
+     *
+     * @param args Command-line arguments.
+     */
     @SneakyThrows
     public static void main(String[] args) {
         CourseConfiguration config = new CourseConfiguration();
@@ -83,8 +93,7 @@ public class App {
                         assignment.setTestsPassed(testsAndDocs.getPassedTests());
                         assignment.setTestsTotal(testsAndDocs.getTotalTests());
                         if ((Objects.equals(testsAndDocs.getDocumentationExists(), "Generated"))
-                                && (testsAndDocs.getPassedTests() == testsAndDocs.getTotalTests()))
-                        {
+                                && (testsAndDocs.getPassedTests() == testsAndDocs.getTotalTests())) {
                             assignment.setPoints(1);
                         } else {
                             assignment.setPoints(0);
@@ -105,7 +114,7 @@ public class App {
         }
     }
 
-    //рекурсивно удаляем файлы
+    // Recursively delete files
     private static boolean purgeDirectory(File dir) {
         for (File file : Objects.requireNonNull(dir.listFiles())) {
             if (file.isDirectory()) {
@@ -118,6 +127,7 @@ public class App {
         return true;
     }
 
+    // Generate activity array based on commit count per week
     private static int[] generateActivityArray(String owner, String repo,
                                                LocalDate sinceDate, LocalDate untilDate) {
         List<Integer> activityList = new ArrayList<>();
@@ -137,6 +147,7 @@ public class App {
         return activityArray;
     }
 
+    // Calculate activity percentage
     private static String calculateActivity(int[] activityArray) {
         int totalWeeks = activityArray.length;
         int activeWeeks = 0;
@@ -151,6 +162,7 @@ public class App {
         return String.valueOf(result);
     }
 
+    // Extract repository name from URL
     private static String extractRepo(String repoUrl) {
         String[] parts = repoUrl.split("/");
         return parts[parts.length - 1];

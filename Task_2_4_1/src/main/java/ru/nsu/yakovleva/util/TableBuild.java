@@ -10,9 +10,9 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import ru.nsu.yakovleva.dsl.Group;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
+import ru.nsu.yakovleva.dsl.Group;
 
 
 /**
