@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.yakovleva"},{"l":"ru.nsu.yakovleva.dsl"},{"l":"ru.nsu.yakovleva.util"}];updateSearchResults();
