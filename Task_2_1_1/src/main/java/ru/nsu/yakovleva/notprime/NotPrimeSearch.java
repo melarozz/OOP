@@ -7,6 +7,16 @@ import java.util.concurrent.ExecutionException;
  * and searching for non-prime nums in an array.
  */
 public class NotPrimeSearch {
+    private final int[] array;
+
+    /**
+     * Class constructor.
+     *
+     * @param array - array
+     */
+    public NotPrimeSearch(int[] array) {
+        this.array = array;
+    }
 
     /**
      * Checks if a given num is prime.
@@ -33,12 +43,9 @@ public class NotPrimeSearch {
      *
      * @param array The array of integers to be searched.
      * @return true if there is a non-prime num in the array, false otherwise.
-     * @throws ExecutionException   If an execution exception occurs during the search.
-     * @throws InterruptedException If the search is interrupted.
      * @throws NullPointerException If the input array is null.
      */
-    public boolean search(int[] array) throws ExecutionException,
-            InterruptedException, NullPointerException {
+    public boolean search(int[] array) throws NullPointerException {
         if (array == null) {
             throw new NullPointerException();
         }
@@ -50,5 +57,9 @@ public class NotPrimeSearch {
         }
 
         return false;
+    }
+
+    public boolean getResult() throws ExecutionException, InterruptedException {
+        return search(this.array);
     }
 }
