@@ -120,19 +120,19 @@
                 }
 
                 if (checkbox.checked) {
-                    pointsCell.textContent = parseInt(pointsCell.textContent) + 1;
+                    pointsCell.textContent = parseFloat(pointsCell.textContent) + 0.5;
                 } else {
-                    pointsCell.textContent = parseInt(pointsCell.textContent) - 1;
+                    pointsCell.textContent = parseFloat(pointsCell.textContent) - 0.5;
                 }
 
                 // Update checkbox color
                 checkbox.parentNode.style.backgroundColor = checkbox.checked ? '#c0dcbb' : '#fcc2c2';
 
                 // Update points color
-                const points = parseInt(pointsCell.textContent);
+                const points = parseFloat(pointsCell.textContent);
                 if (points === 0) {
                     pointsCell.style.color = '#f66262';
-                } else if (points === 1) {
+                } else if (points === 0.5) {
                     pointsCell.style.color = '#e6a037';
                 } else {
                     pointsCell.style.color = '#2da919';
@@ -155,19 +155,19 @@
                 }
 
                 if (checkbox.checked) {
-                    pointsCell.textContent = parseInt(pointsCell.textContent) + 1;
+                    pointsCell.textContent = parseFloat(pointsCell.textContent) + 0.5;
                 } else {
-                    pointsCell.textContent = parseInt(pointsCell.textContent) - 1;
+                    pointsCell.textContent = parseFloat(pointsCell.textContent) - 0.5;
                 }
 
                 // Update checkbox color
                 checkbox.parentNode.style.backgroundColor = checkbox.checked ? '#c0dcbb' : '#fcc2c2';
 
                 // Update points color
-                const points = parseInt(pointsCell.textContent);
+                const points = parseFloat(pointsCell.textContent);
                 if (points === 0) {
                     pointsCell.style.color = '#f66262';
-                } else if (points === 1) {
+                } else if (points === 0.5) {
                     pointsCell.style.color = '#e6a037';
                 } else {
                     pointsCell.style.color = '#2da919';
