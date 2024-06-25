@@ -1,0 +1,23 @@
+.background {
+    -fx-background-color: "#a4e655";
+}
+
+.menu {
+    -fx-fill: "#a4e655";
+}
+
+.h1 {
+    -fx-font-size: 35px;
+    -fx-text-fill: "#73b671";
+}
+
+.button {
+    -fx-background-color: "#578a19";
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: "#305207";
+    -fx-text-fill: white;
+}
